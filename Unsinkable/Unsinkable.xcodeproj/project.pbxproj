@@ -3,17 +3,26 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		243D0F3CA6AB440C7E61B0DE /* Pods_Unsinkable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEF6FC91AD1B24045F02C93 /* Pods_Unsinkable.framework */; };
+		26CCB8F16AC9BA961A065215 /* Pods_UnsinkableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA4556E6ED25D95A4473CA0 /* Pods_UnsinkableTests.framework */; };
+		6FADD05467A016C0D281AFEC /* Pods_Unsinkable_UnsinkableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99EFAC4466473468C536C95 /* Pods_Unsinkable_UnsinkableUITests.framework */; };
 		E92C356F25A5EBA8001F2819 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C356E25A5EBA8001F2819 /* AppDelegate.swift */; };
-		E92C357325A5EBA8001F2819 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C357225A5EBA8001F2819 /* ViewController.swift */; };
-		E92C357625A5EBA8001F2819 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E92C357425A5EBA8001F2819 /* Main.storyboard */; };
 		E92C357825A5EBAB001F2819 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E92C357725A5EBAB001F2819 /* Assets.xcassets */; };
 		E92C357B25A5EBAB001F2819 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E92C357925A5EBAB001F2819 /* LaunchScreen.storyboard */; };
 		E92C358625A5EBAC001F2819 /* UnsinkableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C358525A5EBAC001F2819 /* UnsinkableTests.swift */; };
 		E92C359125A5EBAC001F2819 /* UnsinkableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C359025A5EBAC001F2819 /* UnsinkableUITests.swift */; };
+		E996B51A25A620E900638480 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E996B51925A620E900638480 /* GoogleService-Info.plist */; };
+		E996B51B25A620E900638480 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E996B51925A620E900638480 /* GoogleService-Info.plist */; };
+		E996B51C25A620E900638480 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E996B51925A620E900638480 /* GoogleService-Info.plist */; };
+		E996B54D25A633FC00638480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E996B54C25A633FC00638480 /* Main.storyboard */; };
+		E996B55725A6344A00638480 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996B55625A6344A00638480 /* DashBoardViewController.swift */; };
+		E996B55C25A6351700638480 /* DashBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E996B55B25A6351700638480 /* DashBoard.storyboard */; };
+		E996B56125A6353000638480 /* NotificationCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E996B56025A6353000638480 /* NotificationCenter.storyboard */; };
+		E996B56625A6353F00638480 /* NotificationCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996B56525A6353F00638480 /* NotificationCenterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,10 +43,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B313CD6B18C9D13F46D8458 /* Pods-Unsinkable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable.release.xcconfig"; path = "Target Support Files/Pods-Unsinkable/Pods-Unsinkable.release.xcconfig"; sourceTree = "<group>"; };
+		2DA4556E6ED25D95A4473CA0 /* Pods_UnsinkableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnsinkableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30FC590CF55B15807CC6761A /* Pods-UnsinkableTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsinkableTests.debug.xcconfig"; path = "Target Support Files/Pods-UnsinkableTests/Pods-UnsinkableTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4DEF6FC91AD1B24045F02C93 /* Pods_Unsinkable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsinkable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E69DFAF1D5C61AC4579996C /* Pods-Unsinkable-UnsinkableUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable-UnsinkableUITests.release.xcconfig"; path = "Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C99EFAC4466473468C536C95 /* Pods_Unsinkable_UnsinkableUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsinkable_UnsinkableUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0946A8015A7D51CD0793555 /* Pods-Unsinkable-UnsinkableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable-UnsinkableUITests.debug.xcconfig"; path = "Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E92C356B25A5EBA8001F2819 /* Unsinkable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unsinkable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92C356E25A5EBA8001F2819 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E92C357225A5EBA8001F2819 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E92C357525A5EBA8001F2819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E92C357725A5EBAB001F2819 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E92C357A25A5EBAB001F2819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E92C357C25A5EBAB001F2819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +61,14 @@
 		E92C358C25A5EBAC001F2819 /* UnsinkableUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnsinkableUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92C359025A5EBAC001F2819 /* UnsinkableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsinkableUITests.swift; sourceTree = "<group>"; };
 		E92C359225A5EBAC001F2819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E996B51925A620E900638480 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E996B54C25A633FC00638480 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E996B55625A6344A00638480 /* DashBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardViewController.swift; sourceTree = "<group>"; };
+		E996B55B25A6351700638480 /* DashBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DashBoard.storyboard; sourceTree = "<group>"; };
+		E996B56025A6353000638480 /* NotificationCenter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotificationCenter.storyboard; sourceTree = "<group>"; };
+		E996B56525A6353F00638480 /* NotificationCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterViewController.swift; sourceTree = "<group>"; };
+		EC3A3950DFC0CD23FBEBBE28 /* Pods-UnsinkableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsinkableTests.release.xcconfig"; path = "Target Support Files/Pods-UnsinkableTests/Pods-UnsinkableTests.release.xcconfig"; sourceTree = "<group>"; };
+		EDB3D53118CC16C4CD5DBF43 /* Pods-Unsinkable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable.debug.xcconfig"; path = "Target Support Files/Pods-Unsinkable/Pods-Unsinkable.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				243D0F3CA6AB440C7E61B0DE /* Pods_Unsinkable.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26CCB8F16AC9BA961A065215 /* Pods_UnsinkableTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +92,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FADD05467A016C0D281AFEC /* Pods_Unsinkable_UnsinkableUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E3867DA30362642DF7F1868 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4DEF6FC91AD1B24045F02C93 /* Pods_Unsinkable.framework */,
+				C99EFAC4466473468C536C95 /* Pods_Unsinkable_UnsinkableUITests.framework */,
+				2DA4556E6ED25D95A4473CA0 /* Pods_UnsinkableTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E92C356225A5EBA8001F2819 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +116,8 @@
 				E92C358425A5EBAC001F2819 /* UnsinkableTests */,
 				E92C358F25A5EBAC001F2819 /* UnsinkableUITests */,
 				E92C356C25A5EBA8001F2819 /* Products */,
+				F80E85897012313212EFA7AC /* Pods */,
+				6E3867DA30362642DF7F1868 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,8 +171,8 @@
 		E92C35A625A5ECE9001F2819 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E92C357425A5EBA8001F2819 /* Main.storyboard */,
-				E92C357225A5EBA8001F2819 /* ViewController.swift */,
+				E996B55425A6340F00638480 /* StoryBoard */,
+				E996B55525A6341900638480 /* ViewController */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -150,11 +187,44 @@
 		E92C35A825A5ECFD001F2819 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				E996B51925A620E900638480 /* GoogleService-Info.plist */,
 				E92C357C25A5EBAB001F2819 /* Info.plist */,
 				E92C357925A5EBAB001F2819 /* LaunchScreen.storyboard */,
 				E92C357725A5EBAB001F2819 /* Assets.xcassets */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		E996B55425A6340F00638480 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				E996B54C25A633FC00638480 /* Main.storyboard */,
+				E996B55B25A6351700638480 /* DashBoard.storyboard */,
+				E996B56025A6353000638480 /* NotificationCenter.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		E996B55525A6341900638480 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E996B55625A6344A00638480 /* DashBoardViewController.swift */,
+				E996B56525A6353F00638480 /* NotificationCenterViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F80E85897012313212EFA7AC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EDB3D53118CC16C4CD5DBF43 /* Pods-Unsinkable.debug.xcconfig */,
+				0B313CD6B18C9D13F46D8458 /* Pods-Unsinkable.release.xcconfig */,
+				E0946A8015A7D51CD0793555 /* Pods-Unsinkable-UnsinkableUITests.debug.xcconfig */,
+				7E69DFAF1D5C61AC4579996C /* Pods-Unsinkable-UnsinkableUITests.release.xcconfig */,
+				30FC590CF55B15807CC6761A /* Pods-UnsinkableTests.debug.xcconfig */,
+				EC3A3950DFC0CD23FBEBBE28 /* Pods-UnsinkableTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,9 +234,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E92C359525A5EBAC001F2819 /* Build configuration list for PBXNativeTarget "Unsinkable" */;
 			buildPhases = (
+				1BA929FC29C8365D402393A2 /* [CP] Check Pods Manifest.lock */,
 				E92C356725A5EBA8001F2819 /* Sources */,
 				E92C356825A5EBA8001F2819 /* Frameworks */,
 				E92C356925A5EBA8001F2819 /* Resources */,
+				6042EECC6833F39FFF155555 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -181,6 +253,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E92C359825A5EBAC001F2819 /* Build configuration list for PBXNativeTarget "UnsinkableTests" */;
 			buildPhases = (
+				341BD037BBDED520146B42E9 /* [CP] Check Pods Manifest.lock */,
 				E92C357D25A5EBAC001F2819 /* Sources */,
 				E92C357E25A5EBAC001F2819 /* Frameworks */,
 				E92C357F25A5EBAC001F2819 /* Resources */,
@@ -199,9 +272,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E92C359B25A5EBAC001F2819 /* Build configuration list for PBXNativeTarget "UnsinkableUITests" */;
 			buildPhases = (
+				AB2A35F5AAE1F821604828F5 /* [CP] Check Pods Manifest.lock */,
 				E92C358825A5EBAC001F2819 /* Sources */,
 				E92C358925A5EBAC001F2819 /* Frameworks */,
 				E92C358A25A5EBAC001F2819 /* Resources */,
+				CB60C5918FD0224CB6B23AB7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -260,9 +335,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E996B56125A6353000638480 /* NotificationCenter.storyboard in Resources */,
+				E996B55C25A6351700638480 /* DashBoard.storyboard in Resources */,
 				E92C357B25A5EBAB001F2819 /* LaunchScreen.storyboard in Resources */,
+				E996B51A25A620E900638480 /* GoogleService-Info.plist in Resources */,
 				E92C357825A5EBAB001F2819 /* Assets.xcassets in Resources */,
-				E92C357625A5EBA8001F2819 /* Main.storyboard in Resources */,
+				E996B54D25A633FC00638480 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +348,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E996B51B25A620E900638480 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,18 +356,123 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E996B51C25A620E900638480 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1BA929FC29C8365D402393A2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Unsinkable-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		341BD037BBDED520146B42E9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-UnsinkableTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6042EECC6833F39FFF155555 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Unsinkable/Pods-Unsinkable-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Unsinkable/Pods-Unsinkable-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Unsinkable/Pods-Unsinkable-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB2A35F5AAE1F821604828F5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Unsinkable-UnsinkableUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB60C5918FD0224CB6B23AB7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E92C356725A5EBA8001F2819 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E92C357325A5EBA8001F2819 /* ViewController.swift in Sources */,
+				E996B56625A6353F00638480 /* NotificationCenterViewController.swift in Sources */,
 				E92C356F25A5EBA8001F2819 /* AppDelegate.swift in Sources */,
+				E996B55725A6344A00638480 /* DashBoardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,14 +508,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E92C357425A5EBA8001F2819 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E92C357525A5EBA8001F2819 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E92C357925A5EBAB001F2819 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -461,6 +637,7 @@
 		};
 		E92C359625A5EBAC001F2819 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDB3D53118CC16C4CD5DBF43 /* Pods-Unsinkable.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -474,12 +651,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.thomasgiron.Unsinkable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		E92C359725A5EBAC001F2819 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B313CD6B18C9D13F46D8458 /* Pods-Unsinkable.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -493,12 +671,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.thomasgiron.Unsinkable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		E92C359925A5EBAC001F2819 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30FC590CF55B15807CC6761A /* Pods-UnsinkableTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -521,6 +700,7 @@
 		};
 		E92C359A25A5EBAC001F2819 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC3A3950DFC0CD23FBEBBE28 /* Pods-UnsinkableTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -543,6 +723,7 @@
 		};
 		E92C359C25A5EBAC001F2819 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0946A8015A7D51CD0793555 /* Pods-Unsinkable-UnsinkableUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -563,6 +744,7 @@
 		};
 		E92C359D25A5EBAC001F2819 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E69DFAF1D5C61AC4579996C /* Pods-Unsinkable-UnsinkableUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
