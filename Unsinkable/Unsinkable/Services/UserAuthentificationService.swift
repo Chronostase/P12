@@ -10,7 +10,11 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class UserAuthentification {
+protocol AuthentificationLogic {
+    func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String)
+}
+
+class UserAuthentificationService: AuthentificationLogic {
     
     func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
@@ -30,6 +34,4 @@ class UserAuthentification {
             }
         }
     }
-    
-    
 }

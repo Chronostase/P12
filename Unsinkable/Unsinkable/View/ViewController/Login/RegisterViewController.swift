@@ -7,8 +7,9 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, VCCoordinator {
     
+    weak var coordinator: CoordinatorManager?
     @IBOutlet var mainLabel: UILabel!
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var nameTextField: UITextField!
@@ -17,7 +18,10 @@ class RegisterViewController: UIViewController {
     @IBOutlet var createAccountButton: UIButton!
     
     @IBOutlet var errorLabel: UILabel!
+    
+    let userAuthentificationService: AuthentificationLogic = UserAuthentificationService()
     @IBAction func createAccountButton(_ sender: UIButton) {
+        // Something gonna wrong with validateFields
         if validateFields() != nil {
             guard let error = validateFields() else {
                 return
@@ -30,7 +34,7 @@ class RegisterViewController: UIViewController {
             let password = passwordTextField.text?.formatCharacter() else {
                 return
             }
-            UserAuthentification().createUserWithInformations(firstName, name, email, password)
+            UserAuthentificationService().createUserWithInformations(firstName, name, email, password)
             transitionToHomeScreen()
         }
     }
@@ -82,11 +86,11 @@ class RegisterViewController: UIViewController {
     
     func transitionToHomeScreen() {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        guard let mainStoryBoard = storyBoard.instantiateViewController(withIdentifier: "main") as? DashBoardViewController else {
+        guard let mainStoryBoard = storyBoard.instantiateViewController(withIdentifier: "main") as? UITabBarController else {
             return
         }
         view.window?.rootViewController = mainStoryBoard
         view.window?.makeKeyAndVisible()
-        
+
     }
 }

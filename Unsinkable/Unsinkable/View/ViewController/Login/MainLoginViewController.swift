@@ -7,12 +7,27 @@
 
 import UIKit
 
-class MainLoginViewController: UIViewController {
+protocol VCCoordinator {
+    var coordinator: CoordinatorManager? {get set}
+}
 
+class MainLoginViewController: UIViewController, VCCoordinator {
+    
+    weak var coordinator: CoordinatorManager?
+    @IBOutlet var registerButton: UIButton!
+    @IBOutlet var loginButton: UIButton!
+    @IBOutlet var appLogo: UIImageView!
+    
+    @IBAction func loginTapped(_ sender: UIButton) {
+        coordinator?.signIn()
+    }
+    
+    @IBAction func registerTapped(_ sender: UIButton) {
+        coordinator?.register()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupUi()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -20,17 +35,8 @@ class MainLoginViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupUi() {
+        registerButton.setTitle("Register", for: .normal)
+        loginButton.setTitle("Login", for: .normal)
     }
-    */
-
 }

@@ -10,6 +10,8 @@
 		243D0F3CA6AB440C7E61B0DE /* Pods_Unsinkable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEF6FC91AD1B24045F02C93 /* Pods_Unsinkable.framework */; };
 		26CCB8F16AC9BA961A065215 /* Pods_UnsinkableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA4556E6ED25D95A4473CA0 /* Pods_UnsinkableTests.framework */; };
 		6FADD05467A016C0D281AFEC /* Pods_Unsinkable_UnsinkableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99EFAC4466473468C536C95 /* Pods_Unsinkable_UnsinkableUITests.framework */; };
+		E921575925C05BA100D42137 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921575825C05BA100D42137 /* Coordinator.swift */; };
+		E921576625C05F0000D42137 /* CoordinatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921576525C05F0000D42137 /* CoordinatorManager.swift */; };
 		E92C356F25A5EBA8001F2819 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C356E25A5EBA8001F2819 /* AppDelegate.swift */; };
 		E92C357825A5EBAB001F2819 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E92C357725A5EBAB001F2819 /* Assets.xcassets */; };
 		E92C357B25A5EBAB001F2819 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E92C357925A5EBAB001F2819 /* LaunchScreen.storyboard */; };
@@ -25,7 +27,7 @@
 		E951028425B84DEE0070A91C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951028325B84DEE0070A91C /* SignInViewController.swift */; };
 		E951028925B84DF90070A91C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951028825B84DF90070A91C /* RegisterViewController.swift */; };
 		E951029225B8BA9F0070A91C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951029125B8BA9F0070A91C /* Utilities.swift */; };
-		E951029C25B970D20070A91C /* UserAuthentification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951029B25B970D20070A91C /* UserAuthentification.swift */; };
+		E951029C25B970D20070A91C /* UserAuthentificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951029B25B970D20070A91C /* UserAuthentificationService.swift */; };
 		E95102CC25B97F7A0070A91C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95102CB25B97F7A0070A91C /* StringExtension.swift */; };
 		E996B51A25A620E900638480 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E996B51925A620E900638480 /* GoogleService-Info.plist */; };
 		E996B51B25A620E900638480 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E996B51925A620E900638480 /* GoogleService-Info.plist */; };
@@ -65,6 +67,8 @@
 		7E69DFAF1D5C61AC4579996C /* Pods-Unsinkable-UnsinkableUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable-UnsinkableUITests.release.xcconfig"; path = "Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C99EFAC4466473468C536C95 /* Pods_Unsinkable_UnsinkableUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsinkable_UnsinkableUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0946A8015A7D51CD0793555 /* Pods-Unsinkable-UnsinkableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable-UnsinkableUITests.debug.xcconfig"; path = "Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E921575825C05BA100D42137 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E921576525C05F0000D42137 /* CoordinatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorManager.swift; sourceTree = "<group>"; };
 		E92C356B25A5EBA8001F2819 /* Unsinkable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unsinkable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92C356E25A5EBA8001F2819 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E92C357725A5EBAB001F2819 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,7 +90,7 @@
 		E951028325B84DEE0070A91C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		E951028825B84DF90070A91C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E951029125B8BA9F0070A91C /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		E951029B25B970D20070A91C /* UserAuthentification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthentification.swift; sourceTree = "<group>"; };
+		E951029B25B970D20070A91C /* UserAuthentificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthentificationService.swift; sourceTree = "<group>"; };
 		E95102CB25B97F7A0070A91C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		E996B51925A620E900638480 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E996B54C25A633FC00638480 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -139,6 +143,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E921575325C03ACD00D42137 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E951029B25B970D20070A91C /* UserAuthentificationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E921575725C0562000D42137 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				E921575825C05BA100D42137 /* Coordinator.swift */,
+				E921576525C05F0000D42137 /* CoordinatorManager.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		E92C356225A5EBA8001F2819 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +189,8 @@
 				E92C35A725A5ECEF001F2819 /* Model */,
 				E92C35A625A5ECE9001F2819 /* View */,
 				E92C35A525A5ECE0001F2819 /* Presenter */,
+				E921575325C03ACD00D42137 /* Services */,
+				E921575725C0562000D42137 /* Coordinator */,
 				E951023025AF6A2F0070A91C /* Extensions */,
 				E951029025B8BA820070A91C /* Helpers */,
 				E92C35A825A5ECFD001F2819 /* SupportingFiles */,
@@ -196,7 +219,6 @@
 		E92C35A525A5ECE0001F2819 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				E951029B25B970D20070A91C /* UserAuthentification.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -603,7 +625,9 @@
 			files = (
 				E951028925B84DF90070A91C /* RegisterViewController.swift in Sources */,
 				E951022C25AF69A50070A91C /* ProjectCreationViewController.swift in Sources */,
-				E951029C25B970D20070A91C /* UserAuthentification.swift in Sources */,
+				E921576625C05F0000D42137 /* CoordinatorManager.swift in Sources */,
+				E921575925C05BA100D42137 /* Coordinator.swift in Sources */,
+				E951029C25B970D20070A91C /* UserAuthentificationService.swift in Sources */,
 				E9C2218C25AE185D001216F5 /* UICollectionViewController.swift in Sources */,
 				E951023225AF6A6C0070A91C /* UIViewController+Push.swift in Sources */,
 				E996B56625A6353F00638480 /* NotificationCenterViewController.swift in Sources */,
