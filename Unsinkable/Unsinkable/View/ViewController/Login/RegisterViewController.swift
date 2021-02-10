@@ -8,7 +8,6 @@
 import UIKit
 
 class RegisterViewController: UIViewController, VCCoordinator {
-    
     weak var coordinator: CoordinatorManager?
     @IBOutlet var mainLabel: UILabel!
     @IBOutlet var firstNameTextField: UITextField!
@@ -19,6 +18,12 @@ class RegisterViewController: UIViewController, VCCoordinator {
     
     @IBOutlet var errorLabel: UILabel!
     
+    
+    //    var registerPresenter: REgisterPresenterProtocol? { didSet { register presenter.registerpresetnerviewdeleter = self }
+    
+    private lazy var registerPresenter = {
+        return RegisterPresenter()
+    }()
     let userAuthentificationService: AuthentificationLogic = UserAuthentificationService()
     @IBAction func createAccountButton(_ sender: UIButton) {
         // Something gonna wrong with validateFields
@@ -28,21 +33,14 @@ class RegisterViewController: UIViewController, VCCoordinator {
             }
             showError(error)
         } else {
-            guard let firstName = firstNameTextField.text?.formatCharacter(),
-            let name = nameTextField.text?.formatCharacter(),
-            let email = emailTextField.text?.formatCharacter(),
-            let password = passwordTextField.text?.formatCharacter() else {
-                return
-            }
-            UserAuthentificationService().createUserWithInformations(firstName, name, email, password)
-            transitionToHomeScreen()
+            formatFieldsAndCreateUser()
+            coordinator?.transitionToHomeScreen(self.view)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        registerPresenter.registerDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,44 +51,51 @@ class RegisterViewController: UIViewController, VCCoordinator {
     private func validateFields() -> String? {
         
         //Check if fields are empty
-        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || nameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+        
+        guard checkTextFieldsAvailable(firstName: firstNameTextField.text, nameTextField.text, emailTextField.text, passwordTextField.text) else {
             return "Please fill in all fields."
         }
         // Check if correct password
-        if checkIfPasswordIsCorrect() {
+        if checkPasswordAvailable(password: passwordTextField.text) {
             return nil
         } else {
             return "Please make sure your password is at least 8 characters, contains a special character and a number."
         }
     }
     
-    private func checkIfPasswordIsCorrect() -> Bool {
-        guard let cleanedPassword = passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
-            
-            return false
-        }
-        
-        if Utilities.isPasswordValide(cleanedPassword) {
-            
-            return true
-        } else {
-            
-            return false
-        }
-    }
+    
     
     func showError(_ message: String) {
+        // Error happend when login error, label equal nil
         errorLabel.text = message
         errorLabel.isHidden = false
     }
     
-    func transitionToHomeScreen() {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        guard let mainStoryBoard = storyBoard.instantiateViewController(withIdentifier: "main") as? UITabBarController else {
-            return
+    private func formatFieldsAndCreateUser() {
+        guard let firstName = formatedString(string: firstNameTextField.text),
+              let name = formatedString(string: nameTextField.text),
+              let email = formatedString(string: emailTextField.text),
+              let password = formatedString(string: passwordTextField.text) else {
+            return showError("We can't format fields please retry")
         }
-        view.window?.rootViewController = mainStoryBoard
-        view.window?.makeKeyAndVisible()
-
+        userAuthentificationService.createUserWithInformations(firstName, name, email, password)
+    }
+}
+extension RegisterViewController: RegisterPresenterDelegate {
+    
+    func checkPasswordAvailable(password: String?) -> Bool {
+       return registerPresenter.checkIfPasswordIsCorrect(password: password)
+    }
+    
+    
+    func checkTextFieldsAvailable(firstName: String?, _ name: String?, _ email: String?, _ password: String?) -> Bool {
+        return registerPresenter.checkTextFieldsAvailable(firstName: firstName, name, email, password)
+    }
+    
+    
+    func formatedString(string: String?) -> String? {
+        let newString = registerPresenter.formatFields(string: string)
+        
+        return newString
     }
 }

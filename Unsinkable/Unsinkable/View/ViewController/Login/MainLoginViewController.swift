@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol VCCoordinator {
-    var coordinator: CoordinatorManager? {get set}
-}
-
 class MainLoginViewController: UIViewController, VCCoordinator {
     
     weak var coordinator: CoordinatorManager?

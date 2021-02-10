@@ -44,5 +44,15 @@ class CoordinatorManager: Coordinator {
         navigationController.pushViewController(mainLoginVC, animated: false)
     }
     
+    func transitionToHomeScreen(_ view: UIView) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        guard let mainStoryBoard = storyBoard.instantiateViewController(withIdentifier: "main") as? UITabBarController else {
+            return
+        }
+        view.window?.rootViewController = mainStoryBoard
+        view.window?.makeKeyAndVisible()
+        
+    }
+    
     
 }

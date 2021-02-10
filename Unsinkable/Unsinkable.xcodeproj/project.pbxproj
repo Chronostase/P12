@@ -10,8 +10,9 @@
 		243D0F3CA6AB440C7E61B0DE /* Pods_Unsinkable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEF6FC91AD1B24045F02C93 /* Pods_Unsinkable.framework */; };
 		26CCB8F16AC9BA961A065215 /* Pods_UnsinkableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA4556E6ED25D95A4473CA0 /* Pods_UnsinkableTests.framework */; };
 		6FADD05467A016C0D281AFEC /* Pods_Unsinkable_UnsinkableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99EFAC4466473468C536C95 /* Pods_Unsinkable_UnsinkableUITests.framework */; };
-		E921575925C05BA100D42137 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921575825C05BA100D42137 /* Coordinator.swift */; };
+		E921575925C05BA100D42137 /* Coordinator+VCCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921575825C05BA100D42137 /* Coordinator+VCCoordinator.swift */; };
 		E921576625C05F0000D42137 /* CoordinatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921576525C05F0000D42137 /* CoordinatorManager.swift */; };
+		E92157A825C18B7600D42137 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92157A725C18B7600D42137 /* RegisterPresenter.swift */; };
 		E92C356F25A5EBA8001F2819 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C356E25A5EBA8001F2819 /* AppDelegate.swift */; };
 		E92C357825A5EBAB001F2819 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E92C357725A5EBAB001F2819 /* Assets.xcassets */; };
 		E92C357B25A5EBAB001F2819 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E92C357925A5EBAB001F2819 /* LaunchScreen.storyboard */; };
@@ -37,6 +38,7 @@
 		E996B55C25A6351700638480 /* DashBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E996B55B25A6351700638480 /* DashBoard.storyboard */; };
 		E996B56125A6353000638480 /* NotificationCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E996B56025A6353000638480 /* NotificationCenter.storyboard */; };
 		E996B56625A6353F00638480 /* NotificationCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996B56525A6353F00638480 /* NotificationCenterViewController.swift */; };
+		E9BDE18F25D3F9B7001E3000 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDE18E25D3F9B7001E3000 /* LoginPresenter.swift */; };
 		E9C2214F25AE0F50001216F5 /* ProjectCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */; };
 		E9C2218625AE1345001216F5 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C2218525AE1345001216F5 /* CustomCell.xib */; };
 		E9C2218C25AE185D001216F5 /* UICollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */; };
@@ -67,8 +69,9 @@
 		7E69DFAF1D5C61AC4579996C /* Pods-Unsinkable-UnsinkableUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable-UnsinkableUITests.release.xcconfig"; path = "Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C99EFAC4466473468C536C95 /* Pods_Unsinkable_UnsinkableUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsinkable_UnsinkableUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0946A8015A7D51CD0793555 /* Pods-Unsinkable-UnsinkableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable-UnsinkableUITests.debug.xcconfig"; path = "Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		E921575825C05BA100D42137 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E921575825C05BA100D42137 /* Coordinator+VCCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinator+VCCoordinator.swift"; sourceTree = "<group>"; };
 		E921576525C05F0000D42137 /* CoordinatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorManager.swift; sourceTree = "<group>"; };
+		E92157A725C18B7600D42137 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		E92C356B25A5EBA8001F2819 /* Unsinkable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unsinkable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92C356E25A5EBA8001F2819 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E92C357725A5EBAB001F2819 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,6 +101,7 @@
 		E996B55B25A6351700638480 /* DashBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DashBoard.storyboard; sourceTree = "<group>"; };
 		E996B56025A6353000638480 /* NotificationCenter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotificationCenter.storyboard; sourceTree = "<group>"; };
 		E996B56525A6353F00638480 /* NotificationCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterViewController.swift; sourceTree = "<group>"; };
+		E9BDE18E25D3F9B7001E3000 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProjectCreation.storyboard; sourceTree = "<group>"; };
 		E9C2218525AE1345001216F5 /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewController.swift; sourceTree = "<group>"; };
@@ -154,7 +158,7 @@
 		E921575725C0562000D42137 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				E921575825C05BA100D42137 /* Coordinator.swift */,
+				E921575825C05BA100D42137 /* Coordinator+VCCoordinator.swift */,
 				E921576525C05F0000D42137 /* CoordinatorManager.swift */,
 			);
 			path = Coordinator;
@@ -219,6 +223,7 @@
 		E92C35A525A5ECE0001F2819 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				E98AC6C525D2D6F200B76E5E /* LoginPresenter */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -321,6 +326,15 @@
 				E951029125B8BA9F0070A91C /* Utilities.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E98AC6C525D2D6F200B76E5E /* LoginPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				E92157A725C18B7600D42137 /* RegisterPresenter.swift */,
+				E9BDE18E25D3F9B7001E3000 /* LoginPresenter.swift */,
+			);
+			path = LoginPresenter;
 			sourceTree = "<group>";
 		};
 		E996B55425A6340F00638480 /* StoryBoard */ = {
@@ -623,16 +637,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9BDE18F25D3F9B7001E3000 /* LoginPresenter.swift in Sources */,
 				E951028925B84DF90070A91C /* RegisterViewController.swift in Sources */,
 				E951022C25AF69A50070A91C /* ProjectCreationViewController.swift in Sources */,
 				E921576625C05F0000D42137 /* CoordinatorManager.swift in Sources */,
-				E921575925C05BA100D42137 /* Coordinator.swift in Sources */,
+				E921575925C05BA100D42137 /* Coordinator+VCCoordinator.swift in Sources */,
 				E951029C25B970D20070A91C /* UserAuthentificationService.swift in Sources */,
 				E9C2218C25AE185D001216F5 /* UICollectionViewController.swift in Sources */,
 				E951023225AF6A6C0070A91C /* UIViewController+Push.swift in Sources */,
 				E996B56625A6353F00638480 /* NotificationCenterViewController.swift in Sources */,
 				E951028425B84DEE0070A91C /* SignInViewController.swift in Sources */,
 				E951027F25B84DDD0070A91C /* MainLoginViewController.swift in Sources */,
+				E92157A825C18B7600D42137 /* RegisterPresenter.swift in Sources */,
 				E95102CC25B97F7A0070A91C /* StringExtension.swift in Sources */,
 				E92C356F25A5EBA8001F2819 /* AppDelegate.swift in Sources */,
 				E951029225B8BA9F0070A91C /* Utilities.swift in Sources */,

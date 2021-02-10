@@ -18,3 +18,7 @@ protocol Coordinator {
     
     func signIn()
 }
+
+protocol VCCoordinator {
+    var coordinator: CoordinatorManager? {get set}
+}
