@@ -67,12 +67,9 @@
                                             <action selector="appleLoginButton:" destination="eH5-3u-ubx" eventType="touchUpInside" id="QD6-1Z-bLZ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJX-wG-Lo3" userLabel="FaceBookLoginButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJX-wG-Lo3" userLabel="FaceBookLoginButton" customClass="FBSDKLoginButton">
                                         <rect key="frame" x="0.0" y="60" width="265" height="30"/>
                                         <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="faceBookLoginButton:" destination="eH5-3u-ubx" eventType="touchUpInside" id="APf-w2-gd3"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fxc-FQ-gu4" userLabel="TwitterLoginButton">
                                         <rect key="frame" x="0.0" y="120" width="265" height="30"/>

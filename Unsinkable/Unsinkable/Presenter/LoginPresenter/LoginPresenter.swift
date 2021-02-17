@@ -6,3 +6,20 @@
 //
 
 import Foundation
+
+protocol LoginPresenterDelegate: class {
+    func checkTextFieldsAvailable(_ email: String?, _ password: String?) -> Bool
+}
+
+class LoginPresenter {
+    
+    weak var loginPresenterDelegat: LoginPresenterDelegate?
+    
+    func checkTextFieldsAvailable(_ email: String?, _ password: String?) -> Bool {
+        if email != "" && password != "" {
+            return true
+        } else {
+            return false
+        }
+    }
+}

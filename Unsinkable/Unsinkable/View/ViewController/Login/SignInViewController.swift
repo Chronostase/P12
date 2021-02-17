@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class SignInViewController: UIViewController, VCCoordinator {
     let userAuthentificationService: AuthentificationLogic = UserAuthentificationService()
     weak var coordinator: CoordinatorManager?
+    lazy var loginPresenter = {
+        return LoginPresenter()
+    }()
     @IBOutlet var mainTitleLabel: UILabel!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
@@ -21,21 +25,19 @@ class SignInViewController: UIViewController, VCCoordinator {
     
     
     @IBAction func signInButton(_ sender: UIButton) {
-        guard let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else {
-            return
+        if loginPresenter.checkTextFieldsAvailable(emailTextField.text, passwordTextField.text) {
+            guard let email = emailTextField.text?.formatCharacter(),
+                  let password = passwordTextField.text?.formatCharacter() else {
+                return
+            }
+            userAuthentificationService.loginUser(email, password)
+            coordinator?.transitionToHomeScreen(self.view)
         }
-        guard let password = passwordTextField.text?.trimmingCharacters(in: .whitespaces) else {
-            return
-        }
-        
-        userAuthentificationService.loginUser(email, password)
-        coordinator?.transitionToHomeScreen(self.view)
     }
     
     @IBAction func appleLoginButton(_ sender: UIButton) {
     }
-    @IBAction func faceBookLoginButton(_ sender: UIButton) {
-    }
+    
     @IBAction func twitterLoginButton(_ sender: UIButton) {
     }
     override func viewDidLoad() {
@@ -44,7 +46,7 @@ class SignInViewController: UIViewController, VCCoordinator {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
     }
     
