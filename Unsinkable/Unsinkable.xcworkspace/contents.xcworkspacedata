@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "container:Unsinkable.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Unsinkable.xcodeproj">
    </FileRef>
    <FileRef

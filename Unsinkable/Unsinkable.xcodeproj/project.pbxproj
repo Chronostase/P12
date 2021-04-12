@@ -70,13 +70,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0B313CD6B18C9D13F46D8458 /* Pods-Unsinkable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable.release.xcconfig"; path = "Target Support Files/Pods-Unsinkable/Pods-Unsinkable.release.xcconfig"; sourceTree = "<group>"; };
 		2DA4556E6ED25D95A4473CA0 /* Pods_UnsinkableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnsinkableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		30FC590CF55B15807CC6761A /* Pods-UnsinkableTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsinkableTests.debug.xcconfig"; path = "Target Support Files/Pods-UnsinkableTests/Pods-UnsinkableTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4DEF6FC91AD1B24045F02C93 /* Pods_Unsinkable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsinkable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E69DFAF1D5C61AC4579996C /* Pods-Unsinkable-UnsinkableUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable-UnsinkableUITests.release.xcconfig"; path = "Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests.release.xcconfig"; sourceTree = "<group>"; };
+		812712CE02869C885481FDEE /* Pods-Unsinkable-UnsinkableUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable-UnsinkableUITests.release.xcconfig"; path = "Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C1760F61CF95D673391ED480 /* Pods-Unsinkable-UnsinkableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable-UnsinkableUITests.debug.xcconfig"; path = "Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C73A03FDC0D4BAB758C77924 /* Pods-Unsinkable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable.release.xcconfig"; path = "Target Support Files/Pods-Unsinkable/Pods-Unsinkable.release.xcconfig"; sourceTree = "<group>"; };
 		C99EFAC4466473468C536C95 /* Pods_Unsinkable_UnsinkableUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsinkable_UnsinkableUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E0946A8015A7D51CD0793555 /* Pods-Unsinkable-UnsinkableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable-UnsinkableUITests.debug.xcconfig"; path = "Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E566A865D32370B5E7276B06 /* Pods-UnsinkableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsinkableTests.release.xcconfig"; path = "Target Support Files/Pods-UnsinkableTests/Pods-UnsinkableTests.release.xcconfig"; sourceTree = "<group>"; };
+		E7F094C6585CEEC21E1BD97E /* Pods-UnsinkableTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsinkableTests.debug.xcconfig"; path = "Target Support Files/Pods-UnsinkableTests/Pods-UnsinkableTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E90312CD25E5409600CBC228 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 		E90312EB25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewControllerTextFieldDelegate.swift; sourceTree = "<group>"; };
 		E90312F625E56DCC00CBC228 /* SignInViewControllerTextFieldDelegat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewControllerTextFieldDelegat.swift; sourceTree = "<group>"; };
@@ -121,8 +122,7 @@
 		E9CB3AA625DD7A5C009980EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9CB3AAB25DE77BA009980EC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E9DC09FE25DE82B800667E8E /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		EC3A3950DFC0CD23FBEBBE28 /* Pods-UnsinkableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsinkableTests.release.xcconfig"; path = "Target Support Files/Pods-UnsinkableTests/Pods-UnsinkableTests.release.xcconfig"; sourceTree = "<group>"; };
-		EDB3D53118CC16C4CD5DBF43 /* Pods-Unsinkable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable.debug.xcconfig"; path = "Target Support Files/Pods-Unsinkable/Pods-Unsinkable.debug.xcconfig"; sourceTree = "<group>"; };
+		F01B7BC44ED44C6D931BD296 /* Pods-Unsinkable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable.debug.xcconfig"; path = "Target Support Files/Pods-Unsinkable/Pods-Unsinkable.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +153,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C3B12E924FA842358A76C6F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F01B7BC44ED44C6D931BD296 /* Pods-Unsinkable.debug.xcconfig */,
+				C73A03FDC0D4BAB758C77924 /* Pods-Unsinkable.release.xcconfig */,
+				C1760F61CF95D673391ED480 /* Pods-Unsinkable-UnsinkableUITests.debug.xcconfig */,
+				812712CE02869C885481FDEE /* Pods-Unsinkable-UnsinkableUITests.release.xcconfig */,
+				E7F094C6585CEEC21E1BD97E /* Pods-UnsinkableTests.debug.xcconfig */,
+				E566A865D32370B5E7276B06 /* Pods-UnsinkableTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		6E3867DA30362642DF7F1868 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,8 +210,8 @@
 				E92C358425A5EBAC001F2819 /* UnsinkableTests */,
 				E92C358F25A5EBAC001F2819 /* UnsinkableUITests */,
 				E92C356C25A5EBA8001F2819 /* Products */,
-				F80E85897012313212EFA7AC /* Pods */,
 				6E3867DA30362642DF7F1868 /* Frameworks */,
+				3C3B12E924FA842358A76C6F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -405,19 +419,6 @@
 				E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */,
 			);
 			path = DashBoard;
-			sourceTree = "<group>";
-		};
-		F80E85897012313212EFA7AC /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				EDB3D53118CC16C4CD5DBF43 /* Pods-Unsinkable.debug.xcconfig */,
-				0B313CD6B18C9D13F46D8458 /* Pods-Unsinkable.release.xcconfig */,
-				E0946A8015A7D51CD0793555 /* Pods-Unsinkable-UnsinkableUITests.debug.xcconfig */,
-				7E69DFAF1D5C61AC4579996C /* Pods-Unsinkable-UnsinkableUITests.release.xcconfig */,
-				30FC590CF55B15807CC6761A /* Pods-UnsinkableTests.debug.xcconfig */,
-				EC3A3950DFC0CD23FBEBBE28 /* Pods-UnsinkableTests.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -857,7 +858,7 @@
 		};
 		E92C359625A5EBAC001F2819 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EDB3D53118CC16C4CD5DBF43 /* Pods-Unsinkable.debug.xcconfig */;
+			baseConfigurationReference = F01B7BC44ED44C6D931BD296 /* Pods-Unsinkable.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -878,7 +879,7 @@
 		};
 		E92C359725A5EBAC001F2819 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0B313CD6B18C9D13F46D8458 /* Pods-Unsinkable.release.xcconfig */;
+			baseConfigurationReference = C73A03FDC0D4BAB758C77924 /* Pods-Unsinkable.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -899,7 +900,7 @@
 		};
 		E92C359925A5EBAC001F2819 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30FC590CF55B15807CC6761A /* Pods-UnsinkableTests.debug.xcconfig */;
+			baseConfigurationReference = E7F094C6585CEEC21E1BD97E /* Pods-UnsinkableTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -922,7 +923,7 @@
 		};
 		E92C359A25A5EBAC001F2819 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC3A3950DFC0CD23FBEBBE28 /* Pods-UnsinkableTests.release.xcconfig */;
+			baseConfigurationReference = E566A865D32370B5E7276B06 /* Pods-UnsinkableTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -945,7 +946,7 @@
 		};
 		E92C359C25A5EBAC001F2819 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E0946A8015A7D51CD0793555 /* Pods-Unsinkable-UnsinkableUITests.debug.xcconfig */;
+			baseConfigurationReference = C1760F61CF95D673391ED480 /* Pods-Unsinkable-UnsinkableUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -966,7 +967,7 @@
 		};
 		E92C359D25A5EBAC001F2819 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7E69DFAF1D5C61AC4579996C /* Pods-Unsinkable-UnsinkableUITests.release.xcconfig */;
+			baseConfigurationReference = 812712CE02869C885481FDEE /* Pods-Unsinkable-UnsinkableUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
