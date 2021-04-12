@@ -13,7 +13,7 @@ protocol LoginPresenterDelegate: class {
 
 class LoginPresenter {
     
-    weak var loginPresenterDelegat: LoginPresenterDelegate?
+    weak var loginPresenterDelegate: LoginPresenterDelegate?
     
     func checkTextFieldsAvailable(_ email: String?, _ password: String?) -> Bool {
         if email != "" && password != "" {

@@ -28,6 +28,18 @@ class RegisterPresenter {
         }
     }
     
+    func isValideFirstName(_ firstName: String) -> Bool {
+        return firstName.count > 1
+    }
+    
+    func isValideName(_ name: String) -> Bool {
+        return name.count > 1
+    }
+    
+    func isEmailValide(_ email: String) -> Bool {
+        return email.contains("@") && email.contains(".")
+    }
+    
     func checkIfPasswordIsCorrect(password: String?) -> Bool {
         guard let cleanedPassword = formatFields(string: password) else {
             

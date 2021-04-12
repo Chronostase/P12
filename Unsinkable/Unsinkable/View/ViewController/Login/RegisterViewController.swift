@@ -4,7 +4,7 @@
 //
 //  Created by Thomas on 20/01/2021.
 //
-
+import Foundation
 import UIKit
 
 class RegisterViewController: UIViewController, VCCoordinator {
@@ -18,15 +18,12 @@ class RegisterViewController: UIViewController, VCCoordinator {
     
     @IBOutlet var errorLabel: UILabel!
     
-    
-    //    var registerPresenter: REgisterPresenterProtocol? { didSet { register presenter.registerpresetnerviewdeleter = self }
-    
     private lazy var registerPresenter = {
         return RegisterPresenter()
     }()
     let userAuthentificationService: AuthentificationLogic = UserAuthentificationService()
     @IBAction func createAccountButton(_ sender: UIButton) {
-        // Something gonna wrong with validateFields
+        errorLabel.isHidden = true
         if validateFields() != nil {
             guard let error = validateFields() else {
                 return
@@ -41,6 +38,20 @@ class RegisterViewController: UIViewController, VCCoordinator {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerPresenter.registerDelegate = self
+        setupUI()
+    }
+    
+    private func setupUI() {
+        firstNameTextField.delegate = self
+        nameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self 
+        emailTextField.setPlaceholder("Email...")
+        firstNameTextField.setPlaceholder("Firstname...")
+        nameTextField.setPlaceholder("Name...")
+        passwordTextField.setPlaceholder("Password...")
+        self.navigationItem.title = "Register"
+        errorLabel.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,20 +64,19 @@ class RegisterViewController: UIViewController, VCCoordinator {
         //Check if fields are empty
         
         guard checkTextFieldsAvailable(firstName: firstNameTextField.text, nameTextField.text, emailTextField.text, passwordTextField.text) else {
-            return "Please fill in all fields."
+            return Constants.Error.fillField
         }
         // Check if correct password
         if checkPasswordAvailable(password: passwordTextField.text) {
             return nil
         } else {
-            return "Please make sure your password is at least 8 characters, contains a special character and a number."
+            return Constants.Error.passwordError
         }
     }
     
     
     
-    func showError(_ message: String) {
-        // Error happend when login error, label equal nil
+    private func showError(_ message: String) {
         errorLabel.text = message
         errorLabel.isHidden = false
     }
@@ -76,7 +86,7 @@ class RegisterViewController: UIViewController, VCCoordinator {
               let name = formatedString(string: nameTextField.text),
               let email = formatedString(string: emailTextField.text),
               let password = formatedString(string: passwordTextField.text) else {
-            return showError("We can't format fields please retry")
+            return showError(Constants.Error.cantFormat)
         }
         userAuthentificationService.createUserWithInformations(firstName, name, email, password)
     }
@@ -99,3 +109,4 @@ extension RegisterViewController: RegisterPresenterDelegate {
         return newString
     }
 }
+

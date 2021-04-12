@@ -32,7 +32,7 @@ class MainLoginViewController: UIViewController, VCCoordinator {
     }
     
     private func setupUi() {
-        registerButton.setTitle("Register", for: .normal)
-        loginButton.setTitle("Login", for: .normal)
+        registerButton.setTitle(Constants.LoginString.registerButton, for: .normal)
+        loginButton.setTitle(Constants.LoginString.longinButton, for: .normal)
     }
 }

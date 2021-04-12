@@ -9,19 +9,19 @@ import UIKit
 import FBSDKLoginKit
 
 class SignInViewController: UIViewController, VCCoordinator {
-    let userAuthentificationService: AuthentificationLogic = UserAuthentificationService()
+    let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()
     weak var coordinator: CoordinatorManager?
+    var indicator = false
     lazy var loginPresenter = {
         return LoginPresenter()
     }()
-    @IBOutlet var mainTitleLabel: UILabel!
+    @IBOutlet var errorLabel: UILabel!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var signInButton: UIButton!
     @IBOutlet var orLabel: UILabel!
     @IBOutlet var appleLogin: UIButton!
     @IBOutlet var faceBookLogin: UIButton!
-    @IBOutlet var twitterLogin: UIButton!
     
     
     @IBAction func signInButton(_ sender: UIButton) {
@@ -30,16 +30,28 @@ class SignInViewController: UIViewController, VCCoordinator {
                   let password = passwordTextField.text?.formatCharacter() else {
                 return
             }
-            userAuthentificationService.loginUser(email, password)
-            coordinator?.transitionToHomeScreen(self.view)
+            
+            userAuthenticationService.loginUser(email, password) { [weak self] result in
+                switch result {
+                case .success(_):
+                    guard let view = self?.view else {
+                        return
+                    }
+                    self?.coordinator?.transitionToHomeScreen(view)
+                case .failure(_):
+                    self?.showError("Incorrect log please retry.")
+                }
+            }
         }
+    }
+    
+    func transitionToHomeScreen() {
+        coordinator?.transitionToHomeScreen(self.view)
     }
     
     @IBAction func appleLoginButton(_ sender: UIButton) {
     }
     
-    @IBAction func twitterLoginButton(_ sender: UIButton) {
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -51,10 +63,20 @@ class SignInViewController: UIViewController, VCCoordinator {
     }
     
     private func setupUI() {
-        signInButton.setTitle("Sign in", for: .normal)
-        orLabel.text = "Or"
-        appleLogin.setTitle("Login with Apple", for: .normal)
-        faceBookLogin.setTitle("Login with Facebook", for: .normal)
-        twitterLogin.setTitle("Login with Facebook", for: .normal)
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        errorLabel.isHidden = true
+        signInButton.setTitle(Constants.LoginString.signInButton, for: .normal)
+        orLabel.text = Constants.LoginString.or
+        appleLogin.setTitle(Constants.LoginString.appleLogin, for: .normal)
+        
+        self.navigationItem.title = "Sign in"
+        emailTextField.setPlaceholder("Email...")
+        passwordTextField.setPlaceholder("Password...")
+    }
+    
+    func showError(_ message: String) {
+        errorLabel.text = message
+        errorLabel.isHidden = false
     }
 }

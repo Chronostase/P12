@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sy5-0n-E5X" userLabel="AppLogo">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UnsinkableLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Sy5-0n-E5X" userLabel="AppLogo">
                                 <rect key="frame" x="40" y="84" width="334" height="269"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcom to Unsinkable " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCB-6W-aNB" userLabel="WelcomeLabel">
@@ -35,8 +35,9 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="G8J-G2-7HQ" userLabel="LogStackView">
                                 <rect key="frame" x="72.5" y="515" width="269" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYi-xW-VZL" userLabel="LogInButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYi-xW-VZL" userLabel="LogInButton" customClass="CustomButton" customModule="Unsinkable" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="269" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="pX2-UY-Rog"/>
                                         </constraints>
@@ -44,8 +45,9 @@
                                             <action selector="loginTapped:" destination="PB9-nc-lWg" eventType="touchUpInside" id="UJN-dx-GRF"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roe-8e-vtP" userLabel="RegisterButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roe-8e-vtP" userLabel="RegisterButton" customClass="CustomButton" customModule="Unsinkable" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="60" width="269" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <action selector="registerTapped:" destination="PB9-nc-lWg" eventType="touchUpInside" id="lOV-S8-PzK"/>
                                         </connections>
@@ -57,7 +59,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sjn-eb-haQ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                         <constraints>
                             <constraint firstItem="G8J-G2-7HQ" firstAttribute="centerX" secondItem="58l-I1-mvI" secondAttribute="centerX" id="9ma-K2-zBr"/>
                             <constraint firstItem="nCB-6W-aNB" firstAttribute="width" secondItem="58l-I1-mvI" secondAttribute="width" id="FQZ-no-Rv0"/>
@@ -87,8 +89,9 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <image name="UnsinkableLogo" width="452" height="450"/>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
