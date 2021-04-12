@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="PB9-nc-lWg">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Login View Controller-->
+        <scene sceneID="svX-74-bmf">
+            <objects>
+                <viewController id="PB9-nc-lWg" customClass="MainLoginViewController" customModule="Unsinkable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="58l-I1-mvI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UnsinkableLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Sy5-0n-E5X" userLabel="AppLogo">
+                                <rect key="frame" x="40" y="84" width="334" height="269"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcom to Unsinkable " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCB-6W-aNB" userLabel="WelcomeLabel">
+                                <rect key="frame" x="0.0" y="383" width="414" height="41"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First of all you need to log in or register a new account " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wzt-cL-2Zi" userLabel="ExplainLabel">
+                                <rect key="frame" x="62" y="434" width="290" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="G8J-G2-7HQ" userLabel="LogStackView">
+                                <rect key="frame" x="72.5" y="515" width="269" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYi-xW-VZL" userLabel="LogInButton" customClass="CustomButton" customModule="Unsinkable" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="269" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="pX2-UY-Rog"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="loginTapped:" destination="PB9-nc-lWg" eventType="touchUpInside" id="UJN-dx-GRF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roe-8e-vtP" userLabel="RegisterButton" customClass="CustomButton" customModule="Unsinkable" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="269" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="registerTapped:" destination="PB9-nc-lWg" eventType="touchUpInside" id="lOV-S8-PzK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="roe-8e-vtP" firstAttribute="height" secondItem="wYi-xW-VZL" secondAttribute="height" id="XcE-5G-O5d"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sjn-eb-haQ"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <constraints>
+                            <constraint firstItem="G8J-G2-7HQ" firstAttribute="centerX" secondItem="58l-I1-mvI" secondAttribute="centerX" id="9ma-K2-zBr"/>
+                            <constraint firstItem="nCB-6W-aNB" firstAttribute="width" secondItem="58l-I1-mvI" secondAttribute="width" id="FQZ-no-Rv0"/>
+                            <constraint firstItem="Sy5-0n-E5X" firstAttribute="leading" secondItem="sjn-eb-haQ" secondAttribute="leading" constant="40" id="IgL-TW-fiX"/>
+                            <constraint firstItem="nCB-6W-aNB" firstAttribute="centerX" secondItem="58l-I1-mvI" secondAttribute="centerX" id="JJO-cO-hfZ"/>
+                            <constraint firstItem="wzt-cL-2Zi" firstAttribute="width" secondItem="nCB-6W-aNB" secondAttribute="width" multiplier="0.7" id="Z3j-H4-for"/>
+                            <constraint firstItem="G8J-G2-7HQ" firstAttribute="top" secondItem="wzt-cL-2Zi" secondAttribute="bottom" constant="40" id="c7C-UW-ihH"/>
+                            <constraint firstItem="wzt-cL-2Zi" firstAttribute="centerX" secondItem="58l-I1-mvI" secondAttribute="centerX" id="gVN-4t-tiR"/>
+                            <constraint firstItem="G8J-G2-7HQ" firstAttribute="width" secondItem="58l-I1-mvI" secondAttribute="width" multiplier="0.65" id="kDx-9P-6K8"/>
+                            <constraint firstItem="Sy5-0n-E5X" firstAttribute="height" secondItem="58l-I1-mvI" secondAttribute="height" multiplier="0.3" id="ljS-DH-pgc"/>
+                            <constraint firstItem="sjn-eb-haQ" firstAttribute="trailing" secondItem="Sy5-0n-E5X" secondAttribute="trailing" constant="40" id="mQe-Ox-UlT"/>
+                            <constraint firstItem="nCB-6W-aNB" firstAttribute="top" secondItem="Sy5-0n-E5X" secondAttribute="bottom" constant="30" id="tjZ-lJ-Gv2"/>
+                            <constraint firstItem="Sy5-0n-E5X" firstAttribute="top" secondItem="sjn-eb-haQ" secondAttribute="top" constant="40" id="xSS-w7-RKi"/>
+                            <constraint firstItem="wzt-cL-2Zi" firstAttribute="top" secondItem="nCB-6W-aNB" secondAttribute="bottom" constant="10" id="z2c-OS-ec5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="v94-H4-Zhi"/>
+                    <connections>
+                        <outlet property="appLogo" destination="Sy5-0n-E5X" id="86u-WG-eVX"/>
+                        <outlet property="loginButton" destination="wYi-xW-VZL" id="97Z-Ry-m8T"/>
+                        <outlet property="registerButton" destination="roe-8e-vtP" id="Bc6-ch-6zX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U8z-pW-GPD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1036" y="41"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="UnsinkableLogo" width="452" height="450"/>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
