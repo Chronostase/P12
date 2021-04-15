@@ -8,7 +8,8 @@
 import UIKit
 import FBSDKLoginKit
 
-class SignInViewController: UIViewController, VCCoordinator {
+class LogInViewController: UIViewController, VCCoordinator {
+    
     let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()
     weak var coordinator: CoordinatorManager?
     var indicator = false
@@ -25,24 +26,7 @@ class SignInViewController: UIViewController, VCCoordinator {
     
     
     @IBAction func signInButton(_ sender: UIButton) {
-        if loginPresenter.checkTextFieldsAvailable(emailTextField.text, passwordTextField.text) {
-            guard let email = emailTextField.text?.formatCharacter(),
-                  let password = passwordTextField.text?.formatCharacter() else {
-                return
-            }
-            
-            userAuthenticationService.loginUser(email, password) { [weak self] result in
-                switch result {
-                case .success(_):
-                    guard let view = self?.view else {
-                        return
-                    }
-                    self?.coordinator?.transitionToHomeScreen(view)
-                case .failure(_):
-                    self?.showError("Incorrect log please retry.")
-                }
-            }
-        }
+        loginPresenter.login(email: emailTextField.text, password: passwordTextField.text)
     }
     
     func transitionToHomeScreen() {
@@ -54,6 +38,7 @@ class SignInViewController: UIViewController, VCCoordinator {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupDelegate()
         setupUI()
     }
     
@@ -62,9 +47,13 @@ class SignInViewController: UIViewController, VCCoordinator {
         self.navigationController?.navigationBar.isHidden = false
     }
     
-    private func setupUI() {
+    private func setupDelegate() {
+        loginPresenter.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
+    }
+    
+    private func setupUI() {
         errorLabel.isHidden = true
         signInButton.setTitle(Constants.LoginString.signInButton, for: .normal)
         orLabel.text = Constants.LoginString.or

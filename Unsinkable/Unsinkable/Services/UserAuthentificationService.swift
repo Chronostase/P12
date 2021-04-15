@@ -12,12 +12,13 @@ import FirebaseAuth
 import FirebaseFirestore
 
 protocol AuthentificationLogic {
-    func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String)
+    func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String, callback: @escaping (Result<AuthDataResult?, Error>) -> Void)
     
     func loginUser(_ email: String,_ password: String, callback: @escaping (Result<AuthDataResult?, Error>) -> Void )
 }
 
 class UserAuthentificationService: AuthentificationLogic {
+    
     let session: AuthenticationSession
     
     init(session: AuthenticationSession = AuthenticationSession()) {
@@ -46,9 +47,13 @@ class UserAuthentificationService: AuthentificationLogic {
     
     
     
-    func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String) {
+    func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String, callback: @escaping (Result<AuthDataResult?, Error>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if error != nil {
+                guard let error = error else {
+                    return
+                }
+                callback(.failure(error))
                 // Manage error n//                RegisterViewController().showError("Error creating user")
             } else {
                 guard let userId = result?.user.uid else {
@@ -56,11 +61,14 @@ class UserAuthentificationService: AuthentificationLogic {
                 }
                 let dataBase = Firestore.firestore()
                 // Add user in database collection
-                // To test i can do a struc to fake DB 
                 dataBase.collection("Users").addDocument(data: ["first_name" : firstName,"name": name, "uid": userId]) { (error) in
                     if error != nil {
-//                        RegisterViewController().showError("Error saving user Data")
+                        guard let error = error else {
+                            return
+                        }
+                        callback(.failure(error))
                     }
+                    callback(.success(result))
                 }
             }
         }

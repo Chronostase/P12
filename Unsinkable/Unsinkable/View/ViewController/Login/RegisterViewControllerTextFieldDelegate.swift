@@ -16,5 +16,6 @@ extension RegisterViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = nil
+        errorLabel.isHidden = true
     }
 }

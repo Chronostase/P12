@@ -28,7 +28,7 @@ class CoordinatorManager: Coordinator {
     
     func signIn() {
         let storyBoard = UIStoryboard(name: "SignIn", bundle: Bundle.main)
-        guard let signInVC = storyBoard.instantiateInitialViewController() as? SignInViewController else {
+        guard let signInVC = storyBoard.instantiateInitialViewController() as? LogInViewController else {
             return
         }
         signInVC.coordinator = self

@@ -12,7 +12,7 @@
 		6FADD05467A016C0D281AFEC /* Pods_Unsinkable_UnsinkableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99EFAC4466473468C536C95 /* Pods_Unsinkable_UnsinkableUITests.framework */; };
 		E90312CE25E5409600CBC228 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90312CD25E5409600CBC228 /* TextFieldExtension.swift */; };
 		E90312EC25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90312EB25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift */; };
-		E90312F725E56DCC00CBC228 /* SignInViewControllerTextFieldDelegat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90312F625E56DCC00CBC228 /* SignInViewControllerTextFieldDelegat.swift */; };
+		E90312F725E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90312F625E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift */; };
 		E90312FC25E7C3F800CBC228 /* FakeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90312FB25E7C3F800CBC228 /* FakeResponse.swift */; };
 		E903130225E7C52300CBC228 /* AuthenticationSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E903130125E7C52300CBC228 /* AuthenticationSession.swift */; };
 		E921575925C05BA100D42137 /* Coordinator+VCCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921575825C05BA100D42137 /* Coordinator+VCCoordinator.swift */; };
@@ -22,6 +22,8 @@
 		E92C357B25A5EBAB001F2819 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E92C357925A5EBAB001F2819 /* LaunchScreen.storyboard */; };
 		E92C358625A5EBAC001F2819 /* UnsinkableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C358525A5EBAC001F2819 /* UnsinkableTests.swift */; };
 		E92C359125A5EBAC001F2819 /* UnsinkableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C359025A5EBAC001F2819 /* UnsinkableUITests.swift */; };
+		E94BA61B2628464B003AC914 /* LoginViewController+LoginPresenterDelegat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BA61A2628464B003AC914 /* LoginViewController+LoginPresenterDelegat.swift */; };
+		E94BA62026285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BA61F26285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift */; };
 		E951022C25AF69A50070A91C /* ProjectCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951022B25AF69A50070A91C /* ProjectCreationViewController.swift */; };
 		E951023225AF6A6C0070A91C /* UIViewController+Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951023125AF6A6C0070A91C /* UIViewController+Push.swift */; };
 		E951024A25B5E2C40070A91C /* ProjectCreation2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E951024925B5E2C40070A91C /* ProjectCreation2.storyboard */; };
@@ -29,7 +31,7 @@
 		E951026D25B84CC40070A91C /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E951026C25B84CC40070A91C /* SignIn.storyboard */; };
 		E951027225B84CE10070A91C /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E951027125B84CE10070A91C /* Register.storyboard */; };
 		E951027F25B84DDD0070A91C /* MainLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951027E25B84DDD0070A91C /* MainLoginViewController.swift */; };
-		E951028425B84DEE0070A91C /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951028325B84DEE0070A91C /* SignInViewController.swift */; };
+		E951028425B84DEE0070A91C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951028325B84DEE0070A91C /* LogInViewController.swift */; };
 		E951028925B84DF90070A91C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951028825B84DF90070A91C /* RegisterViewController.swift */; };
 		E951029225B8BA9F0070A91C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951029125B8BA9F0070A91C /* Utilities.swift */; };
 		E951029C25B970D20070A91C /* UserAuthentificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951029B25B970D20070A91C /* UserAuthentificationService.swift */; };
@@ -82,7 +84,7 @@
 		C99EFAC4466473468C536C95 /* Pods_Unsinkable_UnsinkableUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsinkable_UnsinkableUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E90312CD25E5409600CBC228 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 		E90312EB25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewControllerTextFieldDelegate.swift; sourceTree = "<group>"; };
-		E90312F625E56DCC00CBC228 /* SignInViewControllerTextFieldDelegat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewControllerTextFieldDelegat.swift; sourceTree = "<group>"; };
+		E90312F625E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTextFieldDelegat.swift; sourceTree = "<group>"; };
 		E90312FB25E7C3F800CBC228 /* FakeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponse.swift; sourceTree = "<group>"; };
 		E903130125E7C52300CBC228 /* AuthenticationSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSession.swift; sourceTree = "<group>"; };
 		E921575825C05BA100D42137 /* Coordinator+VCCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Coordinator+VCCoordinator.swift"; sourceTree = "<group>"; };
@@ -98,6 +100,8 @@
 		E92C358C25A5EBAC001F2819 /* UnsinkableUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnsinkableUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92C359025A5EBAC001F2819 /* UnsinkableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsinkableUITests.swift; sourceTree = "<group>"; };
 		E92C359225A5EBAC001F2819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E94BA61A2628464B003AC914 /* LoginViewController+LoginPresenterDelegat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+LoginPresenterDelegat.swift"; sourceTree = "<group>"; };
+		E94BA61F26285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterViewController+RegisterPresenterDelegate.swift"; sourceTree = "<group>"; };
 		E951022B25AF69A50070A91C /* ProjectCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreationViewController.swift; sourceTree = "<group>"; };
 		E951023125AF6A6C0070A91C /* UIViewController+Push.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Push.swift"; sourceTree = "<group>"; };
 		E951024925B5E2C40070A91C /* ProjectCreation2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProjectCreation2.storyboard; sourceTree = "<group>"; };
@@ -105,7 +109,7 @@
 		E951026C25B84CC40070A91C /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		E951027125B84CE10070A91C /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		E951027E25B84DDD0070A91C /* MainLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLoginViewController.swift; sourceTree = "<group>"; };
-		E951028325B84DEE0070A91C /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		E951028325B84DEE0070A91C /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E951028825B84DF90070A91C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E951029125B8BA9F0070A91C /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		E951029B25B970D20070A91C /* UserAuthentificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthentificationService.swift; sourceTree = "<group>"; };
@@ -360,10 +364,12 @@
 			isa = PBXGroup;
 			children = (
 				E951027E25B84DDD0070A91C /* MainLoginViewController.swift */,
-				E951028325B84DEE0070A91C /* SignInViewController.swift */,
-				E90312F625E56DCC00CBC228 /* SignInViewControllerTextFieldDelegat.swift */,
+				E951028325B84DEE0070A91C /* LogInViewController.swift */,
+				E94BA61A2628464B003AC914 /* LoginViewController+LoginPresenterDelegat.swift */,
+				E90312F625E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift */,
 				E951028825B84DF90070A91C /* RegisterViewController.swift */,
 				E90312EB25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift */,
+				E94BA61F26285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -380,8 +386,8 @@
 		E98AC6C525D2D6F200B76E5E /* LoginPresenter */ = {
 			isa = PBXGroup;
 			children = (
-				E92157A725C18B7600D42137 /* RegisterPresenter.swift */,
 				E9BDE18E25D3F9B7001E3000 /* LoginPresenter.swift */,
+				E92157A725C18B7600D42137 /* RegisterPresenter.swift */,
 			);
 			path = LoginPresenter;
 			sourceTree = "<group>";
@@ -691,7 +697,8 @@
 				E9C2218C25AE185D001216F5 /* UICollectionViewController.swift in Sources */,
 				E951023225AF6A6C0070A91C /* UIViewController+Push.swift in Sources */,
 				E996B56625A6353F00638480 /* NotificationCenterViewController.swift in Sources */,
-				E951028425B84DEE0070A91C /* SignInViewController.swift in Sources */,
+				E951028425B84DEE0070A91C /* LogInViewController.swift in Sources */,
+				E94BA61B2628464B003AC914 /* LoginViewController+LoginPresenterDelegat.swift in Sources */,
 				E951027F25B84DDD0070A91C /* MainLoginViewController.swift in Sources */,
 				E90312CE25E5409600CBC228 /* TextFieldExtension.swift in Sources */,
 				E92157A825C18B7600D42137 /* RegisterPresenter.swift in Sources */,
@@ -702,7 +709,8 @@
 				E951029225B8BA9F0070A91C /* Utilities.swift in Sources */,
 				E903130225E7C52300CBC228 /* AuthenticationSession.swift in Sources */,
 				E996B55725A6344A00638480 /* DashBoardViewController.swift in Sources */,
-				E90312F725E56DCC00CBC228 /* SignInViewControllerTextFieldDelegat.swift in Sources */,
+				E90312F725E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift in Sources */,
+				E94BA62026285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

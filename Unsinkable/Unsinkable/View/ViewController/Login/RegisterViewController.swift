@@ -22,36 +22,16 @@ class RegisterViewController: UIViewController, VCCoordinator {
         return RegisterPresenter()
     }()
     let userAuthentificationService: AuthentificationLogic = UserAuthentificationService()
+    
     @IBAction func createAccountButton(_ sender: UIButton) {
-        errorLabel.isHidden = true
-        if validateFields() != nil {
-            guard let error = validateFields() else {
-                return
-            }
-            showError(error)
-        } else {
-            formatFieldsAndCreateUser()
-            coordinator?.transitionToHomeScreen(self.view)
-        }
+        registerPresenter.registerWith(firstNameTextField.text, nameTextField.text, emailTextField.text, passwordTextField.text)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerPresenter.registerDelegate = self
+        setupDelegate()
         setupUI()
-    }
-    
-    private func setupUI() {
-        firstNameTextField.delegate = self
-        nameTextField.delegate = self
-        emailTextField.delegate = self
-        passwordTextField.delegate = self 
-        emailTextField.setPlaceholder("Email...")
-        firstNameTextField.setPlaceholder("Firstname...")
-        nameTextField.setPlaceholder("Name...")
-        passwordTextField.setPlaceholder("Password...")
-        self.navigationItem.title = "Register"
-        errorLabel.isHidden = true
+        showError("the password needs at least 8 characters, one special, one uppercase.")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,54 +39,30 @@ class RegisterViewController: UIViewController, VCCoordinator {
         self.navigationController?.navigationBar.isHidden = false
     }
     
-    private func validateFields() -> String? {
-        
-        //Check if fields are empty
-        
-        guard checkTextFieldsAvailable(firstName: firstNameTextField.text, nameTextField.text, emailTextField.text, passwordTextField.text) else {
-            return Constants.Error.fillField
-        }
-        // Check if correct password
-        if checkPasswordAvailable(password: passwordTextField.text) {
-            return nil
-        } else {
-            return Constants.Error.passwordError
-        }
+    func transitionToHomeScreen() {
+        coordinator?.transitionToHomeScreen(self.view)
     }
     
+    private func setupDelegate() {
+        registerPresenter.registerDelegate = self
+        firstNameTextField.delegate = self
+        nameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+    }
     
-    
-    private func showError(_ message: String) {
+    private func setupUI() {
+        emailTextField.setPlaceholder("Email...")
+        firstNameTextField.setPlaceholder("Firstname...")
+        nameTextField.setPlaceholder("Name...")
+        passwordTextField.setPlaceholder("Password...")
+        self.navigationItem.title = "Register"
+        errorLabel.isHidden = true
+    }
+
+    func showError(_ message: String) {
         errorLabel.text = message
         errorLabel.isHidden = false
-    }
-    
-    private func formatFieldsAndCreateUser() {
-        guard let firstName = formatedString(string: firstNameTextField.text),
-              let name = formatedString(string: nameTextField.text),
-              let email = formatedString(string: emailTextField.text),
-              let password = formatedString(string: passwordTextField.text) else {
-            return showError(Constants.Error.cantFormat)
-        }
-        userAuthentificationService.createUserWithInformations(firstName, name, email, password)
-    }
-}
-extension RegisterViewController: RegisterPresenterDelegate {
-    
-    func checkPasswordAvailable(password: String?) -> Bool {
-       return registerPresenter.checkIfPasswordIsCorrect(password: password)
-    }
-    
-    
-    func checkTextFieldsAvailable(firstName: String?, _ name: String?, _ email: String?, _ password: String?) -> Bool {
-        return registerPresenter.checkTextFieldsAvailable(firstName: firstName, name, email, password)
-    }
-    
-    
-    func formatedString(string: String?) -> String? {
-        let newString = registerPresenter.formatFields(string: string)
-        
-        return newString
     }
 }
 
