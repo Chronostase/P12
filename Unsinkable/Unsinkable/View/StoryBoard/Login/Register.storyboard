@@ -18,39 +18,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyP-a8-YRf">
-                                <rect key="frame" x="41.5" y="621.5" width="331" height="170.5"/>
+                                <rect key="frame" x="41.5" y="537" width="331" height="255"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3Wl-F8-kzI" userLabel="RegisterStackView">
-                                <rect key="frame" x="41.5" y="353" width="331" height="268.5"/>
+                                <rect key="frame" x="41.5" y="353" width="331" height="184"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UserName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Is4-rx-bxZ" userLabel="FirstNameTextField" customClass="CustomTextField" customModule="Unsinkable" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="331" height="52"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="331" height="31"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="nXV-1l-QbP"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="namePhonePad" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jOr-5g-kx0" customClass="CustomTextField" customModule="Unsinkable" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="331" height="52"/>
+                                        <rect key="frame" x="0.0" y="51" width="331" height="31"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="namePhonePad" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TSh-ut-DJ7" userLabel="EmailTextField" customClass="CustomTextField" customModule="Unsinkable" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="144" width="331" height="52.5"/>
+                                        <rect key="frame" x="0.0" y="102" width="331" height="31"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dHh-ye-EgA" userLabel="PasswordTextField" customClass="CustomTextField" customModule="Unsinkable" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="216.5" width="331" height="52"/>
+                                        <rect key="frame" x="0.0" y="153" width="331" height="31"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </textField>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="dHh-ye-EgA" firstAttribute="height" secondItem="TSh-ut-DJ7" secondAttribute="height" id="JKl-5R-G2x"/>
+                                    <constraint firstItem="TSh-ut-DJ7" firstAttribute="height" secondItem="jOr-5g-kx0" secondAttribute="height" id="Zh5-Ck-lLR"/>
+                                    <constraint firstItem="jOr-5g-kx0" firstAttribute="height" secondItem="Is4-rx-bxZ" secondAttribute="height" id="q1u-5N-hHG"/>
+                                </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxf-7q-65q" customClass="CustomButton" customModule="Unsinkable" customModuleProvider="target">
                                 <rect key="frame" x="41.5" y="792" width="331" height="40"/>
@@ -80,7 +88,6 @@
                             <constraint firstItem="lyP-a8-YRf" firstAttribute="width" secondItem="3Wl-F8-kzI" secondAttribute="width" id="Rnz-Di-PfF"/>
                             <constraint firstItem="y3R-10-NIu" firstAttribute="height" secondItem="W4l-BM-6ll" secondAttribute="height" multiplier="0.3" id="Wr7-q5-Oge"/>
                             <constraint firstItem="3Wl-F8-kzI" firstAttribute="centerX" secondItem="W4l-BM-6ll" secondAttribute="centerX" id="Z6x-xZ-wKK"/>
-                            <constraint firstItem="3Wl-F8-kzI" firstAttribute="height" secondItem="W4l-BM-6ll" secondAttribute="height" multiplier="0.3" id="ewJ-sf-4Fz"/>
                             <constraint firstItem="y3R-10-NIu" firstAttribute="top" secondItem="eii-8C-ftR" secondAttribute="top" constant="20" id="fmB-N8-XSc"/>
                             <constraint firstItem="nxf-7q-65q" firstAttribute="top" secondItem="lyP-a8-YRf" secondAttribute="bottom" id="gUy-WS-Wta"/>
                             <constraint firstItem="3Wl-F8-kzI" firstAttribute="width" secondItem="W4l-BM-6ll" secondAttribute="width" multiplier="0.8" id="re4-dy-uXS"/>

@@ -69,7 +69,7 @@ class RegisterPresenter {
         guard let email = email else {
             return false
         }
-        return email.contains("@") && email.contains(".")
+        return Regex.validateEmail(candidate: email)
     }
     
     private func isPasswordValid(password: String?) -> Bool {
@@ -77,7 +77,7 @@ class RegisterPresenter {
             return false
         }
         
-        if Utilities.isPasswordValide(cleanedPassword) {
+        if Regex.isPasswordValide(cleanedPassword) {
             
             return true
         } else {

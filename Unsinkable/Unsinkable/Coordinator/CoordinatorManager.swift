@@ -23,7 +23,7 @@ class CoordinatorManager: Coordinator {
             return
         }
         registerVC.coordinator = self
-        navigationController.pushViewController(registerVC, animated: false)
+        navigationController.pushViewController(registerVC, animated: true)
     }
     
     func signIn() {
@@ -32,16 +32,18 @@ class CoordinatorManager: Coordinator {
             return
         }
         signInVC.coordinator = self
-        navigationController.pushViewController(signInVC, animated: false)
+        navigationController.pushViewController(signInVC, animated: true)
     }
     
     func start() {
+        
+        //Add LogIn view
         let storyBoard = UIStoryboard(name: "MainLoginPage", bundle: Bundle.main)
         guard let mainLoginVC = storyBoard.instantiateInitialViewController() as? MainLoginViewController else {
             return
         }
         mainLoginVC.coordinator = self
-        navigationController.pushViewController(mainLoginVC, animated: false)
+        navigationController.pushViewController(mainLoginVC, animated: true)
     }
     
     func transitionToHomeScreen(_ view: UIView) {
