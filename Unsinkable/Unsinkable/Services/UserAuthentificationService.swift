@@ -12,28 +12,24 @@ import FirebaseAuth
 import FirebaseFirestore
 
 protocol AuthentificationLogic {
-    func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String)
+    func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String, callback: @escaping (Result<CustomResponse?, Error>) -> Void)
     
-    func loginUser(_ email: String,_ password: String, callback: @escaping (Result<AuthDataResult?, Error>) -> Void )
+    func loginUser(_ email: String,_ password: String, callback: @escaping (Result<CustomResponse?, Error>) -> Void )
 }
 
 class UserAuthentificationService: AuthentificationLogic {
+    
     let session: AuthenticationSession
     
     init(session: AuthenticationSession = AuthenticationSession()) {
         self.session = session
     }
-    func loginUser(_ email: String, _ password: String, callback: @escaping (Result<AuthDataResult?, Error>) -> Void ) {
-//        session.request(email, password) { (authDataResult, error) in
-//            if error != nil {
-//                
-//            }
-//        }
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+    
+    func loginUser(_ email: String, _ password: String, callback: @escaping (Result<CustomResponse?, Error>) -> Void ) {
+        
+        session.signInRequest(email, password) { (result, error) in
             if error != nil {
-                guard let error = error else {
-                    return
-                }
+                guard let error = error else { return }
                 callback(.failure(error))
                 print("An Error append")
                 return Void()
@@ -44,27 +40,32 @@ class UserAuthentificationService: AuthentificationLogic {
         }
     }
     
-    
-    
-    func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+    func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String, callback: @escaping (Result<CustomResponse?, Error>) -> Void) {
+        
+        session.createUserRequest(email, password) { (result, error) in
             if error != nil {
-                // Manage error n//                RegisterViewController().showError("Error creating user")
+                guard let error = error else { return }
+                callback(.failure(error))
             } else {
-                guard let userId = result?.user.uid else {
-                    return
-                }
-                let dataBase = Firestore.firestore()
-                // Add user in database collection
-                // To test i can do a struc to fake DB 
-                dataBase.collection("Users").addDocument(data: ["first_name" : firstName,"name": name, "uid": userId]) { (error) in
-                    if error != nil {
-//                        RegisterViewController().showError("Error saving user Data")
+                guard let customResponse = result else { return }
+                self.storeUser(customResponse, firstName: firstName, name, email: email, password: password) { (response,error) in
+                        callback(.success(result))
                     }
                 }
             }
         }
+    
+        
+        func storeUser(_ customResponse: CustomResponse, firstName: String,_ name: String, email: String, password: String, callback: @escaping (CustomResponse?, Error?) -> Void)  {
+            self.session.addUserToDataBase(customResponse: customResponse, firstName, name, email, password) { (result, error) in
+                
+                if error != nil {
+                    guard let error = error else { return }
+                    callback(nil,error)
+                } else {
+                    callback(customResponse,nil)
+                }
+            }
+        }
+        
     }
-    
-    
-}

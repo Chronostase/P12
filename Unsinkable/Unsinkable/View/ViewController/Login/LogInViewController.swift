@@ -8,10 +8,10 @@
 import UIKit
 import FBSDKLoginKit
 
-class SignInViewController: UIViewController, VCCoordinator {
+class LogInViewController: UIViewController {
+    
     let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()
-    weak var coordinator: CoordinatorManager?
-    var indicator = false
+    weak var coordinator: AuthenticationCoordinator?
     lazy var loginPresenter = {
         return LoginPresenter()
     }()
@@ -25,28 +25,12 @@ class SignInViewController: UIViewController, VCCoordinator {
     
     
     @IBAction func signInButton(_ sender: UIButton) {
-        if loginPresenter.checkTextFieldsAvailable(emailTextField.text, passwordTextField.text) {
-            guard let email = emailTextField.text?.formatCharacter(),
-                  let password = passwordTextField.text?.formatCharacter() else {
-                return
-            }
-            
-            userAuthenticationService.loginUser(email, password) { [weak self] result in
-                switch result {
-                case .success(_):
-                    guard let view = self?.view else {
-                        return
-                    }
-                    self?.coordinator?.transitionToHomeScreen(view)
-                case .failure(_):
-                    self?.showError("Incorrect log please retry.")
-                }
-            }
-        }
+        loginPresenter.login(email: emailTextField.text, password: passwordTextField.text)
     }
     
     func transitionToHomeScreen() {
-        coordinator?.transitionToHomeScreen(self.view)
+        coordinator?.transitionToHomeScreenNeeded()
+        coordinator?.didFinishLogin() 
     }
     
     @IBAction func appleLoginButton(_ sender: UIButton) {
@@ -54,7 +38,9 @@ class SignInViewController: UIViewController, VCCoordinator {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupDelegate()
         setupUI()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,9 +48,17 @@ class SignInViewController: UIViewController, VCCoordinator {
         self.navigationController?.navigationBar.isHidden = false
     }
     
-    private func setupUI() {
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
+    private func setupDelegate() {
+        loginPresenter.delegate = self
         emailTextField.delegate = self
         passwordTextField.delegate = self
+    }
+    
+    private func setupUI() {
         errorLabel.isHidden = true
         signInButton.setTitle(Constants.LoginString.signInButton, for: .normal)
         orLabel.text = Constants.LoginString.or

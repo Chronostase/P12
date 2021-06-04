@@ -7,9 +7,9 @@
 
 import UIKit
 
-class MainLoginViewController: UIViewController, VCCoordinator {
+class MainLoginViewController: UIViewController {
     
-    weak var coordinator: CoordinatorManager?
+    weak var coordinator: AuthenticationCoordinator?
     @IBOutlet var registerButton: UIButton!
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var appLogo: UIImageView!
@@ -21,18 +21,19 @@ class MainLoginViewController: UIViewController, VCCoordinator {
     @IBAction func registerTapped(_ sender: UIButton) {
         coordinator?.register()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUi()
+        setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    private func setupUi() {
+    private func setupUI() {
         registerButton.setTitle(Constants.LoginString.registerButton, for: .normal)
         loginButton.setTitle(Constants.LoginString.longinButton, for: .normal)
     }
 }
+

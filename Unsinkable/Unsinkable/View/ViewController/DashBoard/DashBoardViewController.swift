@@ -8,19 +8,29 @@
 import UIKit
 
 class DashBoardViewController: UIViewController {
+    weak var coordinator: CoordinatorManager?
     @IBOutlet var collectionView: UICollectionView!
     
+    @IBAction func profilButton(_ sender: UIButton) {
+        coordinator?.profil()
+    }
+    
     @IBAction func addProject(_ sender: Any) {
-        pushProjectCreationVC()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
     }
     
@@ -29,11 +39,4 @@ class DashBoardViewController: UIViewController {
         self.collectionView.dataSource = self 
     }
     
-    private func pushProjectCreationVC() {
-        let storyBoard = UIStoryboard(name: "ProjectCreation", bundle: nil)
-        guard let projectCreationViewController = storyBoard.instantiateInitialViewController() as? ProjectCreationViewController else {
-            return
-        }
-        push(projectCreationViewController)
-    }
 }

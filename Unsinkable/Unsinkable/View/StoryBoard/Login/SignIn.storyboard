@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eH5-3u-ubx">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Sign In View Controller-->
+        <!--Log In View Controller-->
         <scene sceneID="799-pv-YbA">
             <objects>
-                <viewController id="eH5-3u-ubx" customClass="SignInViewController" customModule="Unsinkable" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eH5-3u-ubx" customClass="LogInViewController" customModule="Unsinkable" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a1c-xh-8Gd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vsF-hO-aet" userLabel="LoginField">
-                                <rect key="frame" x="41.5" y="361" width="331" height="140.5"/>
+                                <rect key="frame" x="60" y="228" width="480" height="140.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oIt-R2-5CZ" userLabel="EmailTextField" customClass="CustomTextField" customModule="Unsinkable" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="331" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="480" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="uX1-c8-Hwr"/>
@@ -30,13 +28,13 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Abi-Ic-Z6h" userLabel="PasswordTextField" customClass="CustomTextField" customModule="Unsinkable" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="60" width="331" height="40"/>
+                                        <rect key="frame" x="0.0" y="60" width="480" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jE-JB-nFI" userLabel="ErrorLabel">
-                                        <rect key="frame" x="0.0" y="120" width="331" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="120" width="480" height="20.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
@@ -47,7 +45,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhY-E6-ehr" userLabel="SignInButton" customClass="CustomButton" customModule="Unsinkable" customModuleProvider="target">
-                                <rect key="frame" x="74.5" y="636.5" width="265" height="40"/>
+                                <rect key="frame" x="108" y="374.5" width="384" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Ewh-f1-rhm"/>
@@ -58,16 +56,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C0F-6y-zAv" userLabel="OrLabel">
-                                <rect key="frame" x="185.5" y="696.5" width="43.5" height="20.5"/>
+                                <rect key="frame" x="278.5" y="434.5" width="43.5" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="3uW-EO-qQE" userLabel="AutomaticlyLogIn">
-                                <rect key="frame" x="74.5" y="737" width="265" height="100"/>
+                                <rect key="frame" x="108" y="475" width="384" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uva-hw-qTd" userLabel="AppleLoginButton" customClass="CustomButton" customModule="Unsinkable" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="265" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="wBG-K6-DdY"/>
@@ -78,13 +76,13 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJX-wG-Lo3" userLabel="FaceBookLoginButton" customClass="FBSDKLoginButton">
-                                        <rect key="frame" x="0.0" y="70" width="265" height="30"/>
+                                        <rect key="frame" x="0.0" y="70" width="384" height="30"/>
                                         <state key="normal" title="Button"/>
                                     </button>
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="T2x-d2-bji">
-                                <rect key="frame" x="83" y="53.5" width="248" height="266"/>
+                                <rect key="frame" x="120" y="9.5" width="360" height="177"/>
                                 <color key="tintColor" systemColor="linkColor"/>
                             </imageView>
                         </subviews>
