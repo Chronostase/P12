@@ -7,9 +7,10 @@
 import Foundation
 import UIKit
 
-class RegisterViewController: UIViewController, VCCoordinator {
-    weak var coordinator: CoordinatorManager?
-    @IBOutlet var mainLabel: UILabel!
+class RegisterViewController: UIViewController{
+    weak var coordinator: AuthenticationCoordinator?
+//    @IBOutlet var mainLabel: UILabel!
+    
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
@@ -31,7 +32,6 @@ class RegisterViewController: UIViewController, VCCoordinator {
         super.viewDidLoad()
         setupDelegate()
         setupUI()
-        showError("the password needs at least 8 characters, one special, one uppercase.")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,8 +39,13 @@ class RegisterViewController: UIViewController, VCCoordinator {
         self.navigationController?.navigationBar.isHidden = false
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
     func transitionToHomeScreen() {
-        coordinator?.transitionToHomeScreen(self.view)
+        coordinator?.didFinishLogin()
+        coordinator?.transitionToHomeScreenNeeded()
     }
     
     private func setupDelegate() {
@@ -65,4 +70,3 @@ class RegisterViewController: UIViewController, VCCoordinator {
         errorLabel.isHidden = false
     }
 }
-

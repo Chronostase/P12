@@ -8,11 +8,10 @@
 import UIKit
 import FBSDKLoginKit
 
-class LogInViewController: UIViewController, VCCoordinator {
+class LogInViewController: UIViewController {
     
     let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()
-    weak var coordinator: CoordinatorManager?
-    var indicator = false
+    weak var coordinator: AuthenticationCoordinator?
     lazy var loginPresenter = {
         return LoginPresenter()
     }()
@@ -30,7 +29,8 @@ class LogInViewController: UIViewController, VCCoordinator {
     }
     
     func transitionToHomeScreen() {
-        coordinator?.transitionToHomeScreen(self.view)
+        coordinator?.transitionToHomeScreenNeeded()
+        coordinator?.didFinishLogin() 
     }
     
     @IBAction func appleLoginButton(_ sender: UIButton) {
@@ -40,11 +40,16 @@ class LogInViewController: UIViewController, VCCoordinator {
         super.viewDidLoad()
         setupDelegate()
         setupUI()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
     }
     
     private func setupDelegate() {

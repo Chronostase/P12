@@ -8,17 +8,9 @@
 import Foundation
 import UIKit
 
-protocol Coordinator {
+protocol Coordinator: AnyObject {
     var childCoordinator: [Coordinator] {get set}
     var navigationController: UINavigationController {get set}
     
     func start()
-    
-    func register()
-    
-    func signIn()
-}
-
-protocol VCCoordinator {
-    var coordinator: CoordinatorManager? {get set}
 }

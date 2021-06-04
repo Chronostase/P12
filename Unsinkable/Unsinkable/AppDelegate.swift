@@ -13,6 +13,8 @@ import FBSDKCoreKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    //    var appCoordinator: AppCoordinator?
+    //To make tabbar work need to delete coordinator, and pass tabbar in window.rootVC
     var coordinator: CoordinatorManager?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -26,7 +28,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navController
+        //        TabBarViewController()
+        
+        
         window?.makeKeyAndVisible()
+        ///////////////////////////////////////////////////////////////////////
+        // Test from Scratch
+        //////////////////////////////////////////////////////////////////////
+        //        let navigationController: UINavigationController = .init()
+        //
+        //        window?.rootViewController = navigationController
+        //        window?.makeKeyAndVisible()
+        //
+        //        appCoordinator = AppCoordinator.init(navigationController)
+        //        appCoordinator?.start()
+        
         return true
     }
     
@@ -35,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ApplicationDelegate.shared.application( app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation] )
         
     }
-
+    
 }
 
 

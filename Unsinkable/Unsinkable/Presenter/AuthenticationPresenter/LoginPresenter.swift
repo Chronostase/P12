@@ -10,6 +10,7 @@ import Foundation
 protocol LoginPresenterDelegate: class {
     func loginSucceed()
     func loginFailed()
+    func emptyFields()
 }
 
 class LoginPresenter {
@@ -28,6 +29,7 @@ class LoginPresenter {
     func login(email: String?, password: String?) {
         if checkTextFieldsAvailable(email, password) {
             guard let email = email?.formatCharacter(), let password = password?.formatCharacter() else {
+                self.delegate?.loginFailed()
                 return
             }
             userAuthenticationService.loginUser(email, password) { [weak self] result in
@@ -41,6 +43,8 @@ class LoginPresenter {
                     return
                 }
             }
+        } else {
+            delegate?.emptyFields()
         }
     }
 }

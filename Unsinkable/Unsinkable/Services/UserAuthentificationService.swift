@@ -49,12 +49,6 @@ class UserAuthentificationService: AuthentificationLogic {
             } else {
                 guard let customResponse = result else { return }
                 self.storeUser(customResponse, firstName: firstName, name, email: email, password: password) { (response,error) in
-                    //Impossible error case because same check to enter in "createUserRequest" closure
-                    //Check lost connection
-//                    if error != nil {
-//                        guard let error = error else { return }
-//                        callback(.failure(error))
-//                    } else {
                         callback(.success(result))
                     }
                 }

@@ -16,5 +16,9 @@ extension LogInViewController: LoginPresenterDelegate {
         self.showError("Incorrect log please retry.")
     }
     
+    func emptyFields() {
+        self.showError("Please fill in all fields")
+    }
+    
     
 }

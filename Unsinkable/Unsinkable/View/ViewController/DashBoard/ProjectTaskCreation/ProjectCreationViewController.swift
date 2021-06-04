@@ -8,6 +8,7 @@
 import UIKit
 
 class ProjectCreationViewController: UIViewController {
+//    weak var coordinator: HomeCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()

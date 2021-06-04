@@ -17,11 +17,6 @@ class UserAuthenticationServiceTest: XCTestCase {
         return UserAuthentificationService(session: AuthenticationSessionFake(fakeUser: fakeUser, fakeStorage: fakeStorage))
     }
     
-    //Return True Anyway
-//    private func isUserConnected() -> Bool {
-//        return Auth.auth().currentUser == nil ? false : true
-//    }
-    
     // MARK: - Test Login
     
     func testLoginShouldSucceedIfCorrectUserEmailAndPassword() {

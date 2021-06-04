@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cYv-Tb-BOu">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profil View Controller-->
+        <scene sceneID="D2Z-ap-Afw">
+            <objects>
+                <viewController id="cYv-Tb-BOu" customClass="ProfilViewController" customModule="Unsinkable" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AAW-dj-bjD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHg-8V-Iwt" userLabel="ProfilPictureButton">
+                                <rect key="frame" x="6" y="65.5" width="18" height="242.5"/>
+                                <state key="normal" backgroundImage="person.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="profilPictureButton:" destination="cYv-Tb-BOu" eventType="touchUpInside" id="vz2-4y-509"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="psB-ey-lI4">
+                                <rect key="frame" x="-150.5" y="349.5" width="331" height="133"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S3I-Vj-pQa" userLabel="FirstName" customClass="CustomTextField" customModule="Unsinkable" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="331" height="31"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="1TW-nh-26l"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="8iG-wR-Y2V" userLabel="Name" customClass="CustomTextField" customModule="Unsinkable" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="51" width="331" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="wpx-TN-Cww" userLabel="Email" customClass="CustomTextField" customModule="Unsinkable" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="102" width="331" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="8iG-wR-Y2V" firstAttribute="height" secondItem="S3I-Vj-pQa" secondAttribute="height" id="cSJ-UF-FPM"/>
+                                    <constraint firstItem="wpx-TN-Cww" firstAttribute="height" secondItem="S3I-Vj-pQa" secondAttribute="height" id="nCj-2g-hm4"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ueW-zX-aWU" userLabel="PerformChangeButton" customClass="CustomButton" customModule="Unsinkable" customModuleProvider="target">
+                                <rect key="frame" x="-150.5" y="802" width="331" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6PA-Uv-YrL"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="performChangeButton:" destination="cYv-Tb-BOu" eventType="touchUpInside" id="Sn5-8y-JfO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEJ-cm-LR5" userLabel="ErrorLabel">
+                                <rect key="frame" x="-150.5" y="482.5" width="331" height="319.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BN9-uG-9PA"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <constraints>
+                            <constraint firstItem="psB-ey-lI4" firstAttribute="centerX" secondItem="AAW-dj-bjD" secondAttribute="centerX" id="0a4-gi-xbk"/>
+                            <constraint firstItem="HHg-8V-Iwt" firstAttribute="top" secondItem="BN9-uG-9PA" secondAttribute="top" constant="20" id="63X-jY-TUq"/>
+                            <constraint firstItem="BN9-uG-9PA" firstAttribute="bottom" secondItem="ueW-zX-aWU" secondAttribute="bottom" constant="20" id="6xM-II-7uG"/>
+                            <constraint firstItem="sEJ-cm-LR5" firstAttribute="width" secondItem="psB-ey-lI4" secondAttribute="width" id="Fgb-Gm-zPy"/>
+                            <constraint firstItem="HHg-8V-Iwt" firstAttribute="width" secondItem="BN9-uG-9PA" secondAttribute="width" multiplier="0.6" id="J8j-ol-Wt1"/>
+                            <constraint firstItem="sEJ-cm-LR5" firstAttribute="top" secondItem="psB-ey-lI4" secondAttribute="bottom" id="N5x-Zk-kEY"/>
+                            <constraint firstItem="ueW-zX-aWU" firstAttribute="centerX" secondItem="AAW-dj-bjD" secondAttribute="centerX" id="TZR-fy-Y1y"/>
+                            <constraint firstItem="HHg-8V-Iwt" firstAttribute="height" secondItem="BN9-uG-9PA" secondAttribute="height" multiplier="0.3" id="cmX-JO-VCG"/>
+                            <constraint firstItem="sEJ-cm-LR5" firstAttribute="centerX" secondItem="AAW-dj-bjD" secondAttribute="centerX" id="dHg-HX-hsW"/>
+                            <constraint firstItem="ueW-zX-aWU" firstAttribute="width" secondItem="psB-ey-lI4" secondAttribute="width" id="gVj-dL-uwK"/>
+                            <constraint firstItem="ueW-zX-aWU" firstAttribute="top" secondItem="sEJ-cm-LR5" secondAttribute="bottom" id="jHS-TU-Q8G"/>
+                            <constraint firstItem="HHg-8V-Iwt" firstAttribute="centerX" secondItem="AAW-dj-bjD" secondAttribute="centerX" id="q3Z-lm-Dqr"/>
+                            <constraint firstItem="psB-ey-lI4" firstAttribute="width" secondItem="BN9-uG-9PA" secondAttribute="width" multiplier="0.799517" id="xgJ-xF-D1w"/>
+                            <constraint firstItem="psB-ey-lI4" firstAttribute="top" secondItem="HHg-8V-Iwt" secondAttribute="bottom" constant="40" id="yhN-tM-oea"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Rex-e9-oW6">
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="vTO-Mt-ac7">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="HNu-1l-HxP" userLabel="LogOut">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <color key="tintColor" systemColor="systemRedColor"/>
+                            <connections>
+                                <action selector="logOutButton:" destination="cYv-Tb-BOu" id="hte-vX-ON3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="emailTextField" destination="wpx-TN-Cww" id="JnD-aL-0qi"/>
+                        <outlet property="errorLabel" destination="sEJ-cm-LR5" id="7cO-Pd-hLo"/>
+                        <outlet property="firstNameTextField" destination="S3I-Vj-pQa" id="lrS-Fn-95B"/>
+                        <outlet property="nameTextField" destination="8iG-wR-Y2V" id="J7t-Eb-PT3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="njZ-Fz-mm3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-420" y="-38"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
