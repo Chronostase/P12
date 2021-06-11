@@ -9,7 +9,6 @@ import UIKit
 import FBSDKLoginKit
 
 class LogInViewController: UIViewController {
-    
     let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()
     weak var coordinator: AuthenticationCoordinator?
     lazy var loginPresenter = {

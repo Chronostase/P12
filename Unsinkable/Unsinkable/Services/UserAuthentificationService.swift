@@ -15,6 +15,9 @@ protocol AuthentificationLogic {
     func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String, callback: @escaping (Result<CustomResponse?, Error>) -> Void)
     
     func loginUser(_ email: String,_ password: String, callback: @escaping (Result<CustomResponse?, Error>) -> Void )
+    
+    func getUserData(completion: @escaping (Result<CustomResponse?, Error>) -> Void)
+    
 }
 
 class UserAuthentificationService: AuthentificationLogic {
@@ -49,23 +52,33 @@ class UserAuthentificationService: AuthentificationLogic {
             } else {
                 guard let customResponse = result else { return }
                 self.storeUser(customResponse, firstName: firstName, name, email: email, password: password) { (response,error) in
-                        callback(.success(result))
-                    }
+                    callback(.success(result))
                 }
             }
         }
-    
-        
-        func storeUser(_ customResponse: CustomResponse, firstName: String,_ name: String, email: String, password: String, callback: @escaping (CustomResponse?, Error?) -> Void)  {
-            self.session.addUserToDataBase(customResponse: customResponse, firstName, name, email, password) { (result, error) in
-                
-                if error != nil {
-                    guard let error = error else { return }
-                    callback(nil,error)
-                } else {
-                    callback(customResponse,nil)
-                }
-            }
-        }
-        
     }
+    
+    
+    func storeUser(_ customResponse: CustomResponse, firstName: String,_ name: String, email: String, password: String, callback: @escaping (CustomResponse?, Error?) -> Void)  {
+        self.session.addUserToDataBase(customResponse: customResponse, firstName, name, email, password) { (result, error) in
+            
+            if error != nil {
+                guard let error = error else { return }
+                callback(nil,error)
+            } else {
+                callback(customResponse,nil)
+            }
+        }
+    }
+    
+    func getUserData(completion: @escaping (Result<CustomResponse?, Error>) -> Void) {
+        self.session.fetchUserFirestoreData { (customResponse, error) in
+            if error != nil {
+                guard let error = error else { return }
+                completion(.failure(error))
+            } else {
+                completion(.success(customResponse))
+            }
+        }
+    }
+}

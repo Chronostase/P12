@@ -44,8 +44,8 @@ class RegisterViewController: UIViewController{
     }
     
     func transitionToHomeScreen() {
-        coordinator?.didFinishLogin()
         coordinator?.transitionToHomeScreenNeeded()
+        coordinator?.didFinishLogin()
     }
     
     private func setupDelegate() {

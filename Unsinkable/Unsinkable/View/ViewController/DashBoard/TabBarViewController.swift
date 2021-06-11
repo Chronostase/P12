@@ -9,7 +9,8 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
-    weak var homeCoordinator: CoordinatorManager?
+//    weak var homeCoordinator: CoordinatorManager?
+    weak var homeCoordinator: HomeCoordinator?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

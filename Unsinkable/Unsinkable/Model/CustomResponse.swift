@@ -15,5 +15,7 @@ struct UserDetails {
     var email: String?
     var password: String?
     var displayName: String?
+    var firstName: String?
+    var name: String? 
     var userId: String?
 }

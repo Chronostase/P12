@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 class AuthenticationCoordinator: Coordinator {
+    
+    var user: CustomResponse?
     var childCoordinator = [Coordinator]()
     weak var parentCoordinator: CoordinatorManager?
     var navigationController: UINavigationController

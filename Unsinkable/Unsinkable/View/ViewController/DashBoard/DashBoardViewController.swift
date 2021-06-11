@@ -8,11 +8,24 @@
 import UIKit
 
 class DashBoardViewController: UIViewController {
-    weak var coordinator: CoordinatorManager?
+    //    weak var coordinator: CoordinatorManager?
+    weak var coordinator: HomeCoordinator?
+    
+    let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()
+    var data = CustomResponse(user: UserDetails())
     @IBOutlet var collectionView: UICollectionView!
     
     @IBAction func profilButton(_ sender: UIButton) {
         coordinator?.profil()
+        DispatchQueue.main.async {
+//            guard let userData = self.userAuthenticationService.getUserData() else {
+//                return
+//            }
+//            
+//            self.data = userData
+//            print(self.data.user.name)
+        }
+        
     }
     
     @IBAction func addProject(_ sender: Any) {
