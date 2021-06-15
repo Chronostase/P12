@@ -210,15 +210,6 @@
 			path = ServiceTest;
 			sourceTree = "<group>";
 		};
-		E921575325C03ACD00D42137 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				E951029B25B970D20070A91C /* UserAuthentificationService.swift */,
-				E903130125E7C52300CBC228 /* AuthenticationSession.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		E921575725C0562000D42137 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,9 +248,9 @@
 			children = (
 				E92C356E25A5EBA8001F2819 /* AppDelegate.swift */,
 				E92C35A725A5ECEF001F2819 /* Model */,
-				E92C35A625A5ECE9001F2819 /* View */,
-				E92C35A525A5ECE0001F2819 /* Presenter */,
-				E921575325C03ACD00D42137 /* Services */,
+				E95AF8FC2678DE0300BD1AF8 /* OnBoarding */,
+				E95AF8FF2678DF0800BD1AF8 /* HomePage */,
+				E95AF9032678DFBC00BD1AF8 /* CustomComponent */,
 				E921575725C0562000D42137 /* Coordinator */,
 				E951023025AF6A2F0070A91C /* Extensions */,
 				E951029025B8BA820070A91C /* Helpers */,
@@ -288,24 +279,6 @@
 			path = UnsinkableUITests;
 			sourceTree = "<group>";
 		};
-		E92C35A525A5ECE0001F2819 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				E98AC6C525D2D6F200B76E5E /* AuthenticationPresenter */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		E92C35A625A5ECE9001F2819 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E996B55425A6340F00638480 /* StoryBoard */,
-				E9C2218425AE1320001216F5 /* Cell */,
-				E996B55525A6341900638480 /* ViewController */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		E92C35A725A5ECEF001F2819 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,14 +298,6 @@
 			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		E951022A25AF696B0070A91C /* ProjectTaskCreation */ = {
-			isa = PBXGroup;
-			children = (
-				E951022B25AF69A50070A91C /* ProjectCreationViewController.swift */,
-			);
-			path = ProjectTaskCreation;
-			sourceTree = "<group>";
-		};
 		E951023025AF6A2F0070A91C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,58 +309,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		E951027625B84CED0070A91C /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				E951026425B843E50070A91C /* MainLoginPage.storyboard */,
-				E951026C25B84CC40070A91C /* SignIn.storyboard */,
-				E951027125B84CE10070A91C /* Register.storyboard */,
-				E9DC09FE25DE82B800667E8E /* CustomButton.swift */,
-				E9553E5425E534F4006101D2 /* CustomTextField.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		E951027725B84D060070A91C /* ContentCreation */ = {
-			isa = PBXGroup;
-			children = (
-				E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */,
-				E951024925B5E2C40070A91C /* ProjectCreation2.storyboard */,
-			);
-			path = ContentCreation;
-			sourceTree = "<group>";
-		};
-		E951027825B84D210070A91C /* MainNavigation */ = {
-			isa = PBXGroup;
-			children = (
-				E996B55B25A6351700638480 /* DashBoard.storyboard */,
-				E996B56025A6353000638480 /* NotificationCenter.storyboard */,
-			);
-			path = MainNavigation;
-			sourceTree = "<group>";
-		};
-		E951027C25B84DB70070A91C /* Notification */ = {
-			isa = PBXGroup;
-			children = (
-				E996B56525A6353F00638480 /* NotificationCenterViewController.swift */,
-			);
-			path = Notification;
-			sourceTree = "<group>";
-		};
-		E951027D25B84DC30070A91C /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				E951027E25B84DDD0070A91C /* MainLoginViewController.swift */,
-				E951028325B84DEE0070A91C /* LogInViewController.swift */,
-				E94BA61A2628464B003AC914 /* LoginViewController+LoginPresenterDelegat.swift */,
-				E90312F625E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift */,
-				E951028825B84DF90070A91C /* RegisterViewController.swift */,
-				E90312EB25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift */,
-				E94BA61F26285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
 		E951029025B8BA820070A91C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,50 +318,261 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		E98AC6C525D2D6F200B76E5E /* AuthenticationPresenter */ = {
+		E95AF8FC2678DE0300BD1AF8 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				E9BDE18E25D3F9B7001E3000 /* LoginPresenter.swift */,
-				E92157A725C18B7600D42137 /* RegisterPresenter.swift */,
+				E95AF9072678E17B00BD1AF8 /* MainLoginPage */,
+				E95AF8FD2678DE1700BD1AF8 /* Login */,
+				E95AF8FE2678DE1F00BD1AF8 /* Register */,
+				E95AF9192678E37E00BD1AF8 /* Services */,
 			);
-			path = AuthenticationPresenter;
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
-		E99635B52653D99300185327 /* Profil */ = {
+		E95AF8FD2678DE1700BD1AF8 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				E99635B62653D99E00185327 /* Profil.storyboard */,
+				E95AF9082678E1AC00BD1AF8 /* StoryBoard */,
+				E95AF9092678E1B800BD1AF8 /* ViewController */,
+				E95AF90A2678E1C000BD1AF8 /* Presenter */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E95AF8FE2678DE1F00BD1AF8 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				E95AF90B2678E1D500BD1AF8 /* StoryBoard */,
+				E95AF90C2678E1DD00BD1AF8 /* ViewController */,
+				E95AF90D2678E1F200BD1AF8 /* Presenter */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		E95AF8FF2678DF0800BD1AF8 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				E95AF9012678DF7D00BD1AF8 /* Dashboard */,
+				E95AF9022678DF9A00BD1AF8 /* Notification */,
+				E95AF9002678DF4F00BD1AF8 /* Profil */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		E95AF9002678DF4F00BD1AF8 /* Profil */ = {
+			isa = PBXGroup;
+			children = (
+				E95AF9172678E2DF00BD1AF8 /* StoryBoard */,
+				E95AF9162678E2D600BD1AF8 /* ViewController */,
+				E95AF9182678E35A00BD1AF8 /* Presenter */,
 			);
 			path = Profil;
 			sourceTree = "<group>";
 		};
-		E99635BB2653E3A000185327 /* Profil */ = {
+		E95AF9012678DF7D00BD1AF8 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				E99635BC2653E3AD00185327 /* ProfilViewController.swift */,
+				E95AF9112678E26B00BD1AF8 /* StoryBoard */,
+				E95AF9102678E26500BD1AF8 /* ViewController */,
+				E95AF90F2678E26000BD1AF8 /* Presenter */,
+				E95AF90E2678E24300BD1AF8 /* TabBar */,
 			);
-			path = Profil;
+			path = Dashboard;
 			sourceTree = "<group>";
 		};
-		E996B55425A6340F00638480 /* StoryBoard */ = {
+		E95AF9022678DF9A00BD1AF8 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
-				E99635B52653D99300185327 /* Profil */,
-				E951027625B84CED0070A91C /* Login */,
-				E951027825B84D210070A91C /* MainNavigation */,
-				E951027725B84D060070A91C /* ContentCreation */,
+				E95AF9142678E2BB00BD1AF8 /* StoryBoard */,
+				E95AF9132678E2B500BD1AF8 /* ViewController */,
+				E95AF9122678E2AE00BD1AF8 /* Presenter */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		E95AF9032678DFBC00BD1AF8 /* CustomComponent */ = {
+			isa = PBXGroup;
+			children = (
+				E9DC09FE25DE82B800667E8E /* CustomButton.swift */,
+				E9553E5425E534F4006101D2 /* CustomTextField.swift */,
+			);
+			path = CustomComponent;
+			sourceTree = "<group>";
+		};
+		E95AF9042678E13000BD1AF8 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				E951026425B843E50070A91C /* MainLoginPage.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
 		};
-		E996B55525A6341900638480 /* ViewController */ = {
+		E95AF9052678E14A00BD1AF8 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E951027D25B84DC30070A91C /* Login */,
-				E9C2218A25AE1824001216F5 /* DashBoard */,
-				E951027C25B84DB70070A91C /* Notification */,
+				E951027E25B84DDD0070A91C /* MainLoginViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E95AF9062678E15700BD1AF8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E95AF9072678E17B00BD1AF8 /* MainLoginPage */ = {
+			isa = PBXGroup;
+			children = (
+				E95AF9042678E13000BD1AF8 /* StoryBoard */,
+				E95AF9052678E14A00BD1AF8 /* ViewController */,
+				E95AF9062678E15700BD1AF8 /* Presenter */,
+			);
+			path = MainLoginPage;
+			sourceTree = "<group>";
+		};
+		E95AF9082678E1AC00BD1AF8 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				E951026C25B84CC40070A91C /* SignIn.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		E95AF9092678E1B800BD1AF8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E951028325B84DEE0070A91C /* LogInViewController.swift */,
+				E94BA61A2628464B003AC914 /* LoginViewController+LoginPresenterDelegat.swift */,
+				E90312F625E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E95AF90A2678E1C000BD1AF8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E9BDE18E25D3F9B7001E3000 /* LoginPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E95AF90B2678E1D500BD1AF8 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				E951027125B84CE10070A91C /* Register.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		E95AF90C2678E1DD00BD1AF8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E90312EB25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift */,
+				E951028825B84DF90070A91C /* RegisterViewController.swift */,
+				E94BA61F26285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E95AF90D2678E1F200BD1AF8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E92157A725C18B7600D42137 /* RegisterPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E95AF90E2678E24300BD1AF8 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				E9EC4F9D265675C500A1ED96 /* TabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		E95AF90F2678E26000BD1AF8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E95AF9102678E26500BD1AF8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E996B55625A6344A00638480 /* DashBoardViewController.swift */,
+				E951022B25AF69A50070A91C /* ProjectCreationViewController.swift */,
+				E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E95AF9112678E26B00BD1AF8 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				E996B55B25A6351700638480 /* DashBoard.storyboard */,
+				E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */,
+				E951024925B5E2C40070A91C /* ProjectCreation2.storyboard */,
+				E9C2218425AE1320001216F5 /* Cell */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		E95AF9122678E2AE00BD1AF8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E95AF9132678E2B500BD1AF8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E996B56525A6353F00638480 /* NotificationCenterViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E95AF9142678E2BB00BD1AF8 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				E996B56025A6353000638480 /* NotificationCenter.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		E95AF9162678E2D600BD1AF8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E99635BC2653E3AD00185327 /* ProfilViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		E95AF9172678E2DF00BD1AF8 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				E99635B62653D99E00185327 /* Profil.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		E95AF9182678E35A00BD1AF8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E95AF9192678E37E00BD1AF8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E951029B25B970D20070A91C /* UserAuthentificationService.swift */,
+				E903130125E7C52300CBC228 /* AuthenticationSession.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		E9C2218425AE1320001216F5 /* Cell */ = {
@@ -457,18 +581,6 @@
 				E9C2218525AE1345001216F5 /* CustomCell.xib */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		E9C2218A25AE1824001216F5 /* DashBoard */ = {
-			isa = PBXGroup;
-			children = (
-				E996B55625A6344A00638480 /* DashBoardViewController.swift */,
-				E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */,
-				E9EC4F9D265675C500A1ED96 /* TabBarViewController.swift */,
-				E99635BB2653E3A000185327 /* Profil */,
-				E951022A25AF696B0070A91C /* ProjectTaskCreation */,
-			);
-			path = DashBoard;
 			sourceTree = "<group>";
 		};
 		E9CDF01C265D25BD000D1FEA /* AuthenticationCoordinator */ = {
@@ -949,6 +1061,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87G25HJ2R8;
 				INFOPLIST_FILE = "$(SRCROOT)/Unsinkable/SupportingFiles/Info.plist";
@@ -959,6 +1072,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.thomasgiron.Unsinkable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -971,6 +1085,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87G25HJ2R8;
 				INFOPLIST_FILE = "$(SRCROOT)/Unsinkable/SupportingFiles/Info.plist";
@@ -981,6 +1096,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.thomasgiron.Unsinkable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
