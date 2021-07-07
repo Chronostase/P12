@@ -22,15 +22,12 @@ class CustomButton: UIButton {
     //Set aspect of UIElement
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        layoutIfNeeded()
+        setTitleColor(.white, for: .normal)
+        layer.backgroundColor = #colorLiteral(red: 0.1176470588, green: 0.5647058824, blue: 1, alpha: 1)
         layer.cornerRadius = bounds.height / 2
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.darkGray.cgColor
         layer.shadowColor = UIColor.darkGray.cgColor
-        layer.shadowRadius = 4
-        layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize(width: 0,height: 3)
-//        layer.shadowPath = UIBezierPath(roundedRect: layer.bounds, cornerRadius: layer.cornerRadius).cgPath
+        layer.shadowRadius = 8
+        layer.shadowOpacity = 0.15
+        layer.shadowOffset = CGSize(width: 0,height: 2)
     }
 }

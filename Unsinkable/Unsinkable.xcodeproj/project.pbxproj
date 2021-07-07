@@ -27,7 +27,6 @@
 		E94BA63426317673003AC914 /* UserAuthenticationServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BA63326317673003AC914 /* UserAuthenticationServiceTest.swift */; };
 		E951022C25AF69A50070A91C /* ProjectCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951022B25AF69A50070A91C /* ProjectCreationViewController.swift */; };
 		E951023225AF6A6C0070A91C /* UIViewController+Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951023125AF6A6C0070A91C /* UIViewController+Push.swift */; };
-		E951024A25B5E2C40070A91C /* ProjectCreation2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E951024925B5E2C40070A91C /* ProjectCreation2.storyboard */; };
 		E951026525B843E50070A91C /* MainLoginPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E951026425B843E50070A91C /* MainLoginPage.storyboard */; };
 		E951026D25B84CC40070A91C /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E951026C25B84CC40070A91C /* SignIn.storyboard */; };
 		E951027225B84CE10070A91C /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E951027125B84CE10070A91C /* Register.storyboard */; };
@@ -38,6 +37,8 @@
 		E951029C25B970D20070A91C /* UserAuthentificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951029B25B970D20070A91C /* UserAuthentificationService.swift */; };
 		E95102CC25B97F7A0070A91C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95102CB25B97F7A0070A91C /* StringExtension.swift */; };
 		E9553E5525E534F4006101D2 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9553E5425E534F4006101D2 /* CustomTextField.swift */; };
+		E95AF91B2679F21400BD1AF8 /* ProfiPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95AF91A2679F21400BD1AF8 /* ProfiPresenter.swift */; };
+		E95AF91D2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95AF91C2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift */; };
 		E976F3DA26397A60000F9BC6 /* AuthenticationSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E976F3D926397A60000F9BC6 /* AuthenticationSessionFake.swift */; };
 		E97AEFA626247E4500396E7B /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = E97AEFA526247E4500396E7B /* FacebookLogin */; };
 		E97AEFA826247E4500396E7B /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = E97AEFA726247E4500396E7B /* FacebookCore */; };
@@ -50,19 +51,39 @@
 		E996B55C25A6351700638480 /* DashBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E996B55B25A6351700638480 /* DashBoard.storyboard */; };
 		E996B56125A6353000638480 /* NotificationCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E996B56025A6353000638480 /* NotificationCenter.storyboard */; };
 		E996B56625A6353F00638480 /* NotificationCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996B56525A6353F00638480 /* NotificationCenterViewController.swift */; };
+		E99B8DE8268F017D005A9032 /* TaskCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99B8DE7268F017D005A9032 /* TaskCreation.storyboard */; };
+		E99B8DEA268F021C005A9032 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99B8DE9268F021C005A9032 /* TaskCell.xib */; };
+		E99B8DEE268F06D2005A9032 /* TaskCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B8DED268F06D2005A9032 /* TaskCreationViewController.swift */; };
+		E99B8DF0268F07DE005A9032 /* TaskCreationViewController+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B8DEF268F07DE005A9032 /* TaskCreationViewController+UITextField.swift */; };
+		E99B8DF2268F082D005A9032 /* TaskCreationViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B8DF1268F082D005A9032 /* TaskCreationViewController+UITableView.swift */; };
+		E99B8DF4269488D5005A9032 /* ProjectViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B8DF3269488D5005A9032 /* ProjectViewController+UITextFieldDelegate.swift */; };
+		E99B8DF626948917005A9032 /* ProjectViewController+UICollectionViewDelegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B8DF526948916005A9032 /* ProjectViewController+UICollectionViewDelegate+DataSource.swift */; };
+		E99B8DF826948CCE005A9032 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B8DF726948CCE005A9032 /* Project.swift */; };
+		E99B8DFB269491EA005A9032 /* ProjectCreationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B8DFA269491EA005A9032 /* ProjectCreationPresenter.swift */; };
+		E99B8DFD269494DF005A9032 /* ProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B8DFC269494DF005A9032 /* ProjectService.swift */; };
+		E99B8DFF26949514005A9032 /* ProjectSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B8DFE26949514005A9032 /* ProjectSession.swift */; };
+		E99B8E0126959877005A9032 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B8E0026959877005A9032 /* Loader.swift */; };
 		E9BDE18F25D3F9B7001E3000 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDE18E25D3F9B7001E3000 /* LoginPresenter.swift */; };
 		E9C2214F25AE0F50001216F5 /* ProjectCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */; };
-		E9C2218625AE1345001216F5 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C2218525AE1345001216F5 /* CustomCell.xib */; };
+		E9C2218625AE1345001216F5 /* ProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C2218525AE1345001216F5 /* ProjectCell.xib */; };
 		E9C2218C25AE185D001216F5 /* UICollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */; };
 		E9CB3AA725DD7A5C009980EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9CB3AA625DD7A5C009980EC /* Assets.xcassets */; };
 		E9CB3AAC25DE77BA009980EC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB3AAB25DE77BA009980EC /* Constants.swift */; };
 		E9CDF01F265D25F7000D1FEA /* DashBoardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CDF01E265D25F7000D1FEA /* DashBoardCoordinator.swift */; };
 		E9CDF024265D26C2000D1FEA /* NotificationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CDF023265D26C2000D1FEA /* NotificationCoordinator.swift */; };
+		E9D6076926847083005AC9EB /* ViewShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6076826847083005AC9EB /* ViewShadow.swift */; };
+		E9D6076D26848BCA005AC9EB /* StackViewShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6076C26848BCA005AC9EB /* StackViewShadow.swift */; };
+		E9D6076F268B6D20005AC9EB /* Project.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9D6076E268B6D20005AC9EB /* Project.storyboard */; };
+		E9D60771268B732E005AC9EB /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D60770268B732E005AC9EB /* ProjectViewController.swift */; };
 		E9DC09FF25DE82B800667E8E /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DC09FE25DE82B800667E8E /* CustomButton.swift */; };
 		E9EC4F9126553E8200A1ED96 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC4F9026553E8200A1ED96 /* HomeCoordinator.swift */; };
 		E9EC4F9E265675C500A1ED96 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC4F9D265675C500A1ED96 /* TabBarViewController.swift */; };
 		E9EC4FA326583CE800A1ED96 /* window.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC4FA226583CE800A1ED96 /* window.swift */; };
 		E9EC4FAB265CFC0900A1ED96 /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC4FAA265CFC0900A1ED96 /* AuthenticationCoordinator.swift */; };
+		E9EE21792682275400D80414 /* CustomAppleSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EE21782682275400D80414 /* CustomAppleSignIn.swift */; };
+		E9EE217E268240F500D80414 /* DashBoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EE217D268240F500D80414 /* DashBoardPresenter.swift */; };
+		E9EE2180268241D000D80414 /* DashBoardViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EE217F268241D000D80414 /* DashBoardViewController+Delegate.swift */; };
+		E9EE2182268373BD00D80414 /* ProjectCreationViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EE2181268373BC00D80414 /* ProjectCreationViewController+UITextFieldDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,7 +135,6 @@
 		E94BA63326317673003AC914 /* UserAuthenticationServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationServiceTest.swift; sourceTree = "<group>"; };
 		E951022B25AF69A50070A91C /* ProjectCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreationViewController.swift; sourceTree = "<group>"; };
 		E951023125AF6A6C0070A91C /* UIViewController+Push.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Push.swift"; sourceTree = "<group>"; };
-		E951024925B5E2C40070A91C /* ProjectCreation2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProjectCreation2.storyboard; sourceTree = "<group>"; };
 		E951026425B843E50070A91C /* MainLoginPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainLoginPage.storyboard; sourceTree = "<group>"; };
 		E951026C25B84CC40070A91C /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		E951027125B84CE10070A91C /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
@@ -125,6 +145,8 @@
 		E951029B25B970D20070A91C /* UserAuthentificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthentificationService.swift; sourceTree = "<group>"; };
 		E95102CB25B97F7A0070A91C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		E9553E5425E534F4006101D2 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		E95AF91A2679F21400BD1AF8 /* ProfiPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfiPresenter.swift; sourceTree = "<group>"; };
+		E95AF91C2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfilViewController+ProfilPresenterDelegate.swift"; sourceTree = "<group>"; };
 		E976F3D926397A60000F9BC6 /* AuthenticationSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSessionFake.swift; sourceTree = "<group>"; };
 		E99635B62653D99E00185327 /* Profil.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profil.storyboard; sourceTree = "<group>"; };
 		E99635BC2653E3AD00185327 /* ProfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
@@ -133,19 +155,39 @@
 		E996B55B25A6351700638480 /* DashBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DashBoard.storyboard; sourceTree = "<group>"; };
 		E996B56025A6353000638480 /* NotificationCenter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotificationCenter.storyboard; sourceTree = "<group>"; };
 		E996B56525A6353F00638480 /* NotificationCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterViewController.swift; sourceTree = "<group>"; };
+		E99B8DE7268F017D005A9032 /* TaskCreation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskCreation.storyboard; sourceTree = "<group>"; };
+		E99B8DE9268F021C005A9032 /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
+		E99B8DED268F06D2005A9032 /* TaskCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationViewController.swift; sourceTree = "<group>"; };
+		E99B8DEF268F07DE005A9032 /* TaskCreationViewController+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCreationViewController+UITextField.swift"; sourceTree = "<group>"; };
+		E99B8DF1268F082D005A9032 /* TaskCreationViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCreationViewController+UITableView.swift"; sourceTree = "<group>"; };
+		E99B8DF3269488D5005A9032 /* ProjectViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
+		E99B8DF526948916005A9032 /* ProjectViewController+UICollectionViewDelegate+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectViewController+UICollectionViewDelegate+DataSource.swift"; sourceTree = "<group>"; };
+		E99B8DF726948CCE005A9032 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		E99B8DFA269491EA005A9032 /* ProjectCreationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreationPresenter.swift; sourceTree = "<group>"; };
+		E99B8DFC269494DF005A9032 /* ProjectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectService.swift; sourceTree = "<group>"; };
+		E99B8DFE26949514005A9032 /* ProjectSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSession.swift; sourceTree = "<group>"; };
+		E99B8E0026959877005A9032 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		E9BDE18E25D3F9B7001E3000 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProjectCreation.storyboard; sourceTree = "<group>"; };
-		E9C2218525AE1345001216F5 /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		E9C2218525AE1345001216F5 /* ProjectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectCell.xib; sourceTree = "<group>"; };
 		E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewController.swift; sourceTree = "<group>"; };
 		E9CB3AA625DD7A5C009980EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9CB3AAB25DE77BA009980EC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E9CDF01E265D25F7000D1FEA /* DashBoardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardCoordinator.swift; sourceTree = "<group>"; };
 		E9CDF023265D26C2000D1FEA /* NotificationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCoordinator.swift; sourceTree = "<group>"; };
+		E9D6076826847083005AC9EB /* ViewShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewShadow.swift; sourceTree = "<group>"; };
+		E9D6076C26848BCA005AC9EB /* StackViewShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewShadow.swift; sourceTree = "<group>"; };
+		E9D6076E268B6D20005AC9EB /* Project.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Project.storyboard; sourceTree = "<group>"; };
+		E9D60770268B732E005AC9EB /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		E9DC09FE25DE82B800667E8E /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		E9EC4F9026553E8200A1ED96 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		E9EC4F9D265675C500A1ED96 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E9EC4FA226583CE800A1ED96 /* window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = window.swift; sourceTree = "<group>"; };
 		E9EC4FAA265CFC0900A1ED96 /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
+		E9EE21782682275400D80414 /* CustomAppleSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAppleSignIn.swift; sourceTree = "<group>"; };
+		E9EE217D268240F500D80414 /* DashBoardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardPresenter.swift; sourceTree = "<group>"; };
+		E9EE217F268241D000D80414 /* DashBoardViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashBoardViewController+Delegate.swift"; sourceTree = "<group>"; };
+		E9EE2181268373BC00D80414 /* ProjectCreationViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectCreationViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		ECF4E3EB86E9E66E2F41899B /* Pods-Unsinkable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable.debug.xcconfig"; path = "Target Support Files/Pods-Unsinkable/Pods-Unsinkable.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -247,9 +289,8 @@
 			isa = PBXGroup;
 			children = (
 				E92C356E25A5EBA8001F2819 /* AppDelegate.swift */,
+				E95AF91E267CD90E00BD1AF8 /* Scenes */,
 				E92C35A725A5ECEF001F2819 /* Model */,
-				E95AF8FC2678DE0300BD1AF8 /* OnBoarding */,
-				E95AF8FF2678DF0800BD1AF8 /* HomePage */,
 				E95AF9032678DFBC00BD1AF8 /* CustomComponent */,
 				E921575725C0562000D42137 /* Coordinator */,
 				E951023025AF6A2F0070A91C /* Extensions */,
@@ -283,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				E91DB50E2643FBBD0035889A /* CustomResponse.swift */,
+				E99B8DF726948CCE005A9032 /* Project.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -314,11 +356,12 @@
 			children = (
 				E951029125B8BA9F0070A91C /* Regex.swift */,
 				E9CB3AAB25DE77BA009980EC /* Constants.swift */,
+				E99B8E0026959877005A9032 /* Loader.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		E95AF8FC2678DE0300BD1AF8 /* OnBoarding */ = {
+		E95AF8FC2678DE0300BD1AF8 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
 				E95AF9072678E17B00BD1AF8 /* MainLoginPage */,
@@ -326,7 +369,7 @@
 				E95AF8FE2678DE1F00BD1AF8 /* Register */,
 				E95AF9192678E37E00BD1AF8 /* Services */,
 			);
-			path = OnBoarding;
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		E95AF8FD2678DE1700BD1AF8 /* Login */ = {
@@ -375,6 +418,7 @@
 				E95AF9112678E26B00BD1AF8 /* StoryBoard */,
 				E95AF9102678E26500BD1AF8 /* ViewController */,
 				E95AF90F2678E26000BD1AF8 /* Presenter */,
+				E9EE217A26823F8E00D80414 /* Service */,
 				E95AF90E2678E24300BD1AF8 /* TabBar */,
 			);
 			path = Dashboard;
@@ -393,8 +437,10 @@
 		E95AF9032678DFBC00BD1AF8 /* CustomComponent */ = {
 			isa = PBXGroup;
 			children = (
+				E9D6076726847065005AC9EB /* ProjectCreation */,
 				E9DC09FE25DE82B800667E8E /* CustomButton.swift */,
 				E9553E5425E534F4006101D2 /* CustomTextField.swift */,
+				E9EE21782682275400D80414 /* CustomAppleSignIn.swift */,
 			);
 			path = CustomComponent;
 			sourceTree = "<group>";
@@ -495,6 +541,8 @@
 		E95AF90F2678E26000BD1AF8 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				E9EE217D268240F500D80414 /* DashBoardPresenter.swift */,
+				E99B8DFA269491EA005A9032 /* ProjectCreationPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -502,9 +550,8 @@
 		E95AF9102678E26500BD1AF8 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E996B55625A6344A00638480 /* DashBoardViewController.swift */,
-				E951022B25AF69A50070A91C /* ProjectCreationViewController.swift */,
-				E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */,
+				E99B8DEB268F0690005A9032 /* DashBoard */,
+				E99B8DEC268F06A5005A9032 /* ProjectCreation */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -514,7 +561,8 @@
 			children = (
 				E996B55B25A6351700638480 /* DashBoard.storyboard */,
 				E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */,
-				E951024925B5E2C40070A91C /* ProjectCreation2.storyboard */,
+				E9D6076E268B6D20005AC9EB /* Project.storyboard */,
+				E99B8DE7268F017D005A9032 /* TaskCreation.storyboard */,
 				E9C2218425AE1320001216F5 /* Cell */,
 			);
 			path = StoryBoard;
@@ -547,6 +595,7 @@
 			isa = PBXGroup;
 			children = (
 				E99635BC2653E3AD00185327 /* ProfilViewController.swift */,
+				E95AF91C2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -562,6 +611,7 @@
 		E95AF9182678E35A00BD1AF8 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				E95AF91A2679F21400BD1AF8 /* ProfiPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -575,10 +625,53 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		E95AF91E267CD90E00BD1AF8 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				E95AF8FC2678DE0300BD1AF8 /* Onboarding */,
+				E95AF8FF2678DF0800BD1AF8 /* HomePage */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		E99B8DEB268F0690005A9032 /* DashBoard */ = {
+			isa = PBXGroup;
+			children = (
+				E996B55625A6344A00638480 /* DashBoardViewController.swift */,
+				E9EE217F268241D000D80414 /* DashBoardViewController+Delegate.swift */,
+				E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */,
+			);
+			path = DashBoard;
+			sourceTree = "<group>";
+		};
+		E99B8DEC268F06A5005A9032 /* ProjectCreation */ = {
+			isa = PBXGroup;
+			children = (
+				E99B8DF926949121005A9032 /* ProjectV1 */,
+				E9D60770268B732E005AC9EB /* ProjectViewController.swift */,
+				E99B8DF526948916005A9032 /* ProjectViewController+UICollectionViewDelegate+DataSource.swift */,
+				E99B8DF3269488D5005A9032 /* ProjectViewController+UITextFieldDelegate.swift */,
+				E99B8DED268F06D2005A9032 /* TaskCreationViewController.swift */,
+				E99B8DEF268F07DE005A9032 /* TaskCreationViewController+UITextField.swift */,
+				E99B8DF1268F082D005A9032 /* TaskCreationViewController+UITableView.swift */,
+			);
+			path = ProjectCreation;
+			sourceTree = "<group>";
+		};
+		E99B8DF926949121005A9032 /* ProjectV1 */ = {
+			isa = PBXGroup;
+			children = (
+				E951022B25AF69A50070A91C /* ProjectCreationViewController.swift */,
+				E9EE2181268373BC00D80414 /* ProjectCreationViewController+UITextFieldDelegate.swift */,
+			);
+			path = ProjectV1;
+			sourceTree = "<group>";
+		};
 		E9C2218425AE1320001216F5 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				E9C2218525AE1345001216F5 /* CustomCell.xib */,
+				E9C2218525AE1345001216F5 /* ProjectCell.xib */,
+				E99B8DE9268F021C005A9032 /* TaskCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -599,6 +692,24 @@
 				E9CDF023265D26C2000D1FEA /* NotificationCoordinator.swift */,
 			);
 			path = TabBarCoordinator;
+			sourceTree = "<group>";
+		};
+		E9D6076726847065005AC9EB /* ProjectCreation */ = {
+			isa = PBXGroup;
+			children = (
+				E9D6076826847083005AC9EB /* ViewShadow.swift */,
+				E9D6076C26848BCA005AC9EB /* StackViewShadow.swift */,
+			);
+			path = ProjectCreation;
+			sourceTree = "<group>";
+		};
+		E9EE217A26823F8E00D80414 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E99B8DFC269494DF005A9032 /* ProjectService.swift */,
+				E99B8DFE26949514005A9032 /* ProjectSession.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -716,15 +827,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E951024A25B5E2C40070A91C /* ProjectCreation2.storyboard in Resources */,
 				E996B56125A6353000638480 /* NotificationCenter.storyboard in Resources */,
+				E99B8DE8268F017D005A9032 /* TaskCreation.storyboard in Resources */,
+				E99B8DEA268F021C005A9032 /* TaskCell.xib in Resources */,
 				E99635B72653D99E00185327 /* Profil.storyboard in Resources */,
 				E996B55C25A6351700638480 /* DashBoard.storyboard in Resources */,
-				E9C2218625AE1345001216F5 /* CustomCell.xib in Resources */,
+				E9C2218625AE1345001216F5 /* ProjectCell.xib in Resources */,
 				E92C357B25A5EBAB001F2819 /* LaunchScreen.storyboard in Resources */,
 				E996B51A25A620E900638480 /* GoogleService-Info.plist in Resources */,
 				E951026D25B84CC40070A91C /* SignIn.storyboard in Resources */,
 				E951026525B843E50070A91C /* MainLoginPage.storyboard in Resources */,
+				E9D6076F268B6D20005AC9EB /* Project.storyboard in Resources */,
 				E9C2214F25AE0F50001216F5 /* ProjectCreation.storyboard in Resources */,
 				E9CB3AA725DD7A5C009980EC /* Assets.xcassets in Resources */,
 				E951027225B84CE10070A91C /* Register.storyboard in Resources */,
@@ -857,39 +970,58 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E99B8DFF26949514005A9032 /* ProjectSession.swift in Sources */,
+				E99B8DEE268F06D2005A9032 /* TaskCreationViewController.swift in Sources */,
+				E99B8DF626948917005A9032 /* ProjectViewController+UICollectionViewDelegate+DataSource.swift in Sources */,
 				E9BDE18F25D3F9B7001E3000 /* LoginPresenter.swift in Sources */,
 				E9CDF01F265D25F7000D1FEA /* DashBoardCoordinator.swift in Sources */,
 				E9CB3AAC25DE77BA009980EC /* Constants.swift in Sources */,
 				E951028925B84DF90070A91C /* RegisterViewController.swift in Sources */,
+				E99B8DF0268F07DE005A9032 /* TaskCreationViewController+UITextField.swift in Sources */,
+				E99B8DF4269488D5005A9032 /* ProjectViewController+UITextFieldDelegate.swift in Sources */,
 				E951022C25AF69A50070A91C /* ProjectCreationViewController.swift in Sources */,
 				E921576625C05F0000D42137 /* CoordinatorManager.swift in Sources */,
 				E9553E5525E534F4006101D2 /* CustomTextField.swift in Sources */,
 				E921575925C05BA100D42137 /* Coordinator.swift in Sources */,
+				E99B8DF826948CCE005A9032 /* Project.swift in Sources */,
+				E99B8DF2268F082D005A9032 /* TaskCreationViewController+UITableView.swift in Sources */,
+				E9EE2180268241D000D80414 /* DashBoardViewController+Delegate.swift in Sources */,
+				E99B8DFD269494DF005A9032 /* ProjectService.swift in Sources */,
+				E9D6076D26848BCA005AC9EB /* StackViewShadow.swift in Sources */,
 				E9EC4FAB265CFC0900A1ED96 /* AuthenticationCoordinator.swift in Sources */,
 				E951029C25B970D20070A91C /* UserAuthentificationService.swift in Sources */,
 				E9C2218C25AE185D001216F5 /* UICollectionViewController.swift in Sources */,
 				E951023225AF6A6C0070A91C /* UIViewController+Push.swift in Sources */,
+				E99B8E0126959877005A9032 /* Loader.swift in Sources */,
 				E996B56625A6353F00638480 /* NotificationCenterViewController.swift in Sources */,
 				E9CDF024265D26C2000D1FEA /* NotificationCoordinator.swift in Sources */,
 				E951028425B84DEE0070A91C /* LogInViewController.swift in Sources */,
 				E94BA61B2628464B003AC914 /* LoginViewController+LoginPresenterDelegat.swift in Sources */,
 				E9EC4F9126553E8200A1ED96 /* HomeCoordinator.swift in Sources */,
+				E9D6076926847083005AC9EB /* ViewShadow.swift in Sources */,
+				E9EE217E268240F500D80414 /* DashBoardPresenter.swift in Sources */,
 				E951027F25B84DDD0070A91C /* MainLoginViewController.swift in Sources */,
 				E90312CE25E5409600CBC228 /* TextFieldExtension.swift in Sources */,
 				E92157A825C18B7600D42137 /* RegisterPresenter.swift in Sources */,
+				E9D60771268B732E005AC9EB /* ProjectViewController.swift in Sources */,
 				E99635BD2653E3AD00185327 /* ProfilViewController.swift in Sources */,
 				E9EC4F9E265675C500A1ED96 /* TabBarViewController.swift in Sources */,
 				E9DC09FF25DE82B800667E8E /* CustomButton.swift in Sources */,
 				E90312EC25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift in Sources */,
+				E95AF91D2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift in Sources */,
 				E95102CC25B97F7A0070A91C /* StringExtension.swift in Sources */,
+				E95AF91B2679F21400BD1AF8 /* ProfiPresenter.swift in Sources */,
 				E91DB50F2643FBBD0035889A /* CustomResponse.swift in Sources */,
 				E92C356F25A5EBA8001F2819 /* AppDelegate.swift in Sources */,
 				E951029225B8BA9F0070A91C /* Regex.swift in Sources */,
 				E903130225E7C52300CBC228 /* AuthenticationSession.swift in Sources */,
+				E99B8DFB269491EA005A9032 /* ProjectCreationPresenter.swift in Sources */,
+				E9EE2182268373BD00D80414 /* ProjectCreationViewController+UITextFieldDelegate.swift in Sources */,
 				E996B55725A6344A00638480 /* DashBoardViewController.swift in Sources */,
 				E9EC4FA326583CE800A1ED96 /* window.swift in Sources */,
 				E90312F725E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift in Sources */,
 				E94BA62026285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift in Sources */,
+				E9EE21792682275400D80414 /* CustomAppleSignIn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

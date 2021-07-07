@@ -28,20 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navController
-        //        TabBarViewController()
-        
-        
         window?.makeKeyAndVisible()
-        ///////////////////////////////////////////////////////////////////////
-        // Test from Scratch
-        //////////////////////////////////////////////////////////////////////
-        //        let navigationController: UINavigationController = .init()
-        //
-        //        window?.rootViewController = navigationController
-        //        window?.makeKeyAndVisible()
-        //
-        //        appCoordinator = AppCoordinator.init(navigationController)
-        //        appCoordinator?.start()
+        
+        let loadingVC = LoaderViewController()
+        loadingVC.modalPresentationStyle = .overCurrentContext
+        loadingVC.modalTransitionStyle = .crossDissolve
+        
+        navController.present(loadingVC, animated: true, completion: nil)
         
         return true
     }

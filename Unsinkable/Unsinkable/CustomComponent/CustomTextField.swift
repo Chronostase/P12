@@ -22,15 +22,11 @@ class CustomTextField: UITextField {
     //Set aspect of UIElement
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        layoutIfNeeded()
+    
         layer.cornerRadius = 8
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.darkGray.cgColor
         layer.shadowColor = UIColor.darkGray.cgColor
         layer.shadowRadius = 4
-        layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize(width: 0,height: 3)
-//        layer.shadowPath = UIBezierPath(roundedRect: layer.bounds, cornerRadius: layer.cornerRadius).cgPath
+        layer.shadowOpacity = 0.15
+        layer.shadowOffset = CGSize(width: 0,height: 8)
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class HomeCoordinator: Coordinator {
+    
     let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()
     weak var parentCoordinator: CoordinatorManager?
     var childCoordinator = [Coordinator]()
@@ -20,11 +21,20 @@ class HomeCoordinator: Coordinator {
     }
     
     func start() {
+        
+//        let tabBarViewController = TabBarViewController()
+//        tabBarViewController.homeCoordinator = self
+        //Can cause trouble if user leave just after sign In, move it in logScreen
+        getUserData()
+//        tabBarViewController.setViewControllers(self.setupVC(), animated: true)
+//        navigationController.pushViewController(tabBarViewController, animated: true)
+    }
+    
+    func tabBar() {
         let tabBarViewController = TabBarViewController()
         tabBarViewController.homeCoordinator = self
         tabBarViewController.setViewControllers(self.setupVC(), animated: true)
         navigationController.pushViewController(tabBarViewController, animated: true)
-        getUserData()
     }
     
     private func setupVC() -> [UIViewController]? {
@@ -33,8 +43,8 @@ class HomeCoordinator: Coordinator {
             return nil
         }
         dashBoardViewController.coordinator = self
-        
-        
+        dashBoardViewController.dashBoardPresenter.data = self.data
+        print(dashBoardViewController.dashBoardPresenter.data == nil)
         let secondStoryboard = UIStoryboard(name: "NotificationCenter", bundle: Bundle.main)
         guard let notificationViewController = secondStoryboard.instantiateInitialViewController() as? NotificationCenterViewController else {
             return nil
@@ -58,11 +68,41 @@ class HomeCoordinator: Coordinator {
         
     }
     
-    func didFinishLogin() {
+    func projectCreation() {
+        let storyboard = UIStoryboard(name: "Project", bundle: Bundle.main)
+        guard let projectVC = storyboard.instantiateInitialViewController() as? ProjectViewController else {
+            return
+        }
+        projectVC.coordinator = self
+        navigationController.pushViewController(projectVC, animated: true)
+//        let storyBoard = UIStoryboard(name: "ProjectCreation", bundle: Bundle.main)
+//        guard let projectCreationViewController = storyBoard.instantiateInitialViewController() as? ProjectCreationViewController else {
+//            return
+//        }
+//        projectCreationViewController.coordinator = self
+//        navigationController.pushViewController(projectCreationViewController, animated: true)
+    }
+    
+    func taskCreation() {
+        let storyboard = UIStoryboard(name: "TaskCreation", bundle: Bundle.main)
+        guard let taskCreationViewController = storyboard.instantiateInitialViewController() as? TaskCreationViewController else {
+            return
+        }
+        taskCreationViewController.coordinator = self
+        navigationController.pushViewController(taskCreationViewController, animated: true)
+    }
+    
+    func didFinish() {
         parentCoordinator?.childDidFinish(self)
     }
     
     private func getUserData() {
+        let loadingVC = LoaderViewController()
+        loadingVC.modalPresentationStyle = .overCurrentContext
+        loadingVC.modalTransitionStyle = .crossDissolve
+        
+        navigationController.present(loadingVC, animated: true, completion: nil)
+               
         userAuthenticationService.getUserData { [weak self] result in
             switch result {
             case .success(let customResponse):
@@ -70,7 +110,8 @@ class HomeCoordinator: Coordinator {
                     return
                 }
                 self?.data = userData
-                
+                self?.tabBar()
+                self?.navigationController.dismiss(animated: true, completion: nil)
             case.failure(let error):
                 print("Can't fetch data \(error) ")
             }
