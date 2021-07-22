@@ -7,11 +7,11 @@
 
 import Foundation
 import UIKit
-import Firebase
 
 class ProfilViewController: UIViewController, UITextFieldDelegate {
 //    weak var coordinator: CoordinatorManager?
     weak var coordinator: HomeCoordinator?
+    //Data probably need to be in presenter
     var data: CustomResponse?
     lazy var profilPresenter = {
         return ProfiPresenter()

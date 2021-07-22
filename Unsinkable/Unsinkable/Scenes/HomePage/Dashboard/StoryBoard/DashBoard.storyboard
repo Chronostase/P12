@@ -94,7 +94,7 @@
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fTw-ih-hBo">
                                         <rect key="frame" x="12" y="129.5" width="402" height="166.5"/>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CcS-pL-4ft">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -179,6 +179,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="fTw-ih-hBo" id="2lI-PI-SQx"/>
                         <outlet property="dateLabel" destination="IDH-Wa-BqY" id="x2w-va-gbp"/>
                     </connections>
                 </viewController>

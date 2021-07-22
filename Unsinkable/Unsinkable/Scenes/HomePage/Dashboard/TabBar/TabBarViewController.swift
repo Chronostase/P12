@@ -9,7 +9,6 @@
 import UIKit
 
 class TabBarViewController: UITabBarController {
-//    weak var homeCoordinator: CoordinatorManager?
     weak var homeCoordinator: HomeCoordinator?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -24,11 +23,19 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabBar()
+        showLoader()
     }
     
     private func setupTabBar() {
         view.backgroundColor = .systemBackground
         UITabBar.appearance().barTintColor = .systemBackground
         tabBar.tintColor = .label
+    }
+    
+    private func showLoader() {
+        let loadingVC = LoaderViewController()
+        loadingVC.modalPresentationStyle = .overCurrentContext
+        loadingVC.modalTransitionStyle = .crossDissolve
+        navigationController?.present(loadingVC, animated: true, completion: nil)
     }
 }

@@ -22,6 +22,8 @@ protocol AuthentificationLogic {
     
     func isUserLogin() -> Bool
     
+    func fetchProjects(_ userData: CustomResponse?, completion: @escaping (Result<[Project?]?, Error>) -> Void)
+    
 }
 
 class UserAuthentificationService: AuthentificationLogic {
@@ -67,7 +69,7 @@ class UserAuthentificationService: AuthentificationLogic {
     }
     
     
-    func storeUser(_ customResponse: CustomResponse, firstName: String,_ name: String, email: String, password: String, callback: @escaping (CustomResponse?, Error?) -> Void)  {
+    func storeUser(_ customResponse: CustomResponse, firstName: String,_ name: String, email: String, password: String, callback: @escaping (CustomResponse?, Error?) -> Void) {
         self.session.addUserToDataBase(customResponse: customResponse, firstName, name, email, password) { (result, error) in
             
             if error != nil {
@@ -86,6 +88,17 @@ class UserAuthentificationService: AuthentificationLogic {
                 completion(.failure(error))
             } else {
                 completion(.success(customResponse))
+            }
+        }
+    }
+    
+    func fetchProjects(_ userData: CustomResponse?, completion: @escaping (Result<[Project?]?, Error>) -> Void) {
+        self.session.fetchProjects(userData) { (projectList, error) in
+            if error != nil {
+                guard let error = error else { return }
+                completion(.failure(error))
+            } else {
+                completion(.success(projectList))
             }
         }
     }

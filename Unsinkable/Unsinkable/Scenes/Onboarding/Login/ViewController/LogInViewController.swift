@@ -23,6 +23,7 @@ class LogInViewController: UIViewController {
     
     
     @IBAction func signInButton(_ sender: UIButton) {
+        showLoader()
         loginPresenter.login(email: emailTextField.text, password: passwordTextField.text)
     }
     
@@ -70,5 +71,12 @@ class LogInViewController: UIViewController {
     func showError(_ message: String) {
         errorLabel.text = message
         errorLabel.isHidden = false
+    }
+    
+    private func showLoader() {
+        let loadingVC = LoaderViewController()
+        loadingVC.modalPresentationStyle = .overCurrentContext
+        loadingVC.modalTransitionStyle = .crossDissolve
+        navigationController?.present(loadingVC, animated: true, completion: nil)
     }
 }

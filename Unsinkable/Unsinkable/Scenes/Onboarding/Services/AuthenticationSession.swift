@@ -17,7 +17,7 @@ class AuthenticationSession {
                 
                 return completion(nil,error)
             }
-            let customUser = CustomResponse(user: UserDetails(email: user.email, password: user.displayName, userId: user.uid))
+            let customUser = CustomResponse(user: UserDetails(email: user.email, password: user.displayName, userId: user.uid, projects: nil))
             
             completion(customUser, error)
         }
@@ -38,9 +38,9 @@ class AuthenticationSession {
     func addUserToDataBase(customResponse: CustomResponse?,_ firstName: String, _ name: String, _ email: String, _ password: String, completion: @escaping (CustomResponse?, Error?) -> Void) {
         guard let userId = customResponse?.user.userId else { return }
         let dataBase = Firestore.firestore()
-        // Add user in database collection
-        //        dataBase.collection("Users").addDocument(data: ["first_name" : firstName,"name": name, "uid": userId])
-        dataBase.collection("Users").document("\(userId)").setData(["first_name" : firstName,"name": name,"email" : email, "uid": userId]) { (error) in
+        let documentRef = dataBase.collection("Users").document(userId)
+        documentRef.setData(["first_name" : firstName,"name": name,"email" : email, "uid": userId])
+        { (error) in
             if error != nil {
                 guard let error = error else { return }
                 completion(nil,error)
@@ -70,11 +70,43 @@ class AuthenticationSession {
                     let name = data["name"] as? String ?? ""
                     let uid = data["uid"] as? String ?? ""
                     let email = data["email"] as? String ?? ""
-                    user = CustomResponse(user: UserDetails(email: email, firstName: firstname, name: name, userId: uid))
+                    user = CustomResponse(user: UserDetails(email: email, firstName: firstname, name: name, userId: uid, projects: []))
                     completion(user,nil)
                 }
             }
         }
+    }
+    
+    func fetchProjects(_ userData: CustomResponse?, completion: @escaping ([Project?]?, Error?) -> Void) {
+        guard let userId = userData?.user.userId else {
+            return
+        }
+        let dataBase = Firestore.firestore()
+        let documentRef = dataBase.collection("Users").document(userId).collection("Projects")
+            documentRef.getDocuments() { (querySnapshot, error) in
+            if error != nil {
+                guard let error = error else { return }
+                completion(nil, error)
+            } else {
+                var projectList = [Project?]()
+                guard let query = querySnapshot else { return }
+                for document in query.documents {
+                    let data = document.data()
+                    
+                    let title = data["Title"] as? String ?? ""
+                    let description = data["Description"] as? String ?? ""
+                    let ownerUserId = data["ownerUserId"] as? String ?? ""
+                    print("//////////////////////////////////")
+                    print(title)
+                    print("//////////////////////////////////")
+                    let project = Project(title: title, description: description, ownerUserId: ownerUserId, taskList: nil)
+                    projectList.append(project)
+                }
+                completion(projectList, nil)
+            }
+            
+        }
+        
     }
     
     func logOutUser() -> Bool {

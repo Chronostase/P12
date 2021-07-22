@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-class RegisterViewController: UIViewController{
+class RegisterViewController: UIViewController {
     weak var coordinator: AuthenticationCoordinator?
 //    @IBOutlet var mainLabel: UILabel!
     

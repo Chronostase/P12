@@ -9,11 +9,18 @@ import Foundation
 
 protocol DashBoardPresenterDelegate: AnyObject {
     func fetchDateSucceed(_ date: String)
+    func fetchUserDataSucceed(_ userData: CustomResponse)
+    func fetchUserDataFailed()
+    func fetchProjectSucceed(_ userData: CustomResponse?)
+    func fetchProjectFailed()
+    func showLoader()
+    
 }
 
 class DashBoardPresenter {
-    var data: CustomResponse?
+    let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()
     weak var delegate: DashBoardPresenterDelegate?
+    var data: CustomResponse?
     let projectService: ProjectLogic = ProjectService()
     
     func getCurrentDate() {
@@ -31,4 +38,36 @@ class DashBoardPresenter {
         
         return formatter.string(from: currentDateTime)
     }
+    
+    func getUserData() {
+        userAuthenticationService.getUserData { [weak self] result in
+            switch result {
+            case .success(let customResponse):
+                guard let userData = customResponse else {
+                    return 
+                }
+                self?.data = userData
+                self?.delegate?.fetchUserDataSucceed(userData)
+            case.failure(let error):
+                self?.delegate?.fetchUserDataFailed()
+                print("Can't fetch data \(error) ")
+            }
+        }
+    }
+    
+    func getProjectList() {
+        delegate?.showLoader()
+        userAuthenticationService.fetchProjects(data) { [weak self] result in
+            switch result {
+            case .success(let projectList):
+                self?.data?.user.projects = projectList
+                self?.delegate?.fetchProjectSucceed(self?.data)
+                
+            case .failure(let error):
+                self?.delegate?.fetchProjectFailed()
+                print("Can't fetch project \(error)")
+            }
+        }
+    }
+
 }

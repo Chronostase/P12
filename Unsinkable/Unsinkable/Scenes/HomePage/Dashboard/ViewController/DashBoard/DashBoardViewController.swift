@@ -27,10 +27,14 @@ class DashBoardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDelegateAndDataSource()
+        setupCollectionView()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        dashBoardPresenter.getUserData()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -43,14 +47,31 @@ class DashBoardViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    private func setupCollectionView() {
+        setDelegateAndDataSource()
+        setupCustomCell()
+    }
+    
+    private func setupCustomCell() {
+        let nib = UINib(nibName: "ProjectCell", bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: "ProjectCell")
+    }
+    
     private func setDelegateAndDataSource() {
         self.dashBoardPresenter.delegate = self
-//        self.collectionView.delegate = self
-//        self.collectionView.dataSource = self 
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self 
     }
     
     func updateDateLabel(_ date: String) {
         self.dateLabel.text = date
+    }
+    
+    func showLoader() {
+        let loadingVC = LoaderViewController()
+        loadingVC.modalPresentationStyle = .overCurrentContext
+        loadingVC.modalTransitionStyle = .crossDissolve
+        navigationController?.present(loadingVC, animated: true, completion: nil)
     }
     
 }

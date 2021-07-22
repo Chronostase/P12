@@ -13,8 +13,6 @@ import FBSDKCoreKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    //    var appCoordinator: AppCoordinator?
-    //To make tabbar work need to delete coordinator, and pass tabbar in window.rootVC
     var coordinator: CoordinatorManager?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -29,12 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
-        
-        let loadingVC = LoaderViewController()
-        loadingVC.modalPresentationStyle = .overCurrentContext
-        loadingVC.modalTransitionStyle = .crossDissolve
-        
-        navController.present(loadingVC, animated: true, completion: nil)
         
         return true
     }
