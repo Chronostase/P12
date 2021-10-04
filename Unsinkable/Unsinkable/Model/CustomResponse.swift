@@ -14,17 +14,19 @@ struct CustomResponse {
 struct UserDetails{
     var email: String?
     var password: String?
-    var displayName: String?
     var firstName: String?
     var name: String? 
     var userId: String?
     var projects: [Project?]?
 }
-
+#warning("Store Download URL here ")
 struct Project {
     var title: String?
+    var projectID: String?
     var description: String?
     var ownerUserId: String?
+    var isPersonal: Bool?
+    var downloadUrl: String?
     var taskList: [Task?]?
 }
 

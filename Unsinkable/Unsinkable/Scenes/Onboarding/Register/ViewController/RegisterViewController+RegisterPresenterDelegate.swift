@@ -9,7 +9,7 @@ import Foundation
 
 extension RegisterViewController: RegisterPresenterDelegate {
     
-    func registerSucceed() {
+    func registerUserSucceed() {
         self.transitionToHomeScreen()
     }
     

@@ -89,13 +89,13 @@
                                             <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
                                         </state>
                                         <connections>
-                                            <action selector="addProject:" destination="qct-wg-MnE" eventType="touchUpInside" id="iJy-sq-7Et"/>
+                                            <action selector="addPersonalProject:" destination="qct-wg-MnE" eventType="touchUpInside" id="iJy-sq-7Et"/>
                                         </connections>
                                     </button>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fTw-ih-hBo">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fTw-ih-hBo">
                                         <rect key="frame" x="12" y="129.5" width="402" height="166.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CcS-pL-4ft">
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NY8-XB-4vW">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -104,26 +104,29 @@
                                         <cells/>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zug-0q-vE6">
-                                        <rect key="frame" x="0.0" y="296" width="414" height="66.5"/>
+                                        <rect key="frame" x="0.0" y="311" width="414" height="56.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Professional Project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FxC-Nd-GdB">
-                                        <rect key="frame" x="12" y="362.5" width="248.5" height="23"/>
+                                        <rect key="frame" x="12" y="367.5" width="248.5" height="23"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                         <color key="textColor" red="0.11764705882352941" green="0.56470588235294117" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcC-Um-utI">
-                                        <rect key="frame" x="260.5" y="362.5" width="153.5" height="22"/>
+                                        <rect key="frame" x="260.5" y="367.5" width="153.5" height="22"/>
                                         <color key="tintColor" red="0.11764705882352941" green="0.56470588235294117" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal">
                                             <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addProfessionalProject:" destination="qct-wg-MnE" eventType="touchUpInside" id="QUk-8w-0QQ"/>
+                                        </connections>
                                     </button>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KfW-v8-yEM">
-                                        <rect key="frame" x="12" y="392.5" width="402" height="166.5"/>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bJB-Q8-dfc">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KfW-v8-yEM">
+                                        <rect key="frame" x="12" y="397.5" width="402" height="166.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bJB-Q8-dfc">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -140,7 +143,7 @@
                                     <constraint firstItem="LjP-Pg-CbL" firstAttribute="width" secondItem="ysa-9J-cwC" secondAttribute="width" multiplier="0.6" id="5PH-LW-suC"/>
                                     <constraint firstItem="NcC-Um-utI" firstAttribute="leading" secondItem="FxC-Nd-GdB" secondAttribute="trailing" id="6li-QM-A8O"/>
                                     <constraint firstItem="fTw-ih-hBo" firstAttribute="height" secondItem="ysa-9J-cwC" secondAttribute="height" multiplier="0.25" id="Aua-lz-diy"/>
-                                    <constraint firstItem="zug-0q-vE6" firstAttribute="top" secondItem="fTw-ih-hBo" secondAttribute="bottom" id="Fky-Jy-4Hf"/>
+                                    <constraint firstItem="zug-0q-vE6" firstAttribute="top" secondItem="fTw-ih-hBo" secondAttribute="bottom" constant="15" id="Fky-Jy-4Hf"/>
                                     <constraint firstItem="KfW-v8-yEM" firstAttribute="height" secondItem="ysa-9J-cwC" secondAttribute="height" multiplier="0.25" id="Kgf-B4-hRx"/>
                                     <constraint firstItem="C9X-Lr-g3S" firstAttribute="top" secondItem="ELe-vG-Oc2" secondAttribute="bottom" id="NWn-f6-3qt"/>
                                     <constraint firstItem="FxC-Nd-GdB" firstAttribute="top" secondItem="zug-0q-vE6" secondAttribute="bottom" id="Noi-LH-2ly"/>
@@ -156,7 +159,7 @@
                                     <constraint firstItem="NcC-Um-utI" firstAttribute="top" secondItem="zug-0q-vE6" secondAttribute="bottom" id="mUg-oV-Q2k"/>
                                     <constraint firstItem="C9X-Lr-g3S" firstAttribute="leading" secondItem="LjP-Pg-CbL" secondAttribute="trailing" id="mla-jJ-Epe"/>
                                     <constraint firstAttribute="trailing" secondItem="C9X-Lr-g3S" secondAttribute="trailing" id="peg-fU-CHr"/>
-                                    <constraint firstItem="zug-0q-vE6" firstAttribute="height" secondItem="ysa-9J-cwC" secondAttribute="height" multiplier="0.1" id="qy3-fq-iXp"/>
+                                    <constraint firstItem="zug-0q-vE6" firstAttribute="height" secondItem="ysa-9J-cwC" secondAttribute="height" multiplier="0.085" id="qy3-fq-iXp"/>
                                     <constraint firstAttribute="trailing" secondItem="fTw-ih-hBo" secondAttribute="trailing" id="r0f-O2-isH"/>
                                     <constraint firstItem="fTw-ih-hBo" firstAttribute="leading" secondItem="ysa-9J-cwC" secondAttribute="leading" constant="12" id="r9u-Wb-2we"/>
                                     <constraint firstAttribute="trailing" secondItem="NcC-Um-utI" secondAttribute="trailing" id="uoC-UU-ilc"/>
@@ -179,8 +182,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="fTw-ih-hBo" id="2lI-PI-SQx"/>
                         <outlet property="dateLabel" destination="IDH-Wa-BqY" id="x2w-va-gbp"/>
+                        <outlet property="personalCollectionView" destination="fTw-ih-hBo" id="2lI-PI-SQx"/>
+                        <outlet property="professionalCollectionView" destination="KfW-v8-yEM" id="R4F-iP-0kn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YBS-Iz-R0K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -15,26 +15,33 @@ class DashBoardViewController: UIViewController {
     }()
     
     @IBOutlet var dateLabel: UILabel!
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var personalCollectionView: UICollectionView!
+    @IBOutlet var professionalCollectionView: UICollectionView!
     
     @IBAction func profilButton(_ sender: UIButton) {
         coordinator?.profil()
     }
     
-    @IBAction func addProject(_ sender: Any) {
-        coordinator?.projectCreation()
+    @IBAction func addPersonalProject(_ sender: Any) {
+        coordinator?.projectCreation(isPersonal: true)
+    }
+    
+    @IBAction func addProfessionalProject(_ sender: Any) {
+        coordinator?.projectCreation(isPersonal: false)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        loadData()
+    }
+    
+    private func loadData() {
         dashBoardPresenter.getUserData()
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -54,13 +61,17 @@ class DashBoardViewController: UIViewController {
     
     private func setupCustomCell() {
         let nib = UINib(nibName: "ProjectCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: "ProjectCell")
+        personalCollectionView.register(nib, forCellWithReuseIdentifier: "ProjectCell")
+        let xib = UINib(nibName: "ProjectCell", bundle: nil)
+        professionalCollectionView.register(xib, forCellWithReuseIdentifier: "ProjectCell")
     }
     
     private func setDelegateAndDataSource() {
         self.dashBoardPresenter.delegate = self
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self 
+        self.personalCollectionView.delegate = self
+        self.personalCollectionView.dataSource = self
+        self.professionalCollectionView.delegate = self
+        self.professionalCollectionView.dataSource = self 
     }
     
     func updateDateLabel(_ date: String) {

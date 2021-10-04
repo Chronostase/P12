@@ -13,8 +13,6 @@ protocol DashBoardPresenterDelegate: AnyObject {
     func fetchUserDataFailed()
     func fetchProjectSucceed(_ userData: CustomResponse?)
     func fetchProjectFailed()
-    func showLoader()
-    
 }
 
 class DashBoardPresenter {
@@ -22,6 +20,9 @@ class DashBoardPresenter {
     weak var delegate: DashBoardPresenterDelegate?
     var data: CustomResponse?
     let projectService: ProjectLogic = ProjectService()
+    var personalProject: [Project]?
+    var professionalProject: [Project]?
+    var selectedProject: Project?
     
     func getCurrentDate() {
         guard let date = createCurrentDate() else {
@@ -55,11 +56,27 @@ class DashBoardPresenter {
         }
     }
     
+    func sortPersonalAndProfessionalProject(_ projectList: [Project?]) {
+        professionalProject = [Project]()
+        personalProject = [Project]()
+        for project in projectList {
+            guard let project = project else {return}
+            if project.isPersonal == true {
+                personalProject?.append(project)
+            } else {
+                professionalProject?.append(project)
+            }
+        }
+    }
     func getProjectList() {
-        delegate?.showLoader()
+//        delegate?.showLoader()
         userAuthenticationService.fetchProjects(data) { [weak self] result in
             switch result {
             case .success(let projectList):
+//                guard var data = self?.data else {
+//                    return
+//                }
+//                data.user.projects = projectList
                 self?.data?.user.projects = projectList
                 self?.delegate?.fetchProjectSucceed(self?.data)
                 

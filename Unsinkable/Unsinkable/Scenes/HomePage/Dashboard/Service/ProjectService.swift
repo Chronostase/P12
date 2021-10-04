@@ -9,9 +9,10 @@ import Foundation
 import FirebaseFirestore
 
 protocol ProjectLogic {
-    func registerProject(_ project: Project?,_ userData: CustomResponse?,completion: @escaping (CustomResponse?, Error?) -> Void)
+    func registerProject(_ project: Project?,_ userData: CustomResponse?,_ coverPicture: Data?, completion: @escaping (CustomResponse?, Error?) -> Void)
     
-    func fetchTaskList(_ data: CustomResponse?, completion: @escaping ([QueryDocumentSnapshot]?, Error?) -> Void)
+    func registerTask(_ tasks: [Task?]?,_ project: Project?, completion: @escaping (CustomResponse?, Error?) -> Void)
+    
 }
 
 class ProjectService: ProjectLogic {
@@ -22,22 +23,19 @@ class ProjectService: ProjectLogic {
     init(session: ProjectSession = ProjectSession()) {
         self.session = session
     }
-    
-    func fetchTaskList(_ data: CustomResponse?, completion: @escaping ([QueryDocumentSnapshot]?, Error?) -> Void) {
-        self.session.fetchTask(data) { queryDocumentSnapshot, error in
+    #warning("Pass data from service to Session")
+    func registerProject(_ project: Project?,_ userData: CustomResponse?,_ coverPicture: Data?, completion: @escaping (CustomResponse?, Error?) -> Void) {
+        self.session.registerUserProject(project, userData, coverPicture) { (response, error) in
             if error != nil {
-                guard let error = error else {
-                    return
-                }
                 completion(nil, error)
             } else {
-                completion(queryDocumentSnapshot, nil)
+                completion(nil, error)
             }
         }
     }
     
-    func registerProject(_ project: Project?,_ userData: CustomResponse?, completion: @escaping (CustomResponse?, Error?) -> Void) {
-        self.session.registerUserProject(project, userData) { (response, error) in
+    func registerTask(_ tasks: [Task?]?,_ project: Project?, completion: @escaping (CustomResponse?, Error?) -> Void) {
+        self.session.registerUserTask(tasks, project) { (response, error) in
             if error != nil {
                 completion(nil, error)
             } else {

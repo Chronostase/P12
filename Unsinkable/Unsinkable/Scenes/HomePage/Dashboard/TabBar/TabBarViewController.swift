@@ -23,7 +23,7 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabBar()
-        showLoader()
+//        showLoader()
     }
     
     private func setupTabBar() {

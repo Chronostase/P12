@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="164" height="128"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TZ6-WL-B1Q">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TZ6-WL-B1Q">
                         <rect key="frame" x="0.0" y="0.0" width="164" height="102.5"/>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="hJ6-JQ-ZPC">
@@ -40,7 +40,20 @@
                     </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IHw-8E-mCV">
                         <rect key="frame" x="0.0" y="102.5" width="164" height="25.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12 members " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fe-oT-8RZ">
+                                <rect key="frame" x="15" y="0.0" width="77.5" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5Fe-oT-8RZ" firstAttribute="top" secondItem="IHw-8E-mCV" secondAttribute="top" id="5QW-I3-3Xy"/>
+                            <constraint firstItem="5Fe-oT-8RZ" firstAttribute="leading" secondItem="IHw-8E-mCV" secondAttribute="leading" constant="15" id="QRs-qI-7WR"/>
+                            <constraint firstAttribute="bottom" secondItem="5Fe-oT-8RZ" secondAttribute="bottom" id="bYx-8l-N3g"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -60,15 +60,26 @@ class HomeCoordinator: Coordinator {
         
     }
     
-    func projectCreation() {
+    func projectCreation(isPersonal: Bool) {
         let storyboard = UIStoryboard(name: "ProjectCreation", bundle: Bundle.main)
         guard let projectVC = storyboard.instantiateInitialViewController() as? ProjectCreationViewController else {
             return
         }
-//        projectVC.projectCreationPresenter.data?.user.userId = self.data.user.userId
+        
         projectVC.projectCreationPresenter.data = self.data
         projectVC.coordinator = self
+        projectVC.projectCreationPresenter.isPersonal = isPersonal
         navigationController.pushViewController(projectVC, animated: true)
+    }
+    
+    func projectReader(project: Project) {
+        let storyboard = UIStoryboard(name: "ProjectReading", bundle: Bundle.main)
+        guard let projectReaderVC = storyboard.instantiateInitialViewController() as? ProjectReaderViewController else {
+            return
+        }
+        projectReaderVC.dashBoardPresenter.selectedProject = project
+        projectReaderVC.coordinator = self
+        navigationController.pushViewController(projectReaderVC, animated: true)
     }
     
     func didFinish() {

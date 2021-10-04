@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FBSDKLoginKit
 
 class LogInViewController: UIViewController {
     let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()

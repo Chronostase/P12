@@ -17,7 +17,13 @@ extension DashBoardViewController: DashBoardPresenterDelegate {
             return
         }
         coordinator?.data = userData
-        self.collectionView.reloadData()
+        guard let projectList = userData.user.projects else {
+        return }
+        dashBoardPresenter.sortPersonalAndProfessionalProject(projectList)
+        DispatchQueue.main.async {
+            self.personalCollectionView.reloadData()
+            self.professionalCollectionView.reloadData()
+        }
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
@@ -26,9 +32,7 @@ extension DashBoardViewController: DashBoardPresenterDelegate {
     }
     
     func fetchUserDataSucceed(_ userData: CustomResponse) {
-//        coordinator?.data = userData
         dashBoardPresenter.getProjectList()
-//        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
     func fetchUserDataFailed() {

@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		243D0F3CA6AB440C7E61B0DE /* Pods_Unsinkable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEF6FC91AD1B24045F02C93 /* Pods_Unsinkable.framework */; };
 		26CCB8F16AC9BA961A065215 /* Pods_UnsinkableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA4556E6ED25D95A4473CA0 /* Pods_UnsinkableTests.framework */; };
 		6FADD05467A016C0D281AFEC /* Pods_Unsinkable_UnsinkableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99EFAC4466473468C536C95 /* Pods_Unsinkable_UnsinkableUITests.framework */; };
+		E90236BD26E0E7820070853F /* ProjectReading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E90236BC26E0E7820070853F /* ProjectReading.storyboard */; };
 		E90312CE25E5409600CBC228 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90312CD25E5409600CBC228 /* TextFieldExtension.swift */; };
 		E90312EC25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90312EB25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift */; };
 		E90312F725E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90312F625E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift */; };
@@ -40,8 +41,7 @@
 		E95AF91B2679F21400BD1AF8 /* ProfiPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95AF91A2679F21400BD1AF8 /* ProfiPresenter.swift */; };
 		E95AF91D2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95AF91C2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift */; };
 		E976F3DA26397A60000F9BC6 /* AuthenticationSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E976F3D926397A60000F9BC6 /* AuthenticationSessionFake.swift */; };
-		E97AEFA626247E4500396E7B /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = E97AEFA526247E4500396E7B /* FacebookLogin */; };
-		E97AEFA826247E4500396E7B /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = E97AEFA726247E4500396E7B /* FacebookCore */; };
+		E97A877326DFB94000097527 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A877226DFB94000097527 /* UITextView.swift */; };
 		E99635B72653D99E00185327 /* Profil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99635B62653D99E00185327 /* Profil.storyboard */; };
 		E99635BD2653E3AD00185327 /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99635BC2653E3AD00185327 /* ProfilViewController.swift */; };
 		E996B51A25A620E900638480 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E996B51925A620E900638480 /* GoogleService-Info.plist */; };
@@ -51,6 +51,8 @@
 		E996B55C25A6351700638480 /* DashBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E996B55B25A6351700638480 /* DashBoard.storyboard */; };
 		E996B56125A6353000638480 /* NotificationCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E996B56025A6353000638480 /* NotificationCenter.storyboard */; };
 		E996B56625A6353F00638480 /* NotificationCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996B56525A6353F00638480 /* NotificationCenterViewController.swift */; };
+		E99A03382704E38100C1BCCE /* ProjectReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A03372704E38100C1BCCE /* ProjectReaderViewController.swift */; };
+		E99A033A270594B600C1BCCE /* ProjectReaderVC+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A0339270594B600C1BCCE /* ProjectReaderVC+TableViewDelegate.swift */; };
 		E99B8DEA268F021C005A9032 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99B8DE9268F021C005A9032 /* TaskCell.xib */; };
 		E99B8DFB269491EA005A9032 /* ProjectCreationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B8DFA269491EA005A9032 /* ProjectCreationPresenter.swift */; };
 		E99B8DFD269494DF005A9032 /* ProjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B8DFC269494DF005A9032 /* ProjectService.swift */; };
@@ -67,7 +69,7 @@
 		E9CB3AAC25DE77BA009980EC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB3AAB25DE77BA009980EC /* Constants.swift */; };
 		E9CDF01F265D25F7000D1FEA /* DashBoardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CDF01E265D25F7000D1FEA /* DashBoardCoordinator.swift */; };
 		E9CDF024265D26C2000D1FEA /* NotificationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CDF023265D26C2000D1FEA /* NotificationCoordinator.swift */; };
-		E9D6076926847083005AC9EB /* ViewShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6076826847083005AC9EB /* ViewShadow.swift */; };
+		E9D6076926847083005AC9EB /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6076826847083005AC9EB /* CustomView.swift */; };
 		E9D6076D26848BCA005AC9EB /* StackViewShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6076C26848BCA005AC9EB /* StackViewShadow.swift */; };
 		E9DC09FF25DE82B800667E8E /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DC09FE25DE82B800667E8E /* CustomButton.swift */; };
 		E9EC4F9126553E8200A1ED96 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC4F9026553E8200A1ED96 /* HomeCoordinator.swift */; };
@@ -108,6 +110,7 @@
 		942B20643B3D015374268575 /* Pods-Unsinkable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable.release.xcconfig"; path = "Target Support Files/Pods-Unsinkable/Pods-Unsinkable.release.xcconfig"; sourceTree = "<group>"; };
 		94F04F721327FD9AA40E8C00 /* Pods-Unsinkable-UnsinkableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable-UnsinkableUITests.debug.xcconfig"; path = "Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C99EFAC4466473468C536C95 /* Pods_Unsinkable_UnsinkableUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsinkable_UnsinkableUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E90236BC26E0E7820070853F /* ProjectReading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProjectReading.storyboard; sourceTree = "<group>"; };
 		E90312CD25E5409600CBC228 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 		E90312EB25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewControllerTextFieldDelegate.swift; sourceTree = "<group>"; };
 		E90312F625E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTextFieldDelegat.swift; sourceTree = "<group>"; };
@@ -144,6 +147,7 @@
 		E95AF91A2679F21400BD1AF8 /* ProfiPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfiPresenter.swift; sourceTree = "<group>"; };
 		E95AF91C2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfilViewController+ProfilPresenterDelegate.swift"; sourceTree = "<group>"; };
 		E976F3D926397A60000F9BC6 /* AuthenticationSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSessionFake.swift; sourceTree = "<group>"; };
+		E97A877226DFB94000097527 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		E99635B62653D99E00185327 /* Profil.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profil.storyboard; sourceTree = "<group>"; };
 		E99635BC2653E3AD00185327 /* ProfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
 		E996B51925A620E900638480 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 		E996B55B25A6351700638480 /* DashBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DashBoard.storyboard; sourceTree = "<group>"; };
 		E996B56025A6353000638480 /* NotificationCenter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotificationCenter.storyboard; sourceTree = "<group>"; };
 		E996B56525A6353F00638480 /* NotificationCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterViewController.swift; sourceTree = "<group>"; };
+		E99A03372704E38100C1BCCE /* ProjectReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectReaderViewController.swift; sourceTree = "<group>"; };
+		E99A0339270594B600C1BCCE /* ProjectReaderVC+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectReaderVC+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		E99B8DE9268F021C005A9032 /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
 		E99B8DFA269491EA005A9032 /* ProjectCreationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreationPresenter.swift; sourceTree = "<group>"; };
 		E99B8DFC269494DF005A9032 /* ProjectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectService.swift; sourceTree = "<group>"; };
@@ -167,7 +173,7 @@
 		E9CB3AAB25DE77BA009980EC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E9CDF01E265D25F7000D1FEA /* DashBoardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardCoordinator.swift; sourceTree = "<group>"; };
 		E9CDF023265D26C2000D1FEA /* NotificationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCoordinator.swift; sourceTree = "<group>"; };
-		E9D6076826847083005AC9EB /* ViewShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewShadow.swift; sourceTree = "<group>"; };
+		E9D6076826847083005AC9EB /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		E9D6076C26848BCA005AC9EB /* StackViewShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewShadow.swift; sourceTree = "<group>"; };
 		E9DC09FE25DE82B800667E8E /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		E9EC4F9026553E8200A1ED96 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
@@ -188,8 +194,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E97AEFA626247E4500396E7B /* FacebookLogin in Frameworks */,
-				E97AEFA826247E4500396E7B /* FacebookCore in Frameworks */,
 				243D0F3CA6AB440C7E61B0DE /* Pods_Unsinkable.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +342,7 @@
 				E951023125AF6A6C0070A91C /* UIViewController+Push.swift */,
 				E95102CB25B97F7A0070A91C /* StringExtension.swift */,
 				E90312CD25E5409600CBC228 /* TextFieldExtension.swift */,
+				E97A877226DFB94000097527 /* UITextView.swift */,
 				E9EC4FA226583CE800A1ED96 /* window.swift */,
 			);
 			path = Extensions;
@@ -554,6 +559,7 @@
 			children = (
 				E996B55B25A6351700638480 /* DashBoard.storyboard */,
 				E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */,
+				E90236BC26E0E7820070853F /* ProjectReading.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -624,6 +630,15 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
+		E99A03362704E36700C1BCCE /* ProjectReader */ = {
+			isa = PBXGroup;
+			children = (
+				E99A03372704E38100C1BCCE /* ProjectReaderViewController.swift */,
+				E99A0339270594B600C1BCCE /* ProjectReaderVC+TableViewDelegate.swift */,
+			);
+			path = ProjectReader;
+			sourceTree = "<group>";
+		};
 		E99B8DEB268F0690005A9032 /* DashBoard */ = {
 			isa = PBXGroup;
 			children = (
@@ -637,12 +652,13 @@
 		E99B8DEC268F06A5005A9032 /* ProjectCreation */ = {
 			isa = PBXGroup;
 			children = (
-				E99B8DF926949121005A9032 /* Project */,
+				E99A03362704E36700C1BCCE /* ProjectReader */,
+				E99B8DF926949121005A9032 /* ProjectCreation */,
 			);
 			path = ProjectCreation;
 			sourceTree = "<group>";
 		};
-		E99B8DF926949121005A9032 /* Project */ = {
+		E99B8DF926949121005A9032 /* ProjectCreation */ = {
 			isa = PBXGroup;
 			children = (
 				E951022B25AF69A50070A91C /* ProjectCreationViewController.swift */,
@@ -650,7 +666,7 @@
 				E9EE2181268373BC00D80414 /* ProjectCreationViewController+UITextFieldDelegate.swift */,
 				E9FE31ED269FAFDC00DF2532 /* ProjectCreationViewController+UITableView.swift */,
 			);
-			path = Project;
+			path = ProjectCreation;
 			sourceTree = "<group>";
 		};
 		E9C2218425AE1320001216F5 /* Cell */ = {
@@ -685,7 +701,7 @@
 		E9D6076726847065005AC9EB /* ProjectCreation */ = {
 			isa = PBXGroup;
 			children = (
-				E9D6076826847083005AC9EB /* ViewShadow.swift */,
+				E9D6076826847083005AC9EB /* CustomView.swift */,
 				E9D6076C26848BCA005AC9EB /* StackViewShadow.swift */,
 			);
 			path = ProjectCreation;
@@ -719,8 +735,6 @@
 			);
 			name = Unsinkable;
 			packageProductDependencies = (
-				E97AEFA526247E4500396E7B /* FacebookLogin */,
-				E97AEFA726247E4500396E7B /* FacebookCore */,
 			);
 			productName = Unsinkable;
 			productReference = E92C356B25A5EBA8001F2819 /* Unsinkable.app */;
@@ -797,7 +811,6 @@
 			);
 			mainGroup = E92C356225A5EBA8001F2819;
 			packageReferences = (
-				E97AEFA426247E4500396E7B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = E92C356C25A5EBA8001F2819 /* Products */;
 			projectDirPath = "";
@@ -816,6 +829,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E996B56125A6353000638480 /* NotificationCenter.storyboard in Resources */,
+				E90236BD26E0E7820070853F /* ProjectReading.storyboard in Resources */,
 				E99B8DEA268F021C005A9032 /* TaskCell.xib in Resources */,
 				E99635B72653D99E00185327 /* Profil.storyboard in Resources */,
 				E996B55C25A6351700638480 /* DashBoard.storyboard in Resources */,
@@ -964,8 +978,10 @@
 				E951028925B84DF90070A91C /* RegisterViewController.swift in Sources */,
 				E951022C25AF69A50070A91C /* ProjectCreationViewController.swift in Sources */,
 				E921576625C05F0000D42137 /* CoordinatorManager.swift in Sources */,
+				E97A877326DFB94000097527 /* UITextView.swift in Sources */,
 				E9553E5525E534F4006101D2 /* CustomTextField.swift in Sources */,
 				E921575925C05BA100D42137 /* Coordinator.swift in Sources */,
+				E99A03382704E38100C1BCCE /* ProjectReaderViewController.swift in Sources */,
 				E9EE2180268241D000D80414 /* DashBoardViewController+Delegate.swift in Sources */,
 				E99B8DFD269494DF005A9032 /* ProjectService.swift in Sources */,
 				E9D6076D26848BCA005AC9EB /* StackViewShadow.swift in Sources */,
@@ -981,7 +997,7 @@
 				E951028425B84DEE0070A91C /* LogInViewController.swift in Sources */,
 				E94BA61B2628464B003AC914 /* LoginViewController+LoginPresenterDelegat.swift in Sources */,
 				E9EC4F9126553E8200A1ED96 /* HomeCoordinator.swift in Sources */,
-				E9D6076926847083005AC9EB /* ViewShadow.swift in Sources */,
+				E9D6076926847083005AC9EB /* CustomView.swift in Sources */,
 				E9EE217E268240F500D80414 /* DashBoardPresenter.swift in Sources */,
 				E951027F25B84DDD0070A91C /* MainLoginViewController.swift in Sources */,
 				E90312CE25E5409600CBC228 /* TextFieldExtension.swift in Sources */,
@@ -997,6 +1013,7 @@
 				E92C356F25A5EBA8001F2819 /* AppDelegate.swift in Sources */,
 				E951029225B8BA9F0070A91C /* Regex.swift in Sources */,
 				E903130225E7C52300CBC228 /* AuthenticationSession.swift in Sources */,
+				E99A033A270594B600C1BCCE /* ProjectReaderVC+TableViewDelegate.swift in Sources */,
 				E99B8DFB269491EA005A9032 /* ProjectCreationPresenter.swift in Sources */,
 				E9C9C58A26A9400E00080E45 /* CustomProjectCell.swift in Sources */,
 				E9FE31EC269FAA8F00DF2532 /* CustomTaskTableViewCell.swift in Sources */,
@@ -1346,30 +1363,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		E97AEFA426247E4500396E7B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.1.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		E97AEFA526247E4500396E7B /* FacebookLogin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E97AEFA426247E4500396E7B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookLogin;
-		};
-		E97AEFA726247E4500396E7B /* FacebookCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E97AEFA426247E4500396E7B /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
-			productName = FacebookCore;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E92C356325A5EBA8001F2819 /* Project object */;
 }

@@ -30,7 +30,7 @@ class AuthenticationSession {
                 
                 return completion(nil,error)
             }
-            let customUser = CustomResponse(user: UserDetails(email: user.email, displayName: user.displayName, userId: user.uid))
+            let customUser = CustomResponse(user: UserDetails(email: user.email, userId: user.uid))
             completion(customUser,error)
         }
     }
@@ -92,21 +92,17 @@ class AuthenticationSession {
                 guard let query = querySnapshot else { return }
                 for document in query.documents {
                     let data = document.data()
-                    
                     let title = data["Title"] as? String ?? ""
                     let description = data["Description"] as? String ?? ""
                     let ownerUserId = data["ownerUserId"] as? String ?? ""
-                    print("//////////////////////////////////")
-                    print(title)
-                    print("//////////////////////////////////")
-                    let project = Project(title: title, description: description, ownerUserId: ownerUserId, taskList: nil)
+                    let isPersonal = data["isPersonal"] as? Bool
+                    let downloadUrl = data["downloadUrl"] as? String ?? ""
+                    let project = Project(title: title, description: description, ownerUserId: ownerUserId, isPersonal: isPersonal, downloadUrl: downloadUrl, taskList: nil)
                     projectList.append(project)
                 }
                 completion(projectList, nil)
             }
-            
         }
-        
     }
     
     func logOutUser() -> Bool {

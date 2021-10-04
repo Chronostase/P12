@@ -31,8 +31,8 @@ class CustomTaskTableViewCell: UITableViewCell {
     @IBAction func priorityButton(_ sender: UIButton) {
     }
     
-    func firstConfigure(_ title: String) {
-        self.taskTitle.text = title
+    func configure(_ task: Task?) {
+        self.taskTitle.text = task?.title
     }
     
 //    func configure(_ title: String, _ memberCount: String, _ firstImage: UIImage, _ secondImage: UIImage, _ thirdImage: UIImage) {
