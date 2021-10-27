@@ -23,7 +23,7 @@ class ProjectService: ProjectLogic {
     init(session: ProjectSession = ProjectSession()) {
         self.session = session
     }
-    #warning("Pass data from service to Session")
+    
     func registerProject(_ project: Project?,_ userData: CustomResponse?,_ coverPicture: Data?, completion: @escaping (CustomResponse?, Error?) -> Void) {
         self.session.registerUserProject(project, userData, coverPicture) { (response, error) in
             if error != nil {

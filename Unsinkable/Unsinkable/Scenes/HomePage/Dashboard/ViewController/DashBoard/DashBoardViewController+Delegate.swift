@@ -27,11 +27,19 @@ extension DashBoardViewController: DashBoardPresenterDelegate {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
+    func fetchTaskSucceed() {
+        
+    }
+    
+    func fetchTaskFailed() {
+        
+    }
     func fetchProjectFailed() {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
     func fetchUserDataSucceed(_ userData: CustomResponse) {
+        dashBoardPresenter.data? = userData
         dashBoardPresenter.getProjectList()
     }
     

@@ -81,26 +81,89 @@ class AuthenticationSession {
         guard let userId = userData?.user.userId else {
             return
         }
+        
+        var projectList = [Project?]()
+        var taskList = [Task?]()
         let dataBase = Firestore.firestore()
+        var projectIndex = 0
+        
+        //Document ref to docu
         let documentRef = dataBase.collection("Users").document(userId).collection("Projects")
-            documentRef.getDocuments() { (querySnapshot, error) in
+        documentRef.getDocuments() { (querySnapshot, error) in
             if error != nil {
                 guard let error = error else { return }
                 completion(nil, error)
             } else {
-                var projectList = [Project?]()
-                guard let query = querySnapshot else { return }
-                for document in query.documents {
+                guard let queryArray = querySnapshot?.documents else { return }
+                
+//                #error("ENTER FETCH PROJECT DATA ")
+                for document in queryArray {
+                    print(queryArray.count)
+                    projectIndex += 1
+                    print("Index \(projectIndex)")
                     let data = document.data()
-                    let title = data["Title"] as? String ?? ""
-                    let description = data["Description"] as? String ?? ""
+                    let projectTitle = data["Title"] as? String ?? ""
+                    let projectID = data["projectId"] as? String ?? ""
+                    let projectDescription = data["Description"] as? String ?? ""
                     let ownerUserId = data["ownerUserId"] as? String ?? ""
                     let isPersonal = data["isPersonal"] as? Bool
                     let downloadUrl = data["downloadUrl"] as? String ?? ""
-                    let project = Project(title: title, description: description, ownerUserId: ownerUserId, isPersonal: isPersonal, downloadUrl: downloadUrl, taskList: nil)
-                    projectList.append(project)
+                    let tasksRef = dataBase.collection("Users").document(userId).collection("Projects").document(projectTitle).collection("Tasks")
+                    tasksRef.getDocuments() { (querys, error) in
+                        if error != nil {
+                            guard let error = error else {return}
+                            completion(nil, error)
+                        } else {
+                            guard let taskQueryArray = querys?.documents else {return}
+                            for document in taskQueryArray {
+                                let data = document.data()
+                                let taskTitle = data["title"] as? String ?? ""
+                                let projectID = data["projectID"] as? String ?? ""
+                                let taskID = data["taskID"] as? String ?? ""
+                                let taskPriority = data["taskPriority"] as? Bool ?? nil
+                                let taskDeadLine = data["taskDeadLine"] as? String ?? ""
+                                let taskCommentary = data["taskCommentary"] as? String ?? ""
+                                let task = Task(title: taskTitle, projectID: projectID, taskID: taskID, priority: taskPriority, deadLine: taskDeadLine, commentary: taskCommentary)
+                                taskList.append(task)
+                                print("TaskListCountFetch \(taskList.count)")
+                            }
+                        }
+                        let project = Project(title: projectTitle, projectID: projectID ,description: projectDescription, ownerUserId: ownerUserId, isPersonal: isPersonal, downloadUrl: downloadUrl, taskList: taskList)
+                        projectList.append(project)
+                        taskList.removeAll()
+                        print(taskList.count)
+                        // If projectList.count == queryArray.count
+                        if projectList.count == queryArray.count{
+                            completion(projectList, nil)
+                        }
+                    }
                 }
-                completion(projectList, nil)
+            }
+        }
+    }
+    
+    func fetchTasks(_ userId: String, _ title: String, completion: @escaping ([Task?]?, Error?) -> Void) {
+        let database = Firestore.firestore()
+        let documentRef = database.collection("Users").document(userId).collection("Projects").document(title).collection("Tasks")
+        documentRef.getDocuments() { (querySnapshot, error) in
+            if error != nil {
+                guard let error = error else {return}
+                completion(nil, error)
+            } else {
+                var taskList = [Task?]()
+                guard let query = querySnapshot else {return}
+                for document in query.documents {
+                    let data = document.data()
+                    let taskTitle = data["title"] as? String ?? ""
+                    let projectID = data["projectID"] as? String ?? ""
+                    let taskID = data["taskID"] as? String ?? ""
+                    let taskPriority = data["taskPriority"] as? Bool ?? nil
+                    let taskDeadLine = data["taskDeadLine"] as? String ?? ""
+                    let taskCommentary = data["taskCommentary"] as? String ?? ""
+                    let task = Task(title: taskTitle, projectID: projectID, taskID: taskID, priority: taskPriority, deadLine: taskDeadLine, commentary: taskCommentary)
+                    taskList.append(task)
+                }
+                completion(taskList, nil)
             }
         }
     }

@@ -9,10 +9,8 @@ import Foundation
 import UIKit
 
 class ProfilViewController: UIViewController, UITextFieldDelegate {
-//    weak var coordinator: CoordinatorManager?
+    
     weak var coordinator: HomeCoordinator?
-    //Data probably need to be in presenter
-    var data: CustomResponse?
     lazy var profilPresenter = {
         return ProfiPresenter()
     }()
@@ -67,9 +65,9 @@ class ProfilViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setUserInfo() {
-        self.firstNameTextField.placeholder = data?.user.firstName
-        self.nameTextField.placeholder = data?.user.name
-        self.emailTextField.placeholder = data?.user.email
+        self.firstNameTextField.placeholder = profilPresenter.data?.user.firstName
+        self.nameTextField.placeholder = profilPresenter.data?.user.name
+        self.emailTextField.placeholder = profilPresenter.data?.user.email
     }
     
     func transitionToMainLoginPage() {

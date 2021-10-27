@@ -113,7 +113,7 @@
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gtx-qt-6PC" userLabel="FirstSeparator">
                                                         <rect key="frame" x="0.0" y="360" width="414" height="1"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" systemColor="separatorColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="N6v-XD-efO"/>
                                                         </constraints>
@@ -156,6 +156,9 @@
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iBt-B3-Cch" userLabel="TaskTableView">
                                                         <rect key="frame" x="0.0" y="484.5" width="414" height="302.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="FJe-Ug-I4b"/>
+                                                        </constraints>
                                                     </tableView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtS-jS-kCT" userLabel="HolderView">
                                                         <rect key="frame" x="0.0" y="787" width="414" height="20"/>
@@ -211,6 +214,7 @@
                             <constraint firstItem="c2j-oj-vS2" firstAttribute="leading" secondItem="RiC-3D-TNj" secondAttribute="leading" id="JIB-VJ-rWh"/>
                             <constraint firstItem="c2j-oj-vS2" firstAttribute="top" secondItem="7l9-jq-LQ0" secondAttribute="top" id="Jnn-Tz-cfK"/>
                             <constraint firstItem="c2j-oj-vS2" firstAttribute="bottom" secondItem="RiC-3D-TNj" secondAttribute="bottom" id="Ory-Uw-YyF"/>
+                            <constraint firstItem="Gtx-qt-6PC" firstAttribute="width" secondItem="7l9-jq-LQ0" secondAttribute="width" id="Owf-wX-wbJ"/>
                             <constraint firstItem="vrM-3h-4jD" firstAttribute="height" secondItem="RiC-3D-TNj" secondAttribute="height" multiplier="0.15" id="TYl-az-bBw"/>
                             <constraint firstItem="tpb-TQ-qMw" firstAttribute="height" secondItem="RiC-3D-TNj" secondAttribute="height" multiplier="0.09" id="q2o-R6-Unh"/>
                             <constraint firstItem="c2j-oj-vS2" firstAttribute="trailing" secondItem="RiC-3D-TNj" secondAttribute="trailing" id="r81-Td-mQi"/>
@@ -236,6 +240,9 @@
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

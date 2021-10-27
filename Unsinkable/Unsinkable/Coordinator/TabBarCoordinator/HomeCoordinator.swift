@@ -49,25 +49,25 @@ class HomeCoordinator: Coordinator {
         return [dashBoardNavigationViewController, notificationNavigationController]
     }
     
-    func profil() {
+    func profil(_ data: CustomResponse?) {
         let storyBoard = UIStoryboard(name: "Profil", bundle: Bundle.main)
         guard let profilViewController = storyBoard.instantiateInitialViewController() as? ProfilViewController else {
             return
         }
-        profilViewController.data = data
+        profilViewController.profilPresenter.data = data
         profilViewController.coordinator = self
         navigationController.pushViewController(profilViewController, animated: true)
         
     }
     
-    func projectCreation(isPersonal: Bool) {
+    func projectCreation(isPersonal: Bool, _ data: CustomResponse?, localTasksList: [Task?]? = []) {
         let storyboard = UIStoryboard(name: "ProjectCreation", bundle: Bundle.main)
         guard let projectVC = storyboard.instantiateInitialViewController() as? ProjectCreationViewController else {
             return
         }
-        
-        projectVC.projectCreationPresenter.data = self.data
         projectVC.coordinator = self
+        projectVC.projectCreationPresenter.localTasksList = localTasksList
+        projectVC.projectCreationPresenter.data = data
         projectVC.projectCreationPresenter.isPersonal = isPersonal
         navigationController.pushViewController(projectVC, animated: true)
     }
@@ -77,9 +77,21 @@ class HomeCoordinator: Coordinator {
         guard let projectReaderVC = storyboard.instantiateInitialViewController() as? ProjectReaderViewController else {
             return
         }
-        projectReaderVC.dashBoardPresenter.selectedProject = project
+        projectReaderVC.projectReaderPresenter.selectedProject = project
         projectReaderVC.coordinator = self
         navigationController.pushViewController(projectReaderVC, animated: true)
+    }
+    
+    func taskEditor(task: Task, parentVC: ProjectCreationViewController? = nil, _ isReader: Bool = false) {
+        #warning("See to pass ProjectCreationDelegate in param ")
+        let storyboard = UIStoryboard(name: "TaskEditor", bundle: Bundle.main)
+        guard let taskEditorVC = storyboard.instantiateInitialViewController() as? TaskCreationViewController else {
+            return
+        }
+        taskEditorVC.coordinator = self
+        taskEditorVC.taskCreationPresenter.delegate = parentVC
+        taskEditorVC.taskCreationPresenter.task = task
+        navigationController.pushViewController(taskEditorVC, animated: true)
     }
     
     func didFinish() {

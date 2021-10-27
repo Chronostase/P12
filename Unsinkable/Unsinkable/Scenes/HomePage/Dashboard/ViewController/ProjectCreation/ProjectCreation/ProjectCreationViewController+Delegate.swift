@@ -8,12 +8,31 @@
 import Foundation
 
 extension ProjectCreationViewController: ProjectCreationPresenterDelegate {
+    
+    func updateLocalTask(_ task: Task) {
+        var index = 0
+        guard var localtasksList = projectCreationPresenter.localTasksList else {return print("Their is no localtasksList")}
+        
+        for olderTask in localtasksList {
+            if task.taskID == olderTask?.taskID {
+                localtasksList.remove(at: index)
+                localtasksList.insert(task, at: index)
+            }
+            index += 1
+        }
+        projectCreationPresenter.localTasksList = localtasksList
+        self.navigationController?.popViewController(animated: true)
+        
+    }
     func registerTaskFailure() {
-        self.coordinator?.start()
+        print("Register task Failed")
+        self.navigationController?.popViewController(animated: true)
+
     }
     
     func registerTaskSucceed(_ task: Task?) {
-        self.coordinator?.start()
+        print("Register task succeed")
+        self.navigationController?.popViewController(animated: true)
     }
     
     func fetchProjectSucceed() {
@@ -21,24 +40,15 @@ extension ProjectCreationViewController: ProjectCreationPresenterDelegate {
     
     func registerProjectSucceed(_ project: Project?) {
         projectCreationPresenter.updateLocalData(withProject: project)
-        print("project : \(project != nil)")
         guard let project = project else {
             return
         }
         
-        #warning("Downloard URL = nil")
-//        guard let url = project.downloadUrl else {
-//            return
-//        }
-        print("PrintedProject :")
-        print(project)
-        print("Register Succeed with this url")
-//        print(url)
         coordinator?.data.user.projects?.append(project)
         if project.taskList != nil {
             projectCreationPresenter.registerTask(taskTextField.text, project)
         } else {
-            self.coordinator?.start()
+            self.navigationController?.popViewController(animated: true)
         }
 //        self.coordinator?.start()
         print("LeaveRegisterSucceed")

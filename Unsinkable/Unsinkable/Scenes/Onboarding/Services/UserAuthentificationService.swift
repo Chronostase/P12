@@ -24,6 +24,8 @@ protocol AuthentificationLogic {
     
     func fetchProjects(_ userData: CustomResponse?, completion: @escaping (Result<[Project?]?, Error>) -> Void)
     
+    func fetchTasks(_ userId: String, _ title: String, completion: @escaping (Result<[Task?]?, Error>) -> Void)
+    
 }
 
 class UserAuthentificationService: AuthentificationLogic {
@@ -99,6 +101,17 @@ class UserAuthentificationService: AuthentificationLogic {
                 completion(.failure(error))
             } else {
                 completion(.success(projectList))
+            }
+        }
+    }
+    
+    func fetchTasks(_ userId: String, _ title: String, completion: @escaping (Result<[Task?]?, Error>) -> Void) {
+        self.session.fetchTasks(userId, title) { tasks, error in
+            if error != nil {
+                guard let error = error else {return}
+                completion(.failure(error))
+            } else {
+                completion(.success(tasks))
             }
         }
     }

@@ -34,6 +34,11 @@ class ProjectCreationViewController: UIViewController {
         setup()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("Enter IN ViewDIDDISAPPEAR ")
+    }
+    
     private func setup() {
         self.navigationController?.navigationBar.isHidden = false
         setupCustomCell()
@@ -42,9 +47,9 @@ class ProjectCreationViewController: UIViewController {
         addTextViewDoneButton()
         setRightButtonInTextField()
         addRightNavigationBarButton()
+        hideMoreDetail()
     }
     
-    #warning("Take Image from ImageView transform it to data")
     @IBAction func finishButton(_ sender: Any) {
         guard let imageData = coverImage.image?.jpegData(compressionQuality: 1.0) else {
             return
@@ -61,6 +66,12 @@ class ProjectCreationViewController: UIViewController {
         DispatchQueue.main.async {
             self.setUpUI()
         }
+    }
+    
+    private func hideMoreDetail() {
+        locationView.isHidden = true
+        deadLineView.isHidden = true
+        usersView.isHidden = true
     }
     
     private func configureFakeProject() {
@@ -82,7 +93,7 @@ class ProjectCreationViewController: UIViewController {
         projectTextField.delegate = self
         taskTableView.dataSource = self
         taskTableView.delegate = self
-        projectCreationPresenter.delegate = self 
+        projectCreationPresenter.delegate = self
     }
     
     private func setRightButtonInTextField() {
@@ -101,8 +112,8 @@ class ProjectCreationViewController: UIViewController {
     }
     
     @objc func addTask() {
-        // Check if user type something, take it set it to cell title -> add cell to table view
-        if projectCreationPresenter.checkTastTitle(taskTextField.text) {
+        //Update project, register a task With title in projectPresenter.task
+        if projectCreationPresenter.checkTaskTitle(taskTextField.text) {
             self.projectCreationPresenter.updateProject(taskTextField.text)
             DispatchQueue.main.async {
                 self.taskTableView.reloadData()
@@ -118,10 +129,6 @@ class ProjectCreationViewController: UIViewController {
         guard let image = UIImage(systemName: "ellipsis") else {
             return 
         }
-//        let button = UIButton(type: .system)
-//        button.setImage(image, for: .normal)
-//
-//        let barButton = UIBarButtonItem(customView: button)
         let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(moreOptionTapped))
         self.navigationItem.rightBarButtonItem = button
     }

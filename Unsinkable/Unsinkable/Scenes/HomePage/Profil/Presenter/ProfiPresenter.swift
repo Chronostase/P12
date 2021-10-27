@@ -16,6 +16,7 @@ class ProfiPresenter {
     
     weak var delegate: ProfilPresenterDelegate?
     let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()
+    var data: CustomResponse?
     
     func logOut() {
         if userAuthenticationService.logOut() == true {

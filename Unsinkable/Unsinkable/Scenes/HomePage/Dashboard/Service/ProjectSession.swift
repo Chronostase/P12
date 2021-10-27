@@ -40,7 +40,6 @@ class ProjectSession {
                             print("Error to recover URL")
                             return
                         } else {
-                            #warning("Transform url to string to conform to model / firestore")
                             guard let url = URL?.absoluteString else {return}
                             let documentData: [String: Any] = [
                                 "Title": title,
@@ -76,21 +75,28 @@ class ProjectSession {
         print("END PROJECT REGISTRATION")
     }
     
-    
     func registerUserTask(_ tasks: [Task?]?,_ project: Project?, completion: @escaping (CustomResponse?, Error?) -> Void) {
         
         let database = Firestore.firestore()
+        
         guard let tasks = tasks else {return}
         guard let userID = project?.ownerUserId else {return}
         guard let projectID = project?.projectID else {return}
         guard let projectTitle = project?.title else {return}
+    
         for task in tasks {
-            guard let title = task?.title else { return }
+            guard let task = task else {return}
+            guard let taskTitle = task.title else {return}
+            guard let taskID = task.taskID else {return}
             let documentData: [String: Any] = [
-                "Title" : title,
-                "ProjectID": projectID
+                "title" : taskTitle,
+                "projectID" : projectID,
+                "taskID" : taskID,
+                "taskPriority" : task.priority ?? false,
+                "taskDeadLine" : task.deadLine ?? "",
+                "taskCommentary" : task.commentary ?? ""
             ]
-            let documentRef = database.collection("Users").document(userID).collection("Projects").document(projectTitle).collection("Tasks").document(title)
+            let documentRef = database.collection("Users").document(userID).collection("Projects").document(projectTitle).collection("Tasks").document(taskTitle)
             
             documentRef.setData(documentData) { error in
                 if error != nil {

@@ -19,15 +19,15 @@ class DashBoardViewController: UIViewController {
     @IBOutlet var professionalCollectionView: UICollectionView!
     
     @IBAction func profilButton(_ sender: UIButton) {
-        coordinator?.profil()
+        coordinator?.profil(dashBoardPresenter.data)
     }
     
     @IBAction func addPersonalProject(_ sender: Any) {
-        coordinator?.projectCreation(isPersonal: true)
+        coordinator?.projectCreation(isPersonal: true, dashBoardPresenter.data)
     }
     
     @IBAction func addProfessionalProject(_ sender: Any) {
-        coordinator?.projectCreation(isPersonal: false)
+        coordinator?.projectCreation(isPersonal: false, dashBoardPresenter.data)
     }
     
     override func viewDidLoad() {

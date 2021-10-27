@@ -60,6 +60,13 @@
 		E99B8E0126959877005A9032 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B8E0026959877005A9032 /* Loader.swift */; };
 		E99B8E032695AA6B005A9032 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99B8E022695AA6B005A9032 /* SplashScreen.storyboard */; };
 		E9BDE18F25D3F9B7001E3000 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDE18E25D3F9B7001E3000 /* LoginPresenter.swift */; };
+		E9BDF87D270DAE3D009E620F /* ProjectReaderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF87C270DAE3D009E620F /* ProjectReaderPresenter.swift */; };
+		E9BDF87F27159B88009E620F /* TaskEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9BDF87E27159B88009E620F /* TaskEditor.storyboard */; };
+		E9BDF8822717333F009E620F /* TaskCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF8812717333F009E620F /* TaskCreationViewController.swift */; };
+		E9BDF884271737DD009E620F /* TaskCreation+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF883271737DD009E620F /* TaskCreation+UITextField.swift */; };
+		E9BDF8862717382F009E620F /* TaskCreation+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF8852717382F009E620F /* TaskCreation+UITextView.swift */; };
+		E9BDF888271738F1009E620F /* TaskCreationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF887271738F1009E620F /* TaskCreationPresenter.swift */; };
+		E9BDF88A27228B3B009E620F /* TaskCreationViewController+ProjectCreationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF88927228B3B009E620F /* TaskCreationViewController+ProjectCreationDelegate.swift */; };
 		E9C2214F25AE0F50001216F5 /* ProjectCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */; };
 		E9C2218625AE1345001216F5 /* ProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C2218525AE1345001216F5 /* ProjectCell.xib */; };
 		E9C2218C25AE185D001216F5 /* UICollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */; };
@@ -164,6 +171,13 @@
 		E99B8E0026959877005A9032 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		E99B8E022695AA6B005A9032 /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
 		E9BDE18E25D3F9B7001E3000 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		E9BDF87C270DAE3D009E620F /* ProjectReaderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectReaderPresenter.swift; sourceTree = "<group>"; };
+		E9BDF87E27159B88009E620F /* TaskEditor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskEditor.storyboard; sourceTree = "<group>"; };
+		E9BDF8812717333F009E620F /* TaskCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationViewController.swift; sourceTree = "<group>"; };
+		E9BDF883271737DD009E620F /* TaskCreation+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCreation+UITextField.swift"; sourceTree = "<group>"; };
+		E9BDF8852717382F009E620F /* TaskCreation+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCreation+UITextView.swift"; sourceTree = "<group>"; };
+		E9BDF887271738F1009E620F /* TaskCreationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationPresenter.swift; sourceTree = "<group>"; };
+		E9BDF88927228B3B009E620F /* TaskCreationViewController+ProjectCreationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCreationViewController+ProjectCreationDelegate.swift"; sourceTree = "<group>"; };
 		E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProjectCreation.storyboard; sourceTree = "<group>"; };
 		E9C2218525AE1345001216F5 /* ProjectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectCell.xib; sourceTree = "<group>"; };
 		E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewController.swift; sourceTree = "<group>"; };
@@ -541,6 +555,8 @@
 			children = (
 				E9EE217D268240F500D80414 /* DashBoardPresenter.swift */,
 				E99B8DFA269491EA005A9032 /* ProjectCreationPresenter.swift */,
+				E9BDF87C270DAE3D009E620F /* ProjectReaderPresenter.swift */,
+				E9BDF887271738F1009E620F /* TaskCreationPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -550,6 +566,7 @@
 			children = (
 				E99B8DEB268F0690005A9032 /* DashBoard */,
 				E99B8DEC268F06A5005A9032 /* ProjectCreation */,
+				E9BDF88027173320009E620F /* TaskCreation */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -560,6 +577,7 @@
 				E996B55B25A6351700638480 /* DashBoard.storyboard */,
 				E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */,
 				E90236BC26E0E7820070853F /* ProjectReading.storyboard */,
+				E9BDF87E27159B88009E620F /* TaskEditor.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -652,8 +670,8 @@
 		E99B8DEC268F06A5005A9032 /* ProjectCreation */ = {
 			isa = PBXGroup;
 			children = (
-				E99A03362704E36700C1BCCE /* ProjectReader */,
 				E99B8DF926949121005A9032 /* ProjectCreation */,
+				E99A03362704E36700C1BCCE /* ProjectReader */,
 			);
 			path = ProjectCreation;
 			sourceTree = "<group>";
@@ -667,6 +685,17 @@
 				E9FE31ED269FAFDC00DF2532 /* ProjectCreationViewController+UITableView.swift */,
 			);
 			path = ProjectCreation;
+			sourceTree = "<group>";
+		};
+		E9BDF88027173320009E620F /* TaskCreation */ = {
+			isa = PBXGroup;
+			children = (
+				E9BDF8812717333F009E620F /* TaskCreationViewController.swift */,
+				E9BDF88927228B3B009E620F /* TaskCreationViewController+ProjectCreationDelegate.swift */,
+				E9BDF883271737DD009E620F /* TaskCreation+UITextField.swift */,
+				E9BDF8852717382F009E620F /* TaskCreation+UITextView.swift */,
+			);
+			path = TaskCreation;
 			sourceTree = "<group>";
 		};
 		E9C2218425AE1320001216F5 /* Cell */ = {
@@ -837,6 +866,7 @@
 				E92C357B25A5EBAB001F2819 /* LaunchScreen.storyboard in Resources */,
 				E996B51A25A620E900638480 /* GoogleService-Info.plist in Resources */,
 				E951026D25B84CC40070A91C /* SignIn.storyboard in Resources */,
+				E9BDF87F27159B88009E620F /* TaskEditor.storyboard in Resources */,
 				E951026525B843E50070A91C /* MainLoginPage.storyboard in Resources */,
 				E9C2214F25AE0F50001216F5 /* ProjectCreation.storyboard in Resources */,
 				E9CB3AA725DD7A5C009980EC /* Assets.xcassets in Resources */,
@@ -977,6 +1007,7 @@
 				E9CB3AAC25DE77BA009980EC /* Constants.swift in Sources */,
 				E951028925B84DF90070A91C /* RegisterViewController.swift in Sources */,
 				E951022C25AF69A50070A91C /* ProjectCreationViewController.swift in Sources */,
+				E9BDF888271738F1009E620F /* TaskCreationPresenter.swift in Sources */,
 				E921576625C05F0000D42137 /* CoordinatorManager.swift in Sources */,
 				E97A877326DFB94000097527 /* UITextView.swift in Sources */,
 				E9553E5525E534F4006101D2 /* CustomTextField.swift in Sources */,
@@ -1004,11 +1035,14 @@
 				E92157A825C18B7600D42137 /* RegisterPresenter.swift in Sources */,
 				E99635BD2653E3AD00185327 /* ProfilViewController.swift in Sources */,
 				E9EC4F9E265675C500A1ED96 /* TabBarViewController.swift in Sources */,
+				E9BDF8862717382F009E620F /* TaskCreation+UITextView.swift in Sources */,
 				E9DC09FF25DE82B800667E8E /* CustomButton.swift in Sources */,
 				E90312EC25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift in Sources */,
 				E95AF91D2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift in Sources */,
 				E95102CC25B97F7A0070A91C /* StringExtension.swift in Sources */,
 				E95AF91B2679F21400BD1AF8 /* ProfiPresenter.swift in Sources */,
+				E9BDF884271737DD009E620F /* TaskCreation+UITextField.swift in Sources */,
+				E9BDF87D270DAE3D009E620F /* ProjectReaderPresenter.swift in Sources */,
 				E91DB50F2643FBBD0035889A /* CustomResponse.swift in Sources */,
 				E92C356F25A5EBA8001F2819 /* AppDelegate.swift in Sources */,
 				E951029225B8BA9F0070A91C /* Regex.swift in Sources */,
@@ -1019,7 +1053,9 @@
 				E9FE31EC269FAA8F00DF2532 /* CustomTaskTableViewCell.swift in Sources */,
 				E9EE2182268373BD00D80414 /* ProjectCreationViewController+UITextFieldDelegate.swift in Sources */,
 				E996B55725A6344A00638480 /* DashBoardViewController.swift in Sources */,
+				E9BDF88A27228B3B009E620F /* TaskCreationViewController+ProjectCreationDelegate.swift in Sources */,
 				E9EC4FA326583CE800A1ED96 /* window.swift in Sources */,
+				E9BDF8822717333F009E620F /* TaskCreationViewController.swift in Sources */,
 				E90312F725E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift in Sources */,
 				E94BA62026285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift in Sources */,
 				E9EE21792682275400D80414 /* CustomAppleSignIn.swift in Sources */,

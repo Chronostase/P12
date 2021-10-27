@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        ApplicationDelegate.shared.application( application, didFinishLaunchingWithOptions: launchOptions )
         // Override point for customization after application launch.
+        
         let navController = UINavigationController()
         coordinator = CoordinatorManager(navigationController: navController)
         coordinator?.start()

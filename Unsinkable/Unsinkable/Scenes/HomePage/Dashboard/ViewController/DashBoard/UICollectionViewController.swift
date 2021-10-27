@@ -82,6 +82,7 @@ extension DashBoardViewController: UICollectionViewDelegate {
                 return
             }
             let selectedProject = projects[indexPath.row]
+            
 //            dashBoardPresenter.selectedProject = selectedProject
             coordinator?.projectReader(project: selectedProject)
         }

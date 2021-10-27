@@ -8,13 +8,10 @@
 import Foundation
 import UIKit
 
-extension ProjectCreationViewController: UITableViewDelegate {
-    
-}
 
 extension ProjectCreationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let tasksList = self.projectCreationPresenter.localTasksList?.count else {
+        guard let tasksList = projectCreationPresenter.localTasksList?.count else {
             return 0
         }
         return tasksList
@@ -25,11 +22,25 @@ extension ProjectCreationViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        guard let task = self.projectCreationPresenter.localTasksList?[indexPath.row] else {
+        guard let task = projectCreationPresenter.localTasksList?[indexPath.row] else {
             return UITableViewCell()
         }
         
         cell.configure(task)
         return cell
     }
+    
 }
+
+
+extension ProjectCreationViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("before push taskEditor")
+        guard let task = projectCreationPresenter.localTasksList?[indexPath.row] else {
+            return
+        }
+
+        coordinator?.taskEditor(task: task, parentVC: self)
+    }
+}
+

@@ -19,7 +19,6 @@ struct UserDetails{
     var userId: String?
     var projects: [Project?]?
 }
-#warning("Store Download URL here ")
 struct Project {
     var title: String?
     var projectID: String?
@@ -32,5 +31,9 @@ struct Project {
 
 struct Task {
     var title: String?
-    var description: String?
+    var projectID: String?
+    var taskID: String?
+    var priority: Bool?
+    var deadLine: String?
+    var commentary: String? 
 }

@@ -22,7 +22,6 @@ class DashBoardPresenter {
     let projectService: ProjectLogic = ProjectService()
     var personalProject: [Project]?
     var professionalProject: [Project]?
-    var selectedProject: Project?
     
     func getCurrentDate() {
         guard let date = createCurrentDate() else {
@@ -68,15 +67,12 @@ class DashBoardPresenter {
             }
         }
     }
+    
     func getProjectList() {
 //        delegate?.showLoader()
         userAuthenticationService.fetchProjects(data) { [weak self] result in
             switch result {
             case .success(let projectList):
-//                guard var data = self?.data else {
-//                    return
-//                }
-//                data.user.projects = projectList
                 self?.data?.user.projects = projectList
                 self?.delegate?.fetchProjectSucceed(self?.data)
                 
@@ -86,5 +82,4 @@ class DashBoardPresenter {
             }
         }
     }
-
 }

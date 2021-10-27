@@ -14,18 +14,31 @@ protocol ProjectCreationPresenterDelegate: AnyObject {
     func showErrorMessage()
     func registerTaskFailure()
     func registerTaskSucceed(_ task: Task?)
+    func taskEdited(_ task: Task?)
+    func updateLocalTask(_ task: Task)
+}
+
+extension ProjectCreationPresenterDelegate {
+    func fetchProjectSucceed() {}
+    func registerProjectSucceed(_ project: Project?) {}
+    func registerProjectFailure() {}
+    func showErrorMessage() {}
+    func registerTaskFailure() {}
+    func registerTaskSucceed(_ task: Task?) {}
+    func taskEdited(_ task: Task?) {}
+    func updateLocalTask(_ task: Task) {}
 }
 
 class ProjectCreationPresenter {
+    
     
     weak var delegate: ProjectCreationPresenterDelegate?
     var data: CustomResponse?
     var project: Project?
     var localTasksList: [Task?]? = []
-    var task: Task?
+    var editedTask: Task?
     let projectCreationService: ProjectLogic = ProjectService()
     var isPersonal: Bool?
-    
     
     func checkTextFieldsAvailable(_ title: String?, _ description: String?) -> Bool {
         if title != "" && description != "" {
@@ -35,14 +48,14 @@ class ProjectCreationPresenter {
         }
     }
     
-    func checkTastTitle(_ taskTitle: String?) -> Bool {
+    func checkTaskTitle(_ taskTitle: String?) -> Bool {
         if taskTitle != "" {
             return true
         } else {
             return false
         }
     }
-    #warning("Create Project Here and pass image data to service")
+    
     func registerProject(_ title: String?,_ descitpion: String?,_ coverPicture: Data?) {
         if isFieldFill(title) {
             guard let userId = data?.user.userId else {
@@ -64,13 +77,13 @@ class ProjectCreationPresenter {
     }
     
     func registerTask(_ title: String?,_ project: Project?) {
+        #warning("may cause crash here ")
         if isFieldFill(title) {
-            createTaskObject(title)
             projectCreationService.registerTask(localTasksList, project) { (response, error) in
                 if error != nil {
                     self.delegate?.registerTaskFailure()
                 } else {
-                    self.delegate?.registerTaskSucceed(self.task)
+                    self.delegate?.registerTaskSucceed(self.createTaskObject(title))
                 } 
             }
         } else {
@@ -79,29 +92,21 @@ class ProjectCreationPresenter {
         }
     }
     
-    func fetchtaskList() {
-        //        projectCreationService.fetchTaskList(self.data) { documents, error in
-        //            if error != nil {
-        //                guard let error = error else {
-        //                    return
-        //                }
-        ////                self.delegate.fetchTaskFailed()
-        //            } else {
-        //                let taskList = documents.map { (queryDocumentsSnapshot) -> TaskList in
-        ////                    let data = queryDocumentsSnapshot.data
-        //                }
-        //            }
-        //        }
-    }
+   
     private func createProjectObject( withTitle: String?,_ description: String?,_ projectOwner: String?, tasks: [Task?]?) {
         let project = Project(title: withTitle, projectID: UUID().uuidString, description: description, ownerUserId: projectOwner, isPersonal: isPersonal, taskList: localTasksList)
         self.project = project
     }
     
-    private func createTaskObject(_ title: String?) {
-        let task = Task(title: title, description: "Some description")
-        self.task = task
+    #warning("Save firstTask with title projectPresenter.Task = task")
+    private func createTaskObject(_ title: String?, _ projectID: String? = nil, _ taskID: String? = nil, _ priority: Bool? = nil, _ deadLine: String? = nil, _ commentary: String? = nil) -> Task {
+        let task = Task(title: title, projectID: projectID, taskID: UUID().uuidString, priority: priority, deadLine: deadLine, commentary: commentary)
+        
+        #warning("May cause task creation bug")
+//        self.task = task
+        return task
     }
+    
     
     private func isFieldFill(_ field: String?) -> Bool {
         guard let field = field else {
@@ -116,8 +121,9 @@ class ProjectCreationPresenter {
     
     func updateProject(_ title: String?) {
         guard let title = title else {return}
-        createTaskObject(title)
-        self.localTasksList?.append(task)
+//        createTaskObject(title)
+//        self.localTasksList?.append(task)
+        localTasksList?.append(createTaskObject(title))
     }
     
     func updateLocalData(withProject: Project?) {
@@ -128,9 +134,11 @@ class ProjectCreationPresenter {
     }
     
     func updateLocalTaskData(withTask: Task?) {
+        
         guard let task = withTask else {
             return
         }
-        self.localTasksList?.append(task)
+        localTasksList?.append(task)
     }
+
 }

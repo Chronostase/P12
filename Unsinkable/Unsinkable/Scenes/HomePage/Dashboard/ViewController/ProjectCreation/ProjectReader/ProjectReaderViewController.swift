@@ -21,13 +21,12 @@ class ProjectReaderViewController: UIViewController {
     @IBOutlet var taskTableView: UITableView!
     @IBOutlet var showMoreButton: UIButton!
     
-    lazy var dashBoardPresenter = {
-        return DashBoardPresenter()
+    lazy var projectReaderPresenter = {
+        return ProjectReaderPresenter()
     }()
     
     override func viewDidLoad() {
         setup()
-        configureVC()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +38,21 @@ class ProjectReaderViewController: UIViewController {
     
     func setup() {
         setDelegate()
+        registerCell()
+        configureViewController()
+        addRightNavigationBarButton()
+    }
+    
+    private func addRightNavigationBarButton() {
+        guard let image = UIImage(systemName: "ellipsis") else {
+            return
+        }
+        let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(rightBarbuttonTapped))
+        self.navigationItem.rightBarButtonItem = button
+    }
+    
+    @objc private func rightBarbuttonTapped() {
+        
     }
     
     private func setDelegate() {
@@ -46,37 +60,45 @@ class ProjectReaderViewController: UIViewController {
         self.taskTableView.delegate = self 
     }
     
-    func configureVC() {
-        guard let selectedProject = dashBoardPresenter.selectedProject else {return}
-        if selectedProject.title != nil {
-            self.projectName.text = selectedProject.title
+    private func configureViewController() {
+        guard let project = projectReaderPresenter.selectedProject else {
+            return
         }
         
-        if selectedProject.downloadUrl != nil {
-            guard let downloadUrl = selectedProject.downloadUrl else {return}
+        if projectReaderPresenter.checkIfTitleIsNil() {
+            self.projectName.isHidden = true
+        } else {
+            self.projectName.isHidden = false
+            self.projectName.text = project.title
+        }
+        
+        if projectReaderPresenter.checkIfCoverPicture() {
+            guard let downloadUrl = project.downloadUrl else {
+                self.coverImage.image = UIImage(named: "cover")
+                return
+            }
             let url = URL(string: downloadUrl)
             self.coverImage.kf.setImage(with: url, placeholder: UIImage(named: "cover"), options: nil, completionHandler: nil)
-        } else {
-            self.coverImage.image = UIImage(named: "cover")
         }
         
-        if selectedProject.description != nil {
-            self.descriptionContentView.isHidden = false
-            self.descriptionTextView.text = selectedProject.description
-        } else {
+        if projectReaderPresenter.checkIfDescriptionIsEmpty() {
             self.descriptionContentView.isHidden = true
+        } else {
+            self.descriptionContentView.isHidden = false
+            self.descriptionTextView.text = project.description
         }
         
-        #warning("Is possible that taskList != nil but [] in this case change condition")
-        if selectedProject.taskList != nil {
-            self.taskTableView.isHidden = false
-        } else {
+        if projectReaderPresenter.checkIfTaskListIsEmpty() {
             self.taskTableView.isHidden = true
+        } else {
+            self.taskTableView.isHidden = false
         }
-//        if tasks != nil {
-//            //RegisterCell
-//        } else {
-//            self.taskTableView.isHidden = true
-//        }
+        
+        self.guestContentView.isHidden = true
+    }
+    
+    private func registerCell() {
+        let nib = UINib(nibName: "TaskCell", bundle: nil)
+        taskTableView.register(nib, forCellReuseIdentifier: "TaskCell")
     }
 }
