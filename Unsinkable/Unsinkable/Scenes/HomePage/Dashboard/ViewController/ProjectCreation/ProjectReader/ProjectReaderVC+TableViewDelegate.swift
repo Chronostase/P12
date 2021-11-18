@@ -45,6 +45,6 @@ extension ProjectReaderViewController: UITableViewDelegate {
             return
         }
         
-        self.coordinator?.taskEditor(task: selectedTask)
+        self.coordinator?.taskEditor(task: selectedTask, true)
     }
 }

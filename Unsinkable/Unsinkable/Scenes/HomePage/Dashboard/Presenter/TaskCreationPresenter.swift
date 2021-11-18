@@ -16,10 +16,9 @@ class TaskCreationPresenter {
     var task: Task?
     var isReader: Bool?
     
-    func updateTask(with title: String?, location: String?, priority: Bool?, commentary: String?, deadLine: String?) {
+    func updateTask(with title: String?, location: String?, priority: Bool?, commentary: String?, deadLine: Date?) {
         
-        let task = Task(title: title, projectID: task?.projectID, taskID: task?.taskID, priority: priority, deadLine: deadLine, commentary: commentary)
-        
+        let task = Task(title: title, projectID: task?.projectID, taskID: task?.taskID, priority: priority, deadLine: deadLine, commentary: commentary, location: location)
         delegate?.updateLocalTask(task)
     }
     
@@ -28,5 +27,19 @@ class TaskCreationPresenter {
             return false
         }
         return boolean
+    }
+    
+    func formatToDate(from date: String?) -> Date?  {
+        guard let stringDate = date else {return nil}
+        print("StringDate \(stringDate)")
+        let isoformatter = ISO8601DateFormatter()
+        isoformatter.timeZone = .current
+        if let date = isoformatter.date(from: stringDate) {
+            print("Success date \(date)")
+            return date
+        } else {
+            print("Error with date")
+            return nil
+        }
     }
 }

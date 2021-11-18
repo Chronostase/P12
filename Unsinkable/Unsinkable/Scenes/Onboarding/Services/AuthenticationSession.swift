@@ -121,9 +121,12 @@ class AuthenticationSession {
                                 let projectID = data["projectID"] as? String ?? ""
                                 let taskID = data["taskID"] as? String ?? ""
                                 let taskPriority = data["taskPriority"] as? Bool ?? nil
-                                let taskDeadLine = data["taskDeadLine"] as? String ?? ""
+                                let taskDeadLine = data["taskDeadLine"] as? Timestamp
                                 let taskCommentary = data["taskCommentary"] as? String ?? ""
-                                let task = Task(title: taskTitle, projectID: projectID, taskID: taskID, priority: taskPriority, deadLine: taskDeadLine, commentary: taskCommentary)
+                                let taskLocation = data["location"] as? String ?? ""
+                                
+                                let date = taskDeadLine?.dateValue()
+                                let task = Task(title: taskTitle, projectID: projectID, taskID: taskID, priority: taskPriority, deadLine: date, commentary: taskCommentary, location: taskLocation)
                                 taskList.append(task)
                                 print("TaskListCountFetch \(taskList.count)")
                             }
@@ -158,9 +161,12 @@ class AuthenticationSession {
                     let projectID = data["projectID"] as? String ?? ""
                     let taskID = data["taskID"] as? String ?? ""
                     let taskPriority = data["taskPriority"] as? Bool ?? nil
-                    let taskDeadLine = data["taskDeadLine"] as? String ?? ""
+                    let taskDeadLine = data["taskDeadLine"] as? Timestamp
                     let taskCommentary = data["taskCommentary"] as? String ?? ""
-                    let task = Task(title: taskTitle, projectID: projectID, taskID: taskID, priority: taskPriority, deadLine: taskDeadLine, commentary: taskCommentary)
+                    let location = data["location"] as? String ?? ""
+                    
+                    let date = taskDeadLine?.dateValue()
+                    let task = Task(title: taskTitle, projectID: projectID, taskID: taskID, priority: taskPriority, deadLine: date, commentary: taskCommentary, location: location)
                     taskList.append(task)
                 }
                 completion(taskList, nil)

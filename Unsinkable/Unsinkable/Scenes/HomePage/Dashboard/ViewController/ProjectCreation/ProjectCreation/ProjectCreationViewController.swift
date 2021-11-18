@@ -46,7 +46,7 @@ class ProjectCreationViewController: UIViewController {
         setDelegateAndDataSource()
         addTextViewDoneButton()
         setRightButtonInTextField()
-        addRightNavigationBarButton()
+//        addRightNavigationBarButton()
         hideMoreDetail()
     }
     
@@ -125,48 +125,13 @@ class ProjectCreationViewController: UIViewController {
         }
     }
     
-    private func addRightNavigationBarButton() {
-        guard let image = UIImage(systemName: "ellipsis") else {
-            return 
-        }
-        let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(moreOptionTapped))
-        self.navigationItem.rightBarButtonItem = button
-    }
-    
-    @objc func moreOptionTapped() {
-        showMoreOptions()
-    }
-    
-    private func showMoreOptions() {
-        let actionSheet = UIAlertController(title: "More Options", message: nil, preferredStyle: .actionSheet)
-        let coverPicture = UIAlertAction(title: "Choose a cover", style: .default) { (action) in
-            
-            self.imagePicker()
-        }
-        
-        let deadLine = UIAlertAction(title: "DeadLine", style: .default) { (action) in
-            
-            print("DeadLine Option Tapped")
-        }
-        
-        let addUsers = UIAlertAction(title: "Add User To Project", style: .default) { (action) in
-            
-            print("Add Users Option Tapped")
-        }
-        
-        let deleteProject = UIAlertAction(title: "Delete Project", style: .destructive) { (action) in
-            
-            print("Delete Project Option Tapped")
-        }
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        let actionArry = [coverPicture, deadLine, addUsers, deleteProject, cancel]
-        for action in actionArry {
-            actionSheet.addAction(action)
-        }
-        present(actionSheet, animated: true, completion: nil)
-    }
+//    private func addRightNavigationBarButton() {
+//        guard let image = UIImage(systemName: "ellipsis") else {
+//            return
+//        }
+//        let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(moreOptionTapped))
+//        self.navigationItem.rightBarButtonItem = button
+//    }
     
     private func imagePicker() {
         let imagePicker = UIImagePickerController()
@@ -192,7 +157,6 @@ class ProjectCreationViewController: UIViewController {
 extension ProjectCreationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        picker.popViewController(animated: true)
         
         guard let image = info[.originalImage] as? UIImage else {
             return

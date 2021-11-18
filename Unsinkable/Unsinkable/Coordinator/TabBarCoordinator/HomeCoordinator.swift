@@ -82,8 +82,7 @@ class HomeCoordinator: Coordinator {
         navigationController.pushViewController(projectReaderVC, animated: true)
     }
     
-    func taskEditor(task: Task, parentVC: ProjectCreationViewController? = nil, _ isReader: Bool = false) {
-        #warning("See to pass ProjectCreationDelegate in param ")
+    func taskEditor(task: Task, parentVC: ProjectCreationPresenterDelegate? = nil, _ isReader: Bool = false) {
         let storyboard = UIStoryboard(name: "TaskEditor", bundle: Bundle.main)
         guard let taskEditorVC = storyboard.instantiateInitialViewController() as? TaskCreationViewController else {
             return
@@ -91,6 +90,7 @@ class HomeCoordinator: Coordinator {
         taskEditorVC.coordinator = self
         taskEditorVC.taskCreationPresenter.delegate = parentVC
         taskEditorVC.taskCreationPresenter.task = task
+        taskEditorVC.taskCreationPresenter.isReader = isReader
         navigationController.pushViewController(taskEditorVC, animated: true)
     }
     

@@ -47,12 +47,28 @@ class ProjectReaderViewController: UIViewController {
         guard let image = UIImage(systemName: "ellipsis") else {
             return
         }
-        let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(rightBarbuttonTapped))
+        let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(moreOptionTapped))
         self.navigationItem.rightBarButtonItem = button
     }
     
-    @objc private func rightBarbuttonTapped() {
+    @objc func moreOptionTapped() {
+        showMoreOptions()
+    }
+    
+    private func showMoreOptions() {
+        let actionSheet = UIAlertController(title: "More Options", message: nil, preferredStyle: .actionSheet)
+        let deleteProject = UIAlertAction(title: "Delete Project", style: .destructive) { (action) in
+            self.setConfirmationDialog()
+            print("Delete Project Option Tapped")
+        }
         
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let actionArry = [deleteProject, cancel]
+        for action in actionArry {
+            actionSheet.addAction(action)
+        }
+        present(actionSheet, animated: true, completion: nil)
     }
     
     private func setDelegate() {
@@ -100,5 +116,21 @@ class ProjectReaderViewController: UIViewController {
     private func registerCell() {
         let nib = UINib(nibName: "TaskCell", bundle: nil)
         taskTableView.register(nib, forCellReuseIdentifier: "TaskCell")
+    }
+    
+    private func setConfirmationDialog() {
+        let confirmationDialog = UIAlertController(title: "Are you want to delete this item", message: nil, preferredStyle: .alert)
+        let delete = UIAlertAction(title: "Yes", style: .destructive) { action in
+            self.projectReaderPresenter.deleteProject()
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let actionArray = [delete, cancel]
+        
+        for action in actionArray {
+            confirmationDialog.addAction(action)
+        }
+        present(confirmationDialog, animated: true, completion: nil)
     }
 }

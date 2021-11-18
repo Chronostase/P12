@@ -8,11 +8,14 @@
 import Foundation
 
 protocol ProjectReaderDelegate: AnyObject {
-    func setupViewController()
+    func deleteProjectSucceed()
+    func deleteProjectFailure()
 }
 
 class ProjectReaderPresenter {
     weak var delegate: ProjectReaderDelegate?
+    
+    let projectService: ProjectLogic = ProjectService()
     var selectedProject: Project?
     
     func checkIfTitleIsNil() -> Bool {
@@ -43,6 +46,16 @@ class ProjectReaderPresenter {
             return true
         } else {
             return false 
+        }
+    }
+    
+    func deleteProject() {
+        projectService.deleteProject(selectedProject) { error in
+            if error != nil {
+                self.delegate?.deleteProjectFailure()
+            } else {
+                self.delegate?.deleteProjectSucceed()
+            }
         }
     }
     

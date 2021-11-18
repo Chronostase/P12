@@ -34,6 +34,7 @@ struct Task {
     var projectID: String?
     var taskID: String?
     var priority: Bool?
-    var deadLine: String?
-    var commentary: String? 
+    var deadLine: Date?
+    var commentary: String?
+    var location: String?
 }

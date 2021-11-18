@@ -99,8 +99,8 @@ class ProjectCreationPresenter {
     }
     
     #warning("Save firstTask with title projectPresenter.Task = task")
-    private func createTaskObject(_ title: String?, _ projectID: String? = nil, _ taskID: String? = nil, _ priority: Bool? = nil, _ deadLine: String? = nil, _ commentary: String? = nil) -> Task {
-        let task = Task(title: title, projectID: projectID, taskID: UUID().uuidString, priority: priority, deadLine: deadLine, commentary: commentary)
+    private func createTaskObject(_ title: String?, _ projectID: String? = nil, _ taskID: String? = nil, _ priority: Bool? = nil, _ deadLine: Date? = nil, _ commentary: String? = nil, _ location: String? = nil) -> Task {
+        let task = Task(title: title, projectID: projectID, taskID: UUID().uuidString, priority: priority, deadLine: deadLine, commentary: commentary, location: location)
         
         #warning("May cause task creation bug")
 //        self.task = task

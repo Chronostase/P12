@@ -13,6 +13,8 @@ protocol ProjectLogic {
     
     func registerTask(_ tasks: [Task?]?,_ project: Project?, completion: @escaping (CustomResponse?, Error?) -> Void)
     
+    func deleteProject(_ project: Project?, completion: @escaping (Error?) -> Void)
+    
 }
 
 class ProjectService: ProjectLogic {
@@ -41,6 +43,18 @@ class ProjectService: ProjectLogic {
             } else {
                 completion(nil, error)
             }
+        }
+    }
+    
+    func deleteProject(_ project: Project?, completion: @escaping (Error?) -> Void) {
+        self.session.deleteUserProject(project) { (error) in
+            if error != nil {
+                completion(error)
+            } else {
+                //Succeed
+                completion(nil)
+            }
+            
         }
     }
 }
