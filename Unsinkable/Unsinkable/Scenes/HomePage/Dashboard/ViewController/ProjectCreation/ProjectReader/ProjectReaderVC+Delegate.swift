@@ -10,12 +10,13 @@ import UIKit
 
 extension ProjectReaderViewController: ProjectReaderDelegate {
     func deleteProjectFailure() {
-        print("Delete project Failed")
+        #warning("Show error message, can't proceed to delete because: Error.code")
     }
     
     
     
     func deleteProjectSucceed() {
+        #warning("Don't Forget to delete project in local datasource + Reload collection")
         print("delete project succeed")
         self.navigationController?.popViewController(animated: true)
     }

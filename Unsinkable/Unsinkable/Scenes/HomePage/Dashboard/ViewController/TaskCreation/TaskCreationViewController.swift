@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-#warning("Manage reader / editor display")
 class TaskCreationViewController: UIViewController {
     
     weak var coordinator: HomeCoordinator?

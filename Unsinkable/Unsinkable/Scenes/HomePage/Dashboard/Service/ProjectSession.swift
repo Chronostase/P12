@@ -29,7 +29,6 @@ class ProjectSession {
         let dataBase = Firestore.firestore()
         let imageID = UUID().uuid
         let storageRef = Storage.storage().reference().child("ProjectsImages/\(imageID)")
-        #warning("Use image Data here to put it in storage to get metadata/downloadURl")
         #warning("Manage the fact that user can change several time image so delete older")
         if let coverPictureData = coverPicture {
             storageRef.putData(coverPictureData, metadata: nil) { _ , error in
@@ -118,49 +117,23 @@ class ProjectSession {
         }
     }
     
-//    func deleteUserProject(_ project: Project?, completion: @escaping (Error?) -> Void) {
-//        guard let project = project else {return}
-//        guard let projectTitle = project.title else {return}
-//        guard let userId = project.ownerUserId else {return}
-//        guard let taskList = project.taskList else {return}
-//        let database = Firestore.firestore()
-//        let projectRef = database.collection("Users").document(userId).collection("Projects").document(projectTitle)
-//
-//        if taskList.count > 0 {
-//            for task in taskList {
-//                guard let taskTitle = task?.title else {return}
-//                let taskRef = projectRef.collection("Tasks").document(taskTitle)
-//                taskRef.delete() { error in
-//                    if error != nil {
-//                        completion(error)
-//                    } else {
-//                        completion(error)
-//                    }
-//                }
-//            }
-//
-//        } else {
-//            projectRef.delete() { error in
-//                if error != nil {
-//                    completion(error)
-//                } else {
-//                    //Succeed
-//                    completion(nil)
-//                }
-//
-//            }
-//        }
-//    }
-    
     func deleteUserProject(_ project: Project?, completion: @escaping (Error?) -> Void) {
         guard let project = project else {return}
         guard let projectTitle = project.title else {return}
         guard let userId = project.ownerUserId else {return}
-        
+        guard let token = Keys.value(for: Constants.Token.cloudToken) else {
+            return 
+        }
+                
         let database = Firestore.firestore()
         let projectRef = database.collection("Users").document(userId).collection("Projects").document(projectTitle)
         let deleteFn = functions.httpsCallable("recursiveDelete")
-        deleteFn.call(projectRef.path) { (result, error)  in
+        let data: [String: Any] = [
+            "path": projectRef.path,
+            "token": token
+        ]
+
+        deleteFn.call(data) { (result, error)  in
             if let error = error as NSError? {
                 if error.domain == FunctionsErrorDomain {
                     let code = FunctionsErrorCode(rawValue: error.code)
@@ -176,4 +149,5 @@ class ProjectSession {
             }
         }
     }
+    #warning("To delete task it's needed to get exact task as parameter, allow delete only to Admin")
 }

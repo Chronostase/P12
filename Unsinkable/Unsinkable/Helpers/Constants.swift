@@ -16,6 +16,10 @@ enum Constants {
         static let appleLogin = "Login with Apple"
     }
     
+    enum Token {
+        static let cloudToken = "cloudToken"
+    }
+    
     enum Error {
         static let passwordError = "Please make sure your password is at least 8 characters, contains a special character and a number."
         static let fillField = "Please fill in all fields."
