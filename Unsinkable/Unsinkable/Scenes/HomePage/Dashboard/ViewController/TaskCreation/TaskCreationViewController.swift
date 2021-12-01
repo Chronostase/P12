@@ -19,13 +19,15 @@ class TaskCreationViewController: UIViewController {
     @IBOutlet var prioritySwitch: UISwitch!
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var commentaryTextView: UITextView!
+    @IBOutlet var deleteTaskButton: UIButton!
     
     @IBAction func prioritySwitch(_ sender: UISwitch) {
     }
     @IBAction func datePicker(_ sender: UIDatePicker) {
     }
-    
-    
+    @IBAction func deleteTaskButton(_ sender: UIButton) {
+        setConfirmationDialog()
+    }
     
     override func viewDidLoad() {
         setupViewController()
@@ -34,15 +36,13 @@ class TaskCreationViewController: UIViewController {
     private func setupViewController() {
         setupTaskEditor()
         if taskCreationPresenter.isTaskReader() {
-            //Case is reader == True
-            //Display task Data
-            //Disable editing
+            self.taskCreationPresenter.delegate = self
+            //Task reader
             self.displayTaskData()
+            self.setDeleteTaskButon()
             self.canUserEdit(autorization: false)
         } else {
-            //Case is reader == False
-            //Display task Creation
-            //Allow Editing
+            //Task Creation
             self.canUserEdit(autorization: true)
         }
     }
@@ -51,6 +51,14 @@ class TaskCreationViewController: UIViewController {
         setDelegate()
         displayDefaultTaskData()
         setNavigationBar()
+    }
+    
+    private func setDeleteTaskButon() {
+        if taskCreationPresenter.isDeleteTaskNeeded() {
+            self.deleteTaskButton.isHidden = false
+        } else {
+            self.deleteTaskButton.isHidden = true
+        }
     }
     
     private func setDelegate() {
@@ -143,6 +151,22 @@ class TaskCreationViewController: UIViewController {
         } else {
             self.commentaryTextView.isHidden = true 
         }
+    }
+    
+    private func setConfirmationDialog() {
+        let confirmationDialog = UIAlertController(title: "Are you want to delete this item", message: nil, preferredStyle: .alert)
+        let delete = UIAlertAction(title: "Yes", style: .destructive) { action in
+            self.taskCreationPresenter.deleteTask()
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let actionArray = [delete, cancel]
+        
+        for action in actionArray {
+            confirmationDialog.addAction(action)
+        }
+        present(confirmationDialog, animated: true, completion: nil)
     }
 }
 

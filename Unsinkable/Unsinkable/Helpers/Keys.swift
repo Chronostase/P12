@@ -10,7 +10,7 @@ import Foundation
 class Keys {
     
     static func value(for key: String) -> String? {
-        guard let keysPlist = Bundle.main.path(forResource: "keys",ofType: "plist"),
+        guard let keysPlist = Bundle.main.path(forResource: "Keys",ofType: "plist"),
             let keys = NSDictionary(contentsOfFile: keysPlist),
             let key = keys[key] as? String else {
                 return nil

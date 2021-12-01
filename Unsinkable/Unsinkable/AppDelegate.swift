@@ -17,9 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         
-//        ApplicationDelegate.shared.application( application, didFinishLaunchingWithOptions: launchOptions )
-        // Override point for customization after application launch.
-        
         let navController = UINavigationController()
         coordinator = CoordinatorManager(navigationController: navController)
         coordinator?.start()

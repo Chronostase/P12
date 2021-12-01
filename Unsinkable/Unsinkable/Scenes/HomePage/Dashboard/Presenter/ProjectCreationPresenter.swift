@@ -16,6 +16,8 @@ protocol ProjectCreationPresenterDelegate: AnyObject {
     func registerTaskSucceed(_ task: Task?)
     func taskEdited(_ task: Task?)
     func updateLocalTask(_ task: Task)
+    func deleteTaskSucceed()
+    func deleteTaskFailure()
 }
 
 extension ProjectCreationPresenterDelegate {

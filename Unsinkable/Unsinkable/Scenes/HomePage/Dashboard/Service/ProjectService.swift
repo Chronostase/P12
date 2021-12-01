@@ -15,6 +15,9 @@ protocol ProjectLogic {
     
     func deleteProject(_ project: Project?, completion: @escaping (Error?) -> Void)
     
+    func deleteTask(_ project: Project?, _ task: Task?, completion: @escaping (Error?) -> Void)
+    
+    func deleteAllUserRef(_ user: CustomResponse?, completion: @escaping (Error?) -> Void)
 }
 
 class ProjectService: ProjectLogic {
@@ -55,6 +58,27 @@ class ProjectService: ProjectLogic {
                 completion(nil)
             }
             
+        }
+    }
+    
+    func deleteTask(_ project: Project?,_ task: Task?, completion: @escaping (Error?) -> Void) {
+        self.session.deleteUserTask(project, task) { (error) in
+            if error != nil {
+                completion(error)
+            } else {
+                completion(nil)
+            }
+            
+        }
+    }
+    
+    func deleteAllUserRef(_ user: CustomResponse?, completion: @escaping (Error?) -> Void) {
+        self.session.deleteAllUserRef(user) { error in
+            if error != nil {
+                completion(error)
+            } else {
+                completion(nil)
+            }
         }
     }
 }

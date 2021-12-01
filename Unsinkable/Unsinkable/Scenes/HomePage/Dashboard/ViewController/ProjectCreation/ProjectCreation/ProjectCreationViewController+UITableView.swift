@@ -40,7 +40,7 @@ extension ProjectCreationViewController: UITableViewDelegate {
             return
         }
 
-        coordinator?.taskEditor(task: task, parentVC: self)
+        coordinator?.taskEditor(task: task, parentCreationVC: self)
     }
 }
 

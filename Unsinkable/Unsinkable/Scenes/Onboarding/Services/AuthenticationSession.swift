@@ -12,7 +12,6 @@ class AuthenticationSession {
     
     func signInRequest(_ email: String, _ password: String, completion: @escaping (CustomResponse?, Error?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (dataResponse, error) in
-            
             guard let user = dataResponse?.user else {
                 
                 return completion(nil,error)
@@ -32,6 +31,37 @@ class AuthenticationSession {
             }
             let customUser = CustomResponse(user: UserDetails(email: user.email, userId: user.uid))
             completion(customUser,error)
+        }
+    }
+    
+//    func deleteUser(completion: @escaping (Error?) -> Void) {
+//        guard let currentUser = Auth.auth().currentUser else {return}
+//        currentUser.delete { error in
+//            if error != nil {
+//                guard let error = error else {return}
+//                completion(error)
+//            } else {
+//                completion(nil)
+//            }
+//        }
+//    }
+    
+    func deleteUser(completion : @escaping (Error?) -> Void) {
+        guard let currentUser = Auth.auth().currentUser else {return}
+        currentUser.reload { error in
+            if error != nil {
+                guard let error = error else {return}
+                completion(error)
+            } else {
+                currentUser.delete { error in
+                    if error != nil {
+                        guard let error = error else {return}
+                        completion(error)
+                    } else {
+                        completion(nil)
+                    }
+                }
+            }
         }
     }
     

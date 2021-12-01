@@ -32,26 +32,23 @@ class ProfilViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createLogOutButton()
-        setDelegate()
-        navigationController?.navigationBar.isHidden = false
-    }
-    private func createLogOutButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "power"), style: .plain, target: self, action: #selector(logout))
+        setupVC()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setUserInfo()
-//        profilButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 140, bottom: 0, right: 140)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
     
-    @objc private func logout() {
-        profilPresenter.logOut()
+    private func setupVC() {
+        errorLabel.isHidden = true
+        addNavigationBarButton()
+        setDelegate()
+        navigationController?.navigationBar.isHidden = false
     }
     
     private func setDelegate() {
@@ -77,5 +74,42 @@ class ProfilViewController: UIViewController, UITextFieldDelegate {
     
     func showError(_ message: String) {
         print(message)
+    }
+    
+    private func addNavigationBarButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "power"), style: .plain, target: self, action: #selector(showOptions))
+    }
+    
+    @objc private func showOptions() {
+        let actionSheet = UIAlertController(title: "More Options", message: nil, preferredStyle: .actionSheet)
+        let logout = UIAlertAction(title: "Logout", style: .default) { action in
+            self.profilPresenter.logOut()
+        }
+        let deleteUser = UIAlertAction(title: "Delete User account", style: .destructive) { (action) in
+            self.setConfirmationDialog()
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let actionArry = [logout, deleteUser, cancel]
+        for action in actionArry {
+            actionSheet.addAction(action)
+        }
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    private func setConfirmationDialog() {
+        let confirmationDialog = UIAlertController(title: "Are you want to delete this account", message: nil, preferredStyle: .alert)
+        let delete = UIAlertAction(title: "Yes", style: .destructive) { action in
+            self.profilPresenter.deleteAllUserRef()
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let actionArray = [delete, cancel]
+        
+        for action in actionArray {
+            confirmationDialog.addAction(action)
+        }
+        present(confirmationDialog, animated: true, completion: nil)
     }
 }

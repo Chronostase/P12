@@ -37,6 +37,7 @@ extension ProjectReaderViewController: UITableViewDataSource {
 
 extension ProjectReaderViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let project = self.projectReaderPresenter.selectedProject, let userData = self.projectReaderPresenter.userData else {return}
         guard let taskList = self.projectReaderPresenter.selectedProject?.taskList else {
             return
         }
@@ -44,7 +45,6 @@ extension ProjectReaderViewController: UITableViewDelegate {
         guard let selectedTask = taskList[indexPath.row] else {
             return
         }
-        
-        self.coordinator?.taskEditor(task: selectedTask, true)
+        self.coordinator?.taskEditor(task: selectedTask,project, true, userData)
     }
 }

@@ -7,176 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "08556911-2E48-41DE-99EA-2F78032D88F6"
+            uuid = "5100C240-5AF8-4FE2-AD3A-126F03F96BC9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Unsinkable/Scenes/HomePage/Dashboard/ViewController/ProjectCreation/ProjectCreation/ProjectCreationViewController+Delegate.swift"
+            filePath = "Unsinkable/Scenes/Onboarding/Services/AuthenticationSession.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "updateLocalTask(_:)"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "deleteUser(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0B3D9293-16F4-4F02-8D6F-74819F126D13"
+            uuid = "04A181CF-C437-4A2E-A38D-749E8F743C23"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Unsinkable/Scenes/HomePage/Dashboard/ViewController/ProjectCreation/ProjectCreation/ProjectCreationViewController+Delegate.swift"
+            filePath = "Unsinkable/Scenes/Onboarding/Services/AuthenticationSession.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "updateLocalTask(_:)"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "deleteUser(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7DF38AC2-871A-4DFD-96B1-00C2DBFBA6B5"
+            uuid = "16FFC69A-5EF5-4F8C-B9FC-B90EA0519DBF"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Unsinkable/Scenes/HomePage/Dashboard/ViewController/ProjectCreation/ProjectCreation/ProjectCreationViewController+Delegate.swift"
+            filePath = "Unsinkable/Scenes/Onboarding/Services/AuthenticationSession.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "13"
-            endingLineNumber = "13"
-            landmarkName = "updateLocalTask(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "E0036FF8-5D17-47CF-9A71-C7708360903A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Unsinkable/Scenes/HomePage/Dashboard/ViewController/ProjectCreation/ProjectCreation/ProjectCreationViewController+Delegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "updateLocalTask(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "74199F82-8DEA-43E7-8A02-5DD06E103011"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Unsinkable/Scenes/HomePage/Dashboard/ViewController/ProjectCreation/ProjectCreation/ProjectCreationViewController+Delegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "updateLocalTask(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "31A8211B-9E77-460A-B771-E1C4C1DADFA2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Unsinkable/Scenes/HomePage/Dashboard/ViewController/ProjectCreation/ProjectCreation/ProjectCreationViewController+Delegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
-            landmarkName = "updateLocalTask(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FFA65AC8-E3C9-413B-A0BC-0FB279BB4702"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Unsinkable/Scenes/HomePage/Dashboard/ViewController/ProjectCreation/ProjectReader/ProjectReaderVC+Delegate.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "deleteProjectSucceed()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "02335F15-E9DE-4C01-9895-0983C4AE02DE"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Unsinkable/Scenes/HomePage/Dashboard/Presenter/ProjectReaderPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "deleteProject()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "93653BE7-846C-4964-BFFA-8BB929BDC57D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Unsinkable/Scenes/HomePage/Dashboard/Service/ProjectSession.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "deleteUserProject(_:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A9CA5438-8645-434C-8667-39DB09FD9EED"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Unsinkable/Scenes/HomePage/Dashboard/Service/ProjectSession.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "deleteUserProject(_:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9A971A00-7259-4EDB-9FDC-EAF11622EF7B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Unsinkable/Scenes/HomePage/Dashboard/Presenter/ProjectReaderPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "deleteProject()"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "deleteUser(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

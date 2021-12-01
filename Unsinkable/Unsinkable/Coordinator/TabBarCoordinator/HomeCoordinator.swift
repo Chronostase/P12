@@ -72,25 +72,28 @@ class HomeCoordinator: Coordinator {
         navigationController.pushViewController(projectVC, animated: true)
     }
     
-    func projectReader(project: Project) {
+    func projectReader(project: Project,_ userData: CustomResponse) {
         let storyboard = UIStoryboard(name: "ProjectReading", bundle: Bundle.main)
         guard let projectReaderVC = storyboard.instantiateInitialViewController() as? ProjectReaderViewController else {
             return
         }
         projectReaderVC.projectReaderPresenter.selectedProject = project
+        projectReaderVC.projectReaderPresenter.userData = userData
         projectReaderVC.coordinator = self
         navigationController.pushViewController(projectReaderVC, animated: true)
     }
     
-    func taskEditor(task: Task, parentVC: ProjectCreationPresenterDelegate? = nil, _ isReader: Bool = false) {
+    func taskEditor(task: Task, _ project: Project? = nil, parentCreationVC: ProjectCreationPresenterDelegate? = nil, _ isReader: Bool = false,_ userData: CustomResponse? = nil) {
         let storyboard = UIStoryboard(name: "TaskEditor", bundle: Bundle.main)
         guard let taskEditorVC = storyboard.instantiateInitialViewController() as? TaskCreationViewController else {
             return
         }
         taskEditorVC.coordinator = self
-        taskEditorVC.taskCreationPresenter.delegate = parentVC
-        taskEditorVC.taskCreationPresenter.task = task
         taskEditorVC.taskCreationPresenter.isReader = isReader
+        taskEditorVC.taskCreationPresenter.delegate = parentCreationVC
+        taskEditorVC.taskCreationPresenter.task = task
+        taskEditorVC.taskCreationPresenter.project = project
+        taskEditorVC.taskCreationPresenter.userData = userData
         navigationController.pushViewController(taskEditorVC, animated: true)
     }
     

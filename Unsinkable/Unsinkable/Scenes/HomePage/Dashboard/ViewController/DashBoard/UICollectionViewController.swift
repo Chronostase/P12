@@ -71,20 +71,20 @@ extension DashBoardViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == personalCollectionView {
-            guard let projects = dashBoardPresenter.personalProject else {
+            guard let projects = dashBoardPresenter.personalProject, let userData = dashBoardPresenter.data else {
                 return
             }
             let selectedProject = projects[indexPath.row]
 //            dashBoardPresenter.selectedProject = selectedProject
-            coordinator?.projectReader(project: selectedProject)
+            coordinator?.projectReader(project: selectedProject, userData)
         } else {
-            guard let projects = dashBoardPresenter.professionalProject else {
+            guard let projects = dashBoardPresenter.professionalProject, let userData = dashBoardPresenter.data else {
                 return
             }
             let selectedProject = projects[indexPath.row]
             
 //            dashBoardPresenter.selectedProject = selectedProject
-            coordinator?.projectReader(project: selectedProject)
+            coordinator?.projectReader(project: selectedProject, userData)
         }
     }
 }

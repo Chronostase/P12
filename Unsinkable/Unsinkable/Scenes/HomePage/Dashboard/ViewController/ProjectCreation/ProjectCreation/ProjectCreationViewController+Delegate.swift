@@ -61,5 +61,14 @@ extension ProjectCreationViewController: ProjectCreationPresenterDelegate {
     func showErrorMessage() {
         print("Empty fields")
     }
+    
+    func deleteTaskSucceed() {
+        print("DeleteTask succeed")
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func deleteTaskFailure() {
+        print("DeleteTask failure")
+    }
 
 }

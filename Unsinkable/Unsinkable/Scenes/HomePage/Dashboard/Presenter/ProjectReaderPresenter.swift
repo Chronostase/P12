@@ -17,6 +17,7 @@ class ProjectReaderPresenter {
     
     let projectService: ProjectLogic = ProjectService()
     var selectedProject: Project?
+    var userData: CustomResponse?
     
     func checkIfTitleIsNil() -> Bool {
         guard let _ = selectedProject?.title else {

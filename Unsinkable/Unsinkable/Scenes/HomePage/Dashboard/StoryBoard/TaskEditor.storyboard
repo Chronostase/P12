@@ -156,6 +156,15 @@
                                 <rect key="frame" x="0.0" y="538.5" width="414" height="44.5"/>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqF-FJ-8gz">
+                                <rect key="frame" x="41.5" y="797" width="331" height="45"/>
+                                <state key="normal" title="Delete Task">
+                                    <color key="titleColor" systemColor="systemRedColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteTaskButton:" destination="2nW-Wz-dnS" eventType="touchUpInside" id="Yzg-hh-YO6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ovd-Tu-Azg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -166,16 +175,20 @@
                             <constraint firstItem="yfl-kq-Uv3" firstAttribute="height" secondItem="FzJ-Cb-7aU" secondAttribute="height" id="6iS-7q-8vE"/>
                             <constraint firstItem="c0e-hl-fxd" firstAttribute="top" secondItem="q4t-ms-Mbp" secondAttribute="bottom" id="AA4-7m-YcC"/>
                             <constraint firstItem="Hfy-LP-nVm" firstAttribute="top" secondItem="yrr-Gb-9S6" secondAttribute="bottom" id="CpO-Xq-e9x"/>
+                            <constraint firstItem="ovd-Tu-Azg" firstAttribute="bottom" secondItem="tqF-FJ-8gz" secondAttribute="bottom" constant="20" id="Ege-yt-S71"/>
                             <constraint firstItem="q4t-ms-Mbp" firstAttribute="top" secondItem="ovd-Tu-Azg" secondAttribute="top" constant="15" id="GCD-TR-FCc"/>
                             <constraint firstItem="a5G-Jr-n9a" firstAttribute="height" secondItem="uhd-98-fkj" secondAttribute="height" multiplier="0.2" id="Hgd-3v-9rS"/>
                             <constraint firstItem="q4t-ms-Mbp" firstAttribute="height" secondItem="uhd-98-fkj" secondAttribute="height" multiplier="0.1" id="PBg-bU-XVK"/>
                             <constraint firstItem="ovd-Tu-Azg" firstAttribute="trailing" secondItem="yfl-kq-Uv3" secondAttribute="trailing" id="RYf-HS-70d"/>
                             <constraint firstItem="ovd-Tu-Azg" firstAttribute="trailing" secondItem="a5G-Jr-n9a" secondAttribute="trailing" id="Rn2-dB-ykg"/>
+                            <constraint firstItem="tqF-FJ-8gz" firstAttribute="height" secondItem="uhd-98-fkj" secondAttribute="height" multiplier="0.05" id="T6e-Gl-Mx7"/>
+                            <constraint firstItem="tqF-FJ-8gz" firstAttribute="width" secondItem="uhd-98-fkj" secondAttribute="width" multiplier="0.8" id="W3n-dU-IxG"/>
                             <constraint firstItem="ovd-Tu-Azg" firstAttribute="trailing" secondItem="yrr-Gb-9S6" secondAttribute="trailing" id="WjC-rq-VcR"/>
                             <constraint firstItem="yrr-Gb-9S6" firstAttribute="top" secondItem="c0e-hl-fxd" secondAttribute="bottom" id="XXq-b6-mSm"/>
                             <constraint firstItem="c0e-hl-fxd" firstAttribute="leading" secondItem="ovd-Tu-Azg" secondAttribute="leading" id="Z66-Fv-tVg"/>
                             <constraint firstItem="yfl-kq-Uv3" firstAttribute="leading" secondItem="ovd-Tu-Azg" secondAttribute="leading" id="ZIE-Pa-4RN"/>
                             <constraint firstItem="ovd-Tu-Azg" firstAttribute="trailing" secondItem="c0e-hl-fxd" secondAttribute="trailing" id="agu-S8-waC"/>
+                            <constraint firstItem="tqF-FJ-8gz" firstAttribute="centerX" secondItem="uhd-98-fkj" secondAttribute="centerX" id="dXv-gd-Za1"/>
                             <constraint firstItem="a5G-Jr-n9a" firstAttribute="top" secondItem="FzJ-Cb-7aU" secondAttribute="bottom" id="gGj-qd-kOU"/>
                             <constraint firstItem="q4t-ms-Mbp" firstAttribute="leading" secondItem="ovd-Tu-Azg" secondAttribute="leading" constant="20" id="hwu-4J-dw3"/>
                             <constraint firstItem="ovd-Tu-Azg" firstAttribute="trailing" secondItem="FzJ-Cb-7aU" secondAttribute="trailing" id="iL1-fa-6J5"/>
@@ -192,6 +205,7 @@
                     <connections>
                         <outlet property="commentaryTextView" destination="RID-0b-0pW" id="xK2-kh-9vt"/>
                         <outlet property="datePicker" destination="sYa-ri-DGK" id="3vw-CW-Tf3"/>
+                        <outlet property="deleteTaskButton" destination="tqF-FJ-8gz" id="ZCi-aS-5G8"/>
                         <outlet property="locationTextField" destination="oxX-lC-l8T" id="xtH-Ul-RgS"/>
                         <outlet property="prioritySwitch" destination="y6T-hZ-y3y" id="5Wz-ym-ORu"/>
                         <outlet property="titleTextField" destination="iUj-aT-yUt" id="6AN-pv-LYH"/>
@@ -211,6 +225,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

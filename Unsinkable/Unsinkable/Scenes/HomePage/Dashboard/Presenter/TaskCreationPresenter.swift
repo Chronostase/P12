@@ -7,12 +7,16 @@
 
 import Foundation
 
-protocol TaskCreationDelegate: AnyObject  {
-    func fetchToProjectCreation()
-}
+//protocol TaskCreationDelegate: AnyObject  {
+//    func fetchToProjectCreation()
+//}
 
 class TaskCreationPresenter {
     weak var delegate: ProjectCreationPresenterDelegate?
+//    weak var readerDelegate: ProjectReaderDelegate?
+    let projectService: ProjectLogic = ProjectService()
+    var userData: CustomResponse?
+    var project: Project?
     var task: Task?
     var isReader: Bool?
     
@@ -40,6 +44,26 @@ class TaskCreationPresenter {
         } else {
             print("Error with date")
             return nil
+        }
+    }
+    
+    func isDeleteTaskNeeded() -> Bool {
+//        guard let userId = userData?.user.userId else {return}
+        if userData?.user.userId == project?.ownerUserId {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func deleteTask() {
+        projectService.deleteTask(project, task) { error in
+            if error != nil {
+                self.delegate?.deleteTaskFailure()
+            } else {
+                self.delegate?.deleteTaskSucceed()
+            }
+            
         }
     }
 }
