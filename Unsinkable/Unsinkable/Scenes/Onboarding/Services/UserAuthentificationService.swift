@@ -26,7 +26,9 @@ protocol AuthentificationLogic {
     
     func fetchTasks(_ userId: String, _ title: String, completion: @escaping (Result<[Task?]?, Error>) -> Void)
     
-    func deleteUser(completion: @escaping (Error?) -> Void)
+    func deleteUser(_ user: UserDetails, completion: @escaping (Error?) -> Void)
+    
+    func updateUser(_ firstName: String,_ name: String,_ email: String, completion: @escaping (Error?) -> Void)
     
 }
 
@@ -36,6 +38,16 @@ class UserAuthentificationService: AuthentificationLogic {
     
     init(session: AuthenticationSession = AuthenticationSession()) {
         self.session = session
+    }
+    
+    func updateUser(_ firstName: String,_ name: String,_ email: String, completion: @escaping (Error?) -> Void) {
+        self.session.updateUser(firstName, name, email) { error in
+            if error != nil {
+                completion(error)
+            } else {
+                completion(nil)
+            }
+        }
     }
     
     func loginUser(_ email: String, _ password: String, callback: @escaping (Result<CustomResponse?, Error>) -> Void ) {
@@ -73,8 +85,8 @@ class UserAuthentificationService: AuthentificationLogic {
     }
     
     
-    func deleteUser(completion: @escaping (Error?) -> Void) {
-        session.deleteUser() { error in
+    func deleteUser(_ user: UserDetails, completion: @escaping (Error?) -> Void) {
+        session.deleteUser(user) { error in
             if error != nil {
                 guard let error = error else {return}
                 completion(error)

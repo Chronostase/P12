@@ -33,6 +33,11 @@ class TaskCreationViewController: UIViewController {
         setupViewController()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false 
+    }
+    
     private func setupViewController() {
         setupTaskEditor()
         if taskCreationPresenter.isTaskReader() {
@@ -102,7 +107,7 @@ class TaskCreationViewController: UIViewController {
     @objc func saveTask() {
         guard let task = taskCreationPresenter.task else {return}
         
-        taskCreationPresenter.updateTask(with: task.title, location: locationTextField.text, priority: prioritySwitch.isOn, commentary: commentaryTextView.text, deadLine: datePicker.date)
+        taskCreationPresenter.updateLocalTask(with: task.title, location: locationTextField.text, priority: prioritySwitch.isOn, commentary: commentaryTextView.text, deadLine: datePicker.date)
     }
     
     
@@ -116,7 +121,9 @@ class TaskCreationViewController: UIViewController {
             
             guard let task = taskCreationPresenter.task else {return}
             
-            taskCreationPresenter.updateTask(with: task.title, location: locationTextField.text, priority: prioritySwitch.isOn, commentary: commentaryTextView.text, deadLine: datePicker.date)
+            taskCreationPresenter.updateLocalTask(with: task.title, location: locationTextField.text, priority: prioritySwitch.isOn, commentary: commentaryTextView.text, deadLine: datePicker.date)
+            
+            taskCreationPresenter.updateTask()
         }
     }
     

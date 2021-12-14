@@ -62,6 +62,8 @@ class ProjectCreationViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.navigationController?.navigationBar.isHidden = false
         DispatchQueue.main.async {
             self.setUpUI()
@@ -125,13 +127,6 @@ class ProjectCreationViewController: UIViewController {
         }
     }
     
-//    private func addRightNavigationBarButton() {
-//        guard let image = UIImage(systemName: "ellipsis") else {
-//            return
-//        }
-//        let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(moreOptionTapped))
-//        self.navigationItem.rightBarButtonItem = button
-//    }
     
     private func imagePicker() {
         let imagePicker = UIImagePickerController()

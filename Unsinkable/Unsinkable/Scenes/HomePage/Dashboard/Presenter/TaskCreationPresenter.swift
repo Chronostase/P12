@@ -20,7 +20,7 @@ class TaskCreationPresenter {
     var task: Task?
     var isReader: Bool?
     
-    func updateTask(with title: String?, location: String?, priority: Bool?, commentary: String?, deadLine: Date?) {
+    func updateLocalTask(with title: String?, location: String?, priority: Bool?, commentary: String?, deadLine: Date?) {
         
         let task = Task(title: title, projectID: task?.projectID, taskID: task?.taskID, priority: priority, deadLine: deadLine, commentary: commentary, location: location)
         delegate?.updateLocalTask(task)
@@ -64,6 +64,16 @@ class TaskCreationPresenter {
                 self.delegate?.deleteTaskSucceed()
             }
             
+        }
+    }
+    
+    func updateTask() {
+        projectService.updateTask(project, task, userData) { error in
+            if error != nil {
+                self.delegate?.updateTaskFailed()
+            } else {
+                self.delegate?.updateTaskSucceed()
+            }
         }
     }
 }

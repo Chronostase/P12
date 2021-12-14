@@ -17,8 +17,9 @@ extension DashBoardViewController: DashBoardPresenterDelegate {
             return
         }
         coordinator?.data = userData
-        guard let projectList = userData.user.projects else {
-        return }
+//        guard let projectList = userData.user.projects else {
+//        return }
+        let projectList = userData.user.projects
         dashBoardPresenter.sortPersonalAndProfessionalProject(projectList)
         DispatchQueue.main.async {
             self.personalCollectionView.reloadData()

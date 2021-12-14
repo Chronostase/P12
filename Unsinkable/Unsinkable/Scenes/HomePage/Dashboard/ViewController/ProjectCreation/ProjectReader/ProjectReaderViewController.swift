@@ -30,6 +30,8 @@ class ProjectReaderViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.taskTableView.reloadData()
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false 
         self.navigationController?.navigationBar.isHidden = false
     }
     
@@ -72,6 +74,7 @@ class ProjectReaderViewController: UIViewController {
     }
     
     private func setDelegate() {
+        self.projectReaderPresenter.delegate = self 
         self.taskTableView.dataSource = self
         self.taskTableView.delegate = self 
     }

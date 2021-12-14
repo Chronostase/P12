@@ -14,6 +14,8 @@ protocol ProfilPresenterDelegate: AnyObject {
     func deleteUserFailed()
     func deleteAllUserRefSucceed()
     func deleteAllUserRefFailed()
+    func updateUserSucceed()
+    func updateUserFailed()
 }
 
 class ProfiPresenter {
@@ -32,7 +34,8 @@ class ProfiPresenter {
     }
     
     func deleteUser() {
-        userAuthenticationService.deleteUser() { error in
+        guard let user = data?.user else {return}
+        userAuthenticationService.deleteUser(user) { error in
             if error != nil {
                 self.delegate?.deleteUserFailed()
             } else {
@@ -50,6 +53,24 @@ class ProfiPresenter {
             } else {
                 self.delegate?.deleteAllUserRefSucceed()
             }
+        }
+    }
+    
+    func updateUser(_ firstName: String,_ name: String,_ email: String) {
+        userAuthenticationService.updateUser(firstName, name, email) { error in
+            if error != nil {
+                self.delegate?.updateUserFailed()
+            } else {
+                self.delegate?.updateUserSucceed()
+            }
+        }
+    }
+    
+    func isFieldFill(_ firstName: String?,_ name: String?,_ email: String?) -> Bool {
+        if firstName == nil || name == nil || email == nil {
+            return false
+        } else {
+            return true
         }
     }
 }

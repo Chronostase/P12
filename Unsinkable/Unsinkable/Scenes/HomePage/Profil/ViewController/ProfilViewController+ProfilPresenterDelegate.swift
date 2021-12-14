@@ -17,7 +17,6 @@ extension ProfilViewController: ProfilPresenterDelegate {
     }
     
     func deleteUserSucceed() {
-        #warning("Don't forget to delete all data from deleted user")
         //Get back to authentification
             self.navigationController?.popViewController(animated: true)
             self.transitionToMainLoginPage()
@@ -36,5 +35,13 @@ extension ProfilViewController: ProfilPresenterDelegate {
     
     func logoutFailed() {
         self.showError("An error occured please retry")
+    }
+    
+    func updateUserFailed() {
+        print("Show Alert cannot update user")
+    }
+    
+    func updateUserSucceed() {
+        print("successfully update")
     }
 }

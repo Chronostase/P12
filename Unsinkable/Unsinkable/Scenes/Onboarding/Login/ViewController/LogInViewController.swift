@@ -43,6 +43,7 @@ class LogInViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false 
         self.navigationController?.navigationBar.isHidden = false
     }
     

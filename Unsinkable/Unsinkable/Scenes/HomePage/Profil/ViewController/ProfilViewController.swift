@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ProfilViewController: UIViewController, UITextFieldDelegate {
+class ProfilViewController: UIViewController {
     
     weak var coordinator: HomeCoordinator?
     lazy var profilPresenter = {
@@ -20,6 +20,14 @@ class ProfilViewController: UIViewController, UITextFieldDelegate {
     @IBAction func profilPictureButton(_ sender: UIButton) {
     }
     @IBAction func performChangeButton(_ sender: UIButton) {
+        if sender.titleLabel?.text == "Edit profil" {
+            self.canUserEdit(autorization: true)
+            sender.setTitle("Save change", for: .normal)
+        } else if sender.titleLabel?.text == "Save change" {
+            updateUser()
+            self.canUserEdit(autorization: false)
+            sender.setTitle("Edit profil", for: .normal)
+        }
     }
     @IBAction func logOutButton(_ sender: UIBarButtonItem) {
         print("LogOut")
@@ -30,6 +38,18 @@ class ProfilViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var errorLabel: UILabel!
     
+    private func canUserEdit(autorization: Bool) {
+        firstNameTextField.isUserInteractionEnabled = autorization
+        nameTextField.isUserInteractionEnabled = autorization
+        emailTextField.isUserInteractionEnabled = autorization
+    }
+    private func updateUser() {
+        if profilPresenter.isFieldFill(firstNameTextField.text, nameTextField.text, emailTextField.text) {
+            guard let firstName = firstNameTextField.text, let name = nameTextField.text, let email = emailTextField.text else {return}
+            profilPresenter.updateUser(firstName, name, email)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupVC()
@@ -37,6 +57,7 @@ class ProfilViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         setUserInfo()
     }
     

@@ -71,6 +71,7 @@
 		E9BDF890274D34F3009E620F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9BDF88F274D34F3009E620F /* Keys.plist */; };
 		E9BDF892274FD07E009E620F /* TaskCreationVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF891274FD07D009E620F /* TaskCreationVC+Delegate.swift */; };
 		E9BDF8962756517E009E620F /* MainLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF8952756517E009E620F /* MainLoginPresenter.swift */; };
+		E9BDF89827622039009E620F /* ProfilViewController+TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF89727622038009E620F /* ProfilViewController+TextFieldDelegate.swift */; };
 		E9C2214F25AE0F50001216F5 /* ProjectCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */; };
 		E9C2218625AE1345001216F5 /* ProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C2218525AE1345001216F5 /* ProjectCell.xib */; };
 		E9C2218C25AE185D001216F5 /* UICollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */; };
@@ -83,6 +84,7 @@
 		E9D6076926847083005AC9EB /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6076826847083005AC9EB /* CustomView.swift */; };
 		E9D6076D26848BCA005AC9EB /* StackViewShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6076C26848BCA005AC9EB /* StackViewShadow.swift */; };
 		E9DC09FF25DE82B800667E8E /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DC09FE25DE82B800667E8E /* CustomButton.swift */; };
+		E9DD1504276887A600ED2B82 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1503276887A600ED2B82 /* KeyChainManager.swift */; };
 		E9EC4F9126553E8200A1ED96 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC4F9026553E8200A1ED96 /* HomeCoordinator.swift */; };
 		E9EC4F9E265675C500A1ED96 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC4F9D265675C500A1ED96 /* TabBarViewController.swift */; };
 		E9EC4FA326583CE800A1ED96 /* window.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC4FA226583CE800A1ED96 /* window.swift */; };
@@ -186,6 +188,7 @@
 		E9BDF88F274D34F3009E620F /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		E9BDF891274FD07D009E620F /* TaskCreationVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCreationVC+Delegate.swift"; sourceTree = "<group>"; };
 		E9BDF8952756517E009E620F /* MainLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLoginPresenter.swift; sourceTree = "<group>"; };
+		E9BDF89727622038009E620F /* ProfilViewController+TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfilViewController+TextFieldDelegate.swift"; sourceTree = "<group>"; };
 		E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProjectCreation.storyboard; sourceTree = "<group>"; };
 		E9C2218525AE1345001216F5 /* ProjectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectCell.xib; sourceTree = "<group>"; };
 		E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +201,7 @@
 		E9D6076826847083005AC9EB /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		E9D6076C26848BCA005AC9EB /* StackViewShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewShadow.swift; sourceTree = "<group>"; };
 		E9DC09FE25DE82B800667E8E /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		E9DD1503276887A600ED2B82 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		E9EC4F9026553E8200A1ED96 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		E9EC4F9D265675C500A1ED96 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E9EC4FA226583CE800A1ED96 /* window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = window.swift; sourceTree = "<group>"; };
@@ -621,6 +625,7 @@
 			children = (
 				E99635BC2653E3AD00185327 /* ProfilViewController.swift */,
 				E95AF91C2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift */,
+				E9BDF89727622038009E620F /* ProfilViewController+TextFieldDelegate.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -646,6 +651,7 @@
 			children = (
 				E951029B25B970D20070A91C /* UserAuthentificationService.swift */,
 				E903130125E7C52300CBC228 /* AuthenticationSession.swift */,
+				E9DD1503276887A600ED2B82 /* KeyChainManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1047,12 +1053,14 @@
 				E9EE217E268240F500D80414 /* DashBoardPresenter.swift in Sources */,
 				E951027F25B84DDD0070A91C /* MainLoginViewController.swift in Sources */,
 				E90312CE25E5409600CBC228 /* TextFieldExtension.swift in Sources */,
+				E9BDF89827622039009E620F /* ProfilViewController+TextFieldDelegate.swift in Sources */,
 				E9BDF8962756517E009E620F /* MainLoginPresenter.swift in Sources */,
 				E92157A825C18B7600D42137 /* RegisterPresenter.swift in Sources */,
 				E99635BD2653E3AD00185327 /* ProfilViewController.swift in Sources */,
 				E9BDF892274FD07E009E620F /* TaskCreationVC+Delegate.swift in Sources */,
 				E9EC4F9E265675C500A1ED96 /* TabBarViewController.swift in Sources */,
 				E9BDF8862717382F009E620F /* TaskCreation+UITextView.swift in Sources */,
+				E9DD1504276887A600ED2B82 /* KeyChainManager.swift in Sources */,
 				E9DC09FF25DE82B800667E8E /* CustomButton.swift in Sources */,
 				E90312EC25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift in Sources */,
 				E95AF91D2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift in Sources */,
@@ -1246,6 +1254,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				CODE_SIGN_ENTITLEMENTS = Unsinkable/Unsinkable.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87G25HJ2R8;
@@ -1270,6 +1279,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				CODE_SIGN_ENTITLEMENTS = Unsinkable/Unsinkable.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87G25HJ2R8;

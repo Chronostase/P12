@@ -55,7 +55,8 @@ class DashBoardPresenter {
         }
     }
     
-    func sortPersonalAndProfessionalProject(_ projectList: [Project?]) {
+    func sortPersonalAndProfessionalProject(_ projectList: [Project?]?) {
+        guard let projectList = projectList else {return}
         professionalProject = [Project]()
         personalProject = [Project]()
         for project in projectList {

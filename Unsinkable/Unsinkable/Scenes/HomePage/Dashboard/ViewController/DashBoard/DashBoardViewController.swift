@@ -35,24 +35,29 @@ class DashBoardViewController: UIViewController {
         setupCollectionView()
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        dashBoardPresenter.getCurrentDate()
+        loadData()
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false 
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        loadData()
+//        loadData()
     }
     
     private func loadData() {
         dashBoardPresenter.getUserData()
+        reloadCollection()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        dashBoardPresenter.getCurrentDate()
-        self.navigationController?.navigationBar.isHidden = true
-    }
     
     private func setupCollectionView() {
         setDelegateAndDataSource()
@@ -76,6 +81,11 @@ class DashBoardViewController: UIViewController {
     
     func updateDateLabel(_ date: String) {
         self.dateLabel.text = date
+    }
+    
+    private func reloadCollection() {
+        self.personalCollectionView.reloadData()
+        self.professionalCollectionView.reloadData()
     }
     
     func showLoader() {

@@ -10,6 +10,8 @@ import Foundation
 protocol ProjectReaderDelegate: AnyObject {
     func deleteProjectSucceed()
     func deleteProjectFailure()
+    func updateProjectSucceed()
+    func updateProjectFailed()
 }
 
 class ProjectReaderPresenter {
@@ -56,6 +58,16 @@ class ProjectReaderPresenter {
                 self.delegate?.deleteProjectFailure()
             } else {
                 self.delegate?.deleteProjectSucceed()
+            }
+        }
+    }
+    
+    func updateProject(_ coverData: Data?) {
+        projectService.updateProject(selectedProject, userData, coverData) { error in
+            if error != nil {
+                self.delegate?.updateProjectFailed()
+            } else {
+                self.delegate?.updateProjectSucceed()
             }
         }
     }

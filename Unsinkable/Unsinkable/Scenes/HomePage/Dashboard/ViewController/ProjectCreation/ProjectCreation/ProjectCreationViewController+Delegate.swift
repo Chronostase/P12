@@ -70,5 +70,13 @@ extension ProjectCreationViewController: ProjectCreationPresenterDelegate {
     func deleteTaskFailure() {
         print("DeleteTask failure")
     }
+    
+    func updateTaskSucceed() {
+        print("Update task succeed")
+    }
+    
+    func updateTaskFailed() {
+        print("update task failed")
+    }
 
 }

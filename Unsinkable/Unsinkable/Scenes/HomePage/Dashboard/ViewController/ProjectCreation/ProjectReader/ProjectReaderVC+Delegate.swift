@@ -9,6 +9,14 @@ import Foundation
 import UIKit
 
 extension ProjectReaderViewController: ProjectReaderDelegate {
+    func updateProjectSucceed() {
+        print("Update Succeed")
+    }
+    
+    func updateProjectFailed() {
+        print("Update Failed")
+    }
+    
     
     
     func deleteProjectFailure() {
@@ -16,8 +24,6 @@ extension ProjectReaderViewController: ProjectReaderDelegate {
     }
     
     func deleteProjectSucceed() {
-        #warning("Don't Forget to delete project in local datasource + Reload collection")
-        print("delete project succeed")
         self.navigationController?.popViewController(animated: true)
     }
     

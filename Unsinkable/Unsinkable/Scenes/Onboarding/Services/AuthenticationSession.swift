@@ -7,8 +7,12 @@
 
 import Foundation
 import Firebase
+import FirebaseFunctions
 
 class AuthenticationSession {
+    
+    lazy var functions = Functions.functions()
+    lazy var keyChainManager = KeyChainManager()
     
     func signInRequest(_ email: String, _ password: String, completion: @escaping (CustomResponse?, Error?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (dataResponse, error) in
@@ -30,35 +34,61 @@ class AuthenticationSession {
                 return completion(nil,error)
             }
             let customUser = CustomResponse(user: UserDetails(email: user.email, userId: user.uid))
+            self.keyChainManager.registerUserCredential(customUser.user, password)
             completion(customUser,error)
         }
     }
     
-//    func deleteUser(completion: @escaping (Error?) -> Void) {
-//        guard let currentUser = Auth.auth().currentUser else {return}
-//        currentUser.delete { error in
-//            if error != nil {
-//                guard let error = error else {return}
-//                completion(error)
-//            } else {
-//                completion(nil)
-//            }
-//        }
-//    }
-    
-    func deleteUser(completion : @escaping (Error?) -> Void) {
-        guard let currentUser = Auth.auth().currentUser else {return}
-        currentUser.reload { error in
+    func updateUser(_ firstName: String,_ name: String,_ email: String, completion: @escaping (Error?) -> Void) {
+        let auth = Auth.auth()
+        guard let currentUser = auth.currentUser else {return}
+        let currentEmail = currentUser.email
+        let userId = currentUser.uid
+        let database = Firestore.firestore()
+        let databaseRef = database.collection("Users").document("\(userId)")
+        
+        databaseRef.updateData([
+            "first_name": firstName,
+            "name": name,
+            "email": email
+        ]) { error in
             if error != nil {
-                guard let error = error else {return}
+                completion(error)
+            } else {
+                if email != currentEmail {
+                    currentUser.updateEmail(to: email) { error in
+                        if error != nil {
+                            //Email not change
+                            completion(error)
+                        } else {
+                            completion(nil)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    func deleteUser(_ user: UserDetails, completion : @escaping (Error?) -> Void) {
+        guard let currentUser = Auth.auth().currentUser else {return}
+        guard let email = user.email, let password = keyChainManager.getUserCredential(user) else {return}
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        
+        currentUser.reauthenticate(with: credential) { result, error in
+            if error != nil {
                 completion(error)
             } else {
                 currentUser.delete { error in
                     if error != nil {
-                        guard let error = error else {return}
                         completion(error)
                     } else {
-                        completion(nil)
+                        if let _ = self.keyChainManager.deleteKey(user) {
+                            print("Can't delete Key")
+                            completion(nil)
+                        } else {
+                            completion(nil)
+                        }
                     }
                 }
             }
@@ -126,7 +156,7 @@ class AuthenticationSession {
             } else {
                 guard let queryArray = querySnapshot?.documents else { return }
                 
-//                #error("ENTER FETCH PROJECT DATA ")
+                //                #error("ENTER FETCH PROJECT DATA ")
                 for document in queryArray {
                     print(queryArray.count)
                     projectIndex += 1
@@ -171,6 +201,7 @@ class AuthenticationSession {
                         }
                     }
                 }
+                completion([], nil)
             }
         }
     }
@@ -222,5 +253,4 @@ class AuthenticationSession {
         }
         return true
     }
-    
 }

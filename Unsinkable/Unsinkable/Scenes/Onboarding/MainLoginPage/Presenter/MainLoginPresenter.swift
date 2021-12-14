@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import Security
 
 class MainLoginPresenter {
+    
     func navStackNeedManage(_ navStackCount: Int) -> Bool {
         if navStackCount > 1 {
             return true

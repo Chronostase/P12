@@ -18,6 +18,8 @@ protocol ProjectCreationPresenterDelegate: AnyObject {
     func updateLocalTask(_ task: Task)
     func deleteTaskSucceed()
     func deleteTaskFailure()
+    func updateTaskSucceed()
+    func updateTaskFailed()
 }
 
 extension ProjectCreationPresenterDelegate {
