@@ -7,13 +7,9 @@
 
 import Foundation
 
-//protocol TaskCreationDelegate: AnyObject  {
-//    func fetchToProjectCreation()
-//}
 
 class TaskCreationPresenter {
-    weak var delegate: ProjectCreationPresenterDelegate?
-//    weak var readerDelegate: ProjectReaderDelegate?
+    weak var delegate: ProjectManagerDelegate?
     let projectService: ProjectLogic = ProjectService()
     var userData: CustomResponse?
     var project: Project?
@@ -48,7 +44,6 @@ class TaskCreationPresenter {
     }
     
     func isDeleteTaskNeeded() -> Bool {
-//        guard let userId = userData?.user.userId else {return}
         if userData?.user.userId == project?.ownerUserId {
             return true
         } else {
@@ -59,20 +54,23 @@ class TaskCreationPresenter {
     func deleteTask() {
         projectService.deleteTask(project, task) { error in
             if error != nil {
-                self.delegate?.deleteTaskFailure()
+                guard let error = error else {return}
+                self.delegate?.deleteTaskComplete(.failure(error))
             } else {
-                self.delegate?.deleteTaskSucceed()
+                self.delegate?.deleteTaskComplete(.success(()))
             }
             
         }
     }
     
-    func updateTask() {
-        projectService.updateTask(project, task, userData) { error in
+    func updateTask(with title: String?, location: String?, priority: Bool?, commentary: String?, deadLine: Date?) {
+        let newTask = Task(title: title, projectID: task?.projectID, taskID: task?.taskID, priority: priority, deadLine: deadLine, commentary: commentary, location: location)
+        projectService.updateTask(project, currentTask: task, newTask: newTask, userData) { error in
             if error != nil {
-                self.delegate?.updateTaskFailed()
+                guard let error = error else {return}
+                self.delegate?.updateTaskComplete(.failure(error))
             } else {
-                self.delegate?.updateTaskSucceed()
+                self.delegate?.updateTaskComplete(.success(nil))
             }
         }
     }

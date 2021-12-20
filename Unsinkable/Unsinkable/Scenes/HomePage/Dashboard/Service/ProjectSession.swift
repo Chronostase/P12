@@ -14,44 +14,115 @@ class ProjectSession {
     
     #warning("Take care description can be optional + Bug happend when user tip task name without validation and save project")
     #warning("Reload tableView in project reader happed when delete task ")
+    #warning("Rework Database sort task by TaskId no more by title, cause error in path when TaskTitle is update")
     
     lazy var functions = Functions.functions()
     lazy var keyChainManager = KeyChainManager()
     
-    func updateTask(_ project: Project?,_ task: Task?, _ userData: CustomResponse?, completion: @escaping (Error?) -> Void) {
+    func refreshCurrentProject(_ project: Project?,_ userData: CustomResponse?, completion: @escaping (Project?, Error?) -> Void) {
         guard let project = project else {return}
-        guard let projectTitle = project.title else {return}
+        guard let projectId = project.projectID else {return}
+        guard let user = userData?.user, let userID = user.userId else {return}
+        var taskList = [Task?]()
+        
+        let database = Firestore.firestore()
+        let projectRef = database.collection("Users").document(userID).collection("Projects").document(projectId)
+        
+        projectRef.getDocument { document, error in
+            if error != nil {
+                completion(nil,error)
+            } else {
+                guard let document = document else {return}
+                if document.exists {
+                    guard let data = document.data() else {return}
+                    let projectTitle = data["Title"] as? String ?? ""
+                    let projectID = data["projectId"] as? String ?? ""
+                    let projectDescription = data["Description"] as? String ?? ""
+                    let ownerUserId = data["ownerUserId"] as? String ?? ""
+                    let isPersonal = data["isPersonal"] as? Bool
+                    let downloadUrl = data["downloadUrl"] as? String ?? ""
+                    let tasksRef = projectRef.collection("Tasks")
+                    
+                    tasksRef.getDocuments { querysnapshot, error in
+                        if error != nil {
+                            completion(nil, error)
+                        } else {
+                            guard let query = querysnapshot else {return}
+                            for document in query.documents {
+                                let data = document.data()
+                                let taskTitle = data["title"] as? String ?? ""
+                                let projectID = data["projectID"] as? String ?? ""
+                                let taskID = data["taskID"] as? String ?? ""
+                                let taskPriority = data["taskPriority"] as? Bool ?? nil
+                                let taskDeadLine = data["taskDeadLine"] as? Timestamp
+                                let taskCommentary = data["taskCommentary"] as? String ?? ""
+                                let taskLocation = data["location"] as? String ?? ""
+                                
+                                let date = taskDeadLine?.dateValue()
+                                let task = Task(title: taskTitle, projectID: projectID, taskID: taskID, priority: taskPriority, deadLine: date, commentary: taskCommentary, location: taskLocation)
+                                taskList.append(task)
+                            }
+                            let project = Project(title: projectTitle, projectID: projectID ,description: projectDescription, ownerUserId: ownerUserId, isPersonal: isPersonal, downloadUrl: downloadUrl, taskList: taskList)
+                            taskList.removeAll()
+                            completion(project, nil)
+                            
+                            //Try without this part it appear that if let documents = querry?.documents always true
+                            
+                            //                            let project = Project(title: projectTitle, projectID: projectID ,description: projectDescription, ownerUserId: ownerUserId, isPersonal: isPersonal, downloadUrl: downloadUrl, taskList: taskList)
+                            //                            taskList.removeAll()
+                            //                            completion(project, nil)
+                        }
+                        
+                    }
+                    
+                } else {
+                    #warning("Fall in .success case for delegate")
+                    completion(nil, error)
+                }
+            }
+        }
+    }
+    
+    func updateTask(_ project: Project?, currentTask: Task?, newTask: Task?, _ userData: CustomResponse?, completion: @escaping (Error?) -> Void) {
+        guard let project = project else {return}
+        guard let projectID = project.projectID else {return}
         guard let userId = userData?.user.userId else {return}
         guard let ownerId = project.ownerUserId else {return}
-        guard let task = task else {return}
-        guard let taskTitle = task.title else {return}
+        
+        guard let currentTask = currentTask else {return}
+        guard let currentTaskId = currentTask.taskID else {return}
+        guard let newTask = newTask else {return}
+        
         guard let user = userData?.user else {return}
         guard let currentUser = Auth.auth().currentUser, let email = userData?.user.email else {return}
         guard let password = keyChainManager.getUserCredential(user) else {return}
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
         let database = Firestore.firestore()
-        let taskRef = database.collection("Users").document(userId).collection("Projects").document(projectTitle).collection("Tasks").document(taskTitle)
+        let taskRef = database.collection("Users").document(userId).collection("Projects").document(projectID).collection("Tasks").document(currentTaskId)
         currentUser.reauthenticate(with: credential) { (nil, error) in
             if error != nil {
+                guard let error = error else {return}
                 completion(error)
             } else {
                 if userId == ownerId {
                     taskRef.updateData([
-                        "title": taskTitle,
-                        "location": task.location ?? "",
-                        "taskCommentary": task.commentary ?? "",
-                        "taskDeadLine": task.deadLine ?? "",
-                        "taskPriority": task.priority ?? ""
+                        "title": newTask.title ?? "",
+                        "location": newTask.location ?? "",
+                        "taskCommentary": newTask.commentary ?? "",
+                        "taskDeadLine": newTask.deadLine ?? "",
+                        "taskPriority": newTask.priority ?? ""
                     ]) { error in
                         if error != nil {
+                            guard let error = error else {return}
                             completion(error)
                         } else {
                             completion(nil)
                         }
                     }
                 } else {
+                    guard let error = error else {return}
                     //Operation not allow
-                    completion(nil)
+                    completion(error)
                 }
             }
         }
@@ -94,7 +165,7 @@ class ProjectSession {
                                     
                                     let database = Firestore.firestore()
                                     guard let url = url?.absoluteString else {return}
-                                    let projectRef = database.collection("Users").document(userId).collection("Projects").document(title)
+                                    let projectRef = database.collection("Users").document(userId).collection("Projects").document(projectID)
                                     projectRef.updateData([
                                         "Title": title,
                                         "Description": description,
@@ -116,7 +187,7 @@ class ProjectSession {
                     }
                 }
             }
-
+            
         }
     }
     
@@ -158,7 +229,7 @@ class ProjectSession {
                                 "downloadUrl": url
                             ]
                             
-                            let documentRef = dataBase.collection("Users").document(userId).collection("Projects").document(title)
+                            let documentRef = dataBase.collection("Users").document(userId).collection("Projects").document(projectID)
                             
                             documentRef.setData(documentData)
                             { (error) in
@@ -189,7 +260,6 @@ class ProjectSession {
         guard let tasks = tasks else {return}
         guard let userID = project?.ownerUserId else {return}
         guard let projectID = project?.projectID else {return}
-        guard let projectTitle = project?.title else {return}
         
         for task in tasks {
             guard let task = task else {return}
@@ -210,7 +280,8 @@ class ProjectSession {
                 "taskCommentary" : task.commentary ?? "",
                 "location" : task.location ?? ""
             ]
-            let documentRef = database.collection("Users").document(userID).collection("Projects").document(projectTitle).collection("Tasks").document(taskTitle)
+            
+            let documentRef = database.collection("Users").document(userID).collection("Projects").document(projectID).collection("Tasks").document(taskID)
             
             documentRef.setData(documentData) { error in
                 if error != nil {
@@ -292,14 +363,14 @@ class ProjectSession {
     
     func deleteUserProject(_ project: Project?, completion: @escaping (Error?) -> Void) {
         guard let project = project else {return}
-        guard let projectTitle = project.title else {return}
+        guard let projectID = project.projectID else {return}
         guard let userId = project.ownerUserId else {return}
         guard let token = Keys.value(for: Constants.Token.cloudToken) else {
             return 
         }
         
         let database = Firestore.firestore()
-        let projectRef = database.collection("Users").document(userId).collection("Projects").document(projectTitle)
+        let projectRef = database.collection("Users").document(userId).collection("Projects").document(projectID)
         let deleteFn = functions.httpsCallable("recursiveDelete")
         let data: [String: Any] = [
             "path": projectRef.path,
@@ -334,15 +405,15 @@ class ProjectSession {
     
     func deleteUserTask(_ project: Project?,_ task: Task?, completion: @escaping (Error?) -> Void) {
         guard let project = project, let task = task else {return}
-        guard let projectTitle = project.title else {return}
+        guard let projectID = project.projectID else {return}
         guard let userId = project.ownerUserId else {return}
-        guard let taskTitle = task.title else {return}
+        guard let taskId = task.taskID else {return}
         guard let token = Keys.value(for: Constants.Token.cloudToken) else {
             return
         }
         
         let database = Firestore.firestore()
-        let projectRef = database.collection("Users").document(userId).collection("Projects").document(projectTitle).collection("Tasks").document(taskTitle)
+        let projectRef = database.collection("Users").document(userId).collection("Projects").document(projectID).collection("Tasks").document(taskId)
         let deleteFn = functions.httpsCallable("recursiveDelete")
         let data: [String: Any] = [
             "path": projectRef.path,

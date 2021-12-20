@@ -7,36 +7,36 @@
 
 import Foundation
 
-protocol ProjectCreationPresenterDelegate: AnyObject {
-    func fetchProjectSucceed()
-    func registerProjectSucceed(_ project: Project?)
-    func registerProjectFailure()
-    func showErrorMessage()
-    func registerTaskFailure()
-    func registerTaskSucceed(_ task: Task?)
-    func taskEdited(_ task: Task?)
+protocol ProjectManagerDelegate: AnyObject {
+    func registerProjectComplete(_ result: Result<Project?,Error>)
+    func fetchProjectComplete()
+    func fetchCurrentProjectComplete(_ result: Result<Void,Error>)
+    func registerTaskComplete(_ result: Result<Task?,Error>)
     func updateLocalTask(_ task: Task)
-    func deleteTaskSucceed()
-    func deleteTaskFailure()
-    func updateTaskSucceed()
-    func updateTaskFailed()
+    func updateTaskComplete(_ result: Result<Task?,Error>)
+    func updateProjectComplete(_ result: Result<Project?, Error>)
+    func deleteTaskComplete(_ result: Result<Void,Error>)
+    func deleteProjectComplete(_ result: Result<Void, Error>)
+    func showErrorMessage()
 }
 
-extension ProjectCreationPresenterDelegate {
-    func fetchProjectSucceed() {}
-    func registerProjectSucceed(_ project: Project?) {}
-    func registerProjectFailure() {}
-    func showErrorMessage() {}
-    func registerTaskFailure() {}
-    func registerTaskSucceed(_ task: Task?) {}
-    func taskEdited(_ task: Task?) {}
+extension ProjectManagerDelegate {
+    func registerProjectComplete(_ result: Result<Project?,Error>) {}
+    func fetchProjectComplete() {}
+    func fetchCurrentProjectComplete(_ result: Result<Void,Error>) {}
+    func registerTaskComplete(_ result: Result<Task?,Error>) {}
     func updateLocalTask(_ task: Task) {}
+    func updateTaskComplete(_ result: Result<Task?,Error>) {}
+    func updateProjectComplete(_ result: Result<Project?, Error>) {}
+    func deleteTaskComplete(_ result: Result<Void,Error>) {}
+    func deleteProjectComplete(_ result: Result<Void, Error>) {}
+    func showErrorMessage() {}
 }
 
 class ProjectCreationPresenter {
     
     
-    weak var delegate: ProjectCreationPresenterDelegate?
+    weak var delegate: ProjectManagerDelegate?
     var data: CustomResponse?
     var project: Project?
     var localTasksList: [Task?]? = []
@@ -68,9 +68,10 @@ class ProjectCreationPresenter {
             createProjectObject(withTitle: title, descitpion, userId, tasks: nil)
             projectCreationService.registerProject(self.project, data, coverPicture){ (response, error) in
                 if error != nil {
-                    self.delegate?.registerProjectFailure()
+                    guard let error = error else {return}
+                    self.delegate?.registerProjectComplete(.failure(error))
                 } else {
-                    self.delegate?.registerProjectSucceed(self.project)
+                    self.delegate?.registerProjectComplete(.success(self.project))
                     
                 }
             }
@@ -84,18 +85,19 @@ class ProjectCreationPresenter {
         if isFieldFill(title) {
             projectCreationService.registerTask(localTasksList, project) { (response, error) in
                 if error != nil {
-                    self.delegate?.registerTaskFailure()
+                    guard let error = error else {return}
+                    self.delegate?.registerTaskComplete(.failure(error))
                 } else {
-                    self.delegate?.registerTaskSucceed(self.createTaskObject(title))
+                    self.delegate?.registerTaskComplete(.success(self.createTaskObject(title)))
                 } 
             }
         } else {
-            self.delegate?.registerTaskFailure()
+            #warning("Use custom Error service ServiceError.unAllowOperation")
+//            self.delegate?.registerTaskComplete(.failure(Error))
             self.delegate?.showErrorMessage()
         }
     }
     
-   
     private func createProjectObject( withTitle: String?,_ description: String?,_ projectOwner: String?, tasks: [Task?]?) {
         let project = Project(title: withTitle, projectID: UUID().uuidString, description: description, ownerUserId: projectOwner, isPersonal: isPersonal, taskList: localTasksList)
         self.project = project
@@ -121,8 +123,6 @@ class ProjectCreationPresenter {
     
     func updateProject(_ title: String?) {
         guard let title = title else {return}
-//        createTaskObject(title)
-//        self.localTasksList?.append(task)
         localTasksList?.append(createTaskObject(title))
     }
     

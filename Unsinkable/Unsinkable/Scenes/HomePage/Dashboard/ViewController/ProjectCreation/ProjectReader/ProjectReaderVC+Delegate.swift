@@ -8,23 +8,55 @@
 import Foundation
 import UIKit
 
-extension ProjectReaderViewController: ProjectReaderDelegate {
-    func updateProjectSucceed() {
-        print("Update Succeed")
+//extension ProjectReaderViewController: ProjectReaderDelegate {
+//    func updateProjectSucceed() {
+//        print("Update Succeed")
+//    }
+//
+//    func updateProjectFailed() {
+//        print("Update Failed")
+//    }
+//
+//
+//
+//    func deleteProjectFailure() {
+//        #warning("Show error message, can't proceed to delete because: Error.code")
+//    }
+//
+//    func deleteProjectSucceed() {
+//        self.navigationController?.popViewController(animated: true)
+//    }
+//
+//}
+
+extension ProjectReaderViewController: ProjectManagerDelegate {
+    //MARK: - Update methods
+    func updateProjectComplete(_ result: Result<Project?, Error>) {
+        switch result {
+        case .success(_):
+            print("Update Succeed")
+        case .failure(let error):
+        print("Error: \(error.localizedDescription)")
+        }
     }
     
-    func updateProjectFailed() {
-        print("Update Failed")
+    //MARK: - Delete methods
+    func deleteProjectComplete(_ result: Result<Void, Error>) {
+        switch result {
+        case .success(_):
+            print("Success to delete project")
+            self.navigationController?.popViewController(animated: true)
+        case .failure(let error):
+            print("Error: \(error.localizedDescription)")
+        }
     }
     
-    
-    
-    func deleteProjectFailure() {
-        #warning("Show error message, can't proceed to delete because: Error.code")
+    func fetchCurrentProjectComplete(_ result: Result<Void, Error>) {
+        switch result {
+        case .success(()):
+            self.taskTableView.reloadData()
+        case .failure(let error):
+            print("Error: \(error.localizedDescription)")
+        }
     }
-    
-    func deleteProjectSucceed() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
 }

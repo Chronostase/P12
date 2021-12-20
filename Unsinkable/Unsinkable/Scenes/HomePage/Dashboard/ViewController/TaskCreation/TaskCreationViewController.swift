@@ -10,6 +10,8 @@ import UIKit
 
 class TaskCreationViewController: UIViewController {
     
+    // MARK: Properties
+    
     weak var coordinator: HomeCoordinator?
     lazy var taskCreationPresenter = {
         return TaskCreationPresenter()
@@ -20,6 +22,8 @@ class TaskCreationViewController: UIViewController {
     @IBOutlet var datePicker: UIDatePicker!
     @IBOutlet var commentaryTextView: UITextView!
     @IBOutlet var deleteTaskButton: UIButton!
+    
+    //MARK: Methods
     
     @IBAction func prioritySwitch(_ sender: UISwitch) {
     }
@@ -37,6 +41,8 @@ class TaskCreationViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false 
     }
+    
+    //MARK: Setup Methods
     
     private func setupViewController() {
         setupTaskEditor()
@@ -58,23 +64,19 @@ class TaskCreationViewController: UIViewController {
         setNavigationBar()
     }
     
-    private func setDeleteTaskButon() {
-        if taskCreationPresenter.isDeleteTaskNeeded() {
-            self.deleteTaskButton.isHidden = false
-        } else {
-            self.deleteTaskButton.isHidden = true
-        }
-    }
-    
     private func setDelegate() {
         self.commentaryTextView.delegate = self
         self.titleTextField.delegate = self
         self.locationTextField.delegate = self
     }
     
-    private func setTextViewPlaceHolder() {
-        commentaryTextView.text = "Commentary"
-        commentaryTextView.textColor = .placeholderText
+    private func displayDefaultTaskData() {
+        self.titleTextField.text = taskCreationPresenter.task?.title
+        if taskCreationPresenter.task?.commentary != "" && taskCreationPresenter.task?.commentary != nil {
+            self.commentaryTextView.text = taskCreationPresenter.task?.commentary
+        } else {
+            setTextViewPlaceHolder()
+        }
     }
     
     private func setNavigationBar() {
@@ -86,15 +88,7 @@ class TaskCreationViewController: UIViewController {
         }
     }
     
-    private func displayDefaultTaskData() {
-        self.titleTextField.text = taskCreationPresenter.task?.title
-        if taskCreationPresenter.task?.commentary != "" && taskCreationPresenter.task?.commentary != nil {
-            self.commentaryTextView.text = taskCreationPresenter.task?.commentary
-        } else {
-            setTextViewPlaceHolder()
-        }
-        
-    }
+    //MARK: Set Button Methods
     
     private func setRightBarSaveButton() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save task", style: .plain, target: self, action: #selector(saveTask))
@@ -104,13 +98,13 @@ class TaskCreationViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTask))
     }
     
-    @objc func saveTask() {
-        guard let task = taskCreationPresenter.task else {return}
-        
-        taskCreationPresenter.updateLocalTask(with: task.title, location: locationTextField.text, priority: prioritySwitch.isOn, commentary: commentaryTextView.text, deadLine: datePicker.date)
+    private func setDeleteTaskButon() {
+        if taskCreationPresenter.isDeleteTaskNeeded() {
+            self.deleteTaskButton.isHidden = false
+        } else {
+            self.deleteTaskButton.isHidden = true
+        }
     }
-    
-    
     
     @objc func editTask(_ sender: UIBarButtonItem) {
         if sender.title == "Edit" {
@@ -118,13 +112,20 @@ class TaskCreationViewController: UIViewController {
             sender.title = "Perform Change"
         } else {
             sender.title = "Edit"
+            //Here need to change dataSource / Create new task
+//            guard let task = taskCreationPresenter.task else {return}
+
+//            taskCreationPresenter.updateLocalTask(with: titleTextField.text, location: locationTextField.text, priority: prioritySwitch.isOn, commentary: commentaryTextView.text, deadLine: datePicker.date)
+//            taskCreationPresenter.updateLocalTask(with: task.title, location: locationTextField.text, priority: prioritySwitch.isOn, commentary: commentaryTextView.text, deadLine: datePicker.date)
             
-            guard let task = taskCreationPresenter.task else {return}
-            
-            taskCreationPresenter.updateLocalTask(with: task.title, location: locationTextField.text, priority: prioritySwitch.isOn, commentary: commentaryTextView.text, deadLine: datePicker.date)
-            
-            taskCreationPresenter.updateTask()
+            taskCreationPresenter.updateTask(with: titleTextField.text, location: locationTextField.text, priority: prioritySwitch.isOn, commentary: commentaryTextView.text, deadLine: datePicker.date)
         }
+    }
+    
+    @objc func saveTask() {
+        guard let task = taskCreationPresenter.task else {return}
+        
+        taskCreationPresenter.updateLocalTask(with: task.title, location: locationTextField.text, priority: prioritySwitch.isOn, commentary: commentaryTextView.text, deadLine: datePicker.date)
     }
     
     private func canUserEdit(autorization: Bool) {
@@ -133,6 +134,11 @@ class TaskCreationViewController: UIViewController {
         prioritySwitch.isUserInteractionEnabled = autorization
         datePicker.isUserInteractionEnabled = autorization
         commentaryTextView.isUserInteractionEnabled = autorization
+    }
+    
+    private func setTextViewPlaceHolder() {
+        commentaryTextView.text = "Commentary"
+        commentaryTextView.textColor = .placeholderText
     }
     
     private func displayTaskData() {

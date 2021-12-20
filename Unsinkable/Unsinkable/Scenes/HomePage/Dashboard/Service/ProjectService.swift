@@ -21,7 +21,9 @@ protocol ProjectLogic {
     
     func updateProject(_ project: Project?,_ userData: CustomResponse?,_ coverPicture: Data?, completion: @escaping (Error?) -> Void)
     
-    func updateTask(_ project: Project?,_ task: Task?, _ userData: CustomResponse?,  completion: @escaping (Error?) -> Void)
+    func updateTask(_ project: Project?, currentTask: Task?, newTask: Task?, _ userData: CustomResponse?,  completion: @escaping (Error?) -> Void)
+    
+    func refreshCurrentProject(_ project: Project?,_ userData: CustomResponse?, completion: @escaping (Project?, Error?) -> Void)
     
 }
 
@@ -97,12 +99,23 @@ class ProjectService: ProjectLogic {
         }
     }
     
-    func updateTask(_ project: Project?,_ task: Task?, _ userData: CustomResponse?, completion: @escaping (Error?) -> Void) {
-        self.session.updateTask(project, task, userData) { error in
+    func updateTask(_ project: Project?, currentTask: Task?, newTask: Task?, _ userData: CustomResponse?, completion: @escaping (Error?) -> Void) {
+        self.session.updateTask(project, currentTask: currentTask, newTask: newTask, userData) { error in
             if error != nil {
+                guard let error = error else {return}
                 completion(error)
             } else {
                 completion(nil)
+            }
+        }
+    }
+    
+    func refreshCurrentProject(_ project: Project?,_ userData: CustomResponse?, completion: @escaping (Project?, Error?) -> Void) {
+        self.session.refreshCurrentProject(project, userData) { project, error in
+            if error != nil {
+                completion(nil,error)
+            } else {
+                completion(project,nil)
             }
         }
     }

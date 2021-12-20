@@ -30,7 +30,7 @@ class ProjectReaderViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.taskTableView.reloadData()
+        projectReaderPresenter.refreshCurrentProject()
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false 
         self.navigationController?.navigationBar.isHidden = false
     }

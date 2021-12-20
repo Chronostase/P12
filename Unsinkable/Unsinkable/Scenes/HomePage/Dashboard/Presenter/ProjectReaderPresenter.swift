@@ -15,7 +15,7 @@ protocol ProjectReaderDelegate: AnyObject {
 }
 
 class ProjectReaderPresenter {
-    weak var delegate: ProjectReaderDelegate?
+    weak var delegate: ProjectManagerDelegate?
     
     let projectService: ProjectLogic = ProjectService()
     var selectedProject: Project?
@@ -55,9 +55,10 @@ class ProjectReaderPresenter {
     func deleteProject() {
         projectService.deleteProject(selectedProject) { error in
             if error != nil {
-                self.delegate?.deleteProjectFailure()
+                guard let error = error else {return}
+                self.delegate?.deleteProjectComplete(.failure(error))
             } else {
-                self.delegate?.deleteProjectSucceed()
+                self.delegate?.deleteProjectComplete(.success(()))
             }
         }
     }
@@ -65,9 +66,25 @@ class ProjectReaderPresenter {
     func updateProject(_ coverData: Data?) {
         projectService.updateProject(selectedProject, userData, coverData) { error in
             if error != nil {
-                self.delegate?.updateProjectFailed()
+                guard let error = error else {return}
+                self.delegate?.updateProjectComplete(.failure(error))
             } else {
-                self.delegate?.updateProjectSucceed()
+                self.delegate?.updateProjectComplete(.success(nil))
+            }
+        }
+    }
+    
+    #warning("See to use this only when project/task are updated not on read only")
+    func refreshCurrentProject() {
+        projectService.refreshCurrentProject(selectedProject, userData) { project, error in
+            if error != nil {
+                guard let error = error else {return}
+                self.delegate?.fetchCurrentProjectComplete(.failure(error))
+                print("Can't refresh project")
+            } else {
+                self.selectedProject = project
+                self.delegate?.fetchCurrentProjectComplete(.success(()))
+                print("successFully update")
             }
         }
     }

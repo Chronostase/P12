@@ -83,7 +83,8 @@ class HomeCoordinator: Coordinator {
         navigationController.pushViewController(projectReaderVC, animated: true)
     }
     
-    func taskEditor(task: Task, _ project: Project? = nil, parentCreationVC: ProjectCreationPresenterDelegate? = nil, _ isReader: Bool = false,_ userData: CustomResponse? = nil) {
+//    func taskEditor(task: Task, _ project: Project? = nil, parentCreationVC: ProjectCreationPresenterDelegate? = nil, _ isReader: Bool = false,_ userData: CustomResponse? = nil) {
+    func taskEditor(task: Task, _ project: Project? = nil, parentCreationVC: ProjectManagerDelegate? = nil, _ isReader: Bool = false,_ userData: CustomResponse? = nil) {
         let storyboard = UIStoryboard(name: "TaskEditor", bundle: Bundle.main)
         guard let taskEditorVC = storyboard.instantiateInitialViewController() as? TaskCreationViewController else {
             return

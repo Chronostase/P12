@@ -24,7 +24,7 @@ protocol AuthentificationLogic {
     
     func fetchProjects(_ userData: CustomResponse?, completion: @escaping (Result<[Project?]?, Error>) -> Void)
     
-    func fetchTasks(_ userId: String, _ title: String, completion: @escaping (Result<[Task?]?, Error>) -> Void)
+//    func fetchTasks(_ userId: String, _ title: String, completion: @escaping (Result<[Task?]?, Error>) -> Void)
     
     func deleteUser(_ user: UserDetails, completion: @escaping (Error?) -> Void)
     
@@ -131,16 +131,16 @@ class UserAuthentificationService: AuthentificationLogic {
         }
     }
     
-    func fetchTasks(_ userId: String, _ title: String, completion: @escaping (Result<[Task?]?, Error>) -> Void) {
-        self.session.fetchTasks(userId, title) { tasks, error in
-            if error != nil {
-                guard let error = error else {return}
-                completion(.failure(error))
-            } else {
-                completion(.success(tasks))
-            }
-        }
-    }
+//    func fetchTasks(_ userId: String, _ title: String, completion: @escaping (Result<[Task?]?, Error>) -> Void) {
+//        self.session.fetchTasks(userId, title) { tasks, error in
+//            if error != nil {
+//                guard let error = error else {return}
+//                completion(.failure(error))
+//            } else {
+//                completion(.success(tasks))
+//            }
+//        }
+//    }
     
     func isUserLogin() -> Bool {
         return session.isCurrentUserLogin()

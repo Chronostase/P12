@@ -74,7 +74,7 @@ class AuthenticationSession {
         guard let currentUser = Auth.auth().currentUser else {return}
         guard let email = user.email, let password = keyChainManager.getUserCredential(user) else {return}
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
-        
+    
         currentUser.reauthenticate(with: credential) { result, error in
             if error != nil {
                 completion(error)
@@ -168,7 +168,7 @@ class AuthenticationSession {
                     let ownerUserId = data["ownerUserId"] as? String ?? ""
                     let isPersonal = data["isPersonal"] as? Bool
                     let downloadUrl = data["downloadUrl"] as? String ?? ""
-                    let tasksRef = dataBase.collection("Users").document(userId).collection("Projects").document(projectTitle).collection("Tasks")
+                    let tasksRef = dataBase.collection("Users").document(userId).collection("Projects").document(projectID).collection("Tasks")
                     tasksRef.getDocuments() { (querys, error) in
                         if error != nil {
                             guard let error = error else {return}
@@ -206,34 +206,35 @@ class AuthenticationSession {
         }
     }
     
-    func fetchTasks(_ userId: String, _ title: String, completion: @escaping ([Task?]?, Error?) -> Void) {
-        let database = Firestore.firestore()
-        let documentRef = database.collection("Users").document(userId).collection("Projects").document(title).collection("Tasks")
-        documentRef.getDocuments() { (querySnapshot, error) in
-            if error != nil {
-                guard let error = error else {return}
-                completion(nil, error)
-            } else {
-                var taskList = [Task?]()
-                guard let query = querySnapshot else {return}
-                for document in query.documents {
-                    let data = document.data()
-                    let taskTitle = data["title"] as? String ?? ""
-                    let projectID = data["projectID"] as? String ?? ""
-                    let taskID = data["taskID"] as? String ?? ""
-                    let taskPriority = data["taskPriority"] as? Bool ?? nil
-                    let taskDeadLine = data["taskDeadLine"] as? Timestamp
-                    let taskCommentary = data["taskCommentary"] as? String ?? ""
-                    let location = data["location"] as? String ?? ""
-                    
-                    let date = taskDeadLine?.dateValue()
-                    let task = Task(title: taskTitle, projectID: projectID, taskID: taskID, priority: taskPriority, deadLine: date, commentary: taskCommentary, location: location)
-                    taskList.append(task)
-                }
-                completion(taskList, nil)
-            }
-        }
-    }
+//    func fetchTasks(_ userId: String, _ title: String, completion: @escaping ([Task?]?, Error?) -> Void) {
+//        #warning("Change ProjectID here")
+//        let database = Firestore.firestore()
+//        let documentRef = database.collection("Users").document(userId).collection("Projects").document(title).collection("Tasks")
+//        documentRef.getDocuments() { (querySnapshot, error) in
+//            if error != nil {
+//                guard let error = error else {return}
+//                completion(nil, error)
+//            } else {
+//                var taskList = [Task?]()
+//                guard let query = querySnapshot else {return}
+//                for document in query.documents {
+//                    let data = document.data()
+//                    let taskTitle = data["title"] as? String ?? ""
+//                    let projectID = data["projectID"] as? String ?? ""
+//                    let taskID = data["taskID"] as? String ?? ""
+//                    let taskPriority = data["taskPriority"] as? Bool ?? nil
+//                    let taskDeadLine = data["taskDeadLine"] as? Timestamp
+//                    let taskCommentary = data["taskCommentary"] as? String ?? ""
+//                    let location = data["location"] as? String ?? ""
+//                    
+//                    let date = taskDeadLine?.dateValue()
+//                    let task = Task(title: taskTitle, projectID: projectID, taskID: taskID, priority: taskPriority, deadLine: date, commentary: taskCommentary, location: location)
+//                    taskList.append(task)
+//                }
+//                completion(taskList, nil)
+//            }
+//        }
+//    }
     
     func logOutUser() -> Bool {
         let fireAuth = Auth.auth()
