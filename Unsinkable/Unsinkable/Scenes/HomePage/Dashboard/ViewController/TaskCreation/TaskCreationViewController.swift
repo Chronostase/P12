@@ -112,6 +112,7 @@ class TaskCreationViewController: UIViewController {
             sender.title = "Perform Change"
         } else {
             sender.title = "Edit"
+            canUserEdit(autorization: false)
             //Here need to change dataSource / Create new task
 //            guard let task = taskCreationPresenter.task else {return}
 

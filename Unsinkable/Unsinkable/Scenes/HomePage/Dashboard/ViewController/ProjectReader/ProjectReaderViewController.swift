@@ -35,6 +35,11 @@ class ProjectReaderViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        #warning("Update Tasks")
+    }
+    
     @IBAction func showMoreButton(_ sender: UIButton) {
     }
     
@@ -135,5 +140,12 @@ class ProjectReaderViewController: UIViewController {
             confirmationDialog.addAction(action)
         }
         present(confirmationDialog, animated: true, completion: nil)
+    }
+    
+    private func showLoader() {
+        let loadingVC = LoaderViewController()
+        loadingVC.modalPresentationStyle = .overCurrentContext
+        loadingVC.modalTransitionStyle = .crossDissolve
+        navigationController?.present(loadingVC, animated: true, completion: nil)
     }
 }

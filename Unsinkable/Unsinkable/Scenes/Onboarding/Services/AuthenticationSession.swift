@@ -184,9 +184,9 @@ class AuthenticationSession {
                                 let taskDeadLine = data["taskDeadLine"] as? Timestamp
                                 let taskCommentary = data["taskCommentary"] as? String ?? ""
                                 let taskLocation = data["location"] as? String ?? ""
-                                
+                                let isValidate = data["isValidate"] as? Bool ?? false
                                 let date = taskDeadLine?.dateValue()
-                                let task = Task(title: taskTitle, projectID: projectID, taskID: taskID, priority: taskPriority, deadLine: date, commentary: taskCommentary, location: taskLocation)
+                                let task = Task(title: taskTitle, projectID: projectID, taskID: taskID, priority: taskPriority, deadLine: date, commentary: taskCommentary, location: taskLocation, isValidate: isValidate)
                                 taskList.append(task)
                                 print("TaskListCountFetch \(taskList.count)")
                             }

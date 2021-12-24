@@ -54,6 +54,7 @@ class ProjectCreationViewController: UIViewController {
         guard let imageData = coverImage.image?.jpegData(compressionQuality: 1.0) else {
             return
         }
+        showLoader()
         projectCreationPresenter.registerProject(projectTextField.text, projectTextView.text, imageData)
     }
     
@@ -146,6 +147,13 @@ class ProjectCreationViewController: UIViewController {
     private func setupCustomCell() {
         let nib = UINib(nibName: "TaskCell", bundle: nil)
         taskTableView.register(nib, forCellReuseIdentifier: "TaskCell")
+    }
+    
+    private func showLoader() {
+        let loadingVC = LoaderViewController()
+        loadingVC.modalPresentationStyle = .overCurrentContext
+        loadingVC.modalTransitionStyle = .crossDissolve
+        navigationController?.present(loadingVC, animated: true, completion: nil)
     }
 }
 

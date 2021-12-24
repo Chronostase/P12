@@ -33,7 +33,7 @@ extension TaskCreationViewController: ProjectManagerDelegate {
     //MARK: - Update methods
     func updateTaskComplete(_ result: Result<Task?, Error>) {
         switch result {
-        case .success(let task):
+        case .success( _):
         print("Update task succeed, need to fetch with local task list to reload Main project reader, or fetch data in viewWillAppear")
         case .failure(let error):
         print("Error: \(error.localizedDescription)")

@@ -581,6 +581,7 @@
 			children = (
 				E99B8DEB268F0690005A9032 /* DashBoard */,
 				E99B8DEC268F06A5005A9032 /* ProjectCreation */,
+				E99A03362704E36700C1BCCE /* ProjectReader */,
 				E9BDF88027173320009E620F /* TaskCreation */,
 			);
 			path = ViewController;
@@ -689,7 +690,6 @@
 			isa = PBXGroup;
 			children = (
 				E99B8DF926949121005A9032 /* ProjectCreation */,
-				E99A03362704E36700C1BCCE /* ProjectReader */,
 			);
 			path = ProjectCreation;
 			sourceTree = "<group>";

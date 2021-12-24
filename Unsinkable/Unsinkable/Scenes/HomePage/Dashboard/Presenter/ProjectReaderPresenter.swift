@@ -7,12 +7,6 @@
 
 import Foundation
 
-protocol ProjectReaderDelegate: AnyObject {
-    func deleteProjectSucceed()
-    func deleteProjectFailure()
-    func updateProjectSucceed()
-    func updateProjectFailed()
-}
 
 class ProjectReaderPresenter {
     weak var delegate: ProjectManagerDelegate?
@@ -74,7 +68,6 @@ class ProjectReaderPresenter {
         }
     }
     
-    #warning("See to use this only when project/task are updated not on read only")
     func refreshCurrentProject() {
         projectService.refreshCurrentProject(selectedProject, userData) { project, error in
             if error != nil {
@@ -89,4 +82,19 @@ class ProjectReaderPresenter {
         }
     }
     
+    func validateTask(_ task: Task?) {
+        var index = 0
+        guard let validateTask = task, let localTaskList = selectedProject?.taskList else {return}
+        for task in localTaskList {
+            if validateTask.taskID == task?.taskID && validateTask.isValidate == false {
+                self.selectedProject?.taskList?[index]?.isValidate = true
+                index += 1
+            } else if validateTask.taskID == task?.taskID && validateTask.isValidate == true {
+                self.selectedProject?.taskList?[index]?.isValidate = false
+                index += 1
+            }
+            index += 1
+        }
+        
+    }
 }

@@ -14,7 +14,6 @@ class ProjectSession {
     
     #warning("Take care description can be optional + Bug happend when user tip task name without validation and save project")
     #warning("Reload tableView in project reader happed when delete task ")
-    #warning("Rework Database sort task by TaskId no more by title, cause error in path when TaskTitle is update")
     
     lazy var functions = Functions.functions()
     lazy var keyChainManager = KeyChainManager()
@@ -53,13 +52,14 @@ class ProjectSession {
                                 let taskTitle = data["title"] as? String ?? ""
                                 let projectID = data["projectID"] as? String ?? ""
                                 let taskID = data["taskID"] as? String ?? ""
-                                let taskPriority = data["taskPriority"] as? Bool ?? nil
+                                let taskPriority = data["taskPriority"] as? Bool ?? false
                                 let taskDeadLine = data["taskDeadLine"] as? Timestamp
                                 let taskCommentary = data["taskCommentary"] as? String ?? ""
                                 let taskLocation = data["location"] as? String ?? ""
+                                let isValidate = data["isValidate"] as? Bool ?? false
                                 
                                 let date = taskDeadLine?.dateValue()
-                                let task = Task(title: taskTitle, projectID: projectID, taskID: taskID, priority: taskPriority, deadLine: date, commentary: taskCommentary, location: taskLocation)
+                                let task = Task(title: taskTitle, projectID: projectID, taskID: taskID, priority: taskPriority, deadLine: date, commentary: taskCommentary, location: taskLocation, isValidate: isValidate)
                                 taskList.append(task)
                             }
                             let project = Project(title: projectTitle, projectID: projectID ,description: projectDescription, ownerUserId: ownerUserId, isPersonal: isPersonal, downloadUrl: downloadUrl, taskList: taskList)
@@ -76,6 +76,7 @@ class ProjectSession {
                     }
                     
                 } else {
+                    
                     #warning("Fall in .success case for delegate")
                     completion(nil, error)
                 }
@@ -110,7 +111,8 @@ class ProjectSession {
                         "location": newTask.location ?? "",
                         "taskCommentary": newTask.commentary ?? "",
                         "taskDeadLine": newTask.deadLine ?? "",
-                        "taskPriority": newTask.priority ?? ""
+                        "taskPriority": newTask.priority ?? "",
+                        "isValidate": newTask.isValidate ?? false
                     ]) { error in
                         if error != nil {
                             guard let error = error else {return}
@@ -278,7 +280,8 @@ class ProjectSession {
                 "taskPriority" : task.priority ?? false,
                 "taskDeadLine" :  timeStamp ?? "",
                 "taskCommentary" : task.commentary ?? "",
-                "location" : task.location ?? ""
+                "location" : task.location ?? "",
+                "isValidate": task.isValidate ?? false
             ]
             
             let documentRef = database.collection("Users").document(userID).collection("Projects").document(projectID).collection("Tasks").document(taskID)
@@ -328,9 +331,7 @@ class ProjectSession {
                                             let code = FunctionsErrorCode(rawValue: error.code)
                                             let message = error.localizedDescription
                                             let details = error.userInfo[FunctionsErrorDetailsKey]
-                                            print("code \(code)")
-                                            print("message \(message)")
-                                            print("details \(details)")
+                                            print("code: \(code) /n message: \(message) /n details: \(details)")
                                         }
                                         completion(error)
                                     } else {

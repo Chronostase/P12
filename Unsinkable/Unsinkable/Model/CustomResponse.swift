@@ -37,4 +37,5 @@ struct Task {
     var deadLine: Date?
     var commentary: String?
     var location: String?
+    var isValidate: Bool? 
 }

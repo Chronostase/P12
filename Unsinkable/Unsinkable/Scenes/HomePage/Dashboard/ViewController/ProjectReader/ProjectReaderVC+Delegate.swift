@@ -8,27 +8,6 @@
 import Foundation
 import UIKit
 
-//extension ProjectReaderViewController: ProjectReaderDelegate {
-//    func updateProjectSucceed() {
-//        print("Update Succeed")
-//    }
-//
-//    func updateProjectFailed() {
-//        print("Update Failed")
-//    }
-//
-//
-//
-//    func deleteProjectFailure() {
-//        #warning("Show error message, can't proceed to delete because: Error.code")
-//    }
-//
-//    func deleteProjectSucceed() {
-//        self.navigationController?.popViewController(animated: true)
-//    }
-//
-//}
-
 extension ProjectReaderViewController: ProjectManagerDelegate {
     //MARK: - Update methods
     func updateProjectComplete(_ result: Result<Project?, Error>) {
@@ -43,7 +22,7 @@ extension ProjectReaderViewController: ProjectManagerDelegate {
     //MARK: - Delete methods
     func deleteProjectComplete(_ result: Result<Void, Error>) {
         switch result {
-        case .success(_):
+        case .success:
             print("Success to delete project")
             self.navigationController?.popViewController(animated: true)
         case .failure(let error):
@@ -53,9 +32,11 @@ extension ProjectReaderViewController: ProjectManagerDelegate {
     
     func fetchCurrentProjectComplete(_ result: Result<Void, Error>) {
         switch result {
-        case .success(()):
+        case .success:
+//            self.navigationController?.dismiss(animated: true, completion: nil)
             self.taskTableView.reloadData()
         case .failure(let error):
+//            self.navigationController?.dismiss(animated: true, completion: nil)
             print("Error: \(error.localizedDescription)")
         }
     }
