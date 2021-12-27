@@ -25,6 +25,8 @@ protocol ProjectLogic {
     
     func refreshCurrentProject(_ project: Project?,_ userData: CustomResponse?, completion: @escaping (Project?, Error?) -> Void)
     
+    func updateValidateStatement(_ project: Project?, selectedTask: Task?, _ userData: CustomResponse?, completion: @escaping (Result<Void?, Error>) -> Void)
+    
 }
 
 class ProjectService: ProjectLogic {
@@ -106,6 +108,17 @@ class ProjectService: ProjectLogic {
                 completion(error)
             } else {
                 completion(nil)
+            }
+        }
+    }
+    
+    func updateValidateStatement(_ project: Project?, selectedTask: Task?, _ userData: CustomResponse?, completion: @escaping (Result<Void?, Error>) -> Void) {
+        self.session.updateValidateStatement(project, selectedTask: selectedTask, userData) { result in
+            switch result {
+            case.failure(let error):
+                completion(.failure(error))
+            case .success:
+                completion(.success(()))
             }
         }
     }

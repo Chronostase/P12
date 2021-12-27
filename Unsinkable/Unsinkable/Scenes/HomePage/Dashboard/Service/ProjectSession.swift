@@ -84,6 +84,38 @@ class ProjectSession {
         }
     }
     
+    func updateValidateStatement(_ project: Project?, selectedTask: Task?, _ userData: CustomResponse?, completion: @escaping (Result<Void?, Error>) -> Void) {
+        guard let project = project,
+              let task = selectedTask,
+              let user = userData?.user else {return}
+        guard let currentTaskID = task.taskID,
+              let projectID = project.projectID,
+              let userID = user.userId else {return}
+        guard let currentUser = Auth.auth().currentUser, let email = user.email else {return}
+        guard let password = keyChainManager.getUserCredential(user) else {return}
+        let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        let database = Firestore.firestore()
+        let taskRef = database.collection("Users").document(userID).collection("Projects").document(projectID).collection("Tasks").document(currentTaskID)
+        currentUser.reauthenticate(with: credential) { (nil, error) in
+            if error != nil {
+                guard let error = error else {return}
+                completion(.failure(error))
+            } else {
+                taskRef.updateData([
+                    "isValidate": task.isValidate ?? false
+                ]) { error in
+                    if error != nil {
+                        guard let error = error else {return}
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(()))
+                    }
+                }
+            }
+        }
+        
+    }
+    
     func updateTask(_ project: Project?, currentTask: Task?, newTask: Task?, _ userData: CustomResponse?, completion: @escaping (Error?) -> Void) {
         guard let project = project else {return}
         guard let projectID = project.projectID else {return}

@@ -59,6 +59,7 @@
 		E99B8DFF26949514005A9032 /* ProjectSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B8DFE26949514005A9032 /* ProjectSession.swift */; };
 		E99B8E0126959877005A9032 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B8E0026959877005A9032 /* Loader.swift */; };
 		E99B8E032695AA6B005A9032 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99B8E022695AA6B005A9032 /* SplashScreen.storyboard */; };
+		E9B4C3A5277A138D0038B243 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B4C3A4277A138D0038B243 /* Debouncer.swift */; };
 		E9BDE18F25D3F9B7001E3000 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDE18E25D3F9B7001E3000 /* LoginPresenter.swift */; };
 		E9BDF87D270DAE3D009E620F /* ProjectReaderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF87C270DAE3D009E620F /* ProjectReaderPresenter.swift */; };
 		E9BDF87F27159B88009E620F /* TaskEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9BDF87E27159B88009E620F /* TaskEditor.storyboard */; };
@@ -176,6 +177,7 @@
 		E99B8DFE26949514005A9032 /* ProjectSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSession.swift; sourceTree = "<group>"; };
 		E99B8E0026959877005A9032 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		E99B8E022695AA6B005A9032 /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
+		E9B4C3A4277A138D0038B243 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		E9BDE18E25D3F9B7001E3000 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		E9BDF87C270DAE3D009E620F /* ProjectReaderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectReaderPresenter.swift; sourceTree = "<group>"; };
 		E9BDF87E27159B88009E620F /* TaskEditor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskEditor.storyboard; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				E9CB3AAB25DE77BA009980EC /* Constants.swift */,
 				E99B8E0026959877005A9032 /* Loader.swift */,
 				E9BDF88D274D34A0009E620F /* Keys.swift */,
+				E9B4C3A4277A138D0038B243 /* Debouncer.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1021,6 +1024,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E99B8DFF26949514005A9032 /* ProjectSession.swift in Sources */,
+				E9B4C3A5277A138D0038B243 /* Debouncer.swift in Sources */,
 				E9BDE18F25D3F9B7001E3000 /* LoginPresenter.swift in Sources */,
 				E9CDF01F265D25F7000D1FEA /* DashBoardCoordinator.swift in Sources */,
 				E9CB3AAC25DE77BA009980EC /* Constants.swift in Sources */,

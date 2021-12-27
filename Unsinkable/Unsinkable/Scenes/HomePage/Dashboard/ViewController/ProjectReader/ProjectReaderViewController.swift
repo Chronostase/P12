@@ -21,6 +21,8 @@ class ProjectReaderViewController: UIViewController {
     @IBOutlet var taskTableView: UITableView!
     @IBOutlet var showMoreButton: UIButton!
     
+    let debouncer = Debouncer(timeInterval: 0.5)
+    
     lazy var projectReaderPresenter = {
         return ProjectReaderPresenter()
     }()
@@ -35,11 +37,6 @@ class ProjectReaderViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
-        #warning("Update Tasks")
-    }
-    
     @IBAction func showMoreButton(_ sender: UIButton) {
     }
     
@@ -49,6 +46,7 @@ class ProjectReaderViewController: UIViewController {
         configureViewController()
         addRightNavigationBarButton()
     }
+    
     
     private func addRightNavigationBarButton() {
         guard let image = UIImage(systemName: "ellipsis") else {

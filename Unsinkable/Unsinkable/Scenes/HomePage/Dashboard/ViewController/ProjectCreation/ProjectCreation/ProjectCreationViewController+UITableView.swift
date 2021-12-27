@@ -25,8 +25,8 @@ extension ProjectCreationViewController: UITableViewDataSource {
         guard let task = projectCreationPresenter.localTasksList?[indexPath.row] else {
             return UITableViewCell()
         }
-        
-        cell.configure(task)
+        cell.task = task
+        cell.configure()
         return cell
     }
     

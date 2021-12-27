@@ -68,6 +68,17 @@ class ProjectReaderPresenter {
         }
     }
     
+    func updateTask( _ task: Task?) {
+        projectService.updateValidateStatement(selectedProject, selectedTask: task, userData) { result in
+            switch result {
+            case.failure(let error):
+                self.delegate?.updateTaskComplete(.failure(error))
+            case.success:
+                self.delegate?.updateTaskComplete(.success(nil))
+            }
+        }
+    }
+    
     func refreshCurrentProject() {
         projectService.refreshCurrentProject(selectedProject, userData) { project, error in
             if error != nil {

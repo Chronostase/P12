@@ -38,7 +38,7 @@ class CustomTaskTableViewCell: UITableViewCell {
     @IBAction func priorityButton(_ sender: UIButton) {
     }
     
-    func configure(_ task: Task?) {
+    func configure() {
         self.taskTitle.text = task?.title
     }
     

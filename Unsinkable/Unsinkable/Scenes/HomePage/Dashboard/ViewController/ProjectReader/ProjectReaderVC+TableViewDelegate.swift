@@ -99,14 +99,14 @@ extension ProjectReaderViewController: UITableViewDataSource {
             cell.backgroundColor = .white
             cell.delegate = self
             cell.task = task
-            cell.configure(task)
+            cell.configure()
             return cell
         } else if unValidateTasks.count < 1 && validateTasks.count > 0 {
             guard let task = validateTasks[indexPath.row] else {return UITableViewCell()}
             cell.backgroundColor = .green
             cell.delegate = self
             cell.task = task
-            cell.configure(task)
+            cell.configure()
             return cell
         } else if unValidateTasks.count > 0 && validateTasks.count > 0 {
             if indexPath.section == 0 {
@@ -114,42 +114,19 @@ extension ProjectReaderViewController: UITableViewDataSource {
                 cell.backgroundColor = .white
                 cell.delegate = self
                 cell.task = task
-                cell.configure(task)
+                cell.configure()
                 return cell
             } else if indexPath.section == 1 {
                 guard let task = validateTasks[indexPath.row] else {return UITableViewCell()}
                 cell.backgroundColor = .green
                 cell.delegate = self
                 cell.task = task
-                cell.configure(task)
+                cell.configure()
                 return cell
             }
         }
         return UITableViewCell()
-        //        let finalTasksArray = [unValidateTasks, validateTasks]
-        //        let task = finalTasksArray[indexPath.section][indexPath.row]
-        //        guard let isValidate = task?.isValidate else {return UITableViewCell()}
-        
-        //        Filtred contain only unvalidate task
-        //        let filtredTaskList = taskList.filter{($0?.isValidate != true) == (indexPath.section == 0)}
-        ////        guard let task = taskList[indexPath.row] else {
-        ////            return UITableViewCell()
-        ////        }
-        //        guard let task = filtredTaskList[indexPath.row], let isValidate = task.isValidate else {
-        //            return UITableViewCell()
-        //        }
-        //        cell.delegate = self
-        //        if isValidate {
-        //            cell.backgroundColor = .green
-        //        } else {
-        //            cell.backgroundColor = .white
-        //        }
-        //        cell.task = task
-        //        cell.configure(task)
-        //        return cell
     }
-    
-    
 }
 
 extension ProjectReaderViewController: UITableViewDelegate {
@@ -172,6 +149,18 @@ extension ProjectReaderViewController: CustomTaskTableViewCellDelegate {
         self.projectReaderPresenter.validateTask(task)
         DispatchQueue.main.async {
             self.taskTableView.reloadData()
+        }
+        debouncer.renewInterval()
+        print("Renew interval")
+        
+        debouncer.handler = {
+            print("Enter in debouncer handler")
+            guard let currentTaskList = self.projectReaderPresenter.selectedProject?.taskList else {return}
+            for currentTask in currentTaskList {
+                if task?.taskID == currentTask?.taskID {
+                    self.projectReaderPresenter.updateTask(currentTask)
+                }
+            }
         }
     }
     
