@@ -1,14 +1,14 @@
 //
-//  TaskCreation+UITextView.swift
+//  UpdateProjectVC+UITextViewDelegate.swift
 //  Unsinkable
 //
-//  Created by Thomas on 13/10/2021.
+//  Created by Thomas on 28/12/2021.
 //
 
 import Foundation
 import UIKit
 
-extension TaskCreationViewController: UITextViewDelegate {
+extension UpdateProjectViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == .placeholderText {
@@ -23,13 +23,4 @@ extension TaskCreationViewController: UITextViewDelegate {
             textView.textColor = .placeholderText
         }
     }
-
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-            if(text == "\n") {
-                textView.resignFirstResponder()
-                return false
-            }
-            return true
-        }
 }

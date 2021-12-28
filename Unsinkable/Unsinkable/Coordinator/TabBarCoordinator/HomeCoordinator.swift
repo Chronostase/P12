@@ -83,7 +83,6 @@ class HomeCoordinator: Coordinator {
         navigationController.pushViewController(projectReaderVC, animated: true)
     }
     
-//    func taskEditor(task: Task, _ project: Project? = nil, parentCreationVC: ProjectCreationPresenterDelegate? = nil, _ isReader: Bool = false,_ userData: CustomResponse? = nil) {
     func taskEditor(task: Task, _ project: Project? = nil, parentCreationVC: ProjectManagerDelegate? = nil, _ isReader: Bool = false,_ userData: CustomResponse? = nil) {
         let storyboard = UIStoryboard(name: "TaskEditor", bundle: Bundle.main)
         guard let taskEditorVC = storyboard.instantiateInitialViewController() as? TaskCreationViewController else {
@@ -96,6 +95,18 @@ class HomeCoordinator: Coordinator {
         taskEditorVC.taskCreationPresenter.project = project
         taskEditorVC.taskCreationPresenter.userData = userData
         navigationController.pushViewController(taskEditorVC, animated: true)
+    }
+    
+    func updateProject(_ project: Project?, _ userData: CustomResponse?) {
+        let storyboard = UIStoryboard(name: "UpdateProject", bundle: Bundle.main)
+        guard let updateProjectVC = storyboard.instantiateInitialViewController() as? UpdateProjectViewController else {return}
+        
+        updateProjectVC.coordinator = self
+        updateProjectVC.updateProjectPresenter.currentProject = project
+        updateProjectVC.updateProjectPresenter.userData = userData
+        updateProjectVC.modalPresentationStyle = .overCurrentContext
+        navigationController.present(updateProjectVC, animated: true, completion: nil)
+//        navigationController.present(updateProjectVC, animated: true)
     }
     
     func didFinish() {

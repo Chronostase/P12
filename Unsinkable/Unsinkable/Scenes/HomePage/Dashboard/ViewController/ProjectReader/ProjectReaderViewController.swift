@@ -21,6 +21,7 @@ class ProjectReaderViewController: UIViewController {
     @IBOutlet var taskTableView: UITableView!
     @IBOutlet var showMoreButton: UIButton!
     
+    #warning("Ask for normal timeInterval, 0.4 seem too short")
     let debouncer = Debouncer(timeInterval: 0.5)
     
     lazy var projectReaderPresenter = {
@@ -29,6 +30,7 @@ class ProjectReaderViewController: UIViewController {
     
     override func viewDidLoad() {
         setup()
+        addObserver()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +64,9 @@ class ProjectReaderViewController: UIViewController {
     
     private func showMoreOptions() {
         let actionSheet = UIAlertController(title: "More Options", message: nil, preferredStyle: .actionSheet)
+        let updateProject = UIAlertAction(title: "Update project", style: .default) { action in
+            self.coordinator?.updateProject(self.projectReaderPresenter.selectedProject, self.projectReaderPresenter.userData)
+        }
         let deleteProject = UIAlertAction(title: "Delete Project", style: .destructive) { (action) in
             self.setConfirmationDialog()
             print("Delete Project Option Tapped")
@@ -69,7 +74,7 @@ class ProjectReaderViewController: UIViewController {
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
-        let actionArry = [deleteProject, cancel]
+        let actionArry = [updateProject, deleteProject, cancel]
         for action in actionArry {
             actionSheet.addAction(action)
         }
@@ -82,7 +87,7 @@ class ProjectReaderViewController: UIViewController {
         self.taskTableView.delegate = self 
     }
     
-    private func configureViewController() {
+    func configureViewController() {
         guard let project = projectReaderPresenter.selectedProject else {
             return
         }
@@ -127,6 +132,7 @@ class ProjectReaderViewController: UIViewController {
     private func setConfirmationDialog() {
         let confirmationDialog = UIAlertController(title: "Are you want to delete this item", message: nil, preferredStyle: .alert)
         let delete = UIAlertAction(title: "Yes", style: .destructive) { action in
+            self.showLoader()
             self.projectReaderPresenter.deleteProject()
         }
         
@@ -145,5 +151,14 @@ class ProjectReaderViewController: UIViewController {
         loadingVC.modalPresentationStyle = .overCurrentContext
         loadingVC.modalTransitionStyle = .crossDissolve
         navigationController?.present(loadingVC, animated: true, completion: nil)
+    }
+    
+    private func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.displayNewData), name: NSNotification.Name("ChildEnd"), object: nil)
+    }
+    
+    @objc func displayNewData() {
+        
+        projectReaderPresenter.refreshCurrentProject()
     }
 }

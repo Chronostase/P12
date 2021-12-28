@@ -12,9 +12,6 @@ import FirebaseFunctions
 
 class ProjectSession {
     
-    #warning("Take care description can be optional + Bug happend when user tip task name without validation and save project")
-    #warning("Reload tableView in project reader happed when delete task ")
-    
     lazy var functions = Functions.functions()
     lazy var keyChainManager = KeyChainManager()
     
@@ -169,7 +166,6 @@ class ProjectSession {
         guard let userId = userData?.user.userId else {return}
         guard let ownerId = project.ownerUserId else {return}
         guard let title = project.title else { return }
-        guard let description = project.description else { return }
         guard let projectID = project.projectID else { return }
         guard let isPersonal = project.isPersonal else {return}
         
@@ -177,47 +173,64 @@ class ProjectSession {
         if userId == ownerId {
             
             //Delete old cover picture
-            
-            storageRef.delete { error in
-                if error != nil {
-                    completion(error)
-                } else {
-                    guard let coverData = coverPicture else {return}
-                    
-                    //Handle download Url
-                    
-                    storageRef.putData(coverData, metadata: nil) { (_, error) in
-                        if error != nil {
-                            completion(error)
-                        } else {
-                            storageRef.downloadURL { url, error in
-                                if error != nil {
-                                    completion(error)
-                                } else {
-                                    
-                                    //Update project in database
-                                    
-                                    let database = Firestore.firestore()
-                                    guard let url = url?.absoluteString else {return}
-                                    let projectRef = database.collection("Users").document(userId).collection("Projects").document(projectID)
-                                    projectRef.updateData([
-                                        "Title": title,
-                                        "Description": description,
-                                        "ownerUserId": userId,
-                                        "projectId": projectID,
-                                        "isPersonal": isPersonal,
-                                        "downloadUrl": url
-                                    ]) { error in
-                                        if error != nil {
-                                            completion(error)
-                                        } else {
-                                            completion(nil)
+            if coverPicture != nil {
+                storageRef.delete { error in
+                    if error != nil {
+                        completion(error)
+                    } else {
+                        guard let coverData = coverPicture else {return}
+                        
+                        //Handle download Url
+                        
+                        storageRef.putData(coverData, metadata: nil) { (_, error) in
+                            if error != nil {
+                                completion(error)
+                            } else {
+                                storageRef.downloadURL { url, error in
+                                    if error != nil {
+                                        completion(error)
+                                    } else {
+                                        
+                                        //Update project in database
+                                        
+                                        let database = Firestore.firestore()
+                                        guard let url = url?.absoluteString else {return}
+                                        let projectRef = database.collection("Users").document(userId).collection("Projects").document(projectID)
+                                        projectRef.updateData([
+                                            "Title": title,
+                                            "Description": project.description ?? "",
+                                            "ownerUserId": userId,
+                                            "projectId": projectID,
+                                            "isPersonal": isPersonal,
+                                            "downloadUrl": url
+                                        ]) { error in
+                                            if error != nil {
+                                                completion(error)
+                                            } else {
+                                                completion(nil)
+                                            }
                                         }
                                     }
                                 }
                             }
+                            
                         }
-                        
+                    }
+                }
+            } else {
+                let database = Firestore.firestore()
+                let projectRef = database.collection("Users").document(userId).collection("Projects").document(projectID)
+                projectRef.updateData([
+                    "Title": title,
+                    "Description": project.description ?? "",
+                    "ownerUserId": userId,
+                    "projectId": projectID,
+                    "isPersonal": isPersonal,
+                ]) { error in
+                    if error != nil {
+                        completion(error)
+                    } else {
+                        completion(nil)
                     }
                 }
             }
@@ -232,7 +245,6 @@ class ProjectSession {
         guard let project = project else { return }
         guard let ownerId = project.ownerUserId else {return}
         guard let title = project.title else { return }
-        guard let description = project.description else { return }
         guard let projectID = project.projectID else { return }
         guard let isPersonal = project.isPersonal else {return}
         
@@ -256,7 +268,7 @@ class ProjectSession {
                             guard let url = URL?.absoluteString else {return}
                             let documentData: [String: Any] = [
                                 "Title": title,
-                                "Description": description,
+                                "Description": project.description ?? "",
                                 "ownerUserId": userId,
                                 "projectId": projectID,
                                 "isPersonal": isPersonal,

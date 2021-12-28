@@ -35,8 +35,11 @@ extension ProjectReaderViewController: ProjectManagerDelegate {
         switch result {
         case .success:
             print("Success to delete project")
+            self.navigationController?.dismiss(animated: true, completion: nil)
             self.navigationController?.popViewController(animated: true)
         case .failure(let error):
+            
+            self.navigationController?.dismiss(animated: true, completion: nil)
             print("Error: \(error.localizedDescription)")
         }
     }
@@ -44,6 +47,9 @@ extension ProjectReaderViewController: ProjectManagerDelegate {
     func fetchCurrentProjectComplete(_ result: Result<Void, Error>) {
         switch result {
         case .success:
+            DispatchQueue.main.async {
+                self.configureViewController()
+            }
 //            self.navigationController?.dismiss(animated: true, completion: nil)
             self.taskTableView.reloadData()
         case .failure(let error):

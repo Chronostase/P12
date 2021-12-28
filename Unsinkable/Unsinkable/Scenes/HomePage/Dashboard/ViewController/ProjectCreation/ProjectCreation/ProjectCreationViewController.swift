@@ -51,7 +51,7 @@ class ProjectCreationViewController: UIViewController {
     }
     
     @IBAction func finishButton(_ sender: Any) {
-        guard let imageData = coverImage.image?.jpegData(compressionQuality: 1.0) else {
+        guard let imageData = coverImage.image?.jpegData(compressionQuality: 0.25) else {
             return
         }
         showLoader()
