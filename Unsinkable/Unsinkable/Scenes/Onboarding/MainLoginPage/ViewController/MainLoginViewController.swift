@@ -32,7 +32,6 @@ class MainLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +49,7 @@ class MainLoginViewController: UIViewController {
     }
     
     private func setupUI() {
-        registerButton.setTitle(Constants.LoginString.registerButton, for: .normal)
+        registerButton.setTitle(Constants.LoginString.register, for: .normal)
         loginButton.setTitle(Constants.LoginString.longinButton, for: .normal)
     }
     

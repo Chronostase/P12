@@ -59,13 +59,13 @@ class LogInViewController: UIViewController {
     
     private func setupUI() {
         errorLabel.isHidden = true
-        signInButton.setTitle(Constants.LoginString.signInButton, for: .normal)
+        signInButton.setTitle(Constants.LoginString.signIn, for: .normal)
         orLabel.text = Constants.LoginString.or
         appleLogin.setTitle(Constants.LoginString.appleLogin, for: .normal)
         
-        self.navigationItem.title = "Sign in"
-        emailTextField.setPlaceholder("Email...")
-        passwordTextField.setPlaceholder("Password...")
+        self.navigationItem.title = Constants.LoginString.signIn
+        emailTextField.setPlaceholder(Constants.LoginString.emailPlaceHolder)
+        passwordTextField.setPlaceholder(Constants.LoginString.passwordPlaceHolder)
     }
     
     func showError(_ message: String) {

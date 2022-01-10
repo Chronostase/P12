@@ -44,20 +44,11 @@ extension ProjectReaderViewController: UITableViewDataSource {
                 return 20.0
             }
         }
-        //        if unValidateTaskCount < 1 {
-        //            return 0.0
-        //        } else {
-        //            if section == 0 {
-        //                return 0.0
-        //            } else {
-        //                return 20.0
-        //            }
-        //        }
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let view = view as? UITableViewHeaderFooterView else {return}
-        view.textLabel?.text = "Finished Task:"
+        view.textLabel?.text = Constants.Label.finishedTask
         view.tintColor = .white
     }
     
@@ -83,7 +74,7 @@ extension ProjectReaderViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as? CustomTaskTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cell.taskCell, for: indexPath) as? CustomTaskTableViewCell else {
             return UITableViewCell()
         }
         

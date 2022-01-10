@@ -70,7 +70,6 @@ class DashBoardPresenter {
     }
     
     func getProjectList() {
-//        delegate?.showLoader()
         userAuthenticationService.fetchProjects(data) { [weak self] result in
             switch result {
             case .success(let projectList):

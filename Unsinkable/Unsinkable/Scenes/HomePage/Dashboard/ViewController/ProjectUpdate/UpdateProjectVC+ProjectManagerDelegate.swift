@@ -15,7 +15,6 @@ extension UpdateProjectViewController: ProjectManagerDelegate {
             self.dismiss(animated: true, completion: nil)
             
             self.presentingViewController?.dismiss(animated: true, completion: nil)
-//            self.dismiss(animated: true, completion: nil)
             print("Update Succeed")
         case .failure(let error):
             self.dismiss(animated: true, completion: nil)

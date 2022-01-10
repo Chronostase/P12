@@ -13,10 +13,14 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="UpdateProjectViewController" customModule="Unsinkable" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="5EZ-qb-Rvc" userLabel="VIew">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w9g-WQ-eiB" userLabel="backGround">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIN-7y-lDj" userLabel="contentView" customClass="CustomView" customModule="Unsinkable" customModuleProvider="target">
                                 <rect key="frame" x="62" y="269" width="290" height="358"/>
                                 <subviews>
@@ -100,16 +104,20 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="w9g-WQ-eiB" secondAttribute="bottom" id="7Or-q9-542"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="w9g-WQ-eiB" secondAttribute="trailing" id="Ap8-lC-789"/>
                             <constraint firstItem="yIN-7y-lDj" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="KPb-KZ-TjC"/>
+                            <constraint firstItem="w9g-WQ-eiB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="MvX-7Y-Q6I"/>
                             <constraint firstItem="yIN-7y-lDj" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.4" id="Od7-5F-GMg"/>
                             <constraint firstItem="yIN-7y-lDj" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.7" id="SIv-Ya-c0r"/>
                             <constraint firstItem="yIN-7y-lDj" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="agj-Zo-Nbb"/>
+                            <constraint firstItem="w9g-WQ-eiB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="eNY-Lu-ggU"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backGroundView" destination="5EZ-qb-Rvc" id="0Ef-Tl-QWf"/>
+                        <outlet property="backGroundView" destination="w9g-WQ-eiB" id="oRd-da-83o"/>
+                        <outlet property="contentView" destination="yIN-7y-lDj" id="8YH-WT-yFu"/>
                         <outlet property="projectDescriptionTextView" destination="QFi-U2-aZk" id="ARi-Dm-6Ty"/>
                         <outlet property="projectTilteTextField" destination="QN6-la-fjP" id="BhP-w6-hvK"/>
                         <outlet property="selectCoverButton" destination="FMH-OJ-aNx" id="Zgx-qn-6l0"/>

@@ -65,10 +65,10 @@ class DashBoardViewController: UIViewController {
     }
     
     private func setupCustomCell() {
-        let nib = UINib(nibName: "ProjectCell", bundle: nil)
-        personalCollectionView.register(nib, forCellWithReuseIdentifier: "ProjectCell")
-        let xib = UINib(nibName: "ProjectCell", bundle: nil)
-        professionalCollectionView.register(xib, forCellWithReuseIdentifier: "ProjectCell")
+        let nib = UINib(nibName: Constants.Cell.projectCell, bundle: nil)
+        personalCollectionView.register(nib, forCellWithReuseIdentifier: Constants.Cell.projectCell)
+        let xib = UINib(nibName: Constants.Cell.projectCell, bundle: nil)
+        professionalCollectionView.register(xib, forCellWithReuseIdentifier: Constants.Cell.projectCell)
     }
     
     private func setDelegateAndDataSource() {

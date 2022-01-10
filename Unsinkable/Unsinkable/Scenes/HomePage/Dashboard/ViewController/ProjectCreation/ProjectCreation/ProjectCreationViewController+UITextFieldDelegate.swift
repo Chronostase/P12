@@ -9,8 +9,11 @@ import Foundation
 import UIKit
 
 extension ProjectCreationViewController: UITextFieldDelegate {
-    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.activatedObject = textField
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.activatedObject = nil
         return textField.resignFirstResponder()
     }
 }

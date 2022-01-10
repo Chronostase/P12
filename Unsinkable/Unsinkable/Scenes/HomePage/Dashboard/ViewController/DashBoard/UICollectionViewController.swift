@@ -31,7 +31,7 @@ extension DashBoardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == personalCollectionView {
-            guard let cell = personalCollectionView.dequeueReusableCell(withReuseIdentifier: "ProjectCell", for: indexPath) as? CustomProjectCell else {
+            guard let cell = personalCollectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cell.projectCell, for: indexPath) as? CustomProjectCell else {
                 return UICollectionViewCell()
             }
             guard let projects = dashBoardPresenter.personalProject else {
@@ -49,7 +49,7 @@ extension DashBoardViewController: UICollectionViewDataSource {
             
             return cell
         } else {
-            guard let cell = professionalCollectionView.dequeueReusableCell(withReuseIdentifier: "ProjectCell", for: indexPath) as? CustomProjectCell else {
+            guard let cell = professionalCollectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cell.projectCell, for: indexPath) as? CustomProjectCell else {
                 return UICollectionViewCell()
             }
             guard let projects = dashBoardPresenter.professionalProject else {
@@ -75,7 +75,6 @@ extension DashBoardViewController: UICollectionViewDelegate {
                 return
             }
             let selectedProject = projects[indexPath.row]
-//            dashBoardPresenter.selectedProject = selectedProject
             coordinator?.projectReader(project: selectedProject, userData)
         } else {
             guard let projects = dashBoardPresenter.professionalProject, let userData = dashBoardPresenter.data else {
@@ -83,7 +82,6 @@ extension DashBoardViewController: UICollectionViewDelegate {
             }
             let selectedProject = projects[indexPath.row]
             
-//            dashBoardPresenter.selectedProject = selectedProject
             coordinator?.projectReader(project: selectedProject, userData)
         }
     }

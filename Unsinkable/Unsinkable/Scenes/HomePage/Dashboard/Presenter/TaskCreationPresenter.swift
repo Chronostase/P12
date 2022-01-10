@@ -29,6 +29,19 @@ class TaskCreationPresenter {
         return boolean
     }
     
+    func isDeadLineViewNeeded() -> Bool {
+        guard let isReader = isReader else {return false}
+        if isReader {
+            if task?.deadLine != nil {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+    
     func formatToDate(from date: String?) -> Date?  {
         guard let stringDate = date else {return nil}
         print("StringDate \(stringDate)")

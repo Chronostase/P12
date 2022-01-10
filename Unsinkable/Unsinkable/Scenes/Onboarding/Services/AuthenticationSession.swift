@@ -39,29 +39,39 @@ class AuthenticationSession {
         }
     }
     
-    func updateUser(_ firstName: String,_ name: String,_ email: String, completion: @escaping (Error?) -> Void) {
+    func updateUser(_ user: UserDetails?, _ firstName: String,_ name: String,_ email: String, completion: @escaping (Error?) -> Void) {
         let auth = Auth.auth()
         guard let currentUser = auth.currentUser else {return}
         let currentEmail = currentUser.email
         let userId = currentUser.uid
         let database = Firestore.firestore()
-        let databaseRef = database.collection("Users").document("\(userId)")
-        
+        let databaseRef = database.collection(Constants.Database.User.userPath).document("\(userId)")
+        #warning("Need to be second if Email succeed")
         databaseRef.updateData([
-            "first_name": firstName,
-            "name": name,
-            "email": email
+            Constants.Database.User.firstNameField: firstName,
+            Constants.Database.User.nameField: name,
+            Constants.Database.User.emailField: email
         ]) { error in
             if error != nil {
                 completion(error)
             } else {
+                #warning("need to be first probably reauthenticate to solve email problem")
                 if email != currentEmail {
-                    currentUser.updateEmail(to: email) { error in
+                    guard let user = user else {return}
+                    guard let userEmail = auth.currentUser?.email, let password = self.keyChainManager.getUserCredential(user) else {return}
+                    let credential = EmailAuthProvider.credential(withEmail: userEmail, password: password)
+                    currentUser.reauthenticate(with: credential) { (result, error) in
                         if error != nil {
-                            //Email not change
                             completion(error)
                         } else {
-                            completion(nil)
+                            currentUser.updateEmail(to: email) { error in
+                                if error != nil {
+                                    //Email not change
+                                    completion(error)
+                                } else {
+                                    completion(nil)
+                                }
+                            }
                         }
                     }
                 }
@@ -74,7 +84,7 @@ class AuthenticationSession {
         guard let currentUser = Auth.auth().currentUser else {return}
         guard let email = user.email, let password = keyChainManager.getUserCredential(user) else {return}
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
-    
+        
         currentUser.reauthenticate(with: credential) { result, error in
             if error != nil {
                 completion(error)
@@ -83,11 +93,12 @@ class AuthenticationSession {
                     if error != nil {
                         completion(error)
                     } else {
-                        if let _ = self.keyChainManager.deleteKey(user) {
-                            print("Can't delete Key")
+                        if self.keyChainManager.deleteKey(user) == true {
+                            print("Successfuly delete keychain ref")
                             completion(nil)
                         } else {
-                            completion(nil)
+                            print("Key chain failed to delete reference")
+                            completion(error)
                         }
                     }
                 }
@@ -98,8 +109,12 @@ class AuthenticationSession {
     func addUserToDataBase(customResponse: CustomResponse?,_ firstName: String, _ name: String, _ email: String, _ password: String, completion: @escaping (CustomResponse?, Error?) -> Void) {
         guard let userId = customResponse?.user.userId else { return }
         let dataBase = Firestore.firestore()
-        let documentRef = dataBase.collection("Users").document(userId)
-        documentRef.setData(["first_name" : firstName,"name": name,"email" : email, "uid": userId])
+        let documentRef = dataBase.collection(Constants.Database.User.userPath).document(userId)
+        documentRef.setData([
+                                Constants.Database.User.firstNameField : firstName,
+                                Constants.Database.User.nameField: name,
+                                Constants.Database.User.emailField : email,
+                                Constants.Database.User.uidField: userId])
         { (error) in
             if error != nil {
                 guard let error = error else { return }
@@ -116,7 +131,7 @@ class AuthenticationSession {
         }
         
         let database = Firestore.firestore()
-        let documentRef = database.collection("Users").document("\(data.uid)")
+        let documentRef = database.collection(Constants.Database.User.userPath).document("\(data.uid)")
         documentRef.getDocument { (documentSnapshot, error) in
             if error != nil {
                 completion(nil, error)
@@ -126,10 +141,10 @@ class AuthenticationSession {
                         return
                     }
                     
-                    let firstname = data["first_name"] as? String ?? ""
-                    let name = data["name"] as? String ?? ""
-                    let uid = data["uid"] as? String ?? ""
-                    let email = data["email"] as? String ?? ""
+                    let firstname = data[Constants.Database.User.firstNameField] as? String ?? ""
+                    let name = data[Constants.Database.User.nameField] as? String ?? ""
+                    let uid = data[Constants.Database.User.uidField] as? String ?? ""
+                    let email = data[Constants.Database.User.emailField] as? String ?? ""
                     user = CustomResponse(user: UserDetails(email: email, firstName: firstname, name: name, userId: uid, projects: []))
                     completion(user,nil)
                 }
@@ -148,27 +163,23 @@ class AuthenticationSession {
         var projectIndex = 0
         
         //Document ref to docu
-        let documentRef = dataBase.collection("Users").document(userId).collection("Projects")
+        let documentRef = dataBase.collection(Constants.Database.User.userPath).document(userId).collection(Constants.Database.Project.projectPath)
         documentRef.getDocuments() { (querySnapshot, error) in
             if error != nil {
                 guard let error = error else { return }
                 completion(nil, error)
             } else {
                 guard let queryArray = querySnapshot?.documents else { return }
-                
-                //                #error("ENTER FETCH PROJECT DATA ")
                 for document in queryArray {
-                    print(queryArray.count)
                     projectIndex += 1
-                    print("Index \(projectIndex)")
                     let data = document.data()
-                    let projectTitle = data["Title"] as? String ?? ""
-                    let projectID = data["projectId"] as? String ?? ""
-                    let projectDescription = data["Description"] as? String ?? ""
-                    let ownerUserId = data["ownerUserId"] as? String ?? ""
-                    let isPersonal = data["isPersonal"] as? Bool
-                    let downloadUrl = data["downloadUrl"] as? String ?? ""
-                    let tasksRef = dataBase.collection("Users").document(userId).collection("Projects").document(projectID).collection("Tasks")
+                    let projectTitle = data[Constants.Database.Project.title] as? String ?? ""
+                    let projectID = data[Constants.Database.Project.id] as? String ?? ""
+                    let projectDescription = data[Constants.Database.Project.description] as? String ?? ""
+                    let ownerUserId = data[Constants.Database.Project.ownerID] as? String ?? ""
+                    let isPersonal = data[Constants.Database.Project.isPersonal] as? Bool
+                    let downloadUrl = data[Constants.Database.Project.downloadURL] as? String ?? ""
+                    let tasksRef = dataBase.collection(Constants.Database.User.userPath).document(userId).collection(Constants.Database.Project.projectPath).document(projectID).collection(Constants.Database.Task.taskPath)
                     tasksRef.getDocuments() { (querys, error) in
                         if error != nil {
                             guard let error = error else {return}
@@ -177,25 +188,23 @@ class AuthenticationSession {
                             guard let taskQueryArray = querys?.documents else {return}
                             for document in taskQueryArray {
                                 let data = document.data()
-                                let taskTitle = data["title"] as? String ?? ""
-                                let projectID = data["projectID"] as? String ?? ""
-                                let taskID = data["taskID"] as? String ?? ""
-                                let taskPriority = data["taskPriority"] as? Bool ?? nil
-                                let taskDeadLine = data["taskDeadLine"] as? Timestamp
-                                let taskCommentary = data["taskCommentary"] as? String ?? ""
-                                let taskLocation = data["location"] as? String ?? ""
-                                let isValidate = data["isValidate"] as? Bool ?? false
+                                let taskTitle = data[Constants.Database.Task.title] as? String ?? ""
+                                let projectID = data[Constants.Database.Task.projectID] as? String ?? ""
+                                let taskID = data[Constants.Database.Task.id] as? String ?? ""
+                                let taskPriority = data[Constants.Database.Task.priority] as? Bool ?? nil
+                                let taskDeadLine = data[Constants.Database.Task.deadLine] as? Timestamp
+                                let taskCommentary = data[Constants.Database.Task.commentary] as? String ?? ""
+                                let taskLocation = data[Constants.Database.Task.location] as? String ?? ""
+                                let isValidate = data[Constants.Database.Task.isValidate] as? Bool ?? false
                                 let date = taskDeadLine?.dateValue()
                                 let task = Task(title: taskTitle, projectID: projectID, taskID: taskID, priority: taskPriority, deadLine: date, commentary: taskCommentary, location: taskLocation, isValidate: isValidate)
                                 taskList.append(task)
-                                print("TaskListCountFetch \(taskList.count)")
                             }
                         }
                         let project = Project(title: projectTitle, projectID: projectID ,description: projectDescription, ownerUserId: ownerUserId, isPersonal: isPersonal, downloadUrl: downloadUrl, taskList: taskList)
                         projectList.append(project)
                         taskList.removeAll()
                         print(taskList.count)
-                        // If projectList.count == queryArray.count
                         if projectList.count == queryArray.count{
                             completion(projectList, nil)
                         }
@@ -205,36 +214,6 @@ class AuthenticationSession {
             }
         }
     }
-    
-//    func fetchTasks(_ userId: String, _ title: String, completion: @escaping ([Task?]?, Error?) -> Void) {
-//        #warning("Change ProjectID here")
-//        let database = Firestore.firestore()
-//        let documentRef = database.collection("Users").document(userId).collection("Projects").document(title).collection("Tasks")
-//        documentRef.getDocuments() { (querySnapshot, error) in
-//            if error != nil {
-//                guard let error = error else {return}
-//                completion(nil, error)
-//            } else {
-//                var taskList = [Task?]()
-//                guard let query = querySnapshot else {return}
-//                for document in query.documents {
-//                    let data = document.data()
-//                    let taskTitle = data["title"] as? String ?? ""
-//                    let projectID = data["projectID"] as? String ?? ""
-//                    let taskID = data["taskID"] as? String ?? ""
-//                    let taskPriority = data["taskPriority"] as? Bool ?? nil
-//                    let taskDeadLine = data["taskDeadLine"] as? Timestamp
-//                    let taskCommentary = data["taskCommentary"] as? String ?? ""
-//                    let location = data["location"] as? String ?? ""
-//                    
-//                    let date = taskDeadLine?.dateValue()
-//                    let task = Task(title: taskTitle, projectID: projectID, taskID: taskID, priority: taskPriority, deadLine: date, commentary: taskCommentary, location: location)
-//                    taskList.append(task)
-//                }
-//                completion(taskList, nil)
-//            }
-//        }
-//    }
     
     func logOutUser() -> Bool {
         let fireAuth = Auth.auth()

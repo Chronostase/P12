@@ -41,12 +41,4 @@ class CustomTaskTableViewCell: UITableViewCell {
     func configure() {
         self.taskTitle.text = task?.title
     }
-    
-//    func configure(_ title: String, _ memberCount: String, _ firstImage: UIImage, _ secondImage: UIImage, _ thirdImage: UIImage) {
-//        self.taskTitle.text = title
-//        self.memberCountLabel.text = memberCount
-//        self.firstMemberImage.image = firstImage
-//        self.secondMemberImage.image = secondImage
-//        self.thirdMemberImage.image = thirdImage
-//    }
 }

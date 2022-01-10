@@ -24,11 +24,9 @@ protocol AuthentificationLogic {
     
     func fetchProjects(_ userData: CustomResponse?, completion: @escaping (Result<[Project?]?, Error>) -> Void)
     
-//    func fetchTasks(_ userId: String, _ title: String, completion: @escaping (Result<[Task?]?, Error>) -> Void)
-    
     func deleteUser(_ user: UserDetails, completion: @escaping (Error?) -> Void)
     
-    func updateUser(_ firstName: String,_ name: String,_ email: String, completion: @escaping (Error?) -> Void)
+    func updateUser(_ user: UserDetails?, _ firstName: String,_ name: String,_ email: String, completion: @escaping (Error?) -> Void)
     
 }
 
@@ -40,8 +38,8 @@ class UserAuthentificationService: AuthentificationLogic {
         self.session = session
     }
     
-    func updateUser(_ firstName: String,_ name: String,_ email: String, completion: @escaping (Error?) -> Void) {
-        self.session.updateUser(firstName, name, email) { error in
+    func updateUser(_ user: UserDetails?, _ firstName: String,_ name: String,_ email: String, completion: @escaping (Error?) -> Void) {
+        self.session.updateUser(user, firstName, name, email) { error in
             if error != nil {
                 completion(error)
             } else {
@@ -130,17 +128,6 @@ class UserAuthentificationService: AuthentificationLogic {
             }
         }
     }
-    
-//    func fetchTasks(_ userId: String, _ title: String, completion: @escaping (Result<[Task?]?, Error>) -> Void) {
-//        self.session.fetchTasks(userId, title) { tasks, error in
-//            if error != nil {
-//                guard let error = error else {return}
-//                completion(.failure(error))
-//            } else {
-//                completion(.success(tasks))
-//            }
-//        }
-//    }
     
     func isUserLogin() -> Bool {
         return session.isCurrentUserLogin()

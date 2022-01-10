@@ -13,6 +13,7 @@ class UpdateProjectViewController: UIViewController {
     lazy var updateProjectPresenter = {
         return UpdateProjectPresenter()
     }()
+    @IBOutlet var contentView: CustomView!
     @IBOutlet var backGroundView: UIView!
     @IBOutlet var projectTilteTextField: CustomTextField!
     @IBOutlet var projectDescriptionTextView: UITextView!
@@ -29,7 +30,6 @@ class UpdateProjectViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
-        print(self.navigationController)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -39,6 +39,7 @@ class UpdateProjectViewController: UIViewController {
     
     private func setupViewController() {
         setupDelegateAndDate()
+        setupTapGesture()
         setupVisualEffect()
         addDoneButton()
     }
@@ -52,7 +53,7 @@ class UpdateProjectViewController: UIViewController {
     }
     
     private func addDoneButton() {
-        projectDescriptionTextView.addDoneButton(title: "Done", target: self, selector: #selector (tapDone(sender:)))
+        projectDescriptionTextView.addDoneButton(title: Constants.Button.done, target: self, selector: #selector (tapDone(sender:)))
     }
     
     @objc private func tapDone(sender: Any) {
@@ -89,7 +90,19 @@ class UpdateProjectViewController: UIViewController {
     }
     
     private func notifyParent() {
-        NotificationCenter.default.post(name: NSNotification.Name("ChildEnd"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(Constants.Notification.childEnd), object: nil)
+    }
+    
+    private func setupTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didTapGesture(_:)))
+        tapGesture.numberOfTapsRequired = 1
+        backGroundView.isUserInteractionEnabled = true
+        self.backGroundView.addGestureRecognizer(tapGesture)
+        
+    }
+    
+    @objc private func didTapGesture(_ sender: UITapGestureRecognizer) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     private func showLoader() {
@@ -98,8 +111,8 @@ class UpdateProjectViewController: UIViewController {
         loaderVC.modalTransitionStyle = .crossDissolve
         self.present(loaderVC, animated: true, completion: nil)
     }
-    
 }
+
 
 extension UpdateProjectViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     

@@ -21,7 +21,6 @@ class ProjectReaderViewController: UIViewController {
     @IBOutlet var taskTableView: UITableView!
     @IBOutlet var showMoreButton: UIButton!
     
-    #warning("Ask for normal timeInterval, 0.4 seem too short")
     let debouncer = Debouncer(timeInterval: 0.5)
     
     lazy var projectReaderPresenter = {
@@ -39,6 +38,11 @@ class ProjectReaderViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.removeObserver()
+    }
+    
     @IBAction func showMoreButton(_ sender: UIButton) {
     }
     
@@ -51,7 +55,7 @@ class ProjectReaderViewController: UIViewController {
     
     
     private func addRightNavigationBarButton() {
-        guard let image = UIImage(systemName: "ellipsis") else {
+        guard let image = UIImage(systemName: Constants.Image.ellipsis) else {
             return
         }
         let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(moreOptionTapped))
@@ -63,16 +67,15 @@ class ProjectReaderViewController: UIViewController {
     }
     
     private func showMoreOptions() {
-        let actionSheet = UIAlertController(title: "More Options", message: nil, preferredStyle: .actionSheet)
-        let updateProject = UIAlertAction(title: "Update project", style: .default) { action in
+        let actionSheet = UIAlertController(title: Constants.Button.moreOptions, message: nil, preferredStyle: .actionSheet)
+        let updateProject = UIAlertAction(title: Constants.Button.updateProject, style: .default) { action in
             self.coordinator?.updateProject(self.projectReaderPresenter.selectedProject, self.projectReaderPresenter.userData)
         }
-        let deleteProject = UIAlertAction(title: "Delete Project", style: .destructive) { (action) in
+        let deleteProject = UIAlertAction(title: Constants.Button.deleteProject, style: .destructive) { (action) in
             self.setConfirmationDialog()
-            print("Delete Project Option Tapped")
         }
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: Constants.Button.cancel, style: .cancel, handler: nil)
         
         let actionArry = [updateProject, deleteProject, cancel]
         for action in actionArry {
@@ -105,7 +108,7 @@ class ProjectReaderViewController: UIViewController {
                 return
             }
             let url = URL(string: downloadUrl)
-            self.coverImage.kf.setImage(with: url, placeholder: UIImage(named: "cover"), options: nil, completionHandler: nil)
+            self.coverImage.kf.setImage(with: url, placeholder: UIImage(named: Constants.Image.cover), options: nil, completionHandler: nil)
         }
         
         if projectReaderPresenter.checkIfDescriptionIsEmpty() {
@@ -125,18 +128,18 @@ class ProjectReaderViewController: UIViewController {
     }
     
     private func registerCell() {
-        let nib = UINib(nibName: "TaskCell", bundle: nil)
-        taskTableView.register(nib, forCellReuseIdentifier: "TaskCell")
+        let nib = UINib(nibName: Constants.Cell.taskCell, bundle: nil)
+        taskTableView.register(nib, forCellReuseIdentifier: Constants.Cell.taskCell)
     }
     
     private func setConfirmationDialog() {
-        let confirmationDialog = UIAlertController(title: "Are you want to delete this item", message: nil, preferredStyle: .alert)
-        let delete = UIAlertAction(title: "Yes", style: .destructive) { action in
+        let confirmationDialog = UIAlertController(title: Constants.Button.deleteMessage, message: nil, preferredStyle: .alert)
+        let delete = UIAlertAction(title: Constants.Button.yes, style: .destructive) { action in
             self.showLoader()
             self.projectReaderPresenter.deleteProject()
         }
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: Constants.Button.cancel, style: .cancel, handler: nil)
         
         let actionArray = [delete, cancel]
         
@@ -154,7 +157,11 @@ class ProjectReaderViewController: UIViewController {
     }
     
     private func addObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(self.displayNewData), name: NSNotification.Name("ChildEnd"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.displayNewData), name: NSNotification.Name(Constants.Notification.childEnd), object: nil)
+    }
+    
+    private func removeObserver() {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(Constants.Notification.childEnd), object: nil)
     }
     
     @objc func displayNewData() {

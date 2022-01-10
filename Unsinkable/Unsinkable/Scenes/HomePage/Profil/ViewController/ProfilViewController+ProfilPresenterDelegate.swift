@@ -8,6 +8,11 @@
 import Foundation
 
 extension ProfilViewController: ProfilPresenterDelegate {
+    func showError() {
+        self.errorLabel.isHidden = false
+        self.errorLabel.text = Constants.Error.LoginError.emailError
+    }
+    
     func deleteAllUserRefSucceed() {
         profilPresenter.deleteUser()
     }
@@ -34,7 +39,8 @@ extension ProfilViewController: ProfilPresenterDelegate {
     }
     
     func logoutFailed() {
-        self.showError("An error occured please retry")
+        #warning("can delete succeed but don't logout ")
+        self.showError(Constants.Error.retry)
     }
     
     func updateUserFailed() {
@@ -42,6 +48,7 @@ extension ProfilViewController: ProfilPresenterDelegate {
     }
     
     func updateUserSucceed() {
+        self.errorLabel.isHidden = true 
         print("successfully update")
     }
 }

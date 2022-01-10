@@ -19,7 +19,7 @@ extension UpdateProjectViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Commentary"
+            textView.text = Constants.Label.commentaryPlaceHolder
             textView.textColor = .placeholderText
         }
     }

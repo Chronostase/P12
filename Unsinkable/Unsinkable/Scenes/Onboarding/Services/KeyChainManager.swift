@@ -23,7 +23,6 @@ class KeyChainManager {
     
     func deleteKey(_ user: UserDetails) -> Bool? {
         guard let userId = user.userId else {return nil}
-        
         return keyChain.delete(userId)
     }
 }

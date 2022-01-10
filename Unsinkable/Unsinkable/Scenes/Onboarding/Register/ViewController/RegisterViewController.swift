@@ -9,7 +9,6 @@ import UIKit
 
 class RegisterViewController: UIViewController {
     weak var coordinator: AuthenticationCoordinator?
-//    @IBOutlet var mainLabel: UILabel!
     
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var nameTextField: UITextField!
@@ -58,11 +57,11 @@ class RegisterViewController: UIViewController {
     }
     
     private func setupUI() {
-        emailTextField.setPlaceholder("Email...")
-        firstNameTextField.setPlaceholder("Firstname...")
-        nameTextField.setPlaceholder("Name...")
-        passwordTextField.setPlaceholder("Password...")
-        self.navigationItem.title = "Register"
+        emailTextField.setPlaceholder(Constants.LoginString.emailPlaceHolder)
+        firstNameTextField.setPlaceholder(Constants.LoginString.firstNamePlaceHolder)
+        nameTextField.setPlaceholder(Constants.LoginString.namePlaceHolder)
+        passwordTextField.setPlaceholder(Constants.LoginString.passwordPlaceHolder)
+        self.navigationItem.title = Constants.LoginString.register
         errorLabel.isHidden = true
     }
 

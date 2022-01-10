@@ -20,13 +20,13 @@ class ProfilViewController: UIViewController {
     @IBAction func profilPictureButton(_ sender: UIButton) {
     }
     @IBAction func performChangeButton(_ sender: UIButton) {
-        if sender.titleLabel?.text == "Edit profil" {
+        if sender.titleLabel?.text == Constants.Button.editProfil {
             self.canUserEdit(autorization: true)
-            sender.setTitle("Save change", for: .normal)
-        } else if sender.titleLabel?.text == "Save change" {
+            sender.setTitle(Constants.Button.saveChange, for: .normal)
+        } else if sender.titleLabel?.text == Constants.Button.saveChange {
             updateUser()
             self.canUserEdit(autorization: false)
-            sender.setTitle("Edit profil", for: .normal)
+            sender.setTitle(Constants.Button.editProfil, for: .normal)
         }
     }
     @IBAction func logOutButton(_ sender: UIBarButtonItem) {
@@ -44,10 +44,11 @@ class ProfilViewController: UIViewController {
         emailTextField.isUserInteractionEnabled = autorization
     }
     private func updateUser() {
-        if profilPresenter.isFieldFill(firstNameTextField.text, nameTextField.text, emailTextField.text) {
+        //Non sens to check if fields fill, + fields can be "" and not nil, finally to update, if textField .Text != user.data -> update else keep old Value
+        let user = profilPresenter.data?.user
             guard let firstName = firstNameTextField.text, let name = nameTextField.text, let email = emailTextField.text else {return}
             profilPresenter.updateUser(firstName, name, email)
-        }
+        
     }
     
     override func viewDidLoad() {
@@ -83,9 +84,9 @@ class ProfilViewController: UIViewController {
     }
     
     private func setUserInfo() {
-        self.firstNameTextField.placeholder = profilPresenter.data?.user.firstName
-        self.nameTextField.placeholder = profilPresenter.data?.user.name
-        self.emailTextField.placeholder = profilPresenter.data?.user.email
+        self.firstNameTextField.text = profilPresenter.data?.user.firstName
+        self.nameTextField.text = profilPresenter.data?.user.name
+        self.emailTextField.text = profilPresenter.data?.user.email
     }
     
     func transitionToMainLoginPage() {
@@ -102,14 +103,14 @@ class ProfilViewController: UIViewController {
     }
     
     @objc private func showOptions() {
-        let actionSheet = UIAlertController(title: "More Options", message: nil, preferredStyle: .actionSheet)
-        let logout = UIAlertAction(title: "Logout", style: .default) { action in
+        let actionSheet = UIAlertController(title: Constants.Button.moreOptions, message: nil, preferredStyle: .actionSheet)
+        let logout = UIAlertAction(title: Constants.Button.logout, style: .default) { action in
             self.profilPresenter.logOut()
         }
-        let deleteUser = UIAlertAction(title: "Delete User account", style: .destructive) { (action) in
+        let deleteUser = UIAlertAction(title: Constants.Button.deleteUserAccount, style: .destructive) { (action) in
             self.setConfirmationDialog()
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: Constants.Button.cancel, style: .cancel, handler: nil)
         
         let actionArry = [logout, deleteUser, cancel]
         for action in actionArry {
@@ -119,12 +120,12 @@ class ProfilViewController: UIViewController {
     }
     
     private func setConfirmationDialog() {
-        let confirmationDialog = UIAlertController(title: "Are you want to delete this account", message: nil, preferredStyle: .alert)
-        let delete = UIAlertAction(title: "Yes", style: .destructive) { action in
+        let confirmationDialog = UIAlertController(title: Constants.Button.deleteAccount, message: nil, preferredStyle: .alert)
+        let delete = UIAlertAction(title: Constants.Button.yes, style: .destructive) { action in
             self.profilPresenter.deleteAllUserRef()
         }
         
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: Constants.Button.cancel, style: .cancel, handler: nil)
         
         let actionArray = [delete, cancel]
         

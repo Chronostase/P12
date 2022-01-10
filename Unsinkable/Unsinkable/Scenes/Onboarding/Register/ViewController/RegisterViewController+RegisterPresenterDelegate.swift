@@ -14,18 +14,18 @@ extension RegisterViewController: RegisterPresenterDelegate {
     }
     
     func registerFailed() {
-        self.showError("some fields are invalid please check them.")
+        self.showError(Constants.Error.LoginError.invalidFields)
     }
     
     func invalidEmail() {
-        self.showError("Email is not correct.")
+        self.showError(Constants.Error.LoginError.emailError)
     }
     
     func empltyFields() {
-        self.showError("Please fill all fields.")
+        self.showError(Constants.Error.LoginError.fillField)
     }
     
     func invalidPassword() {
-        self.showError("Password needs at least 8 characters, one special, one uppercase.")
+        self.showError(Constants.Error.LoginError.passwordError)
     }
 }

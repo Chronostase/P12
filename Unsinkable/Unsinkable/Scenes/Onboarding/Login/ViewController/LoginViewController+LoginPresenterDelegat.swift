@@ -16,11 +16,11 @@ extension LogInViewController: LoginPresenterDelegate {
     
     func loginFailed() {
         self.navigationController?.dismiss(animated: true, completion: nil)
-        self.showError("Incorrect log please retry.")
+        self.showError(Constants.Error.LoginError.incorrectLog)
     }
     
     func emptyFields() {
-        self.showError("Please fill in all fields")
+        self.showError(Constants.Error.LoginError.fillField)
     }
     
     

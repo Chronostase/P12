@@ -29,15 +29,19 @@ class ProjectCreationViewController: UIViewController {
     @IBOutlet var coverImage: UIImageView!
     @IBOutlet var coverImageButton: UIButton!
     
+    var activatedObject: NSObject?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        self.startAvoidingKeyboard()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print("Enter IN ViewDIDDISAPPEAR ")
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.stopAvoidingKeyboard()
     }
+    
     
     private func setup() {
         self.navigationController?.navigationBar.isHidden = false
@@ -46,12 +50,11 @@ class ProjectCreationViewController: UIViewController {
         setDelegateAndDataSource()
         addTextViewDoneButton()
         setRightButtonInTextField()
-//        addRightNavigationBarButton()
         hideMoreDetail()
     }
     
     @IBAction func finishButton(_ sender: Any) {
-        guard let imageData = coverImage.image?.jpegData(compressionQuality: 0.25) else {
+        guard let imageData = coverImage.image?.jpegData(compressionQuality: 0.4) else {
             return
         }
         showLoader()
@@ -84,7 +87,7 @@ class ProjectCreationViewController: UIViewController {
     }
     
     private func addTextViewDoneButton() {
-        projectTextView.addDoneButton(title: "Done", target: self, selector: #selector (tapDone(sender:)))
+        projectTextView.addDoneButton(title: Constants.Button.done, target: self, selector: #selector (tapDone(sender:)))
     }
     
     @objc private func tapDone(sender: Any) {
@@ -96,12 +99,13 @@ class ProjectCreationViewController: UIViewController {
         projectTextField.delegate = self
         taskTableView.dataSource = self
         taskTableView.delegate = self
+        projectTextView.delegate = self 
         projectCreationPresenter.delegate = self
     }
     
     private func setRightButtonInTextField() {
         let button = UIButton(type: .custom)
-        let image = UIImage(systemName: "plus.circle.fill")
+        let image = UIImage(systemName: Constants.Image.plusCircle)
         button.contentHorizontalAlignment = .fill
         button.contentVerticalAlignment = .fill
         button.contentMode = .scaleToFill
@@ -115,7 +119,6 @@ class ProjectCreationViewController: UIViewController {
     }
     
     @objc func addTask() {
-        //Update project, register a task With title in projectPresenter.task
         if projectCreationPresenter.checkTaskTitle(taskTextField.text) {
             self.projectCreationPresenter.updateProject(taskTextField.text)
             DispatchQueue.main.async {
@@ -141,12 +144,12 @@ class ProjectCreationViewController: UIViewController {
     }
     
     private func setUpUI() {
-        finishButton.setTitle("Finish", for: .normal)
+        finishButton.setTitle(Constants.Button.finish, for: .normal)
     }
     
     private func setupCustomCell() {
-        let nib = UINib(nibName: "TaskCell", bundle: nil)
-        taskTableView.register(nib, forCellReuseIdentifier: "TaskCell")
+        let nib = UINib(nibName: Constants.Cell.taskCell, bundle: nil)
+        taskTableView.register(nib, forCellReuseIdentifier: Constants.Cell.taskCell)
     }
     
     private func showLoader() {

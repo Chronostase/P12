@@ -47,7 +47,7 @@
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hfy-LP-nVm" userLabel="CalendarButtonView">
-                                <rect key="frame" x="0.0" y="274.5" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="315.5" width="414" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bLC-rz-Wvy">
                                         <rect key="frame" x="124" y="4" width="166" height="32"/>
@@ -63,11 +63,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FzJ-Cb-7aU" userLabel="HolderView">
-                                <rect key="frame" x="0.0" y="314.5" width="414" height="44.5"/>
+                                <rect key="frame" x="0.0" y="355.5" width="414" height="44.5"/>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yrr-Gb-9S6" userLabel="PriorityStackView">
-                                <rect key="frame" x="20" y="193.5" width="394" height="81"/>
+                                <rect key="frame" x="20" y="193.5" width="394" height="122"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AtF-B6-3dE" userLabel="PriorityView">
                                         <rect key="frame" x="0.0" y="0.0" width="394" height="40"/>
@@ -77,11 +77,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y6T-hZ-y3y">
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="y6T-hZ-y3y">
                                                 <rect key="frame" x="325" y="4.5" width="51" height="31"/>
-                                                <connections>
-                                                    <action selector="prioritySwitch:" destination="2nW-Wz-dnS" eventType="valueChanged" id="KNb-X8-Iyl"/>
-                                                </connections>
                                             </switch>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -94,8 +91,42 @@
                                             <constraint firstItem="y6T-hZ-y3y" firstAttribute="height" secondItem="AtF-B6-3dE" secondAttribute="height" multiplier="0.775" id="jEV-BC-Ryo"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCn-NB-dbs" userLabel="Separator">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mj4-kE-0VD" userLabel="Separator">
                                         <rect key="frame" x="0.0" y="40" width="394" height="1"/>
+                                        <viewLayoutGuide key="safeArea" id="FTU-3m-EKd"/>
+                                        <color key="backgroundColor" systemColor="separatorColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="vcI-8A-pim"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZU-Cz-f5H" userLabel="Add deadline ">
+                                        <rect key="frame" x="0.0" y="41" width="394" height="40"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add deadline " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cip-Hl-0kA">
+                                                <rect key="frame" x="0.0" y="11" width="94" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Pbv-JV-Gcr" userLabel="deadLineSwitch">
+                                                <rect key="frame" x="325" y="4.5" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="deadLineSwitch:" destination="2nW-Wz-dnS" eventType="valueChanged" id="Mj5-1a-Rdh"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                        <viewLayoutGuide key="safeArea" id="WHm-BY-rp9"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Pbv-JV-Gcr" firstAttribute="centerY" secondItem="BZU-Cz-f5H" secondAttribute="centerY" id="HQL-gD-Np6"/>
+                                            <constraint firstAttribute="trailing" secondItem="Pbv-JV-Gcr" secondAttribute="trailing" constant="20" id="WCM-jA-k0f"/>
+                                            <constraint firstItem="cip-Hl-0kA" firstAttribute="centerY" secondItem="BZU-Cz-f5H" secondAttribute="centerY" id="aJ4-MP-X8H"/>
+                                            <constraint firstItem="Pbv-JV-Gcr" firstAttribute="height" secondItem="BZU-Cz-f5H" secondAttribute="height" multiplier="0.775" id="bDY-FO-K7a"/>
+                                            <constraint firstItem="cip-Hl-0kA" firstAttribute="leading" secondItem="BZU-Cz-f5H" secondAttribute="leading" id="ryQ-WC-gQ9"/>
+                                            <constraint firstAttribute="height" constant="40" id="sMi-HF-rAx"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCn-NB-dbs" userLabel="Separator">
+                                        <rect key="frame" x="0.0" y="81" width="394" height="1"/>
                                         <viewLayoutGuide key="safeArea" id="eiZ-oT-l9M"/>
                                         <color key="backgroundColor" systemColor="separatorColor"/>
                                         <constraints>
@@ -103,7 +134,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jKy-8t-qB9" userLabel="DeadLineView">
-                                        <rect key="frame" x="0.0" y="41" width="394" height="40"/>
+                                        <rect key="frame" x="0.0" y="82" width="394" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DeadLine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFR-QI-U4u">
                                                 <rect key="frame" x="0.0" y="11" width="65" height="18"/>
@@ -112,7 +143,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="sYa-ri-DGK">
-                                                <rect key="frame" x="216.5" y="6" width="177.5" height="28"/>
+                                                <rect key="frame" x="187" y="6" width="197" height="28"/>
                                                 <connections>
                                                     <action selector="datePicker:" destination="2nW-Wz-dnS" eventType="valueChanged" id="p4A-cA-FeA"/>
                                                 </connections>
@@ -121,8 +152,8 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="sFR-QI-U4u" firstAttribute="centerY" secondItem="jKy-8t-qB9" secondAttribute="centerY" id="BIS-JG-a1I"/>
-                                            <constraint firstAttribute="trailing" secondItem="sYa-ri-DGK" secondAttribute="trailing" id="OTI-xa-rOe"/>
-                                            <constraint firstItem="sYa-ri-DGK" firstAttribute="width" secondItem="jKy-8t-qB9" secondAttribute="width" multiplier="0.45" id="bMu-9t-Ve8"/>
+                                            <constraint firstAttribute="trailing" secondItem="sYa-ri-DGK" secondAttribute="trailing" constant="10" id="OTI-xa-rOe"/>
+                                            <constraint firstItem="sYa-ri-DGK" firstAttribute="width" secondItem="jKy-8t-qB9" secondAttribute="width" multiplier="0.5" id="bMu-9t-Ve8"/>
                                             <constraint firstItem="sYa-ri-DGK" firstAttribute="centerY" secondItem="jKy-8t-qB9" secondAttribute="centerY" id="kef-8E-fcA"/>
                                             <constraint firstItem="sFR-QI-U4u" firstAttribute="leading" secondItem="jKy-8t-qB9" secondAttribute="leading" id="lRo-ko-17V"/>
                                             <constraint firstItem="sYa-ri-DGK" firstAttribute="height" secondItem="jKy-8t-qB9" secondAttribute="height" multiplier="0.7" id="x3e-9C-HdV"/>
@@ -134,7 +165,7 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5G-Jr-n9a" userLabel="CommentaryView">
-                                <rect key="frame" x="0.0" y="359" width="414" height="179.5"/>
+                                <rect key="frame" x="0.0" y="400" width="414" height="179.5"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RID-0b-0pW" userLabel="CommentaryTextView">
                                         <rect key="frame" x="25" y="0.0" width="389" height="179.5"/>
@@ -153,7 +184,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfl-kq-Uv3" userLabel="HolderView">
-                                <rect key="frame" x="0.0" y="538.5" width="414" height="44.5"/>
+                                <rect key="frame" x="0.0" y="579.5" width="414" height="44.5"/>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tqF-FJ-8gz">
@@ -205,6 +236,9 @@
                     <connections>
                         <outlet property="commentaryTextView" destination="RID-0b-0pW" id="xK2-kh-9vt"/>
                         <outlet property="datePicker" destination="sYa-ri-DGK" id="3vw-CW-Tf3"/>
+                        <outlet property="deadLineSeparatorView" destination="iCn-NB-dbs" id="KoA-Xj-9oJ"/>
+                        <outlet property="deadLineSwitch" destination="Pbv-JV-Gcr" id="zWS-RX-hYr"/>
+                        <outlet property="deadLineView" destination="jKy-8t-qB9" id="mzg-ly-ZG9"/>
                         <outlet property="deleteTaskButton" destination="tqF-FJ-8gz" id="ZCi-aS-5G8"/>
                         <outlet property="locationTextField" destination="oxX-lC-l8T" id="xtH-Ul-RgS"/>
                         <outlet property="prioritySwitch" destination="y6T-hZ-y3y" id="5Wz-ym-ORu"/>

@@ -19,6 +19,7 @@ struct UserDetails{
     var userId: String?
     var projects: [Project?]?
 }
+
 struct Project {
     var title: String?
     var projectID: String?

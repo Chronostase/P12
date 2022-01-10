@@ -36,7 +36,7 @@ class CustomProjectCell: UICollectionViewCell {
                 return
             }
             let url = URL(string: downloadURL)
-            self.coverImage.kf.setImage(with: url, placeholder: UIImage(named: "cover"), options: nil, completionHandler: nil)
+            self.coverImage.kf.setImage(with: url, placeholder: UIImage(named: Constants.Image.cover), options: nil, completionHandler: nil)
         }
     }
     

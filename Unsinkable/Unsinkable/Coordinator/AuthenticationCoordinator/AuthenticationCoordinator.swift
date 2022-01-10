@@ -20,7 +20,7 @@ class AuthenticationCoordinator: Coordinator {
     }
     
     func start() {
-        let storyBoard = UIStoryboard(name: "MainLoginPage", bundle: Bundle.main)
+        let storyBoard = UIStoryboard(name: Constants.StoryBoard.mainLoginPage, bundle: Bundle.main)
         guard let mainLoginVC = storyBoard.instantiateInitialViewController() as? MainLoginViewController else {
             return
         }
@@ -30,7 +30,7 @@ class AuthenticationCoordinator: Coordinator {
     
     func resetCoordinator() {
         childCoordinator.removeAll()
-        let storyBoard = UIStoryboard(name: "MainLoginPage", bundle: Bundle.main)
+        let storyBoard = UIStoryboard(name: Constants.StoryBoard.mainLoginPage, bundle: Bundle.main)
         guard let mainLoginVC = storyBoard.instantiateInitialViewController() as? MainLoginViewController else {
             return
         }
@@ -38,7 +38,7 @@ class AuthenticationCoordinator: Coordinator {
     }
     
     func signIn() {
-        let storyBoard = UIStoryboard(name: "SignIn", bundle: Bundle.main)
+        let storyBoard = UIStoryboard(name: Constants.StoryBoard.signIn, bundle: Bundle.main)
         guard let signInVC = storyBoard.instantiateInitialViewController() as? LogInViewController else {
             return
         }
@@ -47,7 +47,7 @@ class AuthenticationCoordinator: Coordinator {
     }
     
     func register() {
-        let storyBoard = UIStoryboard(name: "Register", bundle: Bundle.main)
+        let storyBoard = UIStoryboard(name: Constants.StoryBoard.register , bundle: Bundle.main)
         guard let registerVC = storyBoard.instantiateInitialViewController() as? RegisterViewController else {
             return
         }

@@ -50,10 +50,8 @@ extension ProjectReaderViewController: ProjectManagerDelegate {
             DispatchQueue.main.async {
                 self.configureViewController()
             }
-//            self.navigationController?.dismiss(animated: true, completion: nil)
             self.taskTableView.reloadData()
         case .failure(let error):
-//            self.navigationController?.dismiss(animated: true, completion: nil)
             print("Error: \(error.localizedDescription)")
         }
     }

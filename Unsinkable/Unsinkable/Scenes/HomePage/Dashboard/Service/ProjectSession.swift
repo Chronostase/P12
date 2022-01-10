@@ -22,7 +22,7 @@ class ProjectSession {
         var taskList = [Task?]()
         
         let database = Firestore.firestore()
-        let projectRef = database.collection("Users").document(userID).collection("Projects").document(projectId)
+        let projectRef = database.collection(Constants.Database.User.userPath).document(userID).collection(Constants.Database.Project.projectPath).document(projectId)
         
         projectRef.getDocument { document, error in
             if error != nil {
@@ -31,13 +31,13 @@ class ProjectSession {
                 guard let document = document else {return}
                 if document.exists {
                     guard let data = document.data() else {return}
-                    let projectTitle = data["Title"] as? String ?? ""
-                    let projectID = data["projectId"] as? String ?? ""
-                    let projectDescription = data["Description"] as? String ?? ""
-                    let ownerUserId = data["ownerUserId"] as? String ?? ""
-                    let isPersonal = data["isPersonal"] as? Bool
-                    let downloadUrl = data["downloadUrl"] as? String ?? ""
-                    let tasksRef = projectRef.collection("Tasks")
+                    let projectTitle = data[Constants.Database.Project.title] as? String ?? ""
+                    let projectID = data[Constants.Database.Project.id] as? String ?? ""
+                    let projectDescription = data[Constants.Database.Project.description] as? String ?? ""
+                    let ownerUserId = data[Constants.Database.Project.ownerID] as? String ?? ""
+                    let isPersonal = data[Constants.Database.Project.isPersonal] as? Bool
+                    let downloadUrl = data[Constants.Database.Project.downloadURL] as? String ?? ""
+                    let tasksRef = projectRef.collection(Constants.Database.Task.taskPath)
                     
                     tasksRef.getDocuments { querysnapshot, error in
                         if error != nil {
@@ -46,14 +46,14 @@ class ProjectSession {
                             guard let query = querysnapshot else {return}
                             for document in query.documents {
                                 let data = document.data()
-                                let taskTitle = data["title"] as? String ?? ""
-                                let projectID = data["projectID"] as? String ?? ""
-                                let taskID = data["taskID"] as? String ?? ""
-                                let taskPriority = data["taskPriority"] as? Bool ?? false
-                                let taskDeadLine = data["taskDeadLine"] as? Timestamp
-                                let taskCommentary = data["taskCommentary"] as? String ?? ""
-                                let taskLocation = data["location"] as? String ?? ""
-                                let isValidate = data["isValidate"] as? Bool ?? false
+                                let taskTitle = data[Constants.Database.Task.title] as? String ?? ""
+                                let projectID = data[Constants.Database.Task.projectID] as? String ?? ""
+                                let taskID = data[Constants.Database.Task.id] as? String ?? ""
+                                let taskPriority = data[Constants.Database.Task.priority] as? Bool ?? false
+                                let taskDeadLine = data[Constants.Database.Task.deadLine] as? Timestamp
+                                let taskCommentary = data[Constants.Database.Task.commentary] as? String ?? ""
+                                let taskLocation = data[Constants.Database.Task.location] as? String ?? ""
+                                let isValidate = data[Constants.Database.Task.isValidate] as? Bool ?? false
                                 
                                 let date = taskDeadLine?.dateValue()
                                 let task = Task(title: taskTitle, projectID: projectID, taskID: taskID, priority: taskPriority, deadLine: date, commentary: taskCommentary, location: taskLocation, isValidate: isValidate)
@@ -62,19 +62,11 @@ class ProjectSession {
                             let project = Project(title: projectTitle, projectID: projectID ,description: projectDescription, ownerUserId: ownerUserId, isPersonal: isPersonal, downloadUrl: downloadUrl, taskList: taskList)
                             taskList.removeAll()
                             completion(project, nil)
-                            
-                            //Try without this part it appear that if let documents = querry?.documents always true
-                            
-                            //                            let project = Project(title: projectTitle, projectID: projectID ,description: projectDescription, ownerUserId: ownerUserId, isPersonal: isPersonal, downloadUrl: downloadUrl, taskList: taskList)
-                            //                            taskList.removeAll()
-                            //                            completion(project, nil)
                         }
-                        
                     }
                     
                 } else {
-                    
-                    #warning("Fall in .success case for delegate")
+                    #warning("Fall in .success case for delegate, optionnal Void to handle .success(nil)")
                     completion(nil, error)
                 }
             }
@@ -92,14 +84,14 @@ class ProjectSession {
         guard let password = keyChainManager.getUserCredential(user) else {return}
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
         let database = Firestore.firestore()
-        let taskRef = database.collection("Users").document(userID).collection("Projects").document(projectID).collection("Tasks").document(currentTaskID)
+        let taskRef = database.collection(Constants.Database.User.userPath).document(userID).collection(Constants.Database.Project.projectPath).document(projectID).collection(Constants.Database.Task.taskPath).document(currentTaskID)
         currentUser.reauthenticate(with: credential) { (nil, error) in
             if error != nil {
                 guard let error = error else {return}
                 completion(.failure(error))
             } else {
                 taskRef.updateData([
-                    "isValidate": task.isValidate ?? false
+                    Constants.Database.Task.isValidate: task.isValidate ?? false
                 ]) { error in
                     if error != nil {
                         guard let error = error else {return}
@@ -128,7 +120,7 @@ class ProjectSession {
         guard let password = keyChainManager.getUserCredential(user) else {return}
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
         let database = Firestore.firestore()
-        let taskRef = database.collection("Users").document(userId).collection("Projects").document(projectID).collection("Tasks").document(currentTaskId)
+        let taskRef = database.collection(Constants.Database.User.userPath).document(userId).collection(Constants.Database.Project.projectPath).document(projectID).collection(Constants.Database.Task.taskPath).document(currentTaskId)
         currentUser.reauthenticate(with: credential) { (nil, error) in
             if error != nil {
                 guard let error = error else {return}
@@ -136,12 +128,12 @@ class ProjectSession {
             } else {
                 if userId == ownerId {
                     taskRef.updateData([
-                        "title": newTask.title ?? "",
-                        "location": newTask.location ?? "",
-                        "taskCommentary": newTask.commentary ?? "",
-                        "taskDeadLine": newTask.deadLine ?? "",
-                        "taskPriority": newTask.priority ?? "",
-                        "isValidate": newTask.isValidate ?? false
+                        Constants.Database.Task.title: newTask.title ?? "",
+                        Constants.Database.Task.location: newTask.location ?? "",
+                        Constants.Database.Task.commentary: newTask.commentary ?? "",
+                        Constants.Database.Task.deadLine: newTask.deadLine ?? "",
+                        Constants.Database.Task.priority: newTask.priority ?? "",
+                        Constants.Database.Task.isValidate: newTask.isValidate ?? false
                     ]) { error in
                         if error != nil {
                             guard let error = error else {return}
@@ -195,14 +187,14 @@ class ProjectSession {
                                         
                                         let database = Firestore.firestore()
                                         guard let url = url?.absoluteString else {return}
-                                        let projectRef = database.collection("Users").document(userId).collection("Projects").document(projectID)
+                                        let projectRef = database.collection(Constants.Database.User.userPath).document(userId).collection(Constants.Database.Project.projectPath).document(projectID)
                                         projectRef.updateData([
-                                            "Title": title,
-                                            "Description": project.description ?? "",
-                                            "ownerUserId": userId,
-                                            "projectId": projectID,
-                                            "isPersonal": isPersonal,
-                                            "downloadUrl": url
+                                            Constants.Database.Project.title: title,
+                                            Constants.Database.Project.description: project.description ?? "",
+                                            Constants.Database.Project.ownerID: userId,
+                                            Constants.Database.Project.id: projectID,
+                                            Constants.Database.Project.isPersonal: isPersonal,
+                                            Constants.Database.Project.downloadURL: url
                                         ]) { error in
                                             if error != nil {
                                                 completion(error)
@@ -219,13 +211,13 @@ class ProjectSession {
                 }
             } else {
                 let database = Firestore.firestore()
-                let projectRef = database.collection("Users").document(userId).collection("Projects").document(projectID)
+                let projectRef = database.collection(Constants.Database.User.userPath).document(userId).collection(Constants.Database.Project.projectPath).document(projectID)
                 projectRef.updateData([
-                    "Title": title,
-                    "Description": project.description ?? "",
-                    "ownerUserId": userId,
-                    "projectId": projectID,
-                    "isPersonal": isPersonal,
+                    Constants.Database.Project.title: title,
+                    Constants.Database.Project.description: project.description ?? "",
+                    Constants.Database.Project.ownerID: userId,
+                    Constants.Database.Project.id: projectID,
+                    Constants.Database.Project.isPersonal: isPersonal,
                 ]) { error in
                     if error != nil {
                         completion(error)
@@ -251,7 +243,6 @@ class ProjectSession {
         
         let dataBase = Firestore.firestore()
         let storageRef = Storage.storage().reference().child("Users/\(ownerId)/\(projectID).jpeg")
-        //        let storageRef = Storage.storage().reference().child("ProjectsImages/\(imageID)")
         if let coverPictureData = coverPicture {
             storageRef.putData(coverPictureData, metadata: nil) { _ , error in
                 print("Enter In storage.putData")
@@ -267,15 +258,15 @@ class ProjectSession {
                         } else {
                             guard let url = URL?.absoluteString else {return}
                             let documentData: [String: Any] = [
-                                "Title": title,
-                                "Description": project.description ?? "",
-                                "ownerUserId": userId,
-                                "projectId": projectID,
-                                "isPersonal": isPersonal,
-                                "downloadUrl": url
+                                Constants.Database.Project.title: title,
+                                Constants.Database.Project.description: project.description ?? "",
+                                Constants.Database.Project.ownerID: userId,
+                                Constants.Database.Project.id: projectID,
+                                Constants.Database.Project.isPersonal: isPersonal,
+                                Constants.Database.Project.downloadURL: url
                             ]
                             
-                            let documentRef = dataBase.collection("Users").document(userId).collection("Projects").document(projectID)
+                            let documentRef = dataBase.collection(Constants.Database.User.userPath).document(userId).collection(Constants.Database.Project.projectPath).document(projectID)
                             
                             documentRef.setData(documentData)
                             { (error) in
@@ -318,17 +309,17 @@ class ProjectSession {
                 timeStamp = nil
             }
             let documentData: [String: Any] = [
-                "title" : taskTitle,
-                "projectID" : projectID,
-                "taskID" : taskID,
-                "taskPriority" : task.priority ?? false,
-                "taskDeadLine" :  timeStamp ?? "",
-                "taskCommentary" : task.commentary ?? "",
-                "location" : task.location ?? "",
-                "isValidate": task.isValidate ?? false
+                Constants.Database.Task.title : taskTitle,
+                Constants.Database.Task.projectID : projectID,
+                Constants.Database.Task.id : taskID,
+                Constants.Database.Task.priority : task.priority ?? false,
+                Constants.Database.Task.deadLine :  timeStamp ?? "",
+                Constants.Database.Task.commentary : task.commentary ?? "",
+                Constants.Database.Task.location : task.location ?? "",
+                Constants.Database.Task.isValidate: task.isValidate ?? false
             ]
             
-            let documentRef = database.collection("Users").document(userID).collection("Projects").document(projectID).collection("Tasks").document(taskID)
+            let documentRef = database.collection(Constants.Database.User.userPath).document(userID).collection(Constants.Database.Project.projectPath).document(projectID).collection(Constants.Database.Task.taskPath).document(taskID)
             
             documentRef.setData(documentData) { error in
                 if error != nil {
@@ -348,11 +339,11 @@ class ProjectSession {
         let database = Firestore.firestore()
         let storage = Storage.storage()
         let storageRef = storage.reference().child("Users/\(userId)/")
-        let databaseRef = database.collection("Users").document(userId)
-        let deleteDatabaseFn = functions.httpsCallable("recursiveDelete")
+        let databaseRef = database.collection(Constants.Database.User.userPath).document(userId)
+        let deleteDatabaseFn = functions.httpsCallable(Constants.CloudFunction.delete)
         let data: [String: Any] = [
-            "path": databaseRef.path,
-            "token": token
+            Constants.CloudFunction.path: databaseRef.path,
+            Constants.CloudFunction.token: token
         ]
         //Delete userRef in storage
         
@@ -415,11 +406,11 @@ class ProjectSession {
         }
         
         let database = Firestore.firestore()
-        let projectRef = database.collection("Users").document(userId).collection("Projects").document(projectID)
-        let deleteFn = functions.httpsCallable("recursiveDelete")
+        let projectRef = database.collection(Constants.Database.User.userPath).document(userId).collection(Constants.Database.Project.projectPath).document(projectID)
+        let deleteFn = functions.httpsCallable(Constants.CloudFunction.delete)
         let data: [String: Any] = [
-            "path": projectRef.path,
-            "token": token
+            Constants.CloudFunction.path: projectRef.path,
+            Constants.CloudFunction.token: token
         ]
         
         deleteFn.call(data) { (result, error)  in
@@ -458,11 +449,11 @@ class ProjectSession {
         }
         
         let database = Firestore.firestore()
-        let projectRef = database.collection("Users").document(userId).collection("Projects").document(projectID).collection("Tasks").document(taskId)
-        let deleteFn = functions.httpsCallable("recursiveDelete")
+        let projectRef = database.collection(Constants.Database.User.userPath).document(userId).collection(Constants.Database.Project.projectPath).document(projectID).collection(Constants.Database.Task.taskPath).document(taskId)
+        let deleteFn = functions.httpsCallable(Constants.CloudFunction.delete)
         let data: [String: Any] = [
-            "path": projectRef.path,
-            "token": token
+            Constants.CloudFunction.path: projectRef.path,
+            Constants.CloudFunction.token: token
         ]
         deleteFn.call(data) { (result, error)  in
             if let error = error as NSError? {
