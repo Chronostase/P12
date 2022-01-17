@@ -18,6 +18,7 @@ class ProjectReaderViewController: UIViewController {
     @IBOutlet var coverImage: UIImageView!
     @IBOutlet var projectName: UILabel!
     @IBOutlet var descriptionTextView: UITextView!
+    @IBOutlet var taskTextField: CustomTextField!
     @IBOutlet var taskTableView: UITableView!
     @IBOutlet var showMoreButton: UIButton!
     
@@ -66,6 +67,7 @@ class ProjectReaderViewController: UIViewController {
         showMoreOptions()
     }
     
+    
     private func showMoreOptions() {
         let actionSheet = UIAlertController(title: Constants.Button.moreOptions, message: nil, preferredStyle: .actionSheet)
         let updateProject = UIAlertAction(title: Constants.Button.updateProject, style: .default) { action in
@@ -88,6 +90,34 @@ class ProjectReaderViewController: UIViewController {
         self.projectReaderPresenter.delegate = self 
         self.taskTableView.dataSource = self
         self.taskTableView.delegate = self 
+    }
+    
+    private func setRightButtonInTextField() {
+        let button = UIButton(type: .custom)
+        let image = UIImage(systemName: Constants.Image.plusCircle)
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+        button.contentMode = .scaleToFill
+        button.imageEdgeInsets = UIEdgeInsets(top: -6, left: -21, bottom: -6, right: 5)
+        button.frame = CGRect(x: CGFloat(taskTextField.frame.size.width - 25), y: CGFloat(0), width: CGFloat(50), height: CGFloat(50))
+        button.setImage( image, for: .normal)
+        
+        button.addTarget(self, action: #selector(self.addTask), for: .touchUpInside)
+        taskTextField.rightView = button
+        taskTextField.rightViewMode = .always
+    }
+    #warning("Add task Creation here")
+    @objc func addTask() {
+//        if projectReaderPresenter.checkTaskTitle(taskTextField.text) {
+//            self.projectReaderPresenter.updateProject(taskTextField.text)
+//            DispatchQueue.main.async {
+//                self.taskTableView.reloadData()
+//            }
+//            //Do something
+//        } else {
+//            //Error
+//
+//        }
     }
     
     func configureViewController() {
@@ -118,11 +148,11 @@ class ProjectReaderViewController: UIViewController {
             self.descriptionTextView.text = project.description
         }
         
-        if projectReaderPresenter.checkIfTaskListIsEmpty() {
-            self.taskTableView.isHidden = true
-        } else {
-            self.taskTableView.isHidden = false
-        }
+//        if projectReaderPresenter.checkIfTaskListIsEmpty() {
+//            self.taskTableView.isHidden = true
+//        } else {
+        self.taskTableView.isHidden = false
+//        }
         
         self.guestContentView.isHidden = true
     }

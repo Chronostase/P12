@@ -29,17 +29,14 @@ class ProjectCreationViewController: UIViewController {
     @IBOutlet var coverImage: UIImageView!
     @IBOutlet var coverImageButton: UIButton!
     
-    var activatedObject: NSObject?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        self.startAvoidingKeyboard()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.stopAvoidingKeyboard()
     }
     
     

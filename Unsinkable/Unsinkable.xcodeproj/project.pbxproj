@@ -26,6 +26,7 @@
 		E9217B09277B483900356718 /* UpdateProjectVC+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9217B08277B483900356718 /* UpdateProjectVC+UITextFieldDelegate.swift */; };
 		E9217B0B277B490B00356718 /* UpdateProjectVC+UITextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9217B0A277B490B00356718 /* UpdateProjectVC+UITextViewDelegate.swift */; };
 		E9217B112784B91700356718 /* ProjectCreationVC+UITextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9217B102784B91600356718 /* ProjectCreationVC+UITextViewDelegate.swift */; };
+		E9217B132790784800356718 /* ProjectReaderViewController+TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9217B122790784700356718 /* ProjectReaderViewController+TextFieldDelegate.swift */; };
 		E92C356F25A5EBA8001F2819 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C356E25A5EBA8001F2819 /* AppDelegate.swift */; };
 		E92C357B25A5EBAB001F2819 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E92C357925A5EBAB001F2819 /* LaunchScreen.storyboard */; };
 		E92C359125A5EBAC001F2819 /* UnsinkableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C359025A5EBAC001F2819 /* UnsinkableUITests.swift */; };
@@ -34,7 +35,7 @@
 		E94BA62026285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BA61F26285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift */; };
 		E94BA63426317673003AC914 /* UserAuthenticationServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BA63326317673003AC914 /* UserAuthenticationServiceTest.swift */; };
 		E951022C25AF69A50070A91C /* ProjectCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951022B25AF69A50070A91C /* ProjectCreationViewController.swift */; };
-		E951023225AF6A6C0070A91C /* UIViewController+Push+KBAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951023125AF6A6C0070A91C /* UIViewController+Push+KBAnimation.swift */; };
+		E951023225AF6A6C0070A91C /* UIViewController+Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951023125AF6A6C0070A91C /* UIViewController+Push.swift */; };
 		E951026525B843E50070A91C /* MainLoginPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E951026425B843E50070A91C /* MainLoginPage.storyboard */; };
 		E951026D25B84CC40070A91C /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E951026C25B84CC40070A91C /* SignIn.storyboard */; };
 		E951027225B84CE10070A91C /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E951027125B84CE10070A91C /* Register.storyboard */; };
@@ -146,6 +147,7 @@
 		E9217B08277B483900356718 /* UpdateProjectVC+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateProjectVC+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		E9217B0A277B490B00356718 /* UpdateProjectVC+UITextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateProjectVC+UITextViewDelegate.swift"; sourceTree = "<group>"; };
 		E9217B102784B91600356718 /* ProjectCreationVC+UITextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectCreationVC+UITextViewDelegate.swift"; sourceTree = "<group>"; };
+		E9217B122790784700356718 /* ProjectReaderViewController+TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectReaderViewController+TextFieldDelegate.swift"; sourceTree = "<group>"; };
 		E92C356B25A5EBA8001F2819 /* Unsinkable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unsinkable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92C356E25A5EBA8001F2819 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E92C357A25A5EBAB001F2819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -160,7 +162,7 @@
 		E94BA61F26285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterViewController+RegisterPresenterDelegate.swift"; sourceTree = "<group>"; };
 		E94BA63326317673003AC914 /* UserAuthenticationServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationServiceTest.swift; sourceTree = "<group>"; };
 		E951022B25AF69A50070A91C /* ProjectCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreationViewController.swift; sourceTree = "<group>"; };
-		E951023125AF6A6C0070A91C /* UIViewController+Push+KBAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Push+KBAnimation.swift"; sourceTree = "<group>"; };
+		E951023125AF6A6C0070A91C /* UIViewController+Push.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Push.swift"; sourceTree = "<group>"; };
 		E951026425B843E50070A91C /* MainLoginPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainLoginPage.storyboard; sourceTree = "<group>"; };
 		E951026C25B84CC40070A91C /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		E951027125B84CE10070A91C /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
@@ -391,7 +393,7 @@
 		E951023025AF6A2F0070A91C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E951023125AF6A6C0070A91C /* UIViewController+Push+KBAnimation.swift */,
+				E951023125AF6A6C0070A91C /* UIViewController+Push.swift */,
 				E95102CB25B97F7A0070A91C /* StringExtension.swift */,
 				E90312CD25E5409600CBC228 /* TextFieldExtension.swift */,
 				E97A877226DFB94000097527 /* UITextView.swift */,
@@ -701,6 +703,7 @@
 				E99A03372704E38100C1BCCE /* ProjectReaderViewController.swift */,
 				E9BDF88B27442360009E620F /* ProjectReaderVC+Delegate.swift */,
 				E99A0339270594B600C1BCCE /* ProjectReaderVC+TableViewDelegate.swift */,
+				E9217B122790784700356718 /* ProjectReaderViewController+TextFieldDelegate.swift */,
 			);
 			path = ProjectReader;
 			sourceTree = "<group>";
@@ -1073,7 +1076,7 @@
 				E9EC4FAB265CFC0900A1ED96 /* AuthenticationCoordinator.swift in Sources */,
 				E951029C25B970D20070A91C /* UserAuthentificationService.swift in Sources */,
 				E9C2218C25AE185D001216F5 /* UICollectionViewController.swift in Sources */,
-				E951023225AF6A6C0070A91C /* UIViewController+Push+KBAnimation.swift in Sources */,
+				E951023225AF6A6C0070A91C /* UIViewController+Push.swift in Sources */,
 				E99B8E0126959877005A9032 /* Loader.swift in Sources */,
 				E996B56625A6353F00638480 /* NotificationCenterViewController.swift in Sources */,
 				E9BDF88E274D34A1009E620F /* Keys.swift in Sources */,
@@ -1096,6 +1099,7 @@
 				E9EC4F9E265675C500A1ED96 /* TabBarViewController.swift in Sources */,
 				E9BDF8862717382F009E620F /* TaskCreation+UITextView.swift in Sources */,
 				E9DD1504276887A600ED2B82 /* KeyChainManager.swift in Sources */,
+				E9217B132790784800356718 /* ProjectReaderViewController+TextFieldDelegate.swift in Sources */,
 				E9DC09FF25DE82B800667E8E /* CustomButton.swift in Sources */,
 				E90312EC25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift in Sources */,
 				E95AF91D2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift in Sources */,

@@ -153,8 +153,24 @@
                                                             <constraint firstAttribute="height" constant="1" id="KZn-BY-D5u"/>
                                                         </constraints>
                                                     </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="19F-8j-7wQ" userLabel="AddTaskView">
+                                                        <rect key="frame" x="0.0" y="484.5" width="414" height="69.5"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="+ Add Task" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="awM-Aa-vPu" customClass="CustomTextField" customModule="Unsinkable" customModuleProvider="target">
+                                                                <rect key="frame" x="41.5" y="10" width="331" height="49.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="awM-Aa-vPu" firstAttribute="centerX" secondItem="19F-8j-7wQ" secondAttribute="centerX" id="7XW-m4-hU2"/>
+                                                            <constraint firstAttribute="bottom" secondItem="awM-Aa-vPu" secondAttribute="bottom" constant="10" id="eyV-eh-iNO"/>
+                                                            <constraint firstItem="awM-Aa-vPu" firstAttribute="top" secondItem="19F-8j-7wQ" secondAttribute="top" constant="10" id="h6V-na-mIf"/>
+                                                        </constraints>
+                                                    </view>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iBt-B3-Cch" userLabel="TaskTableView">
-                                                        <rect key="frame" x="0.0" y="484.5" width="414" height="302.5"/>
+                                                        <rect key="frame" x="0.0" y="554" width="414" height="233"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="FJe-Ug-I4b"/>
@@ -211,11 +227,13 @@
                         <constraints>
                             <constraint firstItem="jxk-ef-Gfv" firstAttribute="centerX" secondItem="RiC-3D-TNj" secondAttribute="centerX" id="7Ws-cZ-Zez"/>
                             <constraint firstItem="qEr-gE-Zgp" firstAttribute="height" secondItem="RiC-3D-TNj" secondAttribute="height" multiplier="0.35" id="A7X-rR-mrJ"/>
+                            <constraint firstItem="awM-Aa-vPu" firstAttribute="width" secondItem="7l9-jq-LQ0" secondAttribute="width" multiplier="0.8" id="EYp-Uj-9ac"/>
                             <constraint firstItem="c2j-oj-vS2" firstAttribute="leading" secondItem="RiC-3D-TNj" secondAttribute="leading" id="JIB-VJ-rWh"/>
                             <constraint firstItem="c2j-oj-vS2" firstAttribute="top" secondItem="7l9-jq-LQ0" secondAttribute="top" id="Jnn-Tz-cfK"/>
                             <constraint firstItem="c2j-oj-vS2" firstAttribute="bottom" secondItem="RiC-3D-TNj" secondAttribute="bottom" id="Ory-Uw-YyF"/>
                             <constraint firstItem="Gtx-qt-6PC" firstAttribute="width" secondItem="7l9-jq-LQ0" secondAttribute="width" id="Owf-wX-wbJ"/>
                             <constraint firstItem="vrM-3h-4jD" firstAttribute="height" secondItem="RiC-3D-TNj" secondAttribute="height" multiplier="0.15" id="TYl-az-bBw"/>
+                            <constraint firstItem="awM-Aa-vPu" firstAttribute="height" secondItem="7l9-jq-LQ0" secondAttribute="height" multiplier="0.055" id="kZH-1e-vcw"/>
                             <constraint firstItem="tpb-TQ-qMw" firstAttribute="height" secondItem="RiC-3D-TNj" secondAttribute="height" multiplier="0.09" id="q2o-R6-Unh"/>
                             <constraint firstItem="c2j-oj-vS2" firstAttribute="trailing" secondItem="RiC-3D-TNj" secondAttribute="trailing" id="r81-Td-mQi"/>
                         </constraints>
@@ -230,6 +248,7 @@
                         <outlet property="projectName" destination="G0G-Jj-zZe" id="oW7-9L-Abp"/>
                         <outlet property="showMoreButton" destination="e6f-e9-Fwa" id="nFF-Pg-Ydx"/>
                         <outlet property="taskTableView" destination="iBt-B3-Cch" id="pHd-zE-W8w"/>
+                        <outlet property="taskTextField" destination="awM-Aa-vPu" id="HWn-aI-cWF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OmU-4U-WBc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

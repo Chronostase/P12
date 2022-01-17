@@ -10,11 +10,11 @@ import UIKit
 
 extension ProjectCreationViewController: UITextViewDelegate {
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        self.activatedObject = textView
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        self.activatedObject = nil 
-    }
+//    func textViewDidBeginEditing(_ textView: UITextView) {
+//        self.activatedObject = textView
+//    }
+//    
+//    func textViewDidEndEditing(_ textView: UITextView) {
+//        self.activatedObject = nil 
+//    }
 }
