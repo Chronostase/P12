@@ -12,6 +12,7 @@ protocol ProjectManagerDelegate: AnyObject {
     func fetchProjectComplete()
     func fetchCurrentProjectComplete(_ result: Result<Void,Error>)
     func registerTaskComplete(_ result: Result<Task?,Error>)
+    func addTaskFromReaderComplete(_ result: Result<Void, Error>)
     func updateLocalTask(_ task: Task)
     func updateTaskComplete(_ result: Result<Task?,Error>)
     func updateProjectComplete(_ result: Result<Project?, Error>)
@@ -25,6 +26,7 @@ extension ProjectManagerDelegate {
     func fetchProjectComplete() {}
     func fetchCurrentProjectComplete(_ result: Result<Void,Error>) {}
     func registerTaskComplete(_ result: Result<Task?,Error>) {}
+    func addTaskFromReaderComplete(_ result: Result<Void, Error>) {}
     func updateLocalTask(_ task: Task) {}
     func updateTaskComplete(_ result: Result<Task?,Error>) {}
     func updateProjectComplete(_ result: Result<Project?, Error>) {}

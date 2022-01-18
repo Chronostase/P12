@@ -8,6 +8,7 @@
 import Foundation
 import Kingfisher
 import UIKit
+import IQKeyboardManagerSwift
 
 class ProjectReaderViewController: UIViewController {
     weak var coordinator: HomeCoordinator?
@@ -33,14 +34,19 @@ class ProjectReaderViewController: UIViewController {
         addObserver()
     }
     
+    //When task is Added : Presenter.addNewTask then user normaly edit and save it
+    //Problem in case of already existing task, add function to add only one task 
+    
     override func viewWillAppear(_ animated: Bool) {
         projectReaderPresenter.refreshCurrentProject()
+        IQKeyboardManager.shared.enable = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false 
         self.navigationController?.navigationBar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        IQKeyboardManager.shared.enable = false 
         self.removeObserver()
     }
     
@@ -51,6 +57,7 @@ class ProjectReaderViewController: UIViewController {
         setDelegate()
         registerCell()
         configureViewController()
+        setRightButtonInTextField()
         addRightNavigationBarButton()
     }
     
@@ -108,16 +115,15 @@ class ProjectReaderViewController: UIViewController {
     }
     #warning("Add task Creation here")
     @objc func addTask() {
-//        if projectReaderPresenter.checkTaskTitle(taskTextField.text) {
-//            self.projectReaderPresenter.updateProject(taskTextField.text)
-//            DispatchQueue.main.async {
-//                self.taskTableView.reloadData()
-//            }
-//            //Do something
-//        } else {
-//            //Error
-//
-//        }
+        if projectReaderPresenter.checkTaskTitle(taskTextField.text) {
+            guard let title = taskTextField.text else {return}
+            self.projectReaderPresenter.addNewTask(title)
+            DispatchQueue.main.async {
+                self.taskTableView.reloadData()
+            }
+        } else {
+            //Can't add task 
+        }
     }
     
     func configureViewController() {
@@ -147,13 +153,7 @@ class ProjectReaderViewController: UIViewController {
             self.descriptionContentView.isHidden = false
             self.descriptionTextView.text = project.description
         }
-        
-//        if projectReaderPresenter.checkIfTaskListIsEmpty() {
-//            self.taskTableView.isHidden = true
-//        } else {
         self.taskTableView.isHidden = false
-//        }
-        
         self.guestContentView.isHidden = true
     }
     

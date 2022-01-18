@@ -55,4 +55,13 @@ extension ProjectReaderViewController: ProjectManagerDelegate {
             print("Error: \(error.localizedDescription)")
         }
     }
+    
+    func addTaskFromReaderComplete(_ result: Result<Void, Error>) {
+        switch result {
+        case .success(()):
+            print("Register task succeed ")
+        case .failure(let error):
+            print("Error: \(error.localizedDescription)")
+        }
+    }
 }

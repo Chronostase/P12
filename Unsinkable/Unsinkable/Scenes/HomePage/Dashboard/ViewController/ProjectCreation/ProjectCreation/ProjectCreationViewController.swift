@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class ProjectCreationViewController: UIViewController {
     
@@ -37,11 +38,13 @@ class ProjectCreationViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        IQKeyboardManager.shared.enable = false
     }
     
     
     private func setup() {
         self.navigationController?.navigationBar.isHidden = false
+        IQKeyboardManager.shared.enable = true
         setupCustomCell()
         configureFakeProject()
         setDelegateAndDataSource()

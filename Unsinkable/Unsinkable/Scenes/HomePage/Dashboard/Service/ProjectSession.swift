@@ -291,6 +291,33 @@ class ProjectSession {
         print("END PROJECT REGISTRATION")
     }
     
+//    func registerTaskFromReader(_ task: Task?,_ project: Project?,_ userData: CustomResponse?, completion: @escaping (Error?) -> Void) {
+//
+//        let database = Firestore.firestore()
+//        guard let task = task else {return}
+//        guard let userID = project?.ownerUserId else {return}
+//        guard let projectID = project?.projectID else {return}
+//        guard let taskTitle = task.title else {return}
+//        guard let taskID = task.taskID else {return}
+//        var timeStamp: Timestamp?
+//        if let date = task.deadLine {
+//            timeStamp = Timestamp(date: date)
+//        } else {
+//            timeStamp = nil
+//        }
+//
+//        let documentData: [String: Any] = [
+//            Constants.Database.Task.title : taskTitle,
+//            Constants.Database.Task.projectID : projectID,
+//            Constants.Database.Task.id : taskID,
+//            Constants.Database.Task.priority : task.priority ?? false,
+//            Constants.Database.Task.deadLine :  timeStamp ?? "",
+//            Constants.Database.Task.commentary : task.commentary ?? "",
+//            Constants.Database.Task.location : task.location ?? "",
+//            Constants.Database.Task.isValidate: task.isValidate ?? false
+//        ]
+//    }
+    
     func registerUserTask(_ tasks: [Task?]?,_ project: Project?, completion: @escaping (CustomResponse?, Error?) -> Void) {
         
         let database = Firestore.firestore()

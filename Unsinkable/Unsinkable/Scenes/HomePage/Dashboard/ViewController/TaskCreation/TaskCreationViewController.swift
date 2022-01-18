@@ -81,6 +81,9 @@ class TaskCreationViewController: UIViewController {
     
     private func displayDefaultTaskData() {
         self.titleTextField.text = taskCreationPresenter.task?.title
+        if taskCreationPresenter.task?.commentary == Constants.Label.commentaryPlaceHolder {
+            self.commentaryTextView.textColor = .placeholderText
+        }
         if taskCreationPresenter.task?.commentary != "" && taskCreationPresenter.task?.commentary != nil {
             self.commentaryTextView.text = taskCreationPresenter.task?.commentary
         } else {
@@ -181,6 +184,7 @@ class TaskCreationViewController: UIViewController {
         } else {
             isDeadLineViewIsNeeded(false)
         }
+        print("Task commentary: \(task.commentary)")
         if task.commentary != "" {
             if task.commentary == Constants.Label.commentaryPlaceHolder {
                 self.commentaryTextView.text = task.commentary

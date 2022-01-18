@@ -46,6 +46,37 @@ class ProjectReaderPresenter {
         }
     }
     
+    
+    func addNewTask(_ title: String?) {
+        let task = createTaskObject(title)
+        //Maybe in success part with loader / reload tbV
+        self.selectedProject?.taskList?.append(task)
+        self.projectService.registerTask([task], selectedProject) { reponse, error in
+            if error != nil {
+                guard let error = error else {return}
+                self.delegate?.addTaskFromReaderComplete(.failure(error))
+            } else {
+                self.delegate?.addTaskFromReaderComplete(.success(()))
+            }
+            
+        }
+    }
+    
+    private func createTaskObject(_ title: String?, _ projectID: String? = nil, _ taskID: String? = nil, _ priority: Bool? = nil, _ deadLine: Date? = nil, _ location: String? = nil) -> Task {
+        let task = Task(title: title, projectID: projectID, taskID: UUID().uuidString, priority: priority, deadLine: deadLine, commentary: Constants.Label.commentaryPlaceHolder, location: location, isValidate: false)
+        
+        return task
+    }
+    
+    
+    func checkTaskTitle(_ taskTitle: String?) -> Bool {
+        if taskTitle != "" {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     func deleteProject() {
         projectService.deleteProject(selectedProject) { error in
             if error != nil {
