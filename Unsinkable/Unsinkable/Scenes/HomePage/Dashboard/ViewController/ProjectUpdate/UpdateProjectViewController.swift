@@ -84,7 +84,7 @@ class UpdateProjectViewController: UIViewController {
     
     
     private func updateProject() {
-        showLoader()
+        showLoading()
         updateProjectPresenter.updateLocalData(projectTilteTextField.text, projectDescriptionTextView.text)
         updateProjectPresenter.updateProject()
     }
@@ -105,7 +105,7 @@ class UpdateProjectViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    private func showLoader() {
+    private func showLoading() {
         let loaderVC = LoaderViewController()
         loaderVC.modalPresentationStyle = .overCurrentContext
         loaderVC.modalTransitionStyle = .crossDissolve

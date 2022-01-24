@@ -46,9 +46,11 @@ extension TaskCreationViewController: ProjectManagerDelegate {
         switch result {
         case .success(_):
             print("Task delete")
+            self.navigationController?.dismiss(animated: true, completion: nil)
             self.navigationController?.popViewController(animated: true)
         case .failure(let error):
-        print("Error: \(error.localizedDescription)")
+            self.navigationController?.dismiss(animated: true, completion: nil)
+            print("Error: \(error.localizedDescription)")
         
         }
     }

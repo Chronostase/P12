@@ -16,7 +16,7 @@ protocol ProfilPresenterDelegate: AnyObject {
     func deleteAllUserRefFailed()
     func updateUserSucceed()
     func updateUserFailed()
-    func showError()
+    func showError(_ message: String)
 }
 
 class ProfiPresenter {
@@ -58,6 +58,10 @@ class ProfiPresenter {
     }
     
     func updateUser(_ firstName: String,_ name: String,_ email: String) {
+        
+        if firstName == "" || name == "" || email == "" {
+            self.delegate?.showError(Constants.Error.LoginError.fillField)
+        }
         if isEmailValid(email) {
             let user = data?.user
             userAuthenticationService.updateUser(user, firstName, name, email) { error in
@@ -68,7 +72,7 @@ class ProfiPresenter {
                 }
             }
         } else {
-            self.delegate?.showError()
+            self.delegate?.showError(Constants.Error.LoginError.emailError)
         }
     }
     

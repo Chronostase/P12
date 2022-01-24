@@ -32,10 +32,10 @@ class TabBarViewController: UITabBarController {
         tabBar.tintColor = .label
     }
     
-    private func showLoader() {
-        let loadingVC = LoaderViewController()
-        loadingVC.modalPresentationStyle = .overCurrentContext
-        loadingVC.modalTransitionStyle = .crossDissolve
-        navigationController?.present(loadingVC, animated: true, completion: nil)
-    }
+//    private func showLoader() {
+//        let loadingVC = LoaderViewController()
+//        loadingVC.modalPresentationStyle = .overCurrentContext
+//        loadingVC.modalTransitionStyle = .crossDissolve
+//        navigationController?.present(loadingVC, animated: true, completion: nil)
+//    }
 }

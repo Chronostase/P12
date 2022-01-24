@@ -39,14 +39,14 @@ class ProjectReaderViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         projectReaderPresenter.refreshCurrentProject()
-        IQKeyboardManager.shared.enable = true
+        isKeyboardAnimationNeeded(true)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false 
         self.navigationController?.navigationBar.isHidden = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        IQKeyboardManager.shared.enable = false 
+        isKeyboardAnimationNeeded(false)
         self.removeObserver()
     }
     
@@ -113,10 +113,10 @@ class ProjectReaderViewController: UIViewController {
         taskTextField.rightView = button
         taskTextField.rightViewMode = .always
     }
-    #warning("Add task Creation here")
     @objc func addTask() {
         if projectReaderPresenter.checkTaskTitle(taskTextField.text) {
             guard let title = taskTextField.text else {return}
+            self.showLoader()
             self.projectReaderPresenter.addNewTask(title)
             DispatchQueue.main.async {
                 self.taskTableView.reloadData()
@@ -151,6 +151,8 @@ class ProjectReaderViewController: UIViewController {
             self.descriptionContentView.isHidden = true
         } else {
             self.descriptionContentView.isHidden = false
+            self.descriptionTextView.isEditable = false
+            self.descriptionTextView.isScrollEnabled = true
             self.descriptionTextView.text = project.description
         }
         self.taskTableView.isHidden = false
@@ -179,13 +181,6 @@ class ProjectReaderViewController: UIViewController {
         present(confirmationDialog, animated: true, completion: nil)
     }
     
-    private func showLoader() {
-        let loadingVC = LoaderViewController()
-        loadingVC.modalPresentationStyle = .overCurrentContext
-        loadingVC.modalTransitionStyle = .crossDissolve
-        navigationController?.present(loadingVC, animated: true, completion: nil)
-    }
-    
     private func addObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.displayNewData), name: NSNotification.Name(Constants.Notification.childEnd), object: nil)
     }
@@ -197,5 +192,9 @@ class ProjectReaderViewController: UIViewController {
     @objc func displayNewData() {
         
         projectReaderPresenter.refreshCurrentProject()
+    }
+    
+    private func isKeyboardAnimationNeeded(_ authorization: Bool) {
+        IQKeyboardManager.shared.enable = authorization
     }
 }

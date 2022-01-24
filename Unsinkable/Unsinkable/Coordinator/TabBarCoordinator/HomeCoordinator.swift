@@ -42,9 +42,12 @@ class HomeCoordinator: Coordinator {
             return nil
         }
         let dashBoardNavigationViewController = UINavigationController(rootViewController: dashBoardViewController)
-        dashBoardViewController.tabBarItem.image = UIImage(named: Constants.Image.clipBoard )
+        let clipBoardImage = UIImage(named: Constants.Image.clipBoard)
+        dashBoardViewController.tabBarItem.image = clipBoardImage
+        
+        let bellImage = UIImage(systemName: Constants.Image.bell)
         let notificationNavigationController = UINavigationController(rootViewController: notificationViewController)
-        notificationViewController.tabBarItem.image = UIImage(systemName: Constants.Image.bell)
+        notificationViewController.tabBarItem.image = bellImage
         
         return [dashBoardNavigationViewController, notificationNavigationController]
     }

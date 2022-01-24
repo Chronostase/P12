@@ -80,7 +80,7 @@ class ProjectSession {
         guard let currentTaskID = task.taskID,
               let projectID = project.projectID,
               let userID = user.userId else {return}
-        guard let currentUser = Auth.auth().currentUser, let email = user.email else {return}
+        guard let currentUser = Auth.auth().currentUser, let email = currentUser.email else {return}
         guard let password = keyChainManager.getUserCredential(user) else {return}
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
         let database = Firestore.firestore()
@@ -116,7 +116,7 @@ class ProjectSession {
         guard let newTask = newTask else {return}
         
         guard let user = userData?.user else {return}
-        guard let currentUser = Auth.auth().currentUser, let email = userData?.user.email else {return}
+        guard let currentUser = Auth.auth().currentUser, let email = currentUser.email else {return}
         guard let password = keyChainManager.getUserCredential(user) else {return}
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
         let database = Firestore.firestore()
@@ -245,7 +245,6 @@ class ProjectSession {
         let storageRef = Storage.storage().reference().child("Users/\(ownerId)/\(projectID).jpeg")
         if let coverPictureData = coverPicture {
             storageRef.putData(coverPictureData, metadata: nil) { _ , error in
-                print("Enter In storage.putData")
                 if error != nil {
                     print("Error while uploading image")
                     return
@@ -275,6 +274,7 @@ class ProjectSession {
                                         return
                                     }
                                     //Error
+                                    
                                     completion(nil,error)
                                 }
                                 //Succeed
@@ -285,38 +285,9 @@ class ProjectSession {
                 }
                 print("Exit put Data completion")
             }
-        } else {
-            print("No image to register")
         }
-        print("END PROJECT REGISTRATION")
     }
     
-//    func registerTaskFromReader(_ task: Task?,_ project: Project?,_ userData: CustomResponse?, completion: @escaping (Error?) -> Void) {
-//
-//        let database = Firestore.firestore()
-//        guard let task = task else {return}
-//        guard let userID = project?.ownerUserId else {return}
-//        guard let projectID = project?.projectID else {return}
-//        guard let taskTitle = task.title else {return}
-//        guard let taskID = task.taskID else {return}
-//        var timeStamp: Timestamp?
-//        if let date = task.deadLine {
-//            timeStamp = Timestamp(date: date)
-//        } else {
-//            timeStamp = nil
-//        }
-//
-//        let documentData: [String: Any] = [
-//            Constants.Database.Task.title : taskTitle,
-//            Constants.Database.Task.projectID : projectID,
-//            Constants.Database.Task.id : taskID,
-//            Constants.Database.Task.priority : task.priority ?? false,
-//            Constants.Database.Task.deadLine :  timeStamp ?? "",
-//            Constants.Database.Task.commentary : task.commentary ?? "",
-//            Constants.Database.Task.location : task.location ?? "",
-//            Constants.Database.Task.isValidate: task.isValidate ?? false
-//        ]
-//    }
     
     func registerUserTask(_ tasks: [Task?]?,_ project: Project?, completion: @escaping (CustomResponse?, Error?) -> Void) {
         
@@ -410,9 +381,7 @@ class ProjectSession {
                                 let code = FunctionsErrorCode(rawValue: error.code)
                                 let message = error.localizedDescription
                                 let details = error.userInfo[FunctionsErrorDetailsKey]
-                                print("code \(code)")
-                                print("message \(message)")
-                                print("details \(details)")
+                                print("code \(code), message \(message), details \(details)")
                             }
                             completion(error)
                         } else {
@@ -446,9 +415,7 @@ class ProjectSession {
                     let code = FunctionsErrorCode(rawValue: error.code)
                     let message = error.localizedDescription
                     let details = error.userInfo[FunctionsErrorDetailsKey]
-                    print("code \(code)")
-                    print("message \(message)")
-                    print("details \(details)")
+                    print("code \(code), message \(message),details \(details)")
                 }
                 completion(error)
             } else {
@@ -488,9 +455,7 @@ class ProjectSession {
                     let code = FunctionsErrorCode(rawValue: error.code)
                     let message = error.localizedDescription
                     let details = error.userInfo[FunctionsErrorDetailsKey]
-                    print("code \(code)")
-                    print("message \(message)")
-                    print("details \(details)")
+                    print("code \(code),message \(message),details \(details)")
                 }
                 completion(error)
             } else {

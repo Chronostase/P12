@@ -4,7 +4,6 @@
 //
 //  Created by Thomas on 15/04/2021.
 //
-//import UIKit
 import Foundation
 
 extension LogInViewController: LoginPresenterDelegate {

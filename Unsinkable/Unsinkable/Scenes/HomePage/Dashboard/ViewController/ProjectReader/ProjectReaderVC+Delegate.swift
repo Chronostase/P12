@@ -59,8 +59,11 @@ extension ProjectReaderViewController: ProjectManagerDelegate {
     func addTaskFromReaderComplete(_ result: Result<Void, Error>) {
         switch result {
         case .success(()):
+            //Hide loader
+            navigationController?.dismiss(animated: true, completion: nil)
             print("Register task succeed ")
         case .failure(let error):
+            navigationController?.dismiss(animated: true, completion: nil)
             print("Error: \(error.localizedDescription)")
         }
     }

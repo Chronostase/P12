@@ -24,6 +24,7 @@ class RegisterViewController: UIViewController {
     let userAuthentificationService: AuthentificationLogic = UserAuthentificationService()
     
     @IBAction func createAccountButton(_ sender: UIButton) {
+        self.showLoader()
         registerPresenter.registerWith(firstNameTextField.text, nameTextField.text, emailTextField.text, passwordTextField.text)
     }
     

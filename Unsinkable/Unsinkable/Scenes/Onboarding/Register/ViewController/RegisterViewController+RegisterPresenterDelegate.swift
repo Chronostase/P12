@@ -10,10 +10,12 @@ import Foundation
 extension RegisterViewController: RegisterPresenterDelegate {
     
     func registerUserSucceed() {
+        self.navigationController?.dismiss(animated: true)
         self.transitionToHomeScreen()
     }
     
     func registerFailed() {
+        self.navigationController?.dismiss(animated: true)
         self.showError(Constants.Error.LoginError.invalidFields)
     }
     

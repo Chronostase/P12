@@ -44,10 +44,10 @@ class ProfilViewController: UIViewController {
         emailTextField.isUserInteractionEnabled = autorization
     }
     private func updateUser() {
-        //Non sens to check if fields fill, + fields can be "" and not nil, finally to update, if textField .Text != user.data -> update else keep old Value
-        let user = profilPresenter.data?.user
-            guard let firstName = firstNameTextField.text, let name = nameTextField.text, let email = emailTextField.text else {return}
-            profilPresenter.updateUser(firstName, name, email)
+        guard let firstName = firstNameTextField.text, let name = nameTextField.text, let email = emailTextField.text else {
+            return
+        }
+        profilPresenter.updateUser(firstName, name, email)
         
     }
     
@@ -94,10 +94,6 @@ class ProfilViewController: UIViewController {
         coordinator?.didFinish()
     }
     
-    func showError(_ message: String) {
-        print(message)
-    }
-    
     private func addNavigationBarButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "power"), style: .plain, target: self, action: #selector(showOptions))
     }
@@ -122,6 +118,7 @@ class ProfilViewController: UIViewController {
     private func setConfirmationDialog() {
         let confirmationDialog = UIAlertController(title: Constants.Button.deleteAccount, message: nil, preferredStyle: .alert)
         let delete = UIAlertAction(title: Constants.Button.yes, style: .destructive) { action in
+            self.showLoader()
             self.profilPresenter.deleteAllUserRef()
         }
         

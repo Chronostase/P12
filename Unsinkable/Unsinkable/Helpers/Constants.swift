@@ -103,6 +103,7 @@ enum Constants {
         static let finishedTask = "Finished Task:"
         static let commentaryPlaceHolder = "Commentary..."
         static let locationPlaceHolder = "location..."
+        static let addTaskHolder = "+ Add Task"
     }
     
     enum Button {

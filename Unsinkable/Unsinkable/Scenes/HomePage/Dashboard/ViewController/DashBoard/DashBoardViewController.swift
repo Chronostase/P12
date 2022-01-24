@@ -46,7 +46,6 @@ class DashBoardViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        loadData()
     }
     
     private func loadData() {
@@ -87,12 +86,4 @@ class DashBoardViewController: UIViewController {
         self.personalCollectionView.reloadData()
         self.professionalCollectionView.reloadData()
     }
-    
-    func showLoader() {
-        let loadingVC = LoaderViewController()
-        loadingVC.modalPresentationStyle = .overCurrentContext
-        loadingVC.modalTransitionStyle = .crossDissolve
-        navigationController?.present(loadingVC, animated: true, completion: nil)
-    }
-    
 }

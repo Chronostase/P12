@@ -8,5 +8,5 @@
 import Foundation
 
 struct FakeStorage {
-    var users: [CustomResponse]?
+    var users: [FakeCustomResponse]?
 }

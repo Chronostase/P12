@@ -15,7 +15,6 @@ class Keys {
             let key = keys[key] as? String else {
                 return nil
         }
-        
         return key
     }
 }

@@ -18,7 +18,7 @@ protocol ProjectManagerDelegate: AnyObject {
     func updateProjectComplete(_ result: Result<Project?, Error>)
     func deleteTaskComplete(_ result: Result<Void,Error>)
     func deleteProjectComplete(_ result: Result<Void, Error>)
-    func showErrorMessage()
+    func showErrorMessage(with message: String)
 }
 
 extension ProjectManagerDelegate {
@@ -32,7 +32,7 @@ extension ProjectManagerDelegate {
     func updateProjectComplete(_ result: Result<Project?, Error>) {}
     func deleteTaskComplete(_ result: Result<Void,Error>) {}
     func deleteProjectComplete(_ result: Result<Void, Error>) {}
-    func showErrorMessage() {}
+    func showErrorMessage(with message: String) {}
 }
 
 class ProjectCreationPresenter {
@@ -63,11 +63,12 @@ class ProjectCreationPresenter {
     }
     
     func registerProject(_ title: String?,_ descitpion: String?,_ coverPicture: Data?) {
-        if isFieldFill(title) {
+        let formatTitle = title?.formatCharacter()
+        if isFieldFill(formatTitle) {
             guard let userId = data?.user.userId else {
                 return
             }
-            createProjectObject(withTitle: title, descitpion, userId, tasks: nil)
+            createProjectObject(withTitle: formatTitle, descitpion, userId, tasks: nil)
             projectCreationService.registerProject(self.project, data, coverPicture){ (response, error) in
                 if error != nil {
                     guard let error = error else {return}
@@ -78,8 +79,7 @@ class ProjectCreationPresenter {
                 }
             }
         } else {
-            //Field aren't fills 
-            self.delegate?.showErrorMessage()
+            self.delegate?.showErrorMessage(with: UnsinkableError.ProjectCreation.setTitle)
         }
     }
     
@@ -94,9 +94,7 @@ class ProjectCreationPresenter {
                 } 
             }
         } else {
-            #warning("Use custom Error service ServiceError.unAllowOperation")
-//            self.delegate?.registerTaskComplete(.failure(Error))
-            self.delegate?.showErrorMessage()
+            self.delegate?.showErrorMessage(with: UnsinkableError.ProjectCreation.setTitle)
         }
     }
     

@@ -46,7 +46,6 @@ class ProjectCreationViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
         IQKeyboardManager.shared.enable = true
         setupCustomCell()
-        configureFakeProject()
         setDelegateAndDataSource()
         addTextViewDoneButton()
         setRightButtonInTextField()
@@ -57,7 +56,7 @@ class ProjectCreationViewController: UIViewController {
         guard let imageData = coverImage.image?.jpegData(compressionQuality: 0.4) else {
             return
         }
-        showLoader()
+        self.showLoader()
         projectCreationPresenter.registerProject(projectTextField.text, projectTextView.text, imageData)
     }
     
@@ -78,12 +77,6 @@ class ProjectCreationViewController: UIViewController {
         locationView.isHidden = true
         deadLineView.isHidden = true
         usersView.isHidden = true
-    }
-    
-    private func configureFakeProject() {
-        coverImageButton.imageEdgeInsets = UIEdgeInsets(top: 15, left: 85, bottom: 15, right: 85 )
-        customProjectView.layer.masksToBounds = true
-        customProjectView.layer.cornerRadius = 8
     }
     
     private func addTextViewDoneButton() {
@@ -124,10 +117,6 @@ class ProjectCreationViewController: UIViewController {
             DispatchQueue.main.async {
                 self.taskTableView.reloadData()
             }
-            //Do something
-        } else {
-            //Error
-            
         }
     }
     
@@ -152,12 +141,6 @@ class ProjectCreationViewController: UIViewController {
         taskTableView.register(nib, forCellReuseIdentifier: Constants.Cell.taskCell)
     }
     
-    private func showLoader() {
-        let loadingVC = LoaderViewController()
-        loadingVC.modalPresentationStyle = .overCurrentContext
-        loadingVC.modalTransitionStyle = .crossDissolve
-        navigationController?.present(loadingVC, animated: true, completion: nil)
-    }
 }
 
 extension ProjectCreationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

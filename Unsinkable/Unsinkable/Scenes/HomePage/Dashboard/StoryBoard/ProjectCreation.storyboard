@@ -54,8 +54,11 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="269" height="102.5"/>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVE-GM-7cc" userLabel="addPicture">
-                                                                <rect key="frame" x="0.0" y="0.0" width="269" height="102.5"/>
+                                                                <rect key="frame" x="94" y="11" width="81" height="80.5"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="uVE-GM-7cc" secondAttribute="height" multiplier="1:1" id="1eJ-jt-nBh"/>
+                                                                </constraints>
                                                                 <state key="normal" image="plus.circle" catalog="system"/>
                                                                 <connections>
                                                                     <action selector="addCoverPicture:" destination="shQ-O3-egx" eventType="touchUpInside" id="eMt-h5-1xM"/>
@@ -70,16 +73,15 @@
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstItem="uVE-GM-7cc" firstAttribute="leading" secondItem="M4j-rD-foE" secondAttribute="leading" id="1Pb-SQ-qe1"/>
                                                             <constraint firstItem="V7F-8O-72E" firstAttribute="leading" secondItem="M4j-rD-foE" secondAttribute="leading" constant="5" id="4zS-Sy-tu2"/>
                                                             <constraint firstItem="6pr-zB-efm" firstAttribute="height" secondItem="M4j-rD-foE" secondAttribute="height" multiplier="0.8" id="8aZ-Qy-OjG"/>
                                                             <constraint firstItem="6pr-zB-efm" firstAttribute="top" secondItem="M4j-rD-foE" secondAttribute="top" id="J2v-D7-Zjj"/>
                                                             <constraint firstItem="6pr-zB-efm" firstAttribute="leading" secondItem="M4j-rD-foE" secondAttribute="leading" id="Mdo-ph-WaX"/>
                                                             <constraint firstAttribute="bottom" secondItem="V7F-8O-72E" secondAttribute="bottom" constant="5" id="NxB-G4-05I"/>
-                                                            <constraint firstAttribute="trailing" secondItem="uVE-GM-7cc" secondAttribute="trailing" id="X7b-2h-2zk"/>
-                                                            <constraint firstItem="uVE-GM-7cc" firstAttribute="top" secondItem="M4j-rD-foE" secondAttribute="top" id="ZXR-0k-tsC"/>
                                                             <constraint firstAttribute="trailing" secondItem="6pr-zB-efm" secondAttribute="trailing" id="eNh-7K-eGc"/>
-                                                            <constraint firstItem="uVE-GM-7cc" firstAttribute="height" secondItem="M4j-rD-foE" secondAttribute="height" multiplier="0.8" id="jYw-yk-eji"/>
+                                                            <constraint firstItem="uVE-GM-7cc" firstAttribute="centerX" secondItem="6pr-zB-efm" secondAttribute="centerX" id="far-3b-y2G"/>
+                                                            <constraint firstItem="uVE-GM-7cc" firstAttribute="width" secondItem="6pr-zB-efm" secondAttribute="width" multiplier="0.3" id="h1d-WO-Nli"/>
+                                                            <constraint firstItem="uVE-GM-7cc" firstAttribute="centerY" secondItem="6pr-zB-efm" secondAttribute="centerY" id="nl6-r8-HIF"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>

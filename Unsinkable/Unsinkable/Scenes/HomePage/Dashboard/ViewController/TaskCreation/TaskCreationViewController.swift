@@ -184,7 +184,6 @@ class TaskCreationViewController: UIViewController {
         } else {
             isDeadLineViewIsNeeded(false)
         }
-        print("Task commentary: \(task.commentary)")
         if task.commentary != "" {
             if task.commentary == Constants.Label.commentaryPlaceHolder {
                 self.commentaryTextView.text = task.commentary
@@ -205,6 +204,7 @@ class TaskCreationViewController: UIViewController {
     private func setConfirmationDialog() {
         let confirmationDialog = UIAlertController(title: Constants.Button.deleteMessage, message: nil, preferredStyle: .alert)
         let delete = UIAlertAction(title: Constants.Button.yes, style: .destructive) { action in
+            self.showLoader()
             self.taskCreationPresenter.deleteTask()
         }
         

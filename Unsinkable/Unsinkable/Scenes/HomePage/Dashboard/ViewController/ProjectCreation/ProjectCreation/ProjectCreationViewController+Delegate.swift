@@ -59,5 +59,11 @@ extension ProjectCreationViewController: ProjectManagerDelegate {
             self.navigationController?.popViewController(animated: true)
         }
     }
+    
+    func showErrorMessage() {
+        self.navigationController?.dismiss(animated: true, completion: {
+            self.presentSimpleAlert(message: UnsinkableError.ProjectCreation.setTitle)
+        })
+    }
 
 }

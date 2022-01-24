@@ -14,18 +14,20 @@ class AuthenticationSession {
     lazy var functions = Functions.functions()
     lazy var keyChainManager = KeyChainManager()
     
+    //Use FireAuth to login user
     func signInRequest(_ email: String, _ password: String, completion: @escaping (CustomResponse?, Error?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (dataResponse, error) in
             guard let user = dataResponse?.user else {
                 
                 return completion(nil,error)
             }
-            let customUser = CustomResponse(user: UserDetails(email: user.email, password: user.displayName, userId: user.uid, projects: nil))
+            let customUser = CustomResponse(user: UserDetails(userId: user.uid, projects: nil))
             
             completion(customUser, error)
         }
     }
     
+    //Use FireAuth to register a new user
     func createUserRequest(_ email: String, _ password: String, completion: @escaping (CustomResponse?, Error?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (dataResponse, error) in
             
@@ -33,12 +35,15 @@ class AuthenticationSession {
                 
                 return completion(nil,error)
             }
-            let customUser = CustomResponse(user: UserDetails(email: user.email, userId: user.uid))
+            let customUser = CustomResponse(user: UserDetails(userId: user.uid))
+            
+            //Store user credential in KeyChainManager
             self.keyChainManager.registerUserCredential(customUser.user, password)
             completion(customUser,error)
         }
     }
     
+    #warning("Take care to see if this function is always available after refacto auth.auth.currentUser.email")
     func updateUser(_ user: UserDetails?, _ firstName: String,_ name: String,_ email: String, completion: @escaping (Error?) -> Void) {
         let auth = Auth.auth()
         guard let currentUser = auth.currentUser else {return}
@@ -46,16 +51,14 @@ class AuthenticationSession {
         let userId = currentUser.uid
         let database = Firestore.firestore()
         let databaseRef = database.collection(Constants.Database.User.userPath).document("\(userId)")
-        #warning("Need to be second if Email succeed")
+        //Update DB
         databaseRef.updateData([
             Constants.Database.User.firstNameField: firstName,
             Constants.Database.User.nameField: name,
-            Constants.Database.User.emailField: email
         ]) { error in
             if error != nil {
                 completion(error)
             } else {
-                #warning("need to be first probably reauthenticate to solve email problem")
                 if email != currentEmail {
                     guard let user = user else {return}
                     guard let userEmail = auth.currentUser?.email, let password = self.keyChainManager.getUserCredential(user) else {return}
@@ -64,6 +67,7 @@ class AuthenticationSession {
                         if error != nil {
                             completion(error)
                         } else {
+                            //Update Authentication
                             currentUser.updateEmail(to: email) { error in
                                 if error != nil {
                                     //Email not change
@@ -82,7 +86,7 @@ class AuthenticationSession {
     
     func deleteUser(_ user: UserDetails, completion : @escaping (Error?) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {return}
-        guard let email = user.email, let password = keyChainManager.getUserCredential(user) else {return}
+        guard let email = currentUser.email, let password = keyChainManager.getUserCredential(user) else {return}
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
         
         currentUser.reauthenticate(with: credential) { result, error in
@@ -106,14 +110,14 @@ class AuthenticationSession {
         }
     }
     
-    func addUserToDataBase(customResponse: CustomResponse?,_ firstName: String, _ name: String, _ email: String, _ password: String, completion: @escaping (CustomResponse?, Error?) -> Void) {
+    // Add user data to Firebase Storage
+    func addUserToDataBase(customResponse: CustomResponse?,_ firstName: String, _ name: String, completion: @escaping (CustomResponse?, Error?) -> Void) {
         guard let userId = customResponse?.user.userId else { return }
         let dataBase = Firestore.firestore()
         let documentRef = dataBase.collection(Constants.Database.User.userPath).document(userId)
         documentRef.setData([
                                 Constants.Database.User.firstNameField : firstName,
                                 Constants.Database.User.nameField: name,
-                                Constants.Database.User.emailField : email,
                                 Constants.Database.User.uidField: userId])
         { (error) in
             if error != nil {
@@ -124,11 +128,13 @@ class AuthenticationSession {
         }
     }
     
+    //Fetch user from firestoreData to local Data 
     func fetchUserFirestoreData(completion: @escaping (CustomResponse?, Error?) -> Void) {
         var user = CustomResponse(user: UserDetails() )
         guard let data = Auth.auth().currentUser else {
             return
         }
+        guard let email = data.email else {return}
         
         let database = Firestore.firestore()
         let documentRef = database.collection(Constants.Database.User.userPath).document("\(data.uid)")
@@ -144,7 +150,6 @@ class AuthenticationSession {
                     let firstname = data[Constants.Database.User.firstNameField] as? String ?? ""
                     let name = data[Constants.Database.User.nameField] as? String ?? ""
                     let uid = data[Constants.Database.User.uidField] as? String ?? ""
-                    let email = data[Constants.Database.User.emailField] as? String ?? ""
                     user = CustomResponse(user: UserDetails(email: email, firstName: firstname, name: name, userId: uid, projects: []))
                     completion(user,nil)
                 }

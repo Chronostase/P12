@@ -1,5 +1,5 @@
 //
-//  CustomResponse.swift
+//  FakeCustomResponse.swift
 //  Unsinkable
 //
 //  Created by Thomas on 06/05/2021.
@@ -7,29 +7,30 @@
 
 import Foundation
 
-struct CustomResponse {
-    var user: UserDetails
+struct FakeCustomResponse {
+    var user: FakeUserDetails
 }
 
-struct UserDetails{
+struct FakeUserDetails{
     var email: String?
+    var password: String?
     var firstName: String?
-    var name: String? 
+    var name: String?
     var userId: String?
-    var projects: [Project?]?
+    var projects: [FakeProject?]?
 }
 
-struct Project {
+struct FakeProject {
     var title: String?
     var projectID: String?
     var description: String?
     var ownerUserId: String?
     var isPersonal: Bool?
     var downloadUrl: String?
-    var taskList: [Task?]?
+    var taskList: [FakeTask?]?
 }
 
-struct Task {
+struct FakeTask {
     var title: String?
     var projectID: String?
     var taskID: String?
@@ -37,5 +38,6 @@ struct Task {
     var deadLine: Date?
     var commentary: String?
     var location: String?
-    var isValidate: Bool? 
+    var isValidate: Bool?
 }
+

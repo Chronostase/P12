@@ -170,21 +170,21 @@
                                                         </constraints>
                                                     </view>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iBt-B3-Cch" userLabel="TaskTableView">
-                                                        <rect key="frame" x="0.0" y="554" width="414" height="233"/>
+                                                        <rect key="frame" x="0.0" y="554" width="414" height="288"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="FJe-Ug-I4b"/>
                                                         </constraints>
                                                     </tableView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtS-jS-kCT" userLabel="HolderView">
-                                                        <rect key="frame" x="0.0" y="787" width="414" height="20"/>
+                                                        <rect key="frame" x="0.0" y="842" width="414" height="20"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="Tt5-DQ-J5O"/>
                                                         </constraints>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6f-e9-Fwa">
-                                                        <rect key="frame" x="0.0" y="807" width="414" height="55"/>
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6f-e9-Fwa">
+                                                        <rect key="frame" x="0.0" y="862" width="414" height="55"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="55" id="4Jx-tW-RRQ"/>
                                                         </constraints>
