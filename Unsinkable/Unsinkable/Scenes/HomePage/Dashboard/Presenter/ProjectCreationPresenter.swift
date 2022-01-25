@@ -55,7 +55,7 @@ class ProjectCreationPresenter {
     }
     
     func checkTaskTitle(_ taskTitle: String?) -> Bool {
-        if taskTitle != "" {
+        if taskTitle?.formatCharacter() != "" {
             return true
         } else {
             return false
@@ -79,22 +79,18 @@ class ProjectCreationPresenter {
                 }
             }
         } else {
-            self.delegate?.showErrorMessage(with: UnsinkableError.ProjectCreation.setTitle)
+            self.delegate?.showErrorMessage(with: UnsinkableError.ProjectCreation.setProjectTitle)
         }
     }
     
-    func registerTask(_ title: String?,_ project: Project?) {
-        if isFieldFill(title) {
-            projectCreationService.registerTask(localTasksList, project) { (response, error) in
-                if error != nil {
-                    guard let error = error else {return}
-                    self.delegate?.registerTaskComplete(.failure(error))
-                } else {
-                    self.delegate?.registerTaskComplete(.success(self.createTaskObject(title)))
-                } 
+    func registerTask(_ project: Project?) {
+        projectCreationService.registerTask(localTasksList, project) { (response, error) in
+            if error != nil {
+                guard let error = error else {return}
+                self.delegate?.registerTaskComplete(.failure(error))
+            } else {
+                self.delegate?.registerTaskComplete(.success(nil))
             }
-        } else {
-            self.delegate?.showErrorMessage(with: UnsinkableError.ProjectCreation.setTitle)
         }
     }
     
@@ -140,5 +136,5 @@ class ProjectCreationPresenter {
         }
         localTasksList?.append(task)
     }
-
+    
 }

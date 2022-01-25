@@ -113,16 +113,20 @@ class ProjectReaderViewController: UIViewController {
         taskTextField.rightView = button
         taskTextField.rightViewMode = .always
     }
+    
     @objc func addTask() {
         if projectReaderPresenter.checkTaskTitle(taskTextField.text) {
             guard let title = taskTextField.text else {return}
             self.showLoader()
             self.projectReaderPresenter.addNewTask(title)
             DispatchQueue.main.async {
+                self.taskTextField.text = nil
+                self.taskTextField.placeholder = Constants.Label.addTaskHolder
                 self.taskTableView.reloadData()
             }
         } else {
-            //Can't add task 
+            self.taskTextField.text = nil
+            self.taskTextField.placeholder = UnsinkableError.ProjectCreation.setTaskTitle
         }
     }
     

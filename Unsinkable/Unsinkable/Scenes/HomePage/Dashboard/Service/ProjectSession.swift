@@ -357,7 +357,6 @@ class ProjectSession {
                                 completion(error)
                             } else {
                                 //Delete userRef in database
-                                //Maybe is needed to check if user have project
                                 deleteDatabaseFn.call(data) { (result, error)  in
                                     if let error = error as NSError? {
                                         if error.domain == FunctionsErrorDomain {

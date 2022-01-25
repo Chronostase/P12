@@ -49,7 +49,6 @@ class ProjectReaderPresenter {
     
     func addNewTask(_ title: String?) {
         let task = createTaskObject(title)
-        //Maybe in success part with loader / reload tbV
         self.selectedProject?.taskList?.append(task)
         self.projectService.registerTask([task], selectedProject) { reponse, error in
             if error != nil {

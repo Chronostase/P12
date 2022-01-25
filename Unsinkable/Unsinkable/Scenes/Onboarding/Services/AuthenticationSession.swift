@@ -43,7 +43,6 @@ class AuthenticationSession {
         }
     }
     
-    #warning("Take care to see if this function is always available after refacto auth.auth.currentUser.email")
     func updateUser(_ user: UserDetails?, _ firstName: String,_ name: String,_ email: String, completion: @escaping (Error?) -> Void) {
         let auth = Auth.auth()
         guard let currentUser = auth.currentUser else {return}

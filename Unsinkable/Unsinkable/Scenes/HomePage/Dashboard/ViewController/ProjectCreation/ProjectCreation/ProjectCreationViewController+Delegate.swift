@@ -35,14 +35,11 @@ extension ProjectCreationViewController: ProjectManagerDelegate {
             }
 
             coordinator?.data.user.projects?.append(project)
-            if project.taskList != nil {
-                projectCreationPresenter.registerTask(taskTextField.text, project)
+            if project.taskList?.isEmpty != true {
+                projectCreationPresenter.registerTask(project)
             } else {
                 self.navigationController?.popViewController(animated: true)
             }
-            print("LeaveRegisterSucceed")
-            print("It succeed")
-            self.navigationController?.popViewController(animated: true)
         case .failure(let error):
             print("error: \(error.localizedDescription)")
             self.navigationController?.popViewController(animated: true)
@@ -60,9 +57,9 @@ extension ProjectCreationViewController: ProjectManagerDelegate {
         }
     }
     
-    func showErrorMessage() {
+    func showErrorMessage(with message: String) {
         self.navigationController?.dismiss(animated: true, completion: {
-            self.presentSimpleAlert(message: UnsinkableError.ProjectCreation.setTitle)
+            self.presentSimpleAlert(message: message)
         })
     }
 

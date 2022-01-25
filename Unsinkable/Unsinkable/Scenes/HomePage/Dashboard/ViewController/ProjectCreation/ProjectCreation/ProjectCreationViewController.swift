@@ -115,8 +115,13 @@ class ProjectCreationViewController: UIViewController {
         if projectCreationPresenter.checkTaskTitle(taskTextField.text) {
             self.projectCreationPresenter.updateProject(taskTextField.text)
             DispatchQueue.main.async {
+                self.taskTextField.text = nil
+                self.taskTextField.placeholder = Constants.Label.addTaskHolder
                 self.taskTableView.reloadData()
             }
+        } else {
+            self.taskTextField.text = nil
+            self.taskTextField.placeholder = UnsinkableError.ProjectCreation.setTaskTitle
         }
     }
     

@@ -13,6 +13,7 @@ enum UnsinkableError {
     }
     
     enum ProjectCreation {
-        static let setTitle = "You need to have at least a project title"
+        static let setProjectTitle = "You need to have at least a project title"
+        static let setTaskTitle = "You need at least a title"
     }
 }
