@@ -60,7 +60,7 @@ class ProfiPresenter {
     func updateUser(_ firstName: String,_ name: String,_ email: String) {
         
         if firstName == "" || name == "" || email == "" {
-            self.delegate?.showError(Constants.Error.LoginError.fillField)
+            self.delegate?.showError(Constants.Error.Body.fillField)
         }
         if isEmailValid(email) {
             let user = data?.user
@@ -72,7 +72,7 @@ class ProfiPresenter {
                 }
             }
         } else {
-            self.delegate?.showError(Constants.Error.LoginError.emailError)
+            self.delegate?.showError(Constants.Error.Body.emailError)
         }
     }
     

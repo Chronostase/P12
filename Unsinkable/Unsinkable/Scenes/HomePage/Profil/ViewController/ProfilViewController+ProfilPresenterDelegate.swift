@@ -33,7 +33,7 @@ extension ProfilViewController: ProfilPresenterDelegate {
         //Show error
         self.navigationController?.dismiss(animated: true)
         self.errorLabel.isHidden = false
-        self.errorLabel.text = Constants.Error.retry
+        self.errorLabel.text = Constants.Error.Body.unknowError
     }
     
     
@@ -43,12 +43,12 @@ extension ProfilViewController: ProfilPresenterDelegate {
     }
     
     func logoutFailed() {
-        self.showError(Constants.Error.retry)
+        self.showError(Constants.Error.Body.unknowError)
     }
     
     func updateUserFailed() {
         self.errorLabel.isHidden = false
-        self.errorLabel.text = Constants.Error.retry
+        self.errorLabel.text = Constants.Error.Body.unknowError
     }
     
     func updateUserSucceed() {

@@ -15,33 +15,38 @@ class AuthenticationSession {
     lazy var keyChainManager = KeyChainManager()
     
     //Use FireAuth to login user
-    func signInRequest(_ email: String, _ password: String, completion: @escaping (CustomResponse?, Error?) -> Void) {
+    func signInRequest(_ email: String, _ password: String, completion: @escaping (CustomResponse?, UnsinkableError?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (dataResponse, error) in
             guard let user = dataResponse?.user else {
-                
-                return completion(nil,error)
+                guard let error = error as NSError? else {return}
+                guard let errorCode = AuthErrorCode(rawValue: error._code) else {
+                    //Handle generic error 
+                    return}
+                return completion(nil, self.handleErrorWith(errorCode))
             }
             let customUser = CustomResponse(user: UserDetails(userId: user.uid, projects: nil))
             
-            completion(customUser, error)
+            completion(customUser, nil)
         }
     }
     
     //Use FireAuth to register a new user
-    func createUserRequest(_ email: String, _ password: String, completion: @escaping (CustomResponse?, Error?) -> Void) {
+    func createUserRequest(_ email: String, _ password: String, completion: @escaping (CustomResponse?, UnsinkableError?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (dataResponse, error) in
-            
+
             guard let user = dataResponse?.user else {
-                
-                return completion(nil,error)
+                guard let error = error as NSError? else {return}
+                guard let errorCode = AuthErrorCode(rawValue: error.code) else {return}
+                return completion(nil, self.handleErrorWith(errorCode))
             }
             let customUser = CustomResponse(user: UserDetails(userId: user.uid))
-            
+
             //Store user credential in KeyChainManager
             self.keyChainManager.registerUserCredential(customUser.user, password)
-            completion(customUser,error)
+            completion(customUser,nil)
         }
     }
+    
     
     func updateUser(_ user: UserDetails?, _ firstName: String,_ name: String,_ email: String, completion: @escaping (Error?) -> Void) {
         let auth = Auth.auth()

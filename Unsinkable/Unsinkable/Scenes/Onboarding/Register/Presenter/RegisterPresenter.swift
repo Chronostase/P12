@@ -10,7 +10,7 @@ import Foundation
 protocol RegisterPresenterDelegate: AnyObject {
     
     func registerUserSucceed()
-    func registerFailed()
+    func registerFailed(_ message: String)
     func empltyFields()
     func invalidPassword()
     func invalidEmail()
@@ -32,8 +32,9 @@ class RegisterPresenter {
                 switch result {
                 case .success(_):
                     self.registerDelegate?.registerUserSucceed()
-                case .failure(_):
-                    self.registerDelegate?.registerFailed()
+                case .failure(let customError):
+                    guard let errorMessage = customError.errorDescription else {return}
+                    self.registerDelegate?.registerFailed(errorMessage)
                 }
             }
         }

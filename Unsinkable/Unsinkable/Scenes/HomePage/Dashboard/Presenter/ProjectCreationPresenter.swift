@@ -79,7 +79,7 @@ class ProjectCreationPresenter {
                 }
             }
         } else {
-            self.delegate?.showErrorMessage(with: UnsinkableError.ProjectCreation.setProjectTitle)
+            self.delegate?.showErrorMessage(with: Constants.Error.ProjectCreation.setProjectTitle)
         }
     }
     

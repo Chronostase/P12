@@ -50,8 +50,9 @@
 		E95AF91D2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95AF91C2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift */; };
 		E976F3DA26397A60000F9BC6 /* AuthenticationSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E976F3D926397A60000F9BC6 /* AuthenticationSessionFake.swift */; };
 		E97A877326DFB94000097527 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A877226DFB94000097527 /* UITextView.swift */; };
-		E97B7FE3279EEA0900BACA3B /* UnsinkableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B7FE2279EEA0900BACA3B /* UnsinkableError.swift */; };
 		E97B7FE5279F066E00BACA3B /* FakeCustomResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B7FE4279F066D00BACA3B /* FakeCustomResponse.swift */; };
+		E9957E1127A2ADAD0038670A /* AuthenticationSession+HandleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9957E1027A2ADAD0038670A /* AuthenticationSession+HandleError.swift */; };
+		E9957E1327A2EED70038670A /* UnsinkableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9957E1227A2EED70038670A /* UnsinkableError.swift */; };
 		E99635B72653D99E00185327 /* Profil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99635B62653D99E00185327 /* Profil.storyboard */; };
 		E99635BD2653E3AD00185327 /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99635BC2653E3AD00185327 /* ProfilViewController.swift */; };
 		E996B51A25A620E900638480 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E996B51925A620E900638480 /* GoogleService-Info.plist */; };
@@ -179,8 +180,9 @@
 		E95AF91C2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfilViewController+ProfilPresenterDelegate.swift"; sourceTree = "<group>"; };
 		E976F3D926397A60000F9BC6 /* AuthenticationSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSessionFake.swift; sourceTree = "<group>"; };
 		E97A877226DFB94000097527 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
-		E97B7FE2279EEA0900BACA3B /* UnsinkableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsinkableError.swift; sourceTree = "<group>"; };
 		E97B7FE4279F066D00BACA3B /* FakeCustomResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCustomResponse.swift; sourceTree = "<group>"; };
+		E9957E1027A2ADAD0038670A /* AuthenticationSession+HandleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticationSession+HandleError.swift"; sourceTree = "<group>"; };
+		E9957E1227A2EED70038670A /* UnsinkableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsinkableError.swift; sourceTree = "<group>"; };
 		E99635B62653D99E00185327 /* Profil.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profil.storyboard; sourceTree = "<group>"; };
 		E99635BC2653E3AD00185327 /* ProfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
 		E996B51925A620E900638480 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 				E95AF91E267CD90E00BD1AF8 /* Scenes */,
 				E92C35A725A5ECEF001F2819 /* Model */,
 				E95AF9032678DFBC00BD1AF8 /* CustomComponent */,
+				E97B7FE627A2928300BACA3B /* CustomError */,
 				E921575725C0562000D42137 /* Coordinator */,
 				E951023025AF6A2F0070A91C /* Extensions */,
 				E951029025B8BA820070A91C /* Helpers */,
@@ -412,7 +415,6 @@
 			children = (
 				E951029125B8BA9F0070A91C /* Regex.swift */,
 				E9CB3AAB25DE77BA009980EC /* Constants.swift */,
-				E97B7FE2279EEA0900BACA3B /* UnsinkableError.swift */,
 				E99B8E0026959877005A9032 /* Loader.swift */,
 				E9BDF88D274D34A0009E620F /* Keys.swift */,
 				E9B4C3A4277A138D0038B243 /* Debouncer.swift */,
@@ -689,6 +691,7 @@
 			children = (
 				E951029B25B970D20070A91C /* UserAuthentificationService.swift */,
 				E903130125E7C52300CBC228 /* AuthenticationSession.swift */,
+				E9957E1027A2ADAD0038670A /* AuthenticationSession+HandleError.swift */,
 				E9DD1503276887A600ED2B82 /* KeyChainManager.swift */,
 			);
 			path = Services;
@@ -701,6 +704,14 @@
 				E95AF8FF2678DF0800BD1AF8 /* HomePage */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		E97B7FE627A2928300BACA3B /* CustomError */ = {
+			isa = PBXGroup;
+			children = (
+				E9957E1227A2EED70038670A /* UnsinkableError.swift */,
+			);
+			path = CustomError;
 			sourceTree = "<group>";
 		};
 		E99A03362704E36700C1BCCE /* ProjectReader */ = {
@@ -1061,11 +1072,11 @@
 			files = (
 				E99B8DFF26949514005A9032 /* ProjectSession.swift in Sources */,
 				E9B4C3A5277A138D0038B243 /* Debouncer.swift in Sources */,
-				E97B7FE3279EEA0900BACA3B /* UnsinkableError.swift in Sources */,
 				E9BDE18F25D3F9B7001E3000 /* LoginPresenter.swift in Sources */,
 				E9CB3AAC25DE77BA009980EC /* Constants.swift in Sources */,
 				E951028925B84DF90070A91C /* RegisterViewController.swift in Sources */,
 				E951022C25AF69A50070A91C /* ProjectCreationViewController.swift in Sources */,
+				E9957E1327A2EED70038670A /* UnsinkableError.swift in Sources */,
 				E9BDF888271738F1009E620F /* TaskCreationPresenter.swift in Sources */,
 				E921576625C05F0000D42137 /* CoordinatorManager.swift in Sources */,
 				E97A877326DFB94000097527 /* UITextView.swift in Sources */,
@@ -1122,6 +1133,7 @@
 				E99A033A270594B600C1BCCE /* ProjectReaderVC+TableViewDelegate.swift in Sources */,
 				E99B8DFB269491EA005A9032 /* ProjectCreationPresenter.swift in Sources */,
 				E9C9C58A26A9400E00080E45 /* CustomProjectCell.swift in Sources */,
+				E9957E1127A2ADAD0038670A /* AuthenticationSession+HandleError.swift in Sources */,
 				E9FE31EC269FAA8F00DF2532 /* CustomTaskTableViewCell.swift in Sources */,
 				E9EE2182268373BD00D80414 /* ProjectCreationViewController+UITextFieldDelegate.swift in Sources */,
 				E996B55725A6344A00638480 /* DashBoardViewController.swift in Sources */,

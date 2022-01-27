@@ -121,7 +121,7 @@ class ProjectCreationViewController: UIViewController {
             }
         } else {
             self.taskTextField.text = nil
-            self.taskTextField.placeholder = UnsinkableError.ProjectCreation.setTaskTitle
+            self.taskTextField.placeholder = Constants.Error.ProjectCreation.setTaskTitle
         }
     }
     

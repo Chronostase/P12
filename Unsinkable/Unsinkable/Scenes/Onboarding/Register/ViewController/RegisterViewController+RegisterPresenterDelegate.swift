@@ -14,20 +14,23 @@ extension RegisterViewController: RegisterPresenterDelegate {
         self.transitionToHomeScreen()
     }
     
-    func registerFailed() {
+    func registerFailed(_ message: String) {
         self.navigationController?.dismiss(animated: true)
-        self.showError(Constants.Error.LoginError.invalidFields)
+        self.showError(message)
     }
     
     func invalidEmail() {
-        self.showError(Constants.Error.LoginError.emailError)
+        self.navigationController?.dismiss(animated: true)
+        self.showError(Constants.Error.Body.emailError)
     }
     
     func empltyFields() {
-        self.showError(Constants.Error.LoginError.fillField)
+        self.navigationController?.dismiss(animated: true)
+        self.showError(Constants.Error.Body.fillField)
     }
     
     func invalidPassword() {
-        self.showError(Constants.Error.LoginError.passwordError)
+        self.navigationController?.dismiss(animated: true)
+        self.showError(Constants.Error.Body.passwordError)
     }
 }

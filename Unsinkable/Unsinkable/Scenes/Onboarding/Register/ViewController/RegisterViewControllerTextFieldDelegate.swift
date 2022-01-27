@@ -10,10 +10,6 @@ import UIKit
 
 extension RegisterViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let email = textField.text else {
-            return false
-        }
-        print(Regex.validateEmail(candidate: email))
         textField.resignFirstResponder()
         return true
     }

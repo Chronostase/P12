@@ -13,13 +13,15 @@ extension LogInViewController: LoginPresenterDelegate {
         self.transitionToHomeScreen()
     }
     
-    func loginFailed() {
-        self.navigationController?.dismiss(animated: true, completion: nil)
-        self.showError(Constants.Error.LoginError.incorrectLog)
+    func loginFailed(_ message: String?) {
+        if let message = message {
+            self.navigationController?.dismiss(animated: true, completion: nil)
+            self.showError(message)
+        }
     }
     
     func emptyFields() {
-        self.showError(Constants.Error.LoginError.fillField)
+        self.showError(Constants.Error.Body.fillField)
     }
     
     

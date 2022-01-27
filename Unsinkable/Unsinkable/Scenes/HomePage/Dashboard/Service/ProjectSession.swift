@@ -363,7 +363,7 @@ class ProjectSession {
                                             let code = FunctionsErrorCode(rawValue: error.code)
                                             let message = error.localizedDescription
                                             let details = error.userInfo[FunctionsErrorDetailsKey]
-                                            print("code: \(code) /n message: \(message) /n details: \(details)")
+                                            print("code: \(String(describing: code)) /n message: \(message) /n details: \(details ?? "")")
                                         }
                                         completion(error)
                                     } else {
@@ -380,7 +380,7 @@ class ProjectSession {
                                 let code = FunctionsErrorCode(rawValue: error.code)
                                 let message = error.localizedDescription
                                 let details = error.userInfo[FunctionsErrorDetailsKey]
-                                print("code \(code), message \(message), details \(details)")
+                                print("code \(String(describing: code)), message \(message), details \(details ?? "")")
                             }
                             completion(error)
                         } else {
@@ -414,7 +414,7 @@ class ProjectSession {
                     let code = FunctionsErrorCode(rawValue: error.code)
                     let message = error.localizedDescription
                     let details = error.userInfo[FunctionsErrorDetailsKey]
-                    print("code \(code), message \(message),details \(details)")
+                    print("code \(String(describing: code)), message \(message),details \(details ?? "")")
                 }
                 completion(error)
             } else {
@@ -454,7 +454,7 @@ class ProjectSession {
                     let code = FunctionsErrorCode(rawValue: error.code)
                     let message = error.localizedDescription
                     let details = error.userInfo[FunctionsErrorDetailsKey]
-                    print("code \(code),message \(message),details \(details)")
+                    print("code \(String(describing: code)),message \(message),details \(details ?? "")")
                 }
                 completion(error)
             } else {

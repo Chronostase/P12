@@ -12,9 +12,9 @@ import FirebaseAuth
 import FirebaseFirestore
 
 protocol AuthentificationLogic {
-    func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String, callback: @escaping (Result<CustomResponse?, Error>) -> Void)
+    func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String, callback: @escaping (Result<CustomResponse?, UnsinkableError>) -> Void)
     
-    func loginUser(_ email: String,_ password: String, callback: @escaping (Result<CustomResponse?, Error>) -> Void )
+    func loginUser(_ email: String,_ password: String, callback: @escaping (Result<CustomResponse?, UnsinkableError>) -> Void )
     
     func getUserData(completion: @escaping (Result<CustomResponse?, Error>) -> Void)
     
@@ -48,7 +48,7 @@ class UserAuthentificationService: AuthentificationLogic {
         }
     }
     
-    func loginUser(_ email: String, _ password: String, callback: @escaping (Result<CustomResponse?, Error>) -> Void ) {
+    func loginUser(_ email: String, _ password: String, callback: @escaping (Result<CustomResponse?, UnsinkableError>) -> Void ) {
         
         session.signInRequest(email, password) { (result, error) in
             if error != nil {
@@ -66,7 +66,7 @@ class UserAuthentificationService: AuthentificationLogic {
         return session.logOutUser()
     }
     
-    func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String, callback: @escaping (Result<CustomResponse?, Error>) -> Void) {
+    func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String, callback: @escaping (Result<CustomResponse?, UnsinkableError>) -> Void) {
         
         session.createUserRequest(email, password) { (result, error) in
             if error != nil {

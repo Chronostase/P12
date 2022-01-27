@@ -67,14 +67,35 @@ enum Constants {
     
     enum Error {
         
-        static let retry = "An error occured please retry"
-        enum LoginError {
+        enum Title {
+            static let unknowError = "Unknow error"
+            static let operationNotAllowed = "Operation not allowed"
+            
+            static let invalidEmail = "Invalid email"
+            static let loginWrongPassword = "Wrong password"
+            static let loginUserDisabled = "User disabled"
+            
+            static let registerEmailAlreadyUse = "Already used email"
+            static let registerWeakPassword = "Weak password"
+        }
+        enum Body {
             static let emailError = "Email is not correct."
+            static let emailAlreadyUse = "Email is already in use by another account" 
             static let passwordError = "Please make sure your password is at least 8 characters, contains a special character and a number."
             static let fillField = "Please fill in all fields."
             static let invalidFields = "some fields are invalid please check them."
             static let cantFormat = "We can't format fields please retry"
             static let incorrectLog = "Incorrect log please retry."
+            static let incorrectPassword = "Incorrect password"
+            static let notAllowOperation = "You account is no more activated."
+            static let weakPassword = "Your password is too weak."
+            static let userDisable = "Your user account is disable"
+            static let unknowError = "Unknow error occured please retry"
+        }
+        
+        enum ProjectCreation {
+            static let setProjectTitle = "You need to have at least a project title"
+            static let setTaskTitle = "You need at least a title"
         }
     }
     
