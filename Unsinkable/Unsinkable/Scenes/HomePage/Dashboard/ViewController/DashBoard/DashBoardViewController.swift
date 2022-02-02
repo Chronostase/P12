@@ -14,7 +14,9 @@ class DashBoardViewController: UIViewController {
         return DashBoardPresenter()
     }()
     
+    @IBOutlet var headerView: UIView!
     @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var personalCollectionView: UICollectionView!
     @IBOutlet var professionalCollectionView: UICollectionView!
     
@@ -32,22 +34,27 @@ class DashBoardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionView()
+        setupViewController()
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        dashBoardPresenter.getCurrentDate()
-        loadData()
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false 
-        self.navigationController?.navigationBar.isHidden = true
+        reloadSettings()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
+    private func reloadSettings() {
+        dashBoardPresenter.getCurrentDate()
+        loadData()
+        searchBar.text = ""
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        self.navigationController?.navigationBar.isHidden = true
+        
+    }
     private func loadData() {
         dashBoardPresenter.getUserData()
         reloadCollection()
@@ -55,6 +62,9 @@ class DashBoardViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+    }
+    private func setupViewController() {
+        setupCollectionView()
     }
     
     
@@ -71,6 +81,7 @@ class DashBoardViewController: UIViewController {
     }
     
     private func setDelegateAndDataSource() {
+        self.searchBar.delegate = self
         self.dashBoardPresenter.delegate = self
         self.personalCollectionView.delegate = self
         self.personalCollectionView.dataSource = self
@@ -82,8 +93,12 @@ class DashBoardViewController: UIViewController {
         self.dateLabel.text = date
     }
     
-    private func reloadCollection() {
+    func reloadCollection() {
         self.personalCollectionView.reloadData()
         self.professionalCollectionView.reloadData()
+    }
+    
+    private func searchbartest() {
+        
     }
 }

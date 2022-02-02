@@ -26,7 +26,7 @@ protocol AuthentificationLogic {
     
     func deleteUser(_ user: UserDetails, completion: @escaping (Error?) -> Void)
     
-    func updateUser(_ user: UserDetails?, _ firstName: String,_ name: String,_ email: String, completion: @escaping (Error?) -> Void)
+    func updateUser(_ user: UserDetails?, _ firstName: String,_ name: String,_ email: String, completion: @escaping (UnsinkableError?) -> Void)
     
 }
 
@@ -38,7 +38,7 @@ class UserAuthentificationService: AuthentificationLogic {
         self.session = session
     }
     
-    func updateUser(_ user: UserDetails?, _ firstName: String,_ name: String,_ email: String, completion: @escaping (Error?) -> Void) {
+    func updateUser(_ user: UserDetails?, _ firstName: String,_ name: String,_ email: String, completion: @escaping (UnsinkableError?) -> Void) {
         self.session.updateUser(user, firstName, name, email) { error in
             if error != nil {
                 completion(error)

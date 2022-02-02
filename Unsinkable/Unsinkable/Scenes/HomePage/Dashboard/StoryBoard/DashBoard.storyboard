@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asQ-ZH-boZ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="asQ-ZH-boZ" userLabel="HeaderView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="152.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LeU-OP-r0I" userLabel="ProfilButton">
@@ -183,8 +183,10 @@
                     </view>
                     <connections>
                         <outlet property="dateLabel" destination="IDH-Wa-BqY" id="x2w-va-gbp"/>
+                        <outlet property="headerView" destination="asQ-ZH-boZ" id="ouF-yw-HlQ"/>
                         <outlet property="personalCollectionView" destination="fTw-ih-hBo" id="2lI-PI-SQx"/>
                         <outlet property="professionalCollectionView" destination="KfW-v8-yEM" id="R4F-iP-0kn"/>
+                        <outlet property="searchBar" destination="iIF-Bm-qo4" id="nO9-Qu-7Sa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YBS-Iz-R0K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

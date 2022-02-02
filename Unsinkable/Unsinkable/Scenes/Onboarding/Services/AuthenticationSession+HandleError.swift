@@ -24,6 +24,8 @@ extension AuthenticationSession {
             return UnsinkableError.loginUserDisabled
         case .operationNotAllowed:
             return UnsinkableError.loginOperationNotAllowed
+        case .requiresRecentLogin:
+            return UnsinkableError.requieredRecentLogin
         default :
             return UnsinkableError.unknowError
         }

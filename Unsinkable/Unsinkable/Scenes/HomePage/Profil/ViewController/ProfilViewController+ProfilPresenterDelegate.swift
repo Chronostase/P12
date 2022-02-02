@@ -8,17 +8,21 @@
 import Foundation
 
 extension ProfilViewController: ProfilPresenterDelegate {
+    
+    func deleteAllUSerRefComplete(_ result: Result<Void, UnsinkableError>) {
+        switch result {
+        case .success(()):
+            profilPresenter.deleteUser()
+        case .failure(let error):
+            print(error.errorDescription)
+        }
+    }
+    
+    
+    
     func showError(_ message: String) {
         self.errorLabel.isHidden = false
         self.errorLabel.text = message
-    }
-    
-    func deleteAllUserRefSucceed() {
-        profilPresenter.deleteUser()
-    }
-    
-    func deleteAllUserRefFailed() {
-        print("DeleteAllUserRefFailed")
     }
     
     func deleteUserSucceed() {
@@ -46,12 +50,13 @@ extension ProfilViewController: ProfilPresenterDelegate {
         self.showError(Constants.Error.Body.unknowError)
     }
     
-    func updateUserFailed() {
-        self.errorLabel.isHidden = false
-        self.errorLabel.text = Constants.Error.Body.unknowError
-    }
-    
-    func updateUserSucceed() {
-        self.errorLabel.isHidden = true 
+    func updateUserComplete(_ result: Result<Void, UnsinkableError>) {
+        switch result {
+        case .success(()):
+            self.errorLabel.isHidden = true
+        case .failure(let error):
+            self.errorLabel.isHidden = false
+            self.errorLabel.text = error.errorDescription
+        }
     }
 }

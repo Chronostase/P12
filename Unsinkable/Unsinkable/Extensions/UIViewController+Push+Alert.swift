@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-    //MARK: - Navigation Part
+    //MARK: - Navigation
     func push(_ viewController: UIViewController, animated: Bool = true) {
         navigationController?.pushViewController(viewController, animated: animated)
     }

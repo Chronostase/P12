@@ -20,8 +20,10 @@ class DashBoardPresenter {
     weak var delegate: DashBoardPresenterDelegate?
     var data: CustomResponse?
     let projectService: ProjectLogic = ProjectService()
+    var filtredData: [Project]?
     var personalProject: [Project]?
     var professionalProject: [Project]?
+    var searchBarEntry: String? 
     
     func getCurrentDate() {
         guard let date = createCurrentDate() else {
@@ -80,6 +82,14 @@ class DashBoardPresenter {
                 self?.delegate?.fetchProjectFailed()
                 print("Can't fetch project \(error)")
             }
+        }
+    }
+    
+    func isSearchBarActive(_ text: String?) -> Bool {
+        if let text = text {
+            return !text.isEmpty
+        } else {
+            return false 
         }
     }
 }

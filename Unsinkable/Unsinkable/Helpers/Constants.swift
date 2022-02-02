@@ -70,6 +70,7 @@ enum Constants {
         enum Title {
             static let unknowError = "Unknow error"
             static let operationNotAllowed = "Operation not allowed"
+            static let recentLogin = "Recent login required"
             
             static let invalidEmail = "Invalid email"
             static let loginWrongPassword = "Wrong password"
@@ -77,8 +78,18 @@ enum Constants {
             
             static let registerEmailAlreadyUse = "Already used email"
             static let registerWeakPassword = "Weak password"
+            
+            static let invalidCredential = "Reauthenticate failed"
+            static let userMisMatch = "User misMatch"
+            
+            static let databaseCantUpdate = "Can't update Data"
+            static let storageCantListItems = "Can't access to your files"
+            static let storageCantDeleteItems = "Error while deletion"
+            static let databaseCantDeleteUser = "Error while user deletion"
         }
+        
         enum Body {
+            static let recentLogin = "You need a recent login to proceed this operation"
             static let emailError = "Email is not correct."
             static let emailAlreadyUse = "Email is already in use by another account" 
             static let passwordError = "Please make sure your password is at least 8 characters, contains a special character and a number."
@@ -91,6 +102,13 @@ enum Constants {
             static let weakPassword = "Your password is too weak."
             static let userDisable = "Your user account is disable"
             static let unknowError = "Unknow error occured please retry"
+            static let invalidCredential = "Invalid data connection"
+            static let userMisMatch = "You are not the actual user of this account"
+            
+            static let databaseCantUpdate = "We can't update data for unknow reason please retry"
+            static let databaseCantDeleteUser = "We can't delete user reference"
+            static let storageCantListItems = "Can't access to your stored cover pictures please retry"
+            static let storageCantDeleteItems = "Can't delete your stored pictures"
         }
         
         enum ProjectCreation {

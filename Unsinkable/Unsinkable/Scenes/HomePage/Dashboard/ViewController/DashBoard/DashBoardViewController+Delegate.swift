@@ -20,8 +20,7 @@ extension DashBoardViewController: DashBoardPresenterDelegate {
         let projectList = userData.user.projects
         dashBoardPresenter.sortPersonalAndProfessionalProject(projectList)
         DispatchQueue.main.async {
-            self.personalCollectionView.reloadData()
-            self.professionalCollectionView.reloadData()
+            self.reloadCollection()
         }
         self.navigationController?.dismiss(animated: true, completion: nil)
     }

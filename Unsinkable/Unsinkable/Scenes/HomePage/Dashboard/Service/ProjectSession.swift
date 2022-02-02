@@ -329,7 +329,7 @@ class ProjectSession {
         }
     }
     
-    func deleteAllUserRef(_ user: CustomResponse?, completion: @escaping (Error?) -> Void) {
+    func deleteAllUserRef(_ user: CustomResponse?, completion: @escaping (UnsinkableError?) -> Void) {
         guard let user = user, let userId = user.user.userId else {return}
         guard let token = Keys.value(for: Constants.Token.cloudToken) else {
             return
@@ -347,14 +347,14 @@ class ProjectSession {
         
         storageRef.listAll { storageList, error in
             if error != nil {
-                completion(error)
+                return completion(UnsinkableError.storageCantListItems)
             } else {
                 
                 if storageList.items.count > 0 {
                     let _ = storageList.items.map { item in
                         item.delete { error in
                             if error != nil {
-                                completion(error)
+                                return completion(UnsinkableError.storageCantDeleteItems)
                             } else {
                                 //Delete userRef in database
                                 deleteDatabaseFn.call(data) { (result, error)  in
@@ -365,7 +365,7 @@ class ProjectSession {
                                             let details = error.userInfo[FunctionsErrorDetailsKey]
                                             print("code: \(String(describing: code)) /n message: \(message) /n details: \(details ?? "")")
                                         }
-                                        completion(error)
+                                        completion(UnsinkableError.databaseCantDeleteUser)
                                     } else {
                                         completion(nil)
                                     }
@@ -382,7 +382,7 @@ class ProjectSession {
                                 let details = error.userInfo[FunctionsErrorDetailsKey]
                                 print("code \(String(describing: code)), message \(message), details \(details ?? "")")
                             }
-                            completion(error)
+                            completion(UnsinkableError.databaseCantDeleteUser)
                         } else {
                             completion(nil)
                         }

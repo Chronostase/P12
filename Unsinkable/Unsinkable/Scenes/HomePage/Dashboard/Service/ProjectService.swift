@@ -17,7 +17,7 @@ protocol ProjectLogic {
     
     func deleteTask(_ project: Project?, _ task: Task?, completion: @escaping (Error?) -> Void)
     
-    func deleteAllUserRef(_ user: CustomResponse?, completion: @escaping (Error?) -> Void)
+    func deleteAllUserRef(_ user: CustomResponse?, completion: @escaping (UnsinkableError?) -> Void)
     
     func updateProject(_ project: Project?,_ userData: CustomResponse?,_ coverPicture: Data?, completion: @escaping (Error?) -> Void)
     
@@ -27,7 +27,6 @@ protocol ProjectLogic {
     
     func updateValidateStatement(_ project: Project?, selectedTask: Task?, _ userData: CustomResponse?, completion: @escaping (Result<Void?, Error>) -> Void)
     
-//    func addTaskFromReader(_ task: Task?,_ project: Project?,_ userData: CustomResponse?, completion: @escaping (Error?) -> Void)
     
 }
 
@@ -60,24 +59,6 @@ class ProjectService: ProjectLogic {
         }
     }
     
-//    func addTaskFromReader(_ task: Task?,_ project: Project?,_ userData: CustomResponse?, completion: @escaping (Error?) -> Void) {
-//        #warning("Change here to register only one task")
-//        self.session.registerUserTask([task], project) { response, error in
-//            if error != nil {
-//                completion(error)
-//            } else {
-//                completion(nil)
-//            }
-//        }
-////        self.session.registerTaskFromReader(task, project, userData) { (error) in
-////            if error != nil {
-////                completion(error)
-////            } else {
-////                completion(nil)
-////            }
-////        }
-//    }
-    
     func deleteProject(_ project: Project?, completion: @escaping (Error?) -> Void) {
         self.session.deleteUserProject(project) { (error) in
             if error != nil {
@@ -101,7 +82,7 @@ class ProjectService: ProjectLogic {
         }
     }
     
-    func deleteAllUserRef(_ user: CustomResponse?, completion: @escaping (Error?) -> Void) {
+    func deleteAllUserRef(_ user: CustomResponse?, completion: @escaping (UnsinkableError?) -> Void) {
         self.session.deleteAllUserRef(user) { error in
             if error != nil {
                 completion(error)

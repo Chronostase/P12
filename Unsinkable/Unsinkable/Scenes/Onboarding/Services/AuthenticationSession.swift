@@ -17,12 +17,16 @@ class AuthenticationSession {
     //Use FireAuth to login user
     func signInRequest(_ email: String, _ password: String, completion: @escaping (CustomResponse?, UnsinkableError?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (dataResponse, error) in
-            guard let user = dataResponse?.user else {
+            if error != nil {
                 guard let error = error as NSError? else {return}
                 guard let errorCode = AuthErrorCode(rawValue: error._code) else {
-                    //Handle generic error 
-                    return}
+                    return completion(nil, UnsinkableError.unknowError)
+                }
                 return completion(nil, self.handleErrorWith(errorCode))
+                
+            }
+            guard let user = dataResponse?.user else {
+                return completion(nil, UnsinkableError.unknowError)
             }
             let customUser = CustomResponse(user: UserDetails(userId: user.uid, projects: nil))
             
@@ -33,14 +37,18 @@ class AuthenticationSession {
     //Use FireAuth to register a new user
     func createUserRequest(_ email: String, _ password: String, completion: @escaping (CustomResponse?, UnsinkableError?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (dataResponse, error) in
-
-            guard let user = dataResponse?.user else {
+            if error != nil {
                 guard let error = error as NSError? else {return}
-                guard let errorCode = AuthErrorCode(rawValue: error.code) else {return}
+                guard let errorCode = AuthErrorCode(rawValue: error.code) else {
+                    return completion(nil, UnsinkableError.unknowError)
+                }
                 return completion(nil, self.handleErrorWith(errorCode))
             }
+            guard let user = dataResponse?.user else {
+                return completion(nil, UnsinkableError.unknowError)
+            }
             let customUser = CustomResponse(user: UserDetails(userId: user.uid))
-
+            
             //Store user credential in KeyChainManager
             self.keyChainManager.registerUserCredential(customUser.user, password)
             completion(customUser,nil)
@@ -48,7 +56,7 @@ class AuthenticationSession {
     }
     
     
-    func updateUser(_ user: UserDetails?, _ firstName: String,_ name: String,_ email: String, completion: @escaping (Error?) -> Void) {
+    func updateUser(_ user: UserDetails?, _ firstName: String,_ name: String,_ email: String, completion: @escaping (UnsinkableError?) -> Void) {
         let auth = Auth.auth()
         guard let currentUser = auth.currentUser else {return}
         let currentEmail = currentUser.email
@@ -61,7 +69,7 @@ class AuthenticationSession {
             Constants.Database.User.nameField: name,
         ]) { error in
             if error != nil {
-                completion(error)
+                return completion(UnsinkableError.databaseCantUpdate)
             } else {
                 if email != currentEmail {
                     guard let user = user else {return}
@@ -69,13 +77,20 @@ class AuthenticationSession {
                     let credential = EmailAuthProvider.credential(withEmail: userEmail, password: password)
                     currentUser.reauthenticate(with: credential) { (result, error) in
                         if error != nil {
-                            completion(error)
+                            guard let error = error as NSError? else {return}
+                            guard let errorCode = AuthErrorCode(rawValue: error.code) else {
+                                return completion(UnsinkableError.unknowError)
+                            }
+                            return completion(self.handleErrorWith(errorCode))
                         } else {
                             //Update Authentication
                             currentUser.updateEmail(to: email) { error in
                                 if error != nil {
-                                    //Email not change
-                                    completion(error)
+                                    guard let error = error as NSError? else {return}
+                                    guard let errorCode = AuthErrorCode(rawValue: error.code) else {
+                                        return completion(UnsinkableError.unknowError)
+                                    }
+                                    return completion(self.handleErrorWith(errorCode))
                                 } else {
                                     completion(nil)
                                 }
@@ -243,3 +258,4 @@ class AuthenticationSession {
         return true
     }
 }
+
