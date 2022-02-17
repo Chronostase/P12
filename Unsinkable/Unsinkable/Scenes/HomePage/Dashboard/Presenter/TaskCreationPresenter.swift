@@ -65,6 +65,7 @@ class TaskCreationPresenter {
     }
     
     func deleteTask() {
+        //Done
         projectService.deleteTask(project, task) { error in
             if error != nil {
                 guard let error = error else {return}
@@ -72,7 +73,7 @@ class TaskCreationPresenter {
             } else {
                 self.delegate?.deleteTaskComplete(.success(()))
             }
-            
+
         }
     }
     

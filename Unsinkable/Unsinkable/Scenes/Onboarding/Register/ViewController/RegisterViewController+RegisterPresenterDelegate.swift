@@ -9,14 +9,17 @@ import Foundation
 
 extension RegisterViewController: RegisterPresenterDelegate {
     
-    func registerUserSucceed() {
-        self.navigationController?.dismiss(animated: true)
-        self.transitionToHomeScreen()
-    }
-    
-    func registerFailed(_ message: String) {
-        self.navigationController?.dismiss(animated: true)
-        self.showError(message)
+    func registerComplete(_ result: Result<Void,UnsinkableError>) {
+        switch result {
+        case .success(()):
+            self.navigationController?.dismiss(animated: true)
+            self.transitionToHomeScreen()
+        case .failure(let error):
+            self.navigationController?.dismiss(animated: true)
+            guard let errorBody = error.errorDescription else {return}
+            self.showError(errorBody)
+            
+        }
     }
     
     func invalidEmail() {

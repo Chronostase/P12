@@ -92,7 +92,6 @@ class ProjectCreationViewController: UIViewController {
         projectTextField.delegate = self
         taskTableView.dataSource = self
         taskTableView.delegate = self
-        projectTextView.delegate = self 
         projectCreationPresenter.delegate = self
     }
     

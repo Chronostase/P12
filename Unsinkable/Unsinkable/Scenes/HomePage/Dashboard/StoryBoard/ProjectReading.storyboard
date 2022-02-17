@@ -33,33 +33,45 @@
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9sK-SW-O21" userLabel="CoverImage">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="286.5"/>
                                                             </imageView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Tx0-x9-EhU" userLabel="TitleStackView">
-                                                                <rect key="frame" x="15" y="185.5" width="399" height="86"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifj-Cl-fkY" userLabel="ContentTitleView">
+                                                                <rect key="frame" x="10" y="193.5" width="165.5" height="83"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPV-dR-lz7">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="68.5" height="43"/>
-                                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0G-Jj-zZe">
-                                                                        <rect key="frame" x="0.0" y="43" width="41.5" height="43"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Tx0-x9-EhU" userLabel="TitleStackView">
+                                                                        <rect key="frame" x="5" y="0.0" width="160.5" height="78"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Project" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPV-dR-lz7">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="68.5" height="39"/>
+                                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0G-Jj-zZe">
+                                                                                <rect key="frame" x="0.0" y="39" width="41.5" height="39"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                    </stackView>
                                                                 </subviews>
-                                                            </stackView>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="Tx0-x9-EhU" firstAttribute="top" secondItem="ifj-Cl-fkY" secondAttribute="top" id="89Q-Ke-gKF"/>
+                                                                    <constraint firstAttribute="width" secondItem="ifj-Cl-fkY" secondAttribute="height" multiplier="2:1" id="LAi-55-Ewe"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Tx0-x9-EhU" secondAttribute="bottom" constant="5" id="R82-Px-t8Q"/>
+                                                                    <constraint firstItem="Tx0-x9-EhU" firstAttribute="leading" secondItem="ifj-Cl-fkY" secondAttribute="leading" constant="5" id="hVU-Bu-UEg"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="Tx0-x9-EhU" secondAttribute="trailing" id="pd2-mh-Gmc"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="Tx0-x9-EhU" secondAttribute="trailing" id="4G4-Cy-baZ"/>
-                                                            <constraint firstItem="Tx0-x9-EhU" firstAttribute="height" secondItem="qEr-gE-Zgp" secondAttribute="height" multiplier="0.3" id="CbN-RX-IgB"/>
                                                             <constraint firstItem="9sK-SW-O21" firstAttribute="leading" secondItem="qEr-gE-Zgp" secondAttribute="leading" id="CzF-sc-7FF"/>
                                                             <constraint firstAttribute="trailing" secondItem="9sK-SW-O21" secondAttribute="trailing" id="HHd-XG-S58"/>
+                                                            <constraint firstItem="ifj-Cl-fkY" firstAttribute="width" secondItem="9sK-SW-O21" secondAttribute="width" multiplier="0.4" id="MdL-X1-YnU"/>
                                                             <constraint firstItem="9sK-SW-O21" firstAttribute="top" secondItem="qEr-gE-Zgp" secondAttribute="top" id="NSf-6e-aYI"/>
-                                                            <constraint firstAttribute="bottom" secondItem="Tx0-x9-EhU" secondAttribute="bottom" constant="15" id="PNA-MV-R1q"/>
-                                                            <constraint firstItem="Tx0-x9-EhU" firstAttribute="leading" secondItem="qEr-gE-Zgp" secondAttribute="leading" constant="15" id="gc3-Qw-k6X"/>
+                                                            <constraint firstAttribute="bottom" secondItem="ifj-Cl-fkY" secondAttribute="bottom" constant="10" id="gTE-nn-Df2"/>
+                                                            <constraint firstItem="ifj-Cl-fkY" firstAttribute="leading" secondItem="qEr-gE-Zgp" secondAttribute="leading" constant="10" id="tbW-ye-DA7"/>
                                                             <constraint firstAttribute="bottom" secondItem="9sK-SW-O21" secondAttribute="bottom" id="zoh-c0-uuQ"/>
                                                         </constraints>
                                                     </view>
@@ -240,6 +252,7 @@
                     </view>
                     <connections>
                         <outlet property="SecondSeparator" destination="MK9-zW-34k" id="H4E-SF-1fE"/>
+                        <outlet property="contentTitleView" destination="ifj-Cl-fkY" id="Ytm-XK-LaE"/>
                         <outlet property="coverImage" destination="9sK-SW-O21" id="J7a-as-oI0"/>
                         <outlet property="descriptionContentView" destination="vrM-3h-4jD" id="5e3-24-Ktu"/>
                         <outlet property="descriptionTextView" destination="xHx-Y8-eAo" id="Adv-R1-sSD"/>

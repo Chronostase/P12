@@ -133,6 +133,7 @@ class TaskCreationViewController: UIViewController {
         } else {
             sender.title = Constants.Button.edit
             canUserEdit(autorization: false)
+            self.showLoader()
             if deadLineSwitch.isOn {
                 taskCreationPresenter.updateTask(with: titleTextField.text, location: locationTextField.text, priority: prioritySwitch.isOn, commentary: commentaryTextView.text, deadLine: datePicker.date)
             } else {

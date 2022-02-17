@@ -8,30 +8,40 @@
 import Foundation
 
 protocol ProjectManagerDelegate: AnyObject {
-    func registerProjectComplete(_ result: Result<Project?,Error>)
+    func registerProjectComplete(_ result: Result<Project?,UnsinkableError>)
+    func registerTaskComplete(_ result: Result<Void,UnsinkableError>)
+    func fetchCurrentProjectComplete(_ result: Result<Void,UnsinkableError>)
     func fetchProjectComplete()
-    func fetchCurrentProjectComplete(_ result: Result<Void,Error>)
-    func registerTaskComplete(_ result: Result<Task?,Error>)
-    func addTaskFromReaderComplete(_ result: Result<Void, Error>)
+    
+    func addTaskFromReaderComplete(_ result: Result<Void, UnsinkableError>)
+    
     func updateLocalTask(_ task: Task)
-    func updateTaskComplete(_ result: Result<Task?,Error>)
-    func updateProjectComplete(_ result: Result<Project?, Error>)
-    func deleteTaskComplete(_ result: Result<Void,Error>)
-    func deleteProjectComplete(_ result: Result<Void, Error>)
+    func updateTaskComplete(_ result: Result<Task?,UnsinkableError>)
+    func updateValidateStatementComplete(_ result: Result<Task?, UnsinkableError>)
+    func updateProjectComplete(_ result: Result<Project?, UnsinkableError>)
+    
+    func deleteTaskComplete(_ result: Result<Void,UnsinkableError>)
+    func deleteProjectComplete(_ result: Result<Void, UnsinkableError>)
+    
     func showErrorMessage(with message: String)
 }
 
 extension ProjectManagerDelegate {
-    func registerProjectComplete(_ result: Result<Project?,Error>) {}
+    func registerProjectComplete(_ result: Result<Project?,UnsinkableError>) {}
+    func registerTaskComplete(_ result: Result<Void,UnsinkableError>) {}
     func fetchProjectComplete() {}
-    func fetchCurrentProjectComplete(_ result: Result<Void,Error>) {}
-    func registerTaskComplete(_ result: Result<Task?,Error>) {}
-    func addTaskFromReaderComplete(_ result: Result<Void, Error>) {}
+    func fetchCurrentProjectComplete(_ result: Result<Void,UnsinkableError>) {}
+    
+    func addTaskFromReaderComplete(_ result: Result<Void, UnsinkableError>) {}
+    
     func updateLocalTask(_ task: Task) {}
-    func updateTaskComplete(_ result: Result<Task?,Error>) {}
-    func updateProjectComplete(_ result: Result<Project?, Error>) {}
-    func deleteTaskComplete(_ result: Result<Void,Error>) {}
-    func deleteProjectComplete(_ result: Result<Void, Error>) {}
+    func updateTaskComplete(_ result: Result<Task?,UnsinkableError>) {}
+    func updateValidateStatementComplete(_ result: Result<Task?, UnsinkableError>) {}
+    func updateProjectComplete(_ result: Result<Project?, UnsinkableError>) {}
+    
+    func deleteTaskComplete(_ result: Result<Void,UnsinkableError>) {}
+    
+    func deleteProjectComplete(_ result: Result<Void, UnsinkableError>) {}
     func showErrorMessage(with message: String) {}
 }
 
@@ -45,6 +55,51 @@ class ProjectCreationPresenter {
     var editedTask: Task?
     let projectCreationService: ProjectLogic = ProjectService()
     var isPersonal: Bool?
+    
+    
+    
+    func registerProject(_ title: String?,_ descitpion: String?,_ coverPicture: Data?) {
+        let formatTitle = title?.formatCharacter()
+        if isFieldFill(formatTitle) {
+            guard let userId = data?.user.userId else {
+                return
+            }
+            createProjectObject(withTitle: formatTitle, descitpion, userId, tasks: nil)
+            projectCreationService.registerProject(self.project, data, coverPicture){ (error) in
+                if error != nil {
+                    guard let error = error else {
+                        self.delegate?.registerProjectComplete(.failure(UnsinkableError.unknowError))
+                        return
+                    }
+                    self.delegate?.registerProjectComplete(.failure(error))
+                } else {
+                    self.delegate?.registerProjectComplete(.success(self.project))
+                    
+                }
+            }
+        } else {
+            self.delegate?.registerProjectComplete(.failure(UnsinkableError.setTitle))
+        }
+    }
+    
+    func registerTask(_ project: Project?) {
+        projectCreationService.registerTask(localTasksList, project) { (error) in
+            if error != nil {
+                guard let error = error else {
+                    self.delegate?.registerProjectComplete(.failure(UnsinkableError.unknowError))
+                    return
+                }
+                self.delegate?.registerTaskComplete(.failure(error))
+            } else {
+                self.delegate?.registerTaskComplete(.success(()))
+            }
+        }
+    }
+    
+    private func createProjectObject( withTitle: String?,_ description: String?,_ projectOwner: String?, tasks: [Task?]?) {
+        let project = Project(title: withTitle, projectID: UUID().uuidString, description: description, ownerUserId: projectOwner, isPersonal: isPersonal, taskList: localTasksList)
+        self.project = project
+    }
     
     func checkTextFieldsAvailable(_ title: String?, _ description: String?) -> Bool {
         if title != "" && description != "" {
@@ -60,43 +115,6 @@ class ProjectCreationPresenter {
         } else {
             return false
         }
-    }
-    
-    func registerProject(_ title: String?,_ descitpion: String?,_ coverPicture: Data?) {
-        let formatTitle = title?.formatCharacter()
-        if isFieldFill(formatTitle) {
-            guard let userId = data?.user.userId else {
-                return
-            }
-            createProjectObject(withTitle: formatTitle, descitpion, userId, tasks: nil)
-            projectCreationService.registerProject(self.project, data, coverPicture){ (response, error) in
-                if error != nil {
-                    guard let error = error else {return}
-                    self.delegate?.registerProjectComplete(.failure(error))
-                } else {
-                    self.delegate?.registerProjectComplete(.success(self.project))
-                    
-                }
-            }
-        } else {
-            self.delegate?.showErrorMessage(with: Constants.Error.ProjectCreation.setProjectTitle)
-        }
-    }
-    
-    func registerTask(_ project: Project?) {
-        projectCreationService.registerTask(localTasksList, project) { (response, error) in
-            if error != nil {
-                guard let error = error else {return}
-                self.delegate?.registerTaskComplete(.failure(error))
-            } else {
-                self.delegate?.registerTaskComplete(.success(nil))
-            }
-        }
-    }
-    
-    private func createProjectObject( withTitle: String?,_ description: String?,_ projectOwner: String?, tasks: [Task?]?) {
-        let project = Project(title: withTitle, projectID: UUID().uuidString, description: description, ownerUserId: projectOwner, isPersonal: isPersonal, taskList: localTasksList)
-        self.project = project
     }
     
     private func createTaskObject(_ title: String?, _ projectID: String? = nil, _ taskID: String? = nil, _ priority: Bool? = nil, _ deadLine: Date? = nil, _ commentary: String? = nil, _ location: String? = nil) -> Task {

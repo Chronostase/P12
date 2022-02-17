@@ -18,11 +18,8 @@ class AuthenticationSession {
     func signInRequest(_ email: String, _ password: String, completion: @escaping (CustomResponse?, UnsinkableError?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { (dataResponse, error) in
             if error != nil {
-                guard let error = error as NSError? else {return}
-                guard let errorCode = AuthErrorCode(rawValue: error._code) else {
-                    return completion(nil, UnsinkableError.unknowError)
-                }
-                return completion(nil, self.handleErrorWith(errorCode))
+                guard let error = error else {return}
+                return completion(nil, self.convertAuthErrorToUnsinkableError(error))
                 
             }
             guard let user = dataResponse?.user else {
@@ -30,7 +27,7 @@ class AuthenticationSession {
             }
             let customUser = CustomResponse(user: UserDetails(userId: user.uid, projects: nil))
             
-            completion(customUser, nil)
+            return completion(customUser, nil)
         }
     }
     
@@ -38,11 +35,8 @@ class AuthenticationSession {
     func createUserRequest(_ email: String, _ password: String, completion: @escaping (CustomResponse?, UnsinkableError?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (dataResponse, error) in
             if error != nil {
-                guard let error = error as NSError? else {return}
-                guard let errorCode = AuthErrorCode(rawValue: error.code) else {
-                    return completion(nil, UnsinkableError.unknowError)
-                }
-                return completion(nil, self.handleErrorWith(errorCode))
+                guard let error = error else {return}
+                return completion(nil, self.convertAuthErrorToUnsinkableError(error))
             }
             guard let user = dataResponse?.user else {
                 return completion(nil, UnsinkableError.unknowError)
@@ -63,6 +57,7 @@ class AuthenticationSession {
         let userId = currentUser.uid
         let database = Firestore.firestore()
         let databaseRef = database.collection(Constants.Database.User.userPath).document("\(userId)")
+        
         //Update DB
         databaseRef.updateData([
             Constants.Database.User.firstNameField: firstName,
@@ -77,22 +72,17 @@ class AuthenticationSession {
                     let credential = EmailAuthProvider.credential(withEmail: userEmail, password: password)
                     currentUser.reauthenticate(with: credential) { (result, error) in
                         if error != nil {
-                            guard let error = error as NSError? else {return}
-                            guard let errorCode = AuthErrorCode(rawValue: error.code) else {
-                                return completion(UnsinkableError.unknowError)
-                            }
-                            return completion(self.handleErrorWith(errorCode))
+                            guard let error = error else {return}
+                            return completion(self.convertAuthErrorToUnsinkableError(error))
                         } else {
+                            
                             //Update Authentication
                             currentUser.updateEmail(to: email) { error in
                                 if error != nil {
-                                    guard let error = error as NSError? else {return}
-                                    guard let errorCode = AuthErrorCode(rawValue: error.code) else {
-                                        return completion(UnsinkableError.unknowError)
-                                    }
-                                    return completion(self.handleErrorWith(errorCode))
+                                    guard let error = error else {return}
+                                    return completion(self.convertAuthErrorToUnsinkableError(error))
                                 } else {
-                                    completion(nil)
+                                    return completion(nil)
                                 }
                             }
                         }
@@ -103,25 +93,30 @@ class AuthenticationSession {
     }
     
     
-    func deleteUser(_ user: UserDetails, completion : @escaping (Error?) -> Void) {
+    func deleteUser(_ user: UserDetails, completion : @escaping (UnsinkableError?) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {return}
         guard let email = currentUser.email, let password = keyChainManager.getUserCredential(user) else {return}
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
         
+        //Sensible operation need recent authentication
         currentUser.reauthenticate(with: credential) { result, error in
             if error != nil {
-                completion(error)
+                guard let error = error else {return}
+                return completion(self.convertAuthErrorToUnsinkableError(error))
             } else {
+                
+                //Delete user
                 currentUser.delete { error in
                     if error != nil {
-                        completion(error)
+                        guard let error = error else {return}
+                        return completion(self.convertAuthErrorToUnsinkableError(error))
                     } else {
                         if self.keyChainManager.deleteKey(user) == true {
                             print("Successfuly delete keychain ref")
-                            completion(nil)
+                            return completion(nil)
                         } else {
                             print("Key chain failed to delete reference")
-                            completion(error)
+                            return completion(nil)
                         }
                     }
                 }
@@ -130,7 +125,7 @@ class AuthenticationSession {
     }
     
     // Add user data to Firebase Storage
-    func addUserToDataBase(customResponse: CustomResponse?,_ firstName: String, _ name: String, completion: @escaping (CustomResponse?, Error?) -> Void) {
+    func addUserToDataBase(customResponse: CustomResponse?,_ firstName: String, _ name: String, completion: @escaping (UnsinkableError?) -> Void) {
         guard let userId = customResponse?.user.userId else { return }
         let dataBase = Firestore.firestore()
         let documentRef = dataBase.collection(Constants.Database.User.userPath).document(userId)
@@ -140,15 +135,14 @@ class AuthenticationSession {
                                 Constants.Database.User.uidField: userId])
         { (error) in
             if error != nil {
-                guard let error = error else { return }
-                completion(nil,error)
+                return completion(UnsinkableError.databaseCantStoreUser)
             }
-            completion(customResponse,error)
+            return completion(nil)
         }
     }
     
     //Fetch user from firestoreData to local Data 
-    func fetchUserFirestoreData(completion: @escaping (CustomResponse?, Error?) -> Void) {
+    func fetchUserFirestoreData(completion: @escaping (CustomResponse?, UnsinkableError?) -> Void) {
         var user = CustomResponse(user: UserDetails() )
         guard let data = Auth.auth().currentUser else {
             return
@@ -159,7 +153,7 @@ class AuthenticationSession {
         let documentRef = database.collection(Constants.Database.User.userPath).document("\(data.uid)")
         documentRef.getDocument { (documentSnapshot, error) in
             if error != nil {
-                completion(nil, error)
+                return completion(nil, UnsinkableError.databaseCantFetchUserData)
             } else {
                 if let document = documentSnapshot, document.exists {
                     guard let data = document.data() else {
@@ -170,13 +164,13 @@ class AuthenticationSession {
                     let name = data[Constants.Database.User.nameField] as? String ?? ""
                     let uid = data[Constants.Database.User.uidField] as? String ?? ""
                     user = CustomResponse(user: UserDetails(email: email, firstName: firstname, name: name, userId: uid, projects: []))
-                    completion(user,nil)
+                    return completion(user,nil)
                 }
             }
         }
     }
     
-    func fetchProjects(_ userData: CustomResponse?, completion: @escaping ([Project?]?, Error?) -> Void) {
+    func fetchProjects(_ userData: CustomResponse?, completion: @escaping ([Project?]?, UnsinkableError?) -> Void) {
         guard let userId = userData?.user.userId else {
             return
         }
@@ -186,12 +180,12 @@ class AuthenticationSession {
         let dataBase = Firestore.firestore()
         var projectIndex = 0
         
-        //Document ref to docu
+        //Document ref
         let documentRef = dataBase.collection(Constants.Database.User.userPath).document(userId).collection(Constants.Database.Project.projectPath)
         documentRef.getDocuments() { (querySnapshot, error) in
             if error != nil {
-                guard let error = error else { return }
-                completion(nil, error)
+                completion(nil, UnsinkableError.databaseCantFetchData)
+                return
             } else {
                 guard let queryArray = querySnapshot?.documents else { return }
                 for document in queryArray {
@@ -206,8 +200,8 @@ class AuthenticationSession {
                     let tasksRef = dataBase.collection(Constants.Database.User.userPath).document(userId).collection(Constants.Database.Project.projectPath).document(projectID).collection(Constants.Database.Task.taskPath)
                     tasksRef.getDocuments() { (querys, error) in
                         if error != nil {
-                            guard let error = error else {return}
-                            completion(nil, error)
+                            //Can't fetch task
+                            completion(nil, UnsinkableError.databaseCantFetchTask)
                         } else {
                             guard let taskQueryArray = querys?.documents else {return}
                             for document in taskQueryArray {
@@ -228,15 +222,24 @@ class AuthenticationSession {
                         let project = Project(title: projectTitle, projectID: projectID ,description: projectDescription, ownerUserId: ownerUserId, isPersonal: isPersonal, downloadUrl: downloadUrl, taskList: taskList)
                         projectList.append(project)
                         taskList.removeAll()
-                        print(taskList.count)
                         if projectList.count == queryArray.count{
-                            completion(projectList, nil)
+                           return completion(projectList, nil)
                         }
                     }
                 }
                 completion([], nil)
             }
         }
+    }
+    
+    private func convertAuthErrorToUnsinkableError(_ error: Error) -> UnsinkableError {
+        guard let error = error as NSError? else {
+            return UnsinkableError.unknowError
+        }
+        guard let errorCode = AuthErrorCode(rawValue: error.code) else {
+            return UnsinkableError.unknowError
+        }
+        return handleErrorWith(errorCode)
     }
     
     func logOutUser() -> Bool {

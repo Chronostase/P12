@@ -15,8 +15,8 @@ class UpdateProjectPresenter {
     var currentProject: Project?
     var coverData: Data? 
     
+    
     func updateProject() {
-        
         projectService.updateProject(currentProject, userData, coverData) { error in
             if error != nil {
                 guard let error = error else {return}

@@ -22,6 +22,7 @@ class ProjectReaderViewController: UIViewController {
     @IBOutlet var taskTextField: CustomTextField!
     @IBOutlet var taskTableView: UITableView!
     @IBOutlet var showMoreButton: UIButton!
+    @IBOutlet var contentTitleView: UIView!
     
     let debouncer = Debouncer(timeInterval: 0.5)
     
@@ -33,9 +34,6 @@ class ProjectReaderViewController: UIViewController {
         setup()
         addObserver()
     }
-    
-    //When task is Added : Presenter.addNewTask then user normaly edit and save it
-    //Problem in case of already existing task, add function to add only one task 
     
     override func viewWillAppear(_ animated: Bool) {
         projectReaderPresenter.refreshCurrentProject()
@@ -56,12 +54,18 @@ class ProjectReaderViewController: UIViewController {
     func setup() {
         setDelegate()
         registerCell()
+        setContentTitleViewUI()
         configureViewController()
         setRightButtonInTextField()
         addRightNavigationBarButton()
     }
     
-    
+    private func setContentTitleViewUI() {
+        self.contentTitleView.backgroundColor = UIColor.darkGray
+        self.contentTitleView.layer.cornerRadius = 8
+        self.contentTitleView.layer.borderWidth = 0.3
+        self.contentTitleView.layer.borderColor = UIColor.white.cgColor
+    }
     private func addRightNavigationBarButton() {
         guard let image = UIImage(systemName: Constants.Image.ellipsis) else {
             return

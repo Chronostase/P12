@@ -14,40 +14,37 @@ extension ProfilViewController: ProfilPresenterDelegate {
         case .success(()):
             profilPresenter.deleteUser()
         case .failure(let error):
-            print(error.errorDescription)
+            guard let message = error.errorDescription else {return}
+            showError(message)
         }
     }
     
-    
-    
-    func showError(_ message: String) {
-        self.errorLabel.isHidden = false
-        self.errorLabel.text = message
+    func deleteUserComplete(_ result: Result<Void,UnsinkableError>) {
+        switch result {
+        case .success(()):
+            //Get back to authentification
+            self.errorLabel.isHidden = true
+            self.navigationController?.dismiss(animated: true)
+            self.navigationController?.popViewController(animated: true)
+            self.transitionToMainLoginPage()
+            
+        case .failure(let error):
+            guard let messageBody = error.errorDescription else {return}
+            self.navigationController?.dismiss(animated: true)
+            showError(messageBody)
+            
+        }
     }
     
-    func deleteUserSucceed() {
-        //Get back to authentification
-        self.errorLabel.isHidden = true
-        self.navigationController?.dismiss(animated: true)
-        self.navigationController?.popViewController(animated: true)
-        self.transitionToMainLoginPage()
-    }
-    
-    func deleteUserFailed() {
-        //Show error
-        self.navigationController?.dismiss(animated: true)
-        self.errorLabel.isHidden = false
-        self.errorLabel.text = Constants.Error.Body.unknowError
-    }
-    
-    
-    func logoutSucceed() {
-        self.navigationController?.popToRootViewController(animated: false)
-        self.transitionToMainLoginPage()
-    }
-    
-    func logoutFailed() {
-        self.showError(Constants.Error.Body.unknowError)
+    func logoutComplete(_ result: Result<Void,UnsinkableError>) {
+        switch result {
+        case .success(()):
+            self.navigationController?.popToRootViewController(animated: false)
+            self.transitionToMainLoginPage()
+        case .failure(let error):
+            guard let messageBody = error.errorDescription else {return}
+            self.showError(messageBody)
+        }
     }
     
     func updateUserComplete(_ result: Result<Void, UnsinkableError>) {
@@ -58,5 +55,10 @@ extension ProfilViewController: ProfilPresenterDelegate {
             self.errorLabel.isHidden = false
             self.errorLabel.text = error.errorDescription
         }
+    }
+    
+    func showError(_ message: String) {
+        self.errorLabel.isHidden = false
+        self.errorLabel.text = message
     }
 }

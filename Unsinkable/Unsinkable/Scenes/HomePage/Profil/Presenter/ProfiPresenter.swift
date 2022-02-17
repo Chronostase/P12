@@ -8,17 +8,14 @@
 import Foundation
 
 protocol ProfilPresenterDelegate: AnyObject {
-    func logoutSucceed()
-    func logoutFailed()
     
-    func deleteUserSucceed()
-    func deleteUserFailed()
+    func logoutComplete(_ result: Result<Void,UnsinkableError>)
     
-//    func deleteAllUserRefSucceed()
-//    func deleteAllUserRefFailed()
+    func deleteUserComplete(_ result: Result<Void,UnsinkableError>)
     func deleteAllUSerRefComplete(_ result: Result<Void,UnsinkableError>)
     
     func updateUserComplete(_ result: Result<Void, UnsinkableError>)
+    
     func showError(_ message: String)
 }
 
@@ -31,9 +28,9 @@ class ProfiPresenter {
     
     func logOut() {
         if userAuthenticationService.logOut() == true {
-            delegate?.logoutSucceed()
+            self.delegate?.logoutComplete(.success(()))
         } else {
-            delegate?.logoutFailed()
+            self.delegate?.logoutComplete(.failure(UnsinkableError.unknowError))
         }
     }
     
@@ -41,10 +38,11 @@ class ProfiPresenter {
         guard let user = data?.user else {return}
         userAuthenticationService.deleteUser(user) { error in
             if error != nil {
-                self.delegate?.deleteUserFailed()
+                guard let error = error else {return}
+                self.delegate?.deleteUserComplete(.failure(error))
             } else {
                 //Succeed
-                self.delegate?.deleteUserSucceed()
+                self.delegate?.deleteUserComplete(.success(()))
             }
             
         }

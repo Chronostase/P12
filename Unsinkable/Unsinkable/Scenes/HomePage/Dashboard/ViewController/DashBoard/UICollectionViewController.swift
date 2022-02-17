@@ -87,7 +87,6 @@ extension DashBoardViewController: UICollectionViewDelegate {
     }
 }
 
-//Seem to don't work with xib
 extension DashBoardViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == personalCollectionView {

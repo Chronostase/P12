@@ -9,10 +9,9 @@ import Foundation
 
 protocol DashBoardPresenterDelegate: AnyObject {
     func fetchDateSucceed(_ date: String)
-    func fetchUserDataSucceed(_ userData: CustomResponse)
-    func fetchUserDataFailed()
-    func fetchProjectSucceed(_ userData: CustomResponse?)
-    func fetchProjectFailed()
+    
+    func fetchUserDataComplete(_ result: Result<CustomResponse?,UnsinkableError>)
+    func fetchProjectComplete(_ result: Result<CustomResponse?, UnsinkableError>)
 }
 
 class DashBoardPresenter {
@@ -32,6 +31,35 @@ class DashBoardPresenter {
         delegate?.fetchDateSucceed(date)
     }
     
+    func getUserData() {
+        userAuthenticationService.getUserData { [weak self] result in
+            switch result {
+            case .success(let customResponse):
+                guard let userData = customResponse else {
+                    return
+                }
+                self?.data = userData
+                self?.delegate?.fetchUserDataComplete(.success(userData))
+            case.failure(let error):
+                self?.delegate?.fetchUserDataComplete(.failure(error))
+            }
+        }
+    }
+    
+    func getProjectList() {
+        userAuthenticationService.fetchProjects(data) { [weak self] result in
+            switch result {
+            case .success(let projectList):
+                self?.data?.user.projects = projectList
+                self?.delegate?.fetchProjectComplete(.success(self?.data))
+
+            case .failure(let error):
+                self?.delegate?.fetchProjectComplete(.failure(error))
+                print("Can't fetch project \(error)")
+            }
+        }
+    }
+    
     private func createCurrentDate() -> String? {
         let currentDateTime = Date()
         let formatter = DateFormatter()
@@ -41,21 +69,6 @@ class DashBoardPresenter {
         return formatter.string(from: currentDateTime)
     }
     
-    func getUserData() {
-        userAuthenticationService.getUserData { [weak self] result in
-            switch result {
-            case .success(let customResponse):
-                guard let userData = customResponse else {
-                    return 
-                }
-                self?.data = userData
-                self?.delegate?.fetchUserDataSucceed(userData)
-            case.failure(let error):
-                self?.delegate?.fetchUserDataFailed()
-                print("Can't fetch data \(error) ")
-            }
-        }
-    }
     
     func sortPersonalAndProfessionalProject(_ projectList: [Project?]?) {
         guard let projectList = projectList else {return}
@@ -67,20 +80,6 @@ class DashBoardPresenter {
                 personalProject?.append(project)
             } else {
                 professionalProject?.append(project)
-            }
-        }
-    }
-    
-    func getProjectList() {
-        userAuthenticationService.fetchProjects(data) { [weak self] result in
-            switch result {
-            case .success(let projectList):
-                self?.data?.user.projects = projectList
-                self?.delegate?.fetchProjectSucceed(self?.data)
-                
-            case .failure(let error):
-                self?.delegate?.fetchProjectFailed()
-                print("Can't fetch project \(error)")
             }
         }
     }

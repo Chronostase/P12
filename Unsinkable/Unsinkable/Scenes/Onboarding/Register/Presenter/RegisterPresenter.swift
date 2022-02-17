@@ -9,8 +9,7 @@ import Foundation
 
 protocol RegisterPresenterDelegate: AnyObject {
     
-    func registerUserSucceed()
-    func registerFailed(_ message: String)
+    func registerComplete(_ result: Result<Void,UnsinkableError>)
     func empltyFields()
     func invalidPassword()
     func invalidEmail()
@@ -31,10 +30,9 @@ class RegisterPresenter {
             userAuthenticationService.createUserWithInformations(firstname, name, email, password) { (result) in
                 switch result {
                 case .success(_):
-                    self.registerDelegate?.registerUserSucceed()
+                    self.registerDelegate?.registerComplete(.success(()))
                 case .failure(let customError):
-                    guard let errorMessage = customError.errorDescription else {return}
-                    self.registerDelegate?.registerFailed(errorMessage)
+                    self.registerDelegate?.registerComplete(.failure(customError))
                 }
             }
         }

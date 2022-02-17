@@ -20,10 +20,19 @@ extension UIViewController {
         navigationController?.present(loadingVC, animated: true, completion: nil)
     }
     
-    func presentSimpleAlert(message: String, title: String = "") {
+    func presentSimpleAlert(message: String? = "", title: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alertController.addAction(okAction)
         self.navigationController?.present(alertController, animated: true, completion: nil)
       }
+    
+    func alertThatNeedPop(message: String = "", title: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { alertAction in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alertController.addAction(okAction)
+        self.navigationController?.present(alertController, animated: true, completion: nil)
+    }
 }

@@ -26,41 +26,44 @@ extension ProjectCreationViewController: ProjectManagerDelegate {
     }
 
     //MARK: - RegisterMethods
-    func registerProjectComplete(_ result: Result<Project?, Error>) {
+    func registerProjectComplete(_ result: Result<Project?, UnsinkableError>) {
         switch result {
         case .success(let project):
+            
+            //Save in local Data
             projectCreationPresenter.updateLocalData(withProject: project)
             guard let project = project else {
                 return
             }
-
             coordinator?.data.user.projects?.append(project)
+            
+            //Register task only if their is existing task
             if project.taskList?.isEmpty != true {
                 projectCreationPresenter.registerTask(project)
             } else {
-                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true) {
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
         case .failure(let error):
-            print("error: \(error.localizedDescription)")
-            self.navigationController?.popViewController(animated: true)
+            guard let messageBody = error.errorDescription else {return}
+            self.navigationController?.dismiss(animated: true, completion: {
+                self.presentSimpleAlert(message: messageBody, title: error.localizedDescription)
+            })
         }
     }
 
-    func registerTaskComplete(_ result: Result<Task?, Error>) {
+    func registerTaskComplete(_ result: Result<Void, UnsinkableError>) {
         switch result {
-        case .success(_):
+        case .success(()):
             print("It succeed")
             self.navigationController?.popViewController(animated: true)
         case .failure(let error):
-            print("error: \(error.localizedDescription)")
-            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.dismiss(animated: true, completion: {
+                guard let messageBody = error.errorDescription else {return}
+                self.alertThatNeedPop(message: messageBody, title: error.localizedDescription)
+            })
         }
-    }
-    
-    func showErrorMessage(with message: String) {
-        self.navigationController?.dismiss(animated: true, completion: {
-            self.presentSimpleAlert(message: message)
-        })
     }
 
 }

@@ -15,7 +15,7 @@ class ProjectSession {
     lazy var functions = Functions.functions()
     lazy var keyChainManager = KeyChainManager()
     
-    func refreshCurrentProject(_ project: Project?,_ userData: CustomResponse?, completion: @escaping (Project?, Error?) -> Void) {
+    func refreshCurrentProject(_ project: Project?,_ userData: CustomResponse?, completion: @escaping (Project?, UnsinkableError?) -> Void) {
         guard let project = project else {return}
         guard let projectId = project.projectID else {return}
         guard let user = userData?.user, let userID = user.userId else {return}
@@ -26,7 +26,7 @@ class ProjectSession {
         
         projectRef.getDocument { document, error in
             if error != nil {
-                completion(nil,error)
+                completion(nil,UnsinkableError.databaseCantFetchData)
             } else {
                 guard let document = document else {return}
                 if document.exists {
@@ -41,7 +41,7 @@ class ProjectSession {
                     
                     tasksRef.getDocuments { querysnapshot, error in
                         if error != nil {
-                            completion(nil, error)
+                            completion(nil, UnsinkableError.databaseCantFetchTask)
                         } else {
                             guard let query = querysnapshot else {return}
                             for document in query.documents {
@@ -66,14 +66,13 @@ class ProjectSession {
                     }
                     
                 } else {
-                    #warning("Fall in .success case for delegate, optionnal Void to handle .success(nil)")
-                    completion(nil, error)
+                    completion(nil, UnsinkableError.databaseCantAccessToProject)
                 }
             }
         }
     }
     
-    func updateValidateStatement(_ project: Project?, selectedTask: Task?, _ userData: CustomResponse?, completion: @escaping (Result<Void?, Error>) -> Void) {
+    func updateValidateStatement(_ project: Project?, selectedTask: Task?, _ userData: CustomResponse?, completion: @escaping (Result<Void?, UnsinkableError>) -> Void) {
         guard let project = project,
               let task = selectedTask,
               let user = userData?.user else {return}
@@ -87,15 +86,22 @@ class ProjectSession {
         let taskRef = database.collection(Constants.Database.User.userPath).document(userID).collection(Constants.Database.Project.projectPath).document(projectID).collection(Constants.Database.Task.taskPath).document(currentTaskID)
         currentUser.reauthenticate(with: credential) { (nil, error) in
             if error != nil {
-                guard let error = error else {return}
-                completion(.failure(error))
+                guard let error = error as NSError? else {
+                    completion(.failure(UnsinkableError.unknowError))
+                    return
+                }
+                guard let errorCode = AuthErrorCode(rawValue: error.code) else {
+                    completion(.failure(UnsinkableError.unknowError))
+                    return
+                }
+                
+                completion(.failure(self.handleAuthErrorWith(errorCode)))
             } else {
                 taskRef.updateData([
                     Constants.Database.Task.isValidate: task.isValidate ?? false
                 ]) { error in
                     if error != nil {
-                        guard let error = error else {return}
-                        completion(.failure(error))
+                        completion(.failure(UnsinkableError.databaseCantUpdateTask))
                     } else {
                         completion(.success(()))
                     }
@@ -105,7 +111,7 @@ class ProjectSession {
         
     }
     
-    func updateTask(_ project: Project?, currentTask: Task?, newTask: Task?, _ userData: CustomResponse?, completion: @escaping (Error?) -> Void) {
+    func updateTask(_ project: Project?, currentTask: Task?, newTask: Task?, _ userData: CustomResponse?, completion: @escaping (UnsinkableError?) -> Void) {
         guard let project = project else {return}
         guard let projectID = project.projectID else {return}
         guard let userId = userData?.user.userId else {return}
@@ -123,8 +129,16 @@ class ProjectSession {
         let taskRef = database.collection(Constants.Database.User.userPath).document(userId).collection(Constants.Database.Project.projectPath).document(projectID).collection(Constants.Database.Task.taskPath).document(currentTaskId)
         currentUser.reauthenticate(with: credential) { (nil, error) in
             if error != nil {
-                guard let error = error else {return}
-                completion(error)
+                guard let error = error as NSError? else {
+                    completion(UnsinkableError.unknowError)
+                    return
+                }
+                guard let errorCode = AuthErrorCode(rawValue: error.code) else {
+                    completion(UnsinkableError.unknowError)
+                    return
+                }
+                
+                completion(self.handleAuthErrorWith(errorCode))
             } else {
                 if userId == ownerId {
                     taskRef.updateData([
@@ -136,23 +150,21 @@ class ProjectSession {
                         Constants.Database.Task.isValidate: newTask.isValidate ?? false
                     ]) { error in
                         if error != nil {
-                            guard let error = error else {return}
-                            completion(error)
+                            completion(UnsinkableError.databaseCantUpdateTask)
                         } else {
                             completion(nil)
                         }
                     }
                 } else {
-                    guard let error = error else {return}
                     //Operation not allow
-                    completion(error)
+                    completion(UnsinkableError.operationNotAllowed)
                 }
             }
         }
         
     }
     
-    func updateProject(_ project: Project?,_ userData: CustomResponse?,_ coverPicture: Data?, completion: @escaping (Error?) -> Void) {
+    func updateProject(_ project: Project?,_ userData: CustomResponse?,_ coverPicture: Data?, completion: @escaping (UnsinkableError?) -> Void) {
         
         guard let project = project else { return }
         guard let userId = userData?.user.userId else {return}
@@ -168,7 +180,12 @@ class ProjectSession {
             if coverPicture != nil {
                 storageRef.delete { error in
                     if error != nil {
-                        completion(error)
+                        guard let error = error else {
+                            completion(UnsinkableError.unknowError)
+                            return
+                        }
+                        completion(self.convertStorageErrorToUnsinkableError(error))
+                        return
                     } else {
                         guard let coverData = coverPicture else {return}
                         
@@ -176,11 +193,19 @@ class ProjectSession {
                         
                         storageRef.putData(coverData, metadata: nil) { (_, error) in
                             if error != nil {
-                                completion(error)
+                                guard let error = error else {
+                                    completion(UnsinkableError.unknowError)
+                                    return
+                                }
+                                completion(self.convertStorageErrorToUnsinkableError(error))
                             } else {
                                 storageRef.downloadURL { url, error in
                                     if error != nil {
-                                        completion(error)
+                                        guard let error = error else {
+                                            completion(UnsinkableError.unknowError)
+                                            return
+                                        }
+                                        completion(self.convertStorageErrorToUnsinkableError(error))
                                     } else {
                                         
                                         //Update project in database
@@ -196,8 +221,7 @@ class ProjectSession {
                                             Constants.Database.Project.isPersonal: isPersonal,
                                             Constants.Database.Project.downloadURL: url
                                         ]) { error in
-                                            if error != nil {
-                                                completion(error)
+                                            if error != nil {                           completion(UnsinkableError.databaseCantUpdate)
                                             } else {
                                                 completion(nil)
                                             }
@@ -220,7 +244,7 @@ class ProjectSession {
                     Constants.Database.Project.isPersonal: isPersonal,
                 ]) { error in
                     if error != nil {
-                        completion(error)
+                        completion(UnsinkableError.databaseCantUpdate)
                     } else {
                         completion(nil)
                     }
@@ -230,7 +254,7 @@ class ProjectSession {
         }
     }
     
-    func registerUserProject(_ project: Project?,_ userData: CustomResponse?,_ coverPicture: Data?, completion: @escaping (CustomResponse?, Error?) -> Void) {
+    func registerUserProject(_ project: Project?,_ userData: CustomResponse?,_ coverPicture: Data?, completion: @escaping (UnsinkableError?) -> Void) {
         guard let userId = userData?.user.userId else {
             return
         }
@@ -244,15 +268,22 @@ class ProjectSession {
         let dataBase = Firestore.firestore()
         let storageRef = Storage.storage().reference().child("Users/\(ownerId)/\(projectID).jpeg")
         if let coverPictureData = coverPicture {
+            
+            //Save coverPicture in storage
             storageRef.putData(coverPictureData, metadata: nil) { _ , error in
                 if error != nil {
-                    print("Error while uploading image")
+                    completion(UnsinkableError.storageCantSaveImage)
                     return
                 } else {
                     
+                    //Handle downloardUrl
                     storageRef.downloadURL { URL, error in
                         if error != nil {
-                            print("Error to recover URL")
+                            guard let error = error else {
+                                completion(UnsinkableError.unknowError)
+                                return
+                            }
+                            completion(self.convertStorageErrorToUnsinkableError(error))
                             return
                         } else {
                             guard let url = URL?.absoluteString else {return}
@@ -267,29 +298,26 @@ class ProjectSession {
                             
                             let documentRef = dataBase.collection(Constants.Database.User.userPath).document(userId).collection(Constants.Database.Project.projectPath).document(projectID)
                             
+                            //Save project and downloadUrl in database
                             documentRef.setData(documentData)
                             { (error) in
                                 if error != nil {
-                                    guard let error = error else {
-                                        return
-                                    }
-                                    //Error
-                                    
-                                    completion(nil,error)
+                                    completion(UnsinkableError.databaseCantStoreProject)
+                                    return
                                 }
                                 //Succeed
-                                completion(nil,error)
+                                completion(nil)
+                                return
                             }
                         }
                     }
                 }
-                print("Exit put Data completion")
             }
         }
     }
     
     
-    func registerUserTask(_ tasks: [Task?]?,_ project: Project?, completion: @escaping (CustomResponse?, Error?) -> Void) {
+    func registerUserTask(_ tasks: [Task?]?,_ project: Project?, completion: @escaping (UnsinkableError?) -> Void) {
         
         let database = Firestore.firestore()
         guard let tasks = tasks else {return}
@@ -316,15 +344,15 @@ class ProjectSession {
                 Constants.Database.Task.location : task.location ?? "",
                 Constants.Database.Task.isValidate: task.isValidate ?? false
             ]
-            
             let documentRef = database.collection(Constants.Database.User.userPath).document(userID).collection(Constants.Database.Project.projectPath).document(projectID).collection(Constants.Database.Task.taskPath).document(taskID)
             
             documentRef.setData(documentData) { error in
                 if error != nil {
-                    guard let error = error else {return}
-                    completion(nil, error)
+                    completion(UnsinkableError.databaseCantStoreTask)
+                    return
                 }
-                completion(nil, error)
+                completion(nil)
+                return
             }
         }
     }
@@ -343,8 +371,8 @@ class ProjectSession {
             Constants.CloudFunction.path: databaseRef.path,
             Constants.CloudFunction.token: token
         ]
-        //Delete userRef in storage
         
+        //Delete userRef in storage
         storageRef.listAll { storageList, error in
             if error != nil {
                 return completion(UnsinkableError.storageCantListItems)
@@ -392,7 +420,7 @@ class ProjectSession {
         }
     }
     
-    func deleteUserProject(_ project: Project?, completion: @escaping (Error?) -> Void) {
+    func deleteUserProject(_ project: Project?, completion: @escaping (UnsinkableError?) -> Void) {
         guard let project = project else {return}
         guard let projectID = project.projectID else {return}
         guard let userId = project.ownerUserId else {return}
@@ -416,14 +444,18 @@ class ProjectSession {
                     let details = error.userInfo[FunctionsErrorDetailsKey]
                     print("code \(String(describing: code)), message \(message),details \(details ?? "")")
                 }
-                completion(error)
+                completion(UnsinkableError.databaseCantDeleteProject)
             } else {
                 guard let projectId = project.projectID else {return}
                 let storage = Storage.storage()
                 let storageRef = storage.reference().child("Users/\(userId)/\(projectId).jpeg")
                 storageRef.delete { error in
                     if error != nil {
-                        completion(error)
+                        guard let error = error else {
+                            completion(UnsinkableError.unknowError)
+                            return
+                        }
+                        completion(self.convertStorageErrorToUnsinkableError(error))
                     } else {
                         completion(nil)
                     }
@@ -432,7 +464,7 @@ class ProjectSession {
         }
     }
     
-    func deleteUserTask(_ project: Project?,_ task: Task?, completion: @escaping (Error?) -> Void) {
+    func deleteUserTask(_ project: Project?,_ task: Task?, completion: @escaping (UnsinkableError?) -> Void) {
         guard let project = project, let task = task else {return}
         guard let projectID = project.projectID else {return}
         guard let userId = project.ownerUserId else {return}
@@ -456,10 +488,20 @@ class ProjectSession {
                     let details = error.userInfo[FunctionsErrorDetailsKey]
                     print("code \(String(describing: code)),message \(message),details \(details ?? "")")
                 }
-                completion(error)
+                completion(UnsinkableError.databaseCantDeleteTask)
             } else {
                 completion(nil)
             }
         }
+    }
+    
+    private func convertStorageErrorToUnsinkableError(_ error: Error) -> UnsinkableError {
+        guard let error = error as NSError? else {
+            return UnsinkableError.unknowError
+        }
+        guard let errorCode = StorageErrorCode(rawValue: error.code) else {
+            return UnsinkableError.unknowError}
+        
+        return self.handleStorageError(errorCode)
     }
 }

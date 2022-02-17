@@ -21,7 +21,6 @@ class CustomView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-//        backgroundColor = .white
         clipsToBounds = false
         layer.cornerRadius = 8
         layer.shadowColor = UIColor.darkGray.cgColor
@@ -29,12 +28,5 @@ class CustomView: UIView {
         layer.shadowOpacity = 0.15
         layer.shadowOffset = CGSize(width: 0, height: 8)
     
-//        layer.masksToBounds = false
-//        layer.cornerRadius = 15
-//        layer.shadowColor = UIColor.darkGray.cgColor
-//        layer.shadowRadius = 8
-//        layer.shadowOpacity = 0.15
-//        layer.shadowOffset = CGSize(width: 0,height: 2)
-//
     }
 }

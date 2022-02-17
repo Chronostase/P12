@@ -82,14 +82,47 @@ enum Constants {
             static let invalidCredential = "Reauthenticate failed"
             static let userMisMatch = "User misMatch"
             
+            static let setTitle = "Title error"
+            
+            static let databaseCantStoreUser = "Can't store user"
+            static let databaseCantStoreProject = "Can't save project"
+            static let databaseCantDeleteUser = "Error while user deletion"
             static let databaseCantUpdate = "Can't update Data"
+            static let databaseCantFetchData = "Can't fetch data"
+            static let databaseCantFetchTask = "Can't fetch your tasks"
+            static let databaseCantStoreTask = "Can't save your tasks"
+            static let databaseCantAccessToProject = "Can't have access to this project"
+            static let databaseCantDeleteProject = "Can't delete this project"
+            static let databaseCantUpdateTask = "Can't update your task"
+            static let databaseCantDeleteTask = "Can't delete task"
+            static let databaseCantFetchUserData = "Can't fetch data"
+            
             static let storageCantListItems = "Can't access to your files"
             static let storageCantDeleteItems = "Error while deletion"
-            static let databaseCantDeleteUser = "Error while user deletion"
+            static let storageCantSaveImage = "Can't save your cover picture"
+            
+            static let storageObjectNotFound = "None object found"
+            static let storageBucketNotFound = "UnknowError"
+            static let storageProjectNotFound = "UnknowError"
+            static let storageQuotaExceeded = "UnknowError"
+            static let storageUnauthenticate = "Not authenticate user"
+            static let storageUnauthorized = "Unauthorized operation"
+            static let storageRetryLimiteExceeded = "Time limite exceeded"
+            static let nonMatchingCheckSum = "Unknow error"
+            static let canceled = "You cancel the operation"
+            static let downloadSizeExceeded = "File size exceeded"
+            
+            static let imageDownloadUrl = "No metadata access"
         }
         
         enum Body {
+            
+            //Generic
+            static let unknowError = "Unknow error occured please retry"
             static let recentLogin = "You need a recent login to proceed this operation"
+            static let operationNotAllowed = ""
+            
+            //Login
             static let emailError = "Email is not correct."
             static let emailAlreadyUse = "Email is already in use by another account" 
             static let passwordError = "Please make sure your password is at least 8 characters, contains a special character and a number."
@@ -98,17 +131,46 @@ enum Constants {
             static let cantFormat = "We can't format fields please retry"
             static let incorrectLog = "Incorrect log please retry."
             static let incorrectPassword = "Incorrect password"
-            static let notAllowOperation = "You account is no more activated."
             static let weakPassword = "Your password is too weak."
             static let userDisable = "Your user account is disable"
-            static let unknowError = "Unknow error occured please retry"
             static let invalidCredential = "Invalid data connection"
             static let userMisMatch = "You are not the actual user of this account"
+            static let notAllowOperation = "You account is no more activated."
             
+            //Project Creation
+            static let setTitle = "You need to have at least a project title"
+            
+            //Database
+            static let databaseCantStoreUser = "We can't store user for unknow reaseon please retry"
+            static let databaseCantStoreProject = "We can't save your project please retry"
             static let databaseCantUpdate = "We can't update data for unknow reason please retry"
-            static let databaseCantDeleteUser = "We can't delete user reference"
+            static let databaseCantDeleteUser = "We can't delete user reference please retry"
+            static let databaseCantStoreTask = "Try to add it again when you consult your project"
+            static let databaseCantAccessToProject = "Unknow reason please retry"
+            static let databaseCantDeleteProject = "Unknow reason please retry"
+            static let databaseCantUpdateTask = "Unknow reason please retry"
+            static let databaseCantDeleteTask = "Unknow reason please retry"
+            
+            static let databaseCantFetchUserData = "Please make sure to have internet connection and retry"
+            static let databaseCantFetchData = "Please make sure to have internet connection and relaunch Unsinkable"
+            
+            //Storage
             static let storageCantListItems = "Can't access to your stored cover pictures please retry"
-            static let storageCantDeleteItems = "Can't delete your stored pictures"
+            static let storageCantDeleteItems = "Can't delete your stored pictures please retry"
+            static let storageCantSaveImage = "We can't save your cover picure please retry"
+            
+            static let storageObjectNotFound = "None object found or existing"
+            static let storageBucketNotFound = "Please retry"
+            static let storageProjectNotFound = "Please retry"
+            static let storageQuotaExceeded = "Please retry"
+            static let storageUnauthenticate = "You are not authenticated, please reconnect your account"
+            static let storageUnauthorized = "You don't have the permission to proceed this operation"
+            static let storageRetryLimiteExceeded = "Operation was canceled because it take too much time please retry"
+            static let nonMatchingCheckSum = "Please retry"
+            static let canceled = ""
+            static let downloadSizeExceeded = "Please select smaller file"
+            //Image
+            static let imageDownloadUrl = "We can't access to image metada"
         }
         
         enum ProjectCreation {

@@ -12,37 +12,53 @@ extension DashBoardViewController: DashBoardPresenterDelegate {
         self.showLoader()
     }
     
-    func fetchProjectSucceed(_ userData: CustomResponse?) {
-        guard let userData = userData else {
-            return
+    func fetchProjectComplete(_ result: Result<CustomResponse?,UnsinkableError>) {
+        switch result {
+        case .success(let customResponse):
+            guard let userData = customResponse else {
+                return
+            }
+            coordinator?.data = userData
+            let projectList = userData.user.projects
+            dashBoardPresenter.sortPersonalAndProfessionalProject(projectList)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.navigationController?.dismiss(animated: true, completion: {
+                    self.isTabBarEnable(true)
+                    self.reloadCollection()
+                    self.setupEmptyView(self.dashBoardPresenter.personalProject, self.personalCollectionView)
+                    self.setupEmptyView(self.dashBoardPresenter.professionalProject, self.professionalCollectionView)
+                })
+            }
+        case .failure(let error):
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.navigationController?.dismiss(animated: true, completion: {
+                    self.isTabBarEnable(true)
+                    guard let messageBody = error.errorDescription else {return}
+                    self.presentRetyAlert(message: messageBody, title: error.localizedDescription)
+                })
+            }
         }
-        coordinator?.data = userData
-        let projectList = userData.user.projects
-        dashBoardPresenter.sortPersonalAndProfessionalProject(projectList)
-        DispatchQueue.main.async {
-            self.reloadCollection()
+    }
+    
+    
+    func fetchUserDataComplete(_ result: Result<CustomResponse?,UnsinkableError>) {
+        switch result {
+        case .success(let customResponse):
+            guard let userData = customResponse else {return}
+            dashBoardPresenter.data? = userData
+            dashBoardPresenter.getProjectList()
+        case .failure(let error):
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.navigationController?.dismiss(animated: true, completion: {
+                    self.isTabBarEnable(true)
+                    self.setupEmptyView(self.dashBoardPresenter.personalProject, self.personalCollectionView)
+                    self.setupEmptyView(self.dashBoardPresenter.professionalProject, self.professionalCollectionView)
+                    guard let messageBody = error.errorDescription else {return}
+                    self.presentRetyAlert(message: messageBody, title: error.localizedDescription)
+                })
+            }
         }
-        self.navigationController?.dismiss(animated: true, completion: nil)
-    }
-    
-    func fetchTaskSucceed() {
-        
-    }
-    
-    func fetchTaskFailed() {
-        
-    }
-    func fetchProjectFailed() {
-        self.navigationController?.dismiss(animated: true, completion: nil)
-    }
-    
-    func fetchUserDataSucceed(_ userData: CustomResponse) {
-        dashBoardPresenter.data? = userData
-        dashBoardPresenter.getProjectList()
-    }
-    
-    func fetchUserDataFailed() {
-        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
     
@@ -50,5 +66,7 @@ extension DashBoardViewController: DashBoardPresenterDelegate {
         self.updateDateLabel(date)
     }
     
-    
+    func isTabBarEnable(_ authorization: Bool) {
+        self.tabBarController?.tabBar.isUserInteractionEnabled = authorization
+    }
 }

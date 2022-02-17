@@ -137,22 +137,43 @@ extension ProjectReaderViewController: UITableViewDelegate {
 
 extension ProjectReaderViewController: CustomTaskTableViewCellDelegate {
     func tapCheckMarkButton(_ task: Task?) {
+        //Suppose to validate task after reload TBV if .validate == true then green
+        //If it failed should keep taskID who failed and change it in LocalDataSource
         self.projectReaderPresenter.validateTask(task)
+        
+//        self.projectReaderPresenter.updateTaskList?.append(task!)
         DispatchQueue.main.async {
             self.taskTableView.reloadData()
         }
-        debouncer.renewInterval()
-        print("Renew interval")
-        
-        debouncer.handler = {
-            print("Enter in debouncer handler")
-            guard let currentTaskList = self.projectReaderPresenter.selectedProject?.taskList else {return}
-            for currentTask in currentTaskList {
-                if task?.taskID == currentTask?.taskID {
-                    self.projectReaderPresenter.updateTask(currentTask)
-                }
+        guard let currentTaskList = self.projectReaderPresenter.selectedProject?.taskList else {return}
+        for currentTask in currentTaskList {
+            if task?.taskID == currentTask?.taskID {
+                self.projectReaderPresenter.updateTask(currentTask)
             }
         }
+//        debouncer.renewInterval()
+        print("Renew interval")
+        
+//        debouncer.handler = {
+//            print("Enter in debouncer handler")
+//            guard let currentTaskList = self.projectReaderPresenter.selectedProject?.taskList else {return}
+//            #warning("Problem here if user try to save all task in short time, only save the last cause of debouncer")
+////            for currentTask in currentTaskList {
+////                if task?.taskID == currentTask?.taskID {
+////                    self.projectReaderPresenter.updateTask(currentTask)
+////                }
+////            }
+////            for task in self.projectReaderPresenter.updateTaskList! {
+////                var newTask = task
+////                if newTask.isValidate == true {
+////                    newTask.isValidate = false
+////                    self.projectReaderPresenter.updateTask(newTask)
+////                } else {
+////                    newTask.isValidate = true
+////                    self.projectReaderPresenter.updateTask(newTask)
+////                }
+////            }
+//        }
     }
     
     
