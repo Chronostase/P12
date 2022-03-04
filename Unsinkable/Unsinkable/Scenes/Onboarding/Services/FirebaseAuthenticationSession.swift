@@ -1,5 +1,5 @@
 //
-//  AuthenticationSession.swift
+//  FirebaseAuthenticationSession.swift
 //  Unsinkable
 //
 //  Created by Thomas on 25/02/2021.
@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 import FirebaseFunctions
 
-class AuthenticationSession {
+class FirebaseAuthenticationSession {
     
     lazy var functions = Functions.functions()
     lazy var keyChainManager = KeyChainManager()

@@ -14,8 +14,17 @@ protocol DashBoardPresenterDelegate: AnyObject {
     func fetchProjectComplete(_ result: Result<CustomResponse?, UnsinkableError>)
 }
 
+protocol DashBoardPresenterLogic {
+    func getUserData()
+    func getCurrentDate()
+    func getProjectList()
+    func createCurrentDate() -> String?
+    func sortPersonalAndProfessionalProject(_ projectList: [Project?]?)
+    func isSearchBarActive(_ text: String?) -> Bool
+}
+
 class DashBoardPresenter {
-    let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()
+    let userAuthenticationService: AuthenticationLogic = UserAuthenticationService()
     weak var delegate: DashBoardPresenterDelegate?
     var data: CustomResponse?
     let projectService: ProjectLogic = ProjectService()
@@ -24,71 +33,75 @@ class DashBoardPresenter {
     var professionalProject: [Project]?
     var searchBarEntry: String? 
     
-    func getCurrentDate() {
-        guard let date = createCurrentDate() else {
-            return
-        }
-        delegate?.fetchDateSucceed(date)
-    }
     
-    func getUserData() {
-        userAuthenticationService.getUserData { [weak self] result in
-            switch result {
-            case .success(let customResponse):
-                guard let userData = customResponse else {
-                    return
-                }
-                self?.data = userData
-                self?.delegate?.fetchUserDataComplete(.success(userData))
-            case.failure(let error):
-                self?.delegate?.fetchUserDataComplete(.failure(error))
-            }
-        }
+    func fetchUser() {
+        getUserData()
     }
-    
-    func getProjectList() {
-        userAuthenticationService.fetchProjects(data) { [weak self] result in
-            switch result {
-            case .success(let projectList):
-                self?.data?.user.projects = projectList
-                self?.delegate?.fetchProjectComplete(.success(self?.data))
+//    func getCurrentDate() {
+//        guard let date = createCurrentDate() else {
+//            return
+//        }
+//        delegate?.fetchDateSucceed(date)
+//    }
 
-            case .failure(let error):
-                self?.delegate?.fetchProjectComplete(.failure(error))
-                print("Can't fetch project \(error)")
-            }
-        }
-    }
-    
-    private func createCurrentDate() -> String? {
-        let currentDateTime = Date()
-        let formatter = DateFormatter()
-        formatter.timeStyle = .none
-        formatter.dateStyle = .long
-        
-        return formatter.string(from: currentDateTime)
-    }
-    
-    
-    func sortPersonalAndProfessionalProject(_ projectList: [Project?]?) {
-        guard let projectList = projectList else {return}
-        professionalProject = [Project]()
-        personalProject = [Project]()
-        for project in projectList {
-            guard let project = project else {return}
-            if project.isPersonal == true {
-                personalProject?.append(project)
-            } else {
-                professionalProject?.append(project)
-            }
-        }
-    }
-    
-    func isSearchBarActive(_ text: String?) -> Bool {
-        if let text = text {
-            return !text.isEmpty
-        } else {
-            return false 
-        }
-    }
+//    func getUserData() {
+//        userAuthenticationService.getUserData { [weak self] result in
+//            switch result {
+//            case .success(let customResponse):
+//                guard let userData = customResponse else {
+//                    return
+//                }
+//                self?.data = userData
+//                self?.delegate?.fetchUserDataComplete(.success(userData))
+//            case.failure(let error):
+//                self?.delegate?.fetchUserDataComplete(.failure(error))
+//            }
+//        }
+//    }
+
+//    func getProjectList() {
+//        userAuthenticationService.fetchProjects(data) { [weak self] result in
+//            switch result {
+//            case .success(let projectList):
+//                self?.data?.user.projects = projectList
+//                self?.delegate?.fetchProjectComplete(.success(self?.data))
+//
+//            case .failure(let error):
+//                self?.delegate?.fetchProjectComplete(.failure(error))
+//                print("Can't fetch project \(error)")
+//            }
+//        }
+//    }
+
+//    private func createCurrentDate() -> String? {
+//        let currentDateTime = Date()
+//        let formatter = DateFormatter()
+//        formatter.timeStyle = .none
+//        formatter.dateStyle = .long
+//
+//        return formatter.string(from: currentDateTime)
+//    }
+
+
+//    func sortPersonalAndProfessionalProject(_ projectList: [Project?]?) {
+//        guard let projectList = projectList else {return}
+//        professionalProject = [Project]()
+//        personalProject = [Project]()
+//        for project in projectList {
+//            guard let project = project else {return}
+//            if project.isPersonal == true {
+//                personalProject?.append(project)
+//            } else {
+//                professionalProject?.append(project)
+//            }
+//        }
+//    }
+
+//    func isSearchBarActive(_ text: String?) -> Bool {
+//        if let text = text {
+//            return !text.isEmpty
+//        } else {
+//            return false
+//        }
+//    }
 }

@@ -13,53 +13,30 @@ protocol LoginPresenterDelegate: AnyObject {
     func emptyFields()
 }
 
+protocol LoginPresenterLogic {
+    func isTextFieldAvailable(_ email: String?,_ password: String?) -> Bool
+    func isEmailValid(_ email: String?) -> Bool
+    func logUser(_ email: String?,_ password: String?, callback: @escaping (Result<CustomResponse?, UnsinkableError>) -> Void)
+}
+
 class LoginPresenter {
-
+    
     weak var delegate: LoginPresenterDelegate?
-    let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()
-    
-    func checkTextFieldsAvailable(_ email: String?, _ password: String?) -> Bool {
-        if email != "" && password != "" {
-            return true
-        } else {
-            return false
-        }
+//    let userAuthenticationService: AuthenticationLogic = UserAuthenticationService()
+    let service: AuthenticationLogic
+    init (session: AuthenticationLogic = UserAuthenticationService()) {
+        self.service = session
     }
-    
-    func login(email: String?, password: String?) {
-        if checkTextFieldsAvailable(email, password) {
-            guard let email = email?.formatCharacter(), let password = password?.formatCharacter() else {
-                self.delegate?.loginFailed(Constants.Error.Body.incorrectLog)
-                return
+    #warning("First use case of protocol, probably the wrong one, issue: don't know how to access to case to Assert them")
+    func login(_ email: String?,_ password: String?) {
+        logUser(email, password) { result in
+            switch result {
+            case .success(_):
+                self.delegate?.loginSucceed()
+            case .failure(let error):
+                guard let messageError = error.errorDescription else {return}
+                self.delegate?.loginFailed(messageError)
             }
-            
-            if isEmailValid(email) {
-                userAuthenticationService.loginUser(email, password) { [weak self] result in
-                    switch result {
-                    case .success(_):
-                        self?.delegate?.loginSucceed()
-                        return
-                        
-                    case .failure(let error):
-                        guard let errorMessage = error.errorDescription else {return}
-                        self?.delegate?.loginFailed(errorMessage)
-                        return
-                    }
-                }
-
-            } else {
-                self.delegate?.loginFailed(Constants.Error.Body.emailError)
-            }
-            
-        } else {
-            delegate?.emptyFields()
         }
-    }
-    
-    private func isEmailValid(_ email: String?) -> Bool {
-        guard let email = email else {
-            return false
-        }
-        return Regex.validateEmail(candidate: email)
     }
 }

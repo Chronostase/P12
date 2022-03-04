@@ -8,7 +8,7 @@
 import UIKit
 
 class LogInViewController: UIViewController {
-    let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()
+    let userAuthenticationService: AuthenticationLogic = UserAuthenticationService()
     weak var coordinator: AuthenticationCoordinator?
     lazy var loginPresenter = {
         return LoginPresenter()
@@ -23,7 +23,7 @@ class LogInViewController: UIViewController {
     
     @IBAction func signInButton(_ sender: UIButton) {
         self.showLoader()
-        loginPresenter.login(email: emailTextField.text, password: passwordTextField.text)
+        loginPresenter.login(emailTextField.text, passwordTextField.text)
     }
     
     func transitionToHomeScreen() {

@@ -7,7 +7,7 @@
 
 import Foundation
 import FirebaseAuth
-extension AuthenticationSession {
+extension FirebaseAuthenticationSession {
     
     func handleErrorWith(_ errorCode: AuthErrorCode) -> UnsinkableError {
         switch errorCode {

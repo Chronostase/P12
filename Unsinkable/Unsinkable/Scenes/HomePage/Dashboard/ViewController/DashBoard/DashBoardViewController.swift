@@ -67,8 +67,9 @@ class DashBoardViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         
     }
+    
     private func loadData() {
-        dashBoardPresenter.getUserData()
+        dashBoardPresenter.fetchUser()
         reloadCollection()
     }
     

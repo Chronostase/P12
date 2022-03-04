@@ -22,7 +22,7 @@ protocol ProfilPresenterDelegate: AnyObject {
 class ProfiPresenter {
     
     weak var delegate: ProfilPresenterDelegate?
-    let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()
+    let userAuthenticationService: AuthenticationLogic = UserAuthenticationService()
     let databaseManager: ProjectLogic = ProjectService()
     var data: CustomResponse?
     

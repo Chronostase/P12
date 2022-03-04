@@ -21,7 +21,6 @@ class RegisterViewController: UIViewController {
     private lazy var registerPresenter = {
         return RegisterPresenter()
     }()
-    let userAuthentificationService: AuthentificationLogic = UserAuthentificationService()
     
     @IBAction func createAccountButton(_ sender: UIButton) {
         self.showLoader()

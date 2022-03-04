@@ -8,7 +8,7 @@
 import UIKit
 
 class MainLoginViewController: UIViewController {
-    let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()
+    let userAuthenticationService: AuthenticationLogic = UserAuthenticationService()
     weak var coordinator: AuthenticationCoordinator?
     lazy var mainLoginPresenter: MainLoginPresenter = {
         return MainLoginPresenter()

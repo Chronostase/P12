@@ -22,7 +22,7 @@ extension ProfilViewController: ProfilPresenterDelegate {
     func deleteUserComplete(_ result: Result<Void,UnsinkableError>) {
         switch result {
         case .success(()):
-            //Get back to authentification
+            //Get back to authentication
             self.errorLabel.isHidden = true
             self.navigationController?.dismiss(animated: true)
             self.navigationController?.popViewController(animated: true)

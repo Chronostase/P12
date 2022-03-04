@@ -13,7 +13,7 @@
 		E90312CE25E5409600CBC228 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90312CD25E5409600CBC228 /* TextFieldExtension.swift */; };
 		E90312EC25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90312EB25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift */; };
 		E90312F725E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90312F625E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift */; };
-		E903130225E7C52300CBC228 /* AuthenticationSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E903130125E7C52300CBC228 /* AuthenticationSession.swift */; };
+		E903130225E7C52300CBC228 /* FirebaseAuthenticationSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E903130125E7C52300CBC228 /* FirebaseAuthenticationSession.swift */; };
 		E91DB50F2643FBBD0035889A /* CustomResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91DB50E2643FBBD0035889A /* CustomResponse.swift */; };
 		E921575925C05BA100D42137 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921575825C05BA100D42137 /* Coordinator.swift */; };
 		E921576625C05F0000D42137 /* CoordinatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921576525C05F0000D42137 /* CoordinatorManager.swift */; };
@@ -43,6 +43,13 @@
 		E951029C25B970D20070A91C /* UserAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951029B25B970D20070A91C /* UserAuthenticationService.swift */; };
 		E95102CC25B97F7A0070A91C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95102CB25B97F7A0070A91C /* StringExtension.swift */; };
 		E9553E5525E534F4006101D2 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9553E5425E534F4006101D2 /* CustomTextField.swift */; };
+		E9564A8E27CF81080083FA9F /* RegisterPresenter+RegisterPresenterLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9564A8D27CF81080083FA9F /* RegisterPresenter+RegisterPresenterLogic.swift */; };
+		E9564A9027CF83CD0083FA9F /* RegisterPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9564A8F27CF83CC0083FA9F /* RegisterPresenterTest.swift */; };
+		E9564A9227CF85710083FA9F /* RegisterServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9564A9127CF85710083FA9F /* RegisterServiceFake.swift */; };
+		E9564A9527CFB0A10083FA9F /* MainLoginPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9564A9427CFB0A10083FA9F /* MainLoginPresenterTest.swift */; };
+		E9564A9827CFB2520083FA9F /* ProjectSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9564A9727CFB2520083FA9F /* ProjectSessionFake.swift */; };
+		E9564A9A27CFB2CB0083FA9F /* ProjectSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9564A9927CFB2CB0083FA9F /* ProjectSessionTest.swift */; };
+		E9564A9C27D0E6260083FA9F /* DashBoardPresenter + DashBoardPresenterLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9564A9B27D0E6260083FA9F /* DashBoardPresenter + DashBoardPresenterLogic.swift */; };
 		E95AF91B2679F21400BD1AF8 /* ProfiPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95AF91A2679F21400BD1AF8 /* ProfiPresenter.swift */; };
 		E95AF91D2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95AF91C2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift */; };
 		E95D389427A92ED200A64F0F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95D389327A92ED200A64F0F /* UIView.swift */; };
@@ -54,6 +61,7 @@
 		E976F3DA26397A60000F9BC6 /* AuthenticationSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E976F3D926397A60000F9BC6 /* AuthenticationSessionFake.swift */; };
 		E97A877326DFB94000097527 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A877226DFB94000097527 /* UITextView.swift */; };
 		E97B7FE5279F066E00BACA3B /* FakeCustomResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B7FE4279F066D00BACA3B /* FakeCustomResponse.swift */; };
+		E992662727CD071000E15581 /* LoginPresenterLogicProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E992662627CD071000E15581 /* LoginPresenterLogicProtocol.swift */; };
 		E9957E1127A2ADAD0038670A /* AuthenticationSession+HandleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9957E1027A2ADAD0038670A /* AuthenticationSession+HandleError.swift */; };
 		E9957E1327A2EED70038670A /* UnsinkableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9957E1227A2EED70038670A /* UnsinkableError.swift */; };
 		E99635B72653D99E00185327 /* Profil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99635B62653D99E00185327 /* Profil.storyboard */; };
@@ -64,6 +72,8 @@
 		E996B55C25A6351700638480 /* DashBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E996B55B25A6351700638480 /* DashBoard.storyboard */; };
 		E996B56125A6353000638480 /* NotificationCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E996B56025A6353000638480 /* NotificationCenter.storyboard */; };
 		E996B56625A6353F00638480 /* NotificationCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996B56525A6353F00638480 /* NotificationCenterViewController.swift */; };
+		E999B06127C79DFF0054533B /* LoginPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E999B06027C79DFF0054533B /* LoginPresenterTest.swift */; };
+		E999B06427C7A82D0054533B /* LoginServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E999B06327C7A82D0054533B /* LoginServiceFake.swift */; };
 		E99A03382704E38100C1BCCE /* ProjectReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A03372704E38100C1BCCE /* ProjectReaderViewController.swift */; };
 		E99A033A270594B600C1BCCE /* ProjectReaderVC+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A0339270594B600C1BCCE /* ProjectReaderVC+TableViewDelegate.swift */; };
 		E99B8DEA268F021C005A9032 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99B8DE9268F021C005A9032 /* TaskCell.xib */; };
@@ -133,7 +143,7 @@
 		E90312CD25E5409600CBC228 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 		E90312EB25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewControllerTextFieldDelegate.swift; sourceTree = "<group>"; };
 		E90312F625E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTextFieldDelegat.swift; sourceTree = "<group>"; };
-		E903130125E7C52300CBC228 /* AuthenticationSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSession.swift; sourceTree = "<group>"; };
+		E903130125E7C52300CBC228 /* FirebaseAuthenticationSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationSession.swift; sourceTree = "<group>"; };
 		E91DB50E2643FBBD0035889A /* CustomResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomResponse.swift; sourceTree = "<group>"; };
 		E921575825C05BA100D42137 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E921576525C05F0000D42137 /* CoordinatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorManager.swift; sourceTree = "<group>"; };
@@ -167,6 +177,13 @@
 		E951029B25B970D20070A91C /* UserAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationService.swift; sourceTree = "<group>"; };
 		E95102CB25B97F7A0070A91C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		E9553E5425E534F4006101D2 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		E9564A8D27CF81080083FA9F /* RegisterPresenter+RegisterPresenterLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterPresenter+RegisterPresenterLogic.swift"; sourceTree = "<group>"; };
+		E9564A8F27CF83CC0083FA9F /* RegisterPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenterTest.swift; sourceTree = "<group>"; };
+		E9564A9127CF85710083FA9F /* RegisterServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterServiceFake.swift; sourceTree = "<group>"; };
+		E9564A9427CFB0A10083FA9F /* MainLoginPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLoginPresenterTest.swift; sourceTree = "<group>"; };
+		E9564A9727CFB2520083FA9F /* ProjectSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSessionFake.swift; sourceTree = "<group>"; };
+		E9564A9927CFB2CB0083FA9F /* ProjectSessionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSessionTest.swift; sourceTree = "<group>"; };
+		E9564A9B27D0E6260083FA9F /* DashBoardPresenter + DashBoardPresenterLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashBoardPresenter + DashBoardPresenterLogic.swift"; sourceTree = "<group>"; };
 		E95AF91A2679F21400BD1AF8 /* ProfiPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfiPresenter.swift; sourceTree = "<group>"; };
 		E95AF91C2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfilViewController+ProfilPresenterDelegate.swift"; sourceTree = "<group>"; };
 		E95D389327A92ED200A64F0F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -178,6 +195,7 @@
 		E976F3D926397A60000F9BC6 /* AuthenticationSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSessionFake.swift; sourceTree = "<group>"; };
 		E97A877226DFB94000097527 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		E97B7FE4279F066D00BACA3B /* FakeCustomResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCustomResponse.swift; sourceTree = "<group>"; };
+		E992662627CD071000E15581 /* LoginPresenterLogicProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterLogicProtocol.swift; sourceTree = "<group>"; };
 		E9957E1027A2ADAD0038670A /* AuthenticationSession+HandleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticationSession+HandleError.swift"; sourceTree = "<group>"; };
 		E9957E1227A2EED70038670A /* UnsinkableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsinkableError.swift; sourceTree = "<group>"; };
 		E99635B62653D99E00185327 /* Profil.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profil.storyboard; sourceTree = "<group>"; };
@@ -187,6 +205,8 @@
 		E996B55B25A6351700638480 /* DashBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DashBoard.storyboard; sourceTree = "<group>"; };
 		E996B56025A6353000638480 /* NotificationCenter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotificationCenter.storyboard; sourceTree = "<group>"; };
 		E996B56525A6353F00638480 /* NotificationCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterViewController.swift; sourceTree = "<group>"; };
+		E999B06027C79DFF0054533B /* LoginPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTest.swift; sourceTree = "<group>"; };
+		E999B06327C7A82D0054533B /* LoginServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceFake.swift; sourceTree = "<group>"; };
 		E99A03372704E38100C1BCCE /* ProjectReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectReaderViewController.swift; sourceTree = "<group>"; };
 		E99A0339270594B600C1BCCE /* ProjectReaderVC+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectReaderVC+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		E99B8DE9268F021C005A9032 /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
@@ -281,6 +301,7 @@
 			isa = PBXGroup;
 			children = (
 				E9C7B78527BDF11500F57E47 /* Authentication */,
+				E9564A9627CFB22A0083FA9F /* Project */,
 			);
 			path = ServiceTest;
 			sourceTree = "<group>";
@@ -347,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				E9C7B78427BDF08C00F57E47 /* FakeModel */,
+				E999B05D27C79CAE0054533B /* Presenter */,
 				E903130025E7C42C00CBC228 /* ServiceTest */,
 				E92C358725A5EBAC001F2819 /* Info.plist */,
 			);
@@ -397,6 +419,32 @@
 				E9B4C3A4277A138D0038B243 /* Debouncer.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E9564A8C27CF80760083FA9F /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				E9564A9127CF85710083FA9F /* RegisterServiceFake.swift */,
+				E9564A8F27CF83CC0083FA9F /* RegisterPresenterTest.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		E9564A9327CFB0940083FA9F /* MainLogin */ = {
+			isa = PBXGroup;
+			children = (
+				E9564A9427CFB0A10083FA9F /* MainLoginPresenterTest.swift */,
+			);
+			path = MainLogin;
+			sourceTree = "<group>";
+		};
+		E9564A9627CFB22A0083FA9F /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				E9564A9727CFB2520083FA9F /* ProjectSessionFake.swift */,
+				E9564A9927CFB2CB0083FA9F /* ProjectSessionTest.swift */,
+			);
+			path = Project;
 			sourceTree = "<group>";
 		};
 		E95AF8FC2678DE0300BD1AF8 /* Onboarding */ = {
@@ -542,6 +590,7 @@
 			isa = PBXGroup;
 			children = (
 				E9BDE18E25D3F9B7001E3000 /* LoginPresenter.swift */,
+				E992662627CD071000E15581 /* LoginPresenterLogicProtocol.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -568,6 +617,7 @@
 			isa = PBXGroup;
 			children = (
 				E92157A725C18B7600D42137 /* RegisterPresenter.swift */,
+				E9564A8D27CF81080083FA9F /* RegisterPresenter+RegisterPresenterLogic.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -584,6 +634,7 @@
 			isa = PBXGroup;
 			children = (
 				E9EE217D268240F500D80414 /* DashBoardPresenter.swift */,
+				E9564A9B27D0E6260083FA9F /* DashBoardPresenter + DashBoardPresenterLogic.swift */,
 				E99B8DFA269491EA005A9032 /* ProjectCreationPresenter.swift */,
 				E9BDF87C270DAE3D009E620F /* ProjectReaderPresenter.swift */,
 				E9BDF887271738F1009E620F /* TaskCreationPresenter.swift */,
@@ -669,7 +720,7 @@
 			isa = PBXGroup;
 			children = (
 				E951029B25B970D20070A91C /* UserAuthenticationService.swift */,
-				E903130125E7C52300CBC228 /* AuthenticationSession.swift */,
+				E903130125E7C52300CBC228 /* FirebaseAuthenticationSession.swift */,
 				E9957E1027A2ADAD0038670A /* AuthenticationSession+HandleError.swift */,
 				E9DD1503276887A600ED2B82 /* KeyChainManager.swift */,
 			);
@@ -691,6 +742,25 @@
 				E9957E1227A2EED70038670A /* UnsinkableError.swift */,
 			);
 			path = CustomError;
+			sourceTree = "<group>";
+		};
+		E999B05D27C79CAE0054533B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E9564A9327CFB0940083FA9F /* MainLogin */,
+				E9564A8C27CF80760083FA9F /* Register */,
+				E999B06227C7A0090054533B /* Login */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E999B06227C7A0090054533B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E999B06327C7A82D0054533B /* LoginServiceFake.swift */,
+				E999B06027C79DFF0054533B /* LoginPresenterTest.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		E99A03362704E36700C1BCCE /* ProjectReader */ = {
@@ -1022,6 +1092,7 @@
 				E9B4C3A5277A138D0038B243 /* Debouncer.swift in Sources */,
 				E9BDE18F25D3F9B7001E3000 /* LoginPresenter.swift in Sources */,
 				E9CB3AAC25DE77BA009980EC /* Constants.swift in Sources */,
+				E9564A8E27CF81080083FA9F /* RegisterPresenter+RegisterPresenterLogic.swift in Sources */,
 				E951028925B84DF90070A91C /* RegisterViewController.swift in Sources */,
 				E951022C25AF69A50070A91C /* ProjectCreationViewController.swift in Sources */,
 				E9957E1327A2EED70038670A /* UnsinkableError.swift in Sources */,
@@ -1080,11 +1151,12 @@
 				E91DB50F2643FBBD0035889A /* CustomResponse.swift in Sources */,
 				E92C356F25A5EBA8001F2819 /* AppDelegate.swift in Sources */,
 				E951029225B8BA9F0070A91C /* Regex.swift in Sources */,
-				E903130225E7C52300CBC228 /* AuthenticationSession.swift in Sources */,
+				E903130225E7C52300CBC228 /* FirebaseAuthenticationSession.swift in Sources */,
 				E99A033A270594B600C1BCCE /* ProjectReaderVC+TableViewDelegate.swift in Sources */,
 				E99B8DFB269491EA005A9032 /* ProjectCreationPresenter.swift in Sources */,
 				E9C9C58A26A9400E00080E45 /* CustomProjectCell.swift in Sources */,
 				E9957E1127A2ADAD0038670A /* AuthenticationSession+HandleError.swift in Sources */,
+				E992662727CD071000E15581 /* LoginPresenterLogicProtocol.swift in Sources */,
 				E95D38A227B40C4D00A64F0F /* EmptyView.swift in Sources */,
 				E9FE31EC269FAA8F00DF2532 /* CustomTaskTableViewCell.swift in Sources */,
 				E9EE2182268373BD00D80414 /* ProjectCreationViewController+UITextFieldDelegate.swift in Sources */,
@@ -1094,6 +1166,7 @@
 				E90312F725E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift in Sources */,
 				E94BA62026285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift in Sources */,
 				E9EE21792682275400D80414 /* CustomAppleSignIn.swift in Sources */,
+				E9564A9C27D0E6260083FA9F /* DashBoardPresenter + DashBoardPresenterLogic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1102,9 +1175,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				E976F3DA26397A60000F9BC6 /* AuthenticationSessionFake.swift in Sources */,
+				E9564A9227CF85710083FA9F /* RegisterServiceFake.swift in Sources */,
 				E92EEEE9264AC485005C247F /* FakeStorage.swift in Sources */,
+				E999B06427C7A82D0054533B /* LoginServiceFake.swift in Sources */,
 				E97B7FE5279F066E00BACA3B /* FakeCustomResponse.swift in Sources */,
+				E9564A9527CFB0A10083FA9F /* MainLoginPresenterTest.swift in Sources */,
+				E9564A9A27CFB2CB0083FA9F /* ProjectSessionTest.swift in Sources */,
+				E999B06127C79DFF0054533B /* LoginPresenterTest.swift in Sources */,
+				E9564A9027CF83CD0083FA9F /* RegisterPresenterTest.swift in Sources */,
 				E94BA63426317673003AC914 /* UserAuthenticationServiceTest.swift in Sources */,
+				E9564A9827CFB2520083FA9F /* ProjectSessionFake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

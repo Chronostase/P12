@@ -1,5 +1,5 @@
 //
-//  UserAuthentification.swift
+//  UserAuthentication.swift
 //  Unsinkable
 //
 //  Created by Thomas on 21/01/2021.
@@ -11,10 +11,10 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 
-protocol AuthentificationLogic {
+protocol AuthenticationLogic {
     func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String, callback: @escaping (Result<Void, UnsinkableError>) -> Void)
     
-    func storeUser(_ customResponse: CustomResponse, firstName: String,_ name: String, callback: @escaping (UnsinkableError?) -> Void)
+    func storeUser(_ customResponse: CustomResponse, firstName: String,_ name: String, callback: @escaping (Result<Void, UnsinkableError>) -> Void)
     
     func loginUser(_ email: String,_ password: String, callback: @escaping (Result<CustomResponse?, UnsinkableError>) -> Void )
     
@@ -33,23 +33,14 @@ protocol AuthentificationLogic {
     
 }
 
-class UserAuthentificationService: AuthentificationLogic {
+class UserAuthenticationService: AuthenticationLogic {
     
-    let session: AuthenticationSession
+    let session: FirebaseAuthenticationSession
     
-    init(session: AuthenticationSession = AuthenticationSession()) {
+    init(session: FirebaseAuthenticationSession = FirebaseAuthenticationSession()) {
         self.session = session
     }
     
-    func updateUser(_ user: UserDetails?, _ firstName: String,_ name: String,_ email: String, completion: @escaping (UnsinkableError?) -> Void) {
-        self.session.updateUser(user, firstName, name, email) { error in
-            if error != nil {
-                completion(error)
-            } else {
-                completion(nil)
-            }
-        }
-    }
     
     func loginUser(_ email: String, _ password: String, callback: @escaping (Result<CustomResponse?, UnsinkableError>) -> Void ) {
         
@@ -57,16 +48,10 @@ class UserAuthentificationService: AuthentificationLogic {
             if error != nil {
                 guard let error = error else { return }
                 callback(.failure(error))
-                print("An Error append")
             } else {
                 callback(.success(result))
-                print("successfully log")
             }
         }
-    }
-    
-    func logOut() -> Bool {
-        return session.logOutUser()
     }
     
     func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String, callback: @escaping (Result<Void, UnsinkableError>) -> Void) {
@@ -77,52 +62,19 @@ class UserAuthentificationService: AuthentificationLogic {
                 callback(.failure(error))
             } else {
                 guard let customResponse = result else { return }
-                self.storeUser(customResponse, firstName: firstName, name) { (error) in
-                    if error != nil {
-                        guard let error = error else {return}
-                        callback(.failure(error))
-                    } else {
-                        callback(.success(()))
-                    }
-                }
+                self.storeUser(customResponse, firstName: firstName, name, callback: callback)
             }
         }
     }
     
-    //Store user in Firebase Storage
-    func storeUser(_ customResponse: CustomResponse, firstName: String,_ name: String, callback: @escaping (UnsinkableError?) -> Void) {
+    func storeUser(_ customResponse: CustomResponse, firstName: String,_ name: String, callback: @escaping (Result<Void, UnsinkableError>) -> Void) {
         self.session.addUserToDataBase(customResponse: customResponse, firstName, name) { (error) in
             
             if error != nil {
                 guard let error = error else { return }
-                callback(error)
+                callback(.failure(error))
             } else {
-                callback(nil)
-            }
-        }
-    }
-    
-    
-    func deleteUser(_ user: UserDetails, completion: @escaping (UnsinkableError?) -> Void) {
-        session.deleteUser(user) { error in
-            if error != nil {
-                guard let error = error else {return}
-                completion(error)
-            } else {
-                completion(nil)
-            }
-        }
-    }
-    
-    
-    
-    func getUserData(completion: @escaping (Result<CustomResponse?, UnsinkableError>) -> Void) {
-        self.session.fetchUserFirestoreData { (customResponse, error) in
-            if error != nil {
-                guard let error = error else { return }
-                completion(.failure(error))
-            } else {
-                completion(.success(customResponse))
+                callback(.success(()))
             }
         }
     }
@@ -138,6 +90,42 @@ class UserAuthentificationService: AuthentificationLogic {
         }
     }
     
+    func getUserData(completion: @escaping (Result<CustomResponse?, UnsinkableError>) -> Void) {
+        self.session.fetchUserFirestoreData { (customResponse, error) in
+            if error != nil {
+                guard let error = error else { return }
+                completion(.failure(error))
+            } else {
+                completion(.success(customResponse))
+            }
+        }
+    }
+
+    func updateUser(_ user: UserDetails?, _ firstName: String,_ name: String,_ email: String, completion: @escaping (UnsinkableError?) -> Void) {
+        self.session.updateUser(user, firstName, name, email) { error in
+            if error != nil {
+                completion(error)
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
+    func deleteUser(_ user: UserDetails, completion: @escaping (UnsinkableError?) -> Void) {
+        session.deleteUser(user) { error in
+            if error != nil {
+                guard let error = error else {return}
+                completion(error)
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
+    func logOut() -> Bool {
+        return session.logOutUser()
+    }
+        
     func isUserLogin() -> Bool {
         return session.isCurrentUserLogin()
     }
