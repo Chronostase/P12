@@ -8,56 +8,72 @@
 import Foundation
 import XCTest
 
+
+
 class LoginPresenterTest: XCTestCase {
     
-    lazy var loginPresenter = {
-        return LoginPresenter(session: LoginServiceFake())
-    }()
+    var loginPresenter: LoginPresenter?
+    var loginService: LoginServiceFake?
+    var isCorrect: Bool?
     
-    var fakeStorage: FakeStorage!
-    
-    
-//    var loginService: LoginServiceFake {
-//        return LoginServiceFake()
-//    }
-    override class func setUp() {
+    override func setUp() {
         super.setUp()
-        UserAuthenticationServiceTest.fakeStorage = []
+        initData()
     }
-    override class func tearDown() {
+    override func tearDown() {
         super.tearDown()
-        UserAuthenticationServiceTest.fakeStorage = []
+        resetData()
+    }
+    
+    private func initData() {
+        isCorrect = Bool()
+        loginService = LoginServiceFake()
+        loginPresenter = LoginPresenter(session: loginService!)
+        loginPresenter?.delegate = self
+    }
+    private func resetData() {
+        isCorrect = nil
+        loginPresenter = nil
+        loginService = nil
+        
     }
     
     func testEmailShouldFailIfIsNil() {
-        XCTAssertFalse(loginPresenter.isEmailValid(nil))
+        guard let value = loginPresenter?.isEmailValid(nil) else {return}
+        XCTAssertFalse(value)
     }
     
     func testIsEmailValidShouldWorkIfCorrectEmail() {
-        XCTAssertTrue(loginPresenter.isEmailValid("thomas.giron@gmail.fr"))
+        guard let value = loginPresenter?.isEmailValid("thomas.giron@gmail.fr") else {return}
+        XCTAssertTrue(value)
     }
     
     func testIsEmailValidShouldFailedIfIncorrectEmail() {
-        XCTAssertFalse(loginPresenter.isEmailValid("XXXX"))
+        guard let value = loginPresenter?.isEmailValid("XXXX") else {return}
+        XCTAssertFalse(value)
     }
     
     func testIsFieldsAvailableShouldFailIfNil() {
-        XCTAssertFalse(loginPresenter.isTextFieldAvailable(nil, nil))
+        guard let value = loginPresenter?.isTextFieldAvailable(nil, nil) else {return}
+        XCTAssertFalse(value)
     }
     func testIsFieldsAvailableShouldWorkIfCorrectFields() {
-        XCTAssertTrue(loginPresenter.isTextFieldAvailable("Something@outlook.fr", "XXXXXXX"))
+        guard let value = loginPresenter?.isTextFieldAvailable("Something@outlook.fr", "XXXXXX") else {return}
+        XCTAssertTrue(value)
     }
 
     func testIsFieldsAvailableShoulNotdWorkIfIncorrectFields() {
-        XCTAssertFalse(loginPresenter.isTextFieldAvailable("Something@outlook.fr", ""))
+        guard let value = loginPresenter?.isTextFieldAvailable("Something@outlook.fr", "") else {return}
+        XCTAssertFalse(value)
     }
 
     func testIsFieldsAvailableShoulNocorrectFields() {
-        XCTAssertFalse(loginPresenter.isTextFieldAvailable("", ""))
+            guard let value = loginPresenter?.isTextFieldAvailable("", "") else {return}
+        XCTAssertFalse(value)
     }
     
     func testLoginUserShouldWorkIfCorrectCredential() {
-        loginPresenter.logUser("test@gmail.fr", "12345678") { result in
+        loginPresenter?.logUser("test@gmail.fr", "12345678") { result in
             switch result {
             case .success(let customResponse):
                 XCTAssertNotNil(customResponse)
@@ -69,7 +85,7 @@ class LoginPresenterTest: XCTestCase {
     }
     
     func testLoginUserShouldFailedIfIncorrectCredential() {
-        loginPresenter.logUser("Uncorrect@gmail.fr", "1ZRCZFE") { result in
+        loginPresenter?.logUser("Uncorrect@gmail.fr", "1ZRCZFE") { result in
             switch result {
             case .success(let customResponse):
                 XCTAssertNil(customResponse)
@@ -82,7 +98,7 @@ class LoginPresenterTest: XCTestCase {
     
     func testLoginUserShouldFailedIfInvalidFields() {
         //Need to see if i can assert delegate
-        loginPresenter.logUser("", "") { result in
+        loginPresenter?.logUser("", "") { result in
             switch result {
             case .success(let customResponse):
                 XCTAssertNil(customResponse)
@@ -97,7 +113,7 @@ class LoginPresenterTest: XCTestCase {
     //See to replace by Delegate assert
     func testLoginUserShouldFailedIfInvalidEmail() {
         //see to assert Delegate
-        loginPresenter.logUser("somethingincorrect", "efzegf") { result in
+        loginPresenter?.logUser("somethingincorrect", "efzegf") { result in
             switch result {
             case .success(let customResponse):
                 XCTAssertNil(customResponse)
@@ -108,15 +124,32 @@ class LoginPresenterTest: XCTestCase {
     }
     
     func testLoginShouldWorkIfCorrectCredential() {
-        loginPresenter.login("test@gmail.fr", "12345678")
-    
+        loginPresenter?.login("test@gmail.fr", "12345678")
+        guard let value = isCorrect else {return}
+        XCTAssertTrue(value)
+        
+
     }
-    
+
     func testLoginShouldFailedIfInorrectCredential() {
-        loginPresenter.login("testingthing@gmail.com", "345678")
-    
+        loginPresenter?.login("testingthing@gmail.com", "345678")
+        guard let value = isCorrect else {return}
+        XCTAssertFalse(value)
+
     }
+}
 
-
-
+extension LoginPresenterTest: LoginPresenterDelegate {
+    
+    func loginSucceed() {
+        isCorrect = true
+    }
+    
+    func loginFailed(_ message: String?) {
+        isCorrect = false
+    }
+    
+    func emptyFields() {
+        isCorrect = false
+    }
 }

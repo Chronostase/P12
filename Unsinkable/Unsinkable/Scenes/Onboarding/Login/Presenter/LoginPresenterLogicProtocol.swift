@@ -37,16 +37,12 @@ extension LoginPresenter: LoginPresenterLogic {
                 service.loginUser(email, password) { [weak self] result in
                     switch result {
                     case .success(let customResponse):
-//                        self?.delegate?.loginSucceed()
-//                        return
                         callback(.success(customResponse))
                         return
                         
                     case .failure(let error):
-//                        guard let errorMessage = error.errorDescription else {return}
-//                        self?.delegate?.loginFailed(errorMessage)
-//                        return
                         callback(.failure(error))
+                        return 
                     }
                 }
             } else {

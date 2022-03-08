@@ -9,92 +9,173 @@ import XCTest
 import Foundation
 
 class RegisterPresenterTest: XCTestCase {
-    var fakeUser: FakeUserDetails!
+
+    var registerPresenter: RegisterPresenter?
+    var registerService: RegisterServiceFake?
+    var isCorrect: Bool?
     
-    lazy var registerPresenter = {
-        return RegisterPresenter(session: RegisterServiceFake())
-    }()
-    
-    override class func setUp() {
+    override func setUp() {
         super.setUp()
-        UserAuthenticationServiceTest.fakeStorage = []
+        initData()
+    }
+    override func tearDown() {
+        super.tearDown()
+        resetData()
     }
     
-    override class func tearDown() {
-        super.tearDown()
-        UserAuthenticationServiceTest.fakeStorage = []
+    private func initData() {
+        isCorrect = Bool()
+        registerService = RegisterServiceFake()
+        registerPresenter = RegisterPresenter(session: registerService!)
+        registerPresenter?.registerDelegate = self 
+    }
+    private func resetData() {
+        isCorrect = nil
+        registerPresenter = nil
+        registerService = nil
+        
     }
     
     func testIsEmailValidShouldWorkIfCorrectEmail() {
-        XCTAssertTrue(registerPresenter.isEmailValid("thomas.giron@gmail.fr"))
+        guard let value = registerPresenter?.isEmailValid("thomas.giron@gmail.fr") else {return}
+        XCTAssertTrue(value)
     }
     
     func testIsEmailValidShouldFailedIfIncorrectEmail() {
-        XCTAssertFalse(registerPresenter.isEmailValid("XXXXX"))
+        guard let value = registerPresenter?.isEmailValid("XXXXX") else {return}
+        XCTAssertFalse(value)
     }
     
     func testIsEmailValidShouldFailedIfEmailIsNil() {
-        XCTAssertFalse(registerPresenter.isEmailValid(nil))
+        guard let value = registerPresenter?.isEmailValid(nil) else {return}
+        XCTAssertFalse(value)
     }
     
     func testFormatFieldShouldWorkIfCorrectString() {
-            XCTAssertNotNil(registerPresenter.formatFields(string:"Something"))
+        guard let value = registerPresenter?.formatFields(string: "Something") else {return}
+            XCTAssertNotNil(value)
     }
     
     func testFormatFieldShouldFailedIfStringIsNil() {
-        XCTAssertNil(registerPresenter.formatFields(string: nil))
+        guard let value = registerPresenter?.formatFields(string: nil) else {return}
+        XCTAssertNil(value)
     }
     
     func testIsPasswordValidShouldWorkIfCorrectPassword() {
-        XCTAssertTrue(registerPresenter.isPasswordValid(password: "aZerty12!"))
+        guard let value = registerPresenter?.isPasswordValid(password: "aZerty12!") else {return}
+        XCTAssertTrue(value)
     }
     
     func testIsPasswordValidShoulFailIfIncorrectPassword() {
-        XCTAssertFalse(registerPresenter.isPasswordValid(password: "www"))
+        guard let value = registerPresenter?.isPasswordValid(password: "www!") else {return}
+        XCTAssertFalse(value)
     }
     
     func testIsPasswordValidShoulFailIfPasswordIsNil() {
-        XCTAssertFalse(registerPresenter.isPasswordValid(password: nil))
+        guard let value = registerPresenter?.isPasswordValid(password: nil) else {return}
+        XCTAssertFalse(value)
     }
     
     func testIsInformerdFieldShouldWorkIfCorrectString() {
-        XCTAssertTrue(registerPresenter.isInformedField("Something"))
+        guard let value = registerPresenter?.isInformedField("Something") else {return}
+        XCTAssertTrue(value)
     }
     
     func testIsInformedFieldShouldFailIfIncorrectString() {
-        XCTAssertFalse(registerPresenter.isInformedField("a"))
+        guard let value = registerPresenter?.isInformedField("a") else {return}
+        XCTAssertFalse(value)
     }
     
     func testIsInformedFieldShouldFailIfStringIsNil() {
-        XCTAssertFalse(registerPresenter.isInformedField(nil))
+        guard let value = registerPresenter?.isInformedField(nil) else {return}
+        XCTAssertFalse(value)
     }
     
     func testIsAllFieldsValidShouldWorkIfAllCorrectFields() {
-        XCTAssertTrue(registerPresenter.isAllFieldsValid("thomas", "giron", "thomas.giron@gmail.com", "aZerty12!"))
+        guard let value = registerPresenter?.isAllFieldsValid("thomas", "giron", "thomas.giron@gmail.com", "aZerty12!") else {return}
+        XCTAssertTrue(value)
     }
     
     func testIsAllFieldsValidShouldFailIfFieldIsMissing() {
-        XCTAssertFalse(registerPresenter.isAllFieldsValid(nil, "giron", "thomas.giron@gmail.com", "aZerty12!"))
+        guard let value = registerPresenter?.isAllFieldsValid(nil, "giron", "thomas.giron@gmail.com", "aZerty12!") else {return}
+        XCTAssertFalse(value)
     }
     
     func testIsAllFieldsValidShouldFailIfIncorrectEmail() {
-        XCTAssertFalse(registerPresenter.isAllFieldsValid("thomas", "giron", "thomas.girongmail.com", "aZerty12!"))
+        guard let value = registerPresenter?.isAllFieldsValid("thomas", "giron", "thomas.girongmail.com", "aZerty12!") else {return}
+        XCTAssertFalse(value)
     }
     
     func testIsAllFieldsValidShouldFailIfIncorrectPassword() {
-        XCTAssertFalse(registerPresenter.isAllFieldsValid("thomas", "giron", "thomas.giron@gmail.com", "aZe!"))
+        guard let value = registerPresenter?.isAllFieldsValid("thomas", "giron", "thomas.giron@gmail.com", "aZe!") else {return}
+        XCTAssertFalse(value)
     }
     
     func testRegisterUserShouldWorkIfCorrectFields() {
-        registerPresenter.registerUser("thomas", "giron", "thomas.giron@gmail.com", "azertY12!")
-    }
-    
-    func testRegisterUserShouldFailIfIncorrectFields() {
-        registerPresenter.registerUser(nil, nil, nil, nil)
+        //Should work
+        registerService?.database.users?.append(FakeCustomResponse(user: FakeUserDetails(email: "non@gmail.com", password: "azert", firstName: "Jean", name: "Duj", userId: "AEIO", projects: nil)))
+        registerPresenter?.registerUser("thomas", "giron", "thomas.giron@gmail.com", "azertY12!") { result in
+            switch result {
+            case .success(let void):
+                XCTAssertNotNil(void)
+            case .failure(let error):
+                XCTAssertNil(error)
+            }
+        }
     }
     
     func testRegisterUserShouldFailIfEmailAlreadyUsed() {
-        registerPresenter.registerUser("thomas", "giron", "thomas.giron@gmail.fr", "AzertyuiU12!")
+        registerService?.database.users?.append(FakeCustomResponse(user: FakeUserDetails(email: "thomas.giron@gmail.fr", password: "azert", firstName: "Jean", name: "Duj", userId: "AEIO", projects: nil)))
+        
+        registerPresenter?.registerUser("thomas", "giron", "thomas.giron@gmail.fr", "AzertyuiU12!") { result in
+            switch result {
+            case .success(let void):
+                XCTAssertNil(void)
+            case .failure(let error):
+                XCTAssertNotNil(error)
+            }
+        }
     }
+    
+    func testRegisterWithShouldWorkIfCorrectUser() {
+        registerService?.database.users?.append(FakeCustomResponse(user: FakeUserDetails(email: "thomas.giron@gmail.fr", password: "azert", firstName: "Jean", name: "Duj", userId: "AEIO", projects: nil)))
+        
+        registerPresenter?.registerWith("thomas", "giron", "thomas.giron@gmail.com", "azertY12!")
+        guard let value = isCorrect else {return}
+        XCTAssertTrue(value)
+    }
+    
+    func testRegisterWithShouldFailedIfIncorrectUser() {
+        registerService?.database.users?.append(FakeCustomResponse(user: FakeUserDetails(email: "thomas.giron@gmail.fr", password: "azert", firstName: "Jean", name: "Duj", userId: "AEIO", projects: nil)))
+        
+        registerPresenter?.registerWith("thomas", "Duj", "thomas.giron@gmail.fr", "azertyUIO12!")
+        guard let value = isCorrect else {return}
+        XCTAssertFalse(value)
+    }
+    
+}
+
+extension RegisterPresenterTest: RegisterPresenterDelegate {
+    func registerComplete(_ result: Result<Void, UnsinkableError>) {
+        switch result {
+        case .success(()):
+            isCorrect = true
+        case . failure(_):
+            isCorrect = false
+        }
+    }
+    
+    func empltyFields() {
+        isCorrect = false
+    }
+    
+    func invalidPassword() {
+        isCorrect = false
+    }
+    
+    func invalidEmail() {
+        isCorrect = false
+    }
+    
     
 }

@@ -7,48 +7,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C8F7F343-E8F6-4D17-8238-FAD6F0D1944D"
+            uuid = "B79E8BBB-7330-4F1E-9321-ED747D10EB0F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "UnsinkableTests/ServiceTest/Project/ProjectSessionTest.swift"
+            filePath = "UnsinkableTests/Presenter/Register/RegisterPresenterTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "tearDown()"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "testRegisterUserShouldWorkIfCorrectFields()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B7F4E194-17D4-4B7D-8B1B-8138B71732E1"
+            uuid = "ACF7B892-CF9E-4A2E-989F-0B9AC2BEFD45"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "UnsinkableTests/ServiceTest/Project/ProjectSessionTest.swift"
+            filePath = "UnsinkableTests/Presenter/Register/RegisterPresenterTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "setUp()"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "testRegisterUserShouldWorkIfCorrectFields()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "52F49451-6AD1-49E3-B198-AE0182548F16"
+            uuid = "09FB3280-A642-41CF-B724-7CE998A03455"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "UnsinkableTests/ServiceTest/Project/ProjectSessionTest.swift"
+            filePath = "UnsinkableTests/Presenter/Register/RegisterPresenterTest.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "setUp()"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "testRegisterUserShouldFailIfEmailAlreadyUsed()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7AEA40DC-F836-49E5-873D-5F6B8C02877C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UnsinkableTests/Presenter/Register/RegisterPresenterTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "testRegisterUserShouldFailIfEmailAlreadyUsed()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
