@@ -32,7 +32,6 @@ class RegisterPresenter {
         self.service = session
     }
     
-    #warning("Second Use case of protocol, probably the way it supose to work, issue: Don't know what to assert While testing")
     func registerWith(_ firstname: String?,_ name: String?,_ email: String?,_ password: String?) {
         registerUser(firstname, name, email, password) { result in
             switch result {

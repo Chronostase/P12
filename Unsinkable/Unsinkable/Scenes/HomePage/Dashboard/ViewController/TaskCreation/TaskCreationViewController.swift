@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class TaskCreationViewController: UIViewController {
-    
+    #warning("Virer les lorem ipsum description creation PJ lecture ")
     // MARK: Properties
     weak var coordinator: HomeCoordinator?
     lazy var taskCreationPresenter = {
@@ -185,15 +185,11 @@ class TaskCreationViewController: UIViewController {
         } else {
             isDeadLineViewIsNeeded(false)
         }
-        if task.commentary != "" {
-            if task.commentary == Constants.Label.commentaryPlaceHolder {
-                self.commentaryTextView.text = task.commentary
-                self.commentaryTextView.textColor = .placeholderText
-            } else {
-                self.commentaryTextView.text = task.commentary
-            }
+        if task.commentary == Constants.Label.commentaryPlaceHolder {
+            self.commentaryTextView.text = task.commentary
+            self.commentaryTextView.textColor = .placeholderText
         } else {
-            self.commentaryTextView.isHidden = true 
+            self.commentaryTextView.text = task.commentary
         }
     }
     

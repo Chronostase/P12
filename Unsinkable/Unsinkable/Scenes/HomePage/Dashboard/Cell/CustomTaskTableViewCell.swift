@@ -24,6 +24,7 @@ class CustomTaskTableViewCell: UITableViewCell {
     
     weak var delegate: CustomTaskTableViewCellDelegate?
     var task: Task?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -35,10 +36,17 @@ class CustomTaskTableViewCell: UITableViewCell {
     @IBAction func checkMarkButton(_ sender: UIButton) {
         delegate?.tapCheckMarkButton(task)
     }
-    @IBAction func priorityButton(_ sender: UIButton) {
-    }
     
     func configure() {
+        self.priorityButton.isUserInteractionEnabled = false
         self.taskTitle.text = task?.title
+        
+        if let priority = task?.priority {
+            if priority == true {
+                self.priorityButton.tintColor = UIColor.red
+            } else {
+                self.priorityButton.tintColor = .blue
+            }
+        }
     }
 }

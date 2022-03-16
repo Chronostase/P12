@@ -9,6 +9,7 @@ import Foundation
 
 
 class ProjectReaderPresenter {
+    #warning("Priority level isn't handle, color flag in selection or sort TBV by priority level")
     weak var delegate: ProjectManagerDelegate?
     
     let projectService: ProjectLogic = ProjectService()

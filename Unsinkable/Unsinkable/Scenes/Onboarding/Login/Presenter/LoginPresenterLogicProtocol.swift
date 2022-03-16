@@ -34,7 +34,7 @@ extension LoginPresenter: LoginPresenterLogic {
                 return
             }
             if isEmailValid(email) {
-                service.loginUser(email, password) { [weak self] result in
+                service.loginUser(email, password) { result in
                     switch result {
                     case .success(let customResponse):
                         callback(.success(customResponse))

@@ -36,6 +36,15 @@ class ProjectCreationViewController: UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        self.navigationController?.navigationBar.isHidden = false
+        DispatchQueue.main.async {
+            self.setUpUI()
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         IQKeyboardManager.shared.enable = false
@@ -57,20 +66,11 @@ class ProjectCreationViewController: UIViewController {
             return
         }
         self.showLoader()
-        projectCreationPresenter.registerProject(projectTextField.text, projectTextView.text, imageData)
+        projectCreationPresenter.saveProject(projectTextField.text, projectTextView.text, imageData)
     }
     
     @IBAction func addCoverPicture(_ sender: UIButton) {
         imagePicker()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        self.navigationController?.navigationBar.isHidden = false
-        DispatchQueue.main.async {
-            self.setUpUI()
-        }
     }
     
     private func hideMoreDetail() {
@@ -92,6 +92,7 @@ class ProjectCreationViewController: UIViewController {
         projectTextField.delegate = self
         taskTableView.dataSource = self
         taskTableView.delegate = self
+        projectTextView.delegate = self
         projectCreationPresenter.delegate = self
     }
     
@@ -137,6 +138,8 @@ class ProjectCreationViewController: UIViewController {
     }
     
     private func setUpUI() {
+        projectTextView.text = Constants.Label.descriptionPlaceHolder
+        projectTextView.textColor = .placeholderText
         finishButton.setTitle(Constants.Button.finish, for: .normal)
     }
     

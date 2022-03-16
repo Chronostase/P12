@@ -57,7 +57,11 @@ extension ProjectCreationViewController: ProjectManagerDelegate {
         switch result {
         case .success(()):
             print("It succeed")
-            self.navigationController?.popViewController(animated: true)
+            DispatchQueue.main.async {
+                self.navigationController?.dismiss(animated: true, completion: {
+                    self.navigationController?.popViewController(animated: true)
+                })
+            }
         case .failure(let error):
             self.navigationController?.dismiss(animated: true, completion: {
                 guard let messageBody = error.errorDescription else {return}

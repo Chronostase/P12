@@ -103,6 +103,13 @@
 		E9C9C58A26A9400E00080E45 /* CustomProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9C58926A9400E00080E45 /* CustomProjectCell.swift */; };
 		E9CB3AA725DD7A5C009980EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9CB3AA625DD7A5C009980EC /* Assets.xcassets */; };
 		E9CB3AAC25DE77BA009980EC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB3AAB25DE77BA009980EC /* Constants.swift */; };
+		E9CD860827E0D1CC00DF5D2D /* ProjectCreationViewController+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD860727E0D1CB00DF5D2D /* ProjectCreationViewController+UITextView.swift */; };
+		E9CD861027E0DC5B00DF5D2D /* DashboardPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD860F27E0DC5B00DF5D2D /* DashboardPresenterTest.swift */; };
+		E9CD861227E0E42800DF5D2D /* DashBoardServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD861127E0E42800DF5D2D /* DashBoardServiceFake.swift */; };
+		E9CD861527E23B6200DF5D2D /* ProjectCreationServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD861427E23B6200DF5D2D /* ProjectCreationServiceFake.swift */; };
+		E9CD861727E23B7100DF5D2D /* ProjectCreationPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD861627E23B7100DF5D2D /* ProjectCreationPresenterTest.swift */; };
+		E9CD861927E2431500DF5D2D /* ProjectCreatonPresenter+ProjectCreationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD861827E2431500DF5D2D /* ProjectCreatonPresenter+ProjectCreationLogic.swift */; };
+		E9CD861C27E2647E00DF5D2D /* ProjectManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD861B27E2647E00DF5D2D /* ProjectManagerDelegate.swift */; };
 		E9CDF024265D26C2000D1FEA /* NotificationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CDF023265D26C2000D1FEA /* NotificationCoordinator.swift */; };
 		E9D6076926847083005AC9EB /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6076826847083005AC9EB /* CustomView.swift */; };
 		E9D6076D26848BCA005AC9EB /* StackViewShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6076C26848BCA005AC9EB /* StackViewShadow.swift */; };
@@ -236,6 +243,13 @@
 		E9C9C58926A9400E00080E45 /* CustomProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProjectCell.swift; sourceTree = "<group>"; };
 		E9CB3AA625DD7A5C009980EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9CB3AAB25DE77BA009980EC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		E9CD860727E0D1CB00DF5D2D /* ProjectCreationViewController+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectCreationViewController+UITextView.swift"; sourceTree = "<group>"; };
+		E9CD860F27E0DC5B00DF5D2D /* DashboardPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenterTest.swift; sourceTree = "<group>"; };
+		E9CD861127E0E42800DF5D2D /* DashBoardServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardServiceFake.swift; sourceTree = "<group>"; };
+		E9CD861427E23B6200DF5D2D /* ProjectCreationServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreationServiceFake.swift; sourceTree = "<group>"; };
+		E9CD861627E23B7100DF5D2D /* ProjectCreationPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreationPresenterTest.swift; sourceTree = "<group>"; };
+		E9CD861827E2431500DF5D2D /* ProjectCreatonPresenter+ProjectCreationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectCreatonPresenter+ProjectCreationLogic.swift"; sourceTree = "<group>"; };
+		E9CD861B27E2647E00DF5D2D /* ProjectManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerDelegate.swift; sourceTree = "<group>"; };
 		E9CDF023265D26C2000D1FEA /* NotificationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCoordinator.swift; sourceTree = "<group>"; };
 		E9D6076826847083005AC9EB /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		E9D6076C26848BCA005AC9EB /* StackViewShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewShadow.swift; sourceTree = "<group>"; };
@@ -504,6 +518,7 @@
 				E95AF9112678E26B00BD1AF8 /* StoryBoard */,
 				E95AF9102678E26500BD1AF8 /* ViewController */,
 				E95AF90F2678E26000BD1AF8 /* Presenter */,
+				E9CD861A27E2646600DF5D2D /* ProjectManagerDelegate */,
 				E9C2218425AE1320001216F5 /* Cell */,
 				E9EE217A26823F8E00D80414 /* Service */,
 				E95AF90E2678E24300BD1AF8 /* TabBar */,
@@ -633,12 +648,11 @@
 		E95AF90F2678E26000BD1AF8 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				E9EE217D268240F500D80414 /* DashBoardPresenter.swift */,
-				E9564A9B27D0E6260083FA9F /* DashBoardPresenter + DashBoardPresenterLogic.swift */,
-				E99B8DFA269491EA005A9032 /* ProjectCreationPresenter.swift */,
-				E9BDF87C270DAE3D009E620F /* ProjectReaderPresenter.swift */,
-				E9BDF887271738F1009E620F /* TaskCreationPresenter.swift */,
-				E9217B02277B315B00356718 /* UpdateProjectPresenter.swift */,
+				E9CD860927E0D4BB00DF5D2D /* DashBoard */,
+				E9CD860A27E0D4F200DF5D2D /* ProjectCreation */,
+				E9CD860B27E0D4FF00DF5D2D /* TaskCreation */,
+				E9CD860D27E0D51C00DF5D2D /* ProjectReader */,
+				E9CD860C27E0D50800DF5D2D /* UpdateProject */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -647,7 +661,7 @@
 			isa = PBXGroup;
 			children = (
 				E99B8DEB268F0690005A9032 /* DashBoard */,
-				E99B8DEC268F06A5005A9032 /* ProjectCreation */,
+				E99B8DF926949121005A9032 /* ProjectCreation */,
 				E99A03362704E36700C1BCCE /* ProjectReader */,
 				E9BDF88027173320009E620F /* TaskCreation */,
 				E9217AFD277B288300356718 /* ProjectUpdate */,
@@ -750,6 +764,8 @@
 				E9564A9327CFB0940083FA9F /* MainLogin */,
 				E9564A8C27CF80760083FA9F /* Register */,
 				E999B06227C7A0090054533B /* Login */,
+				E9CD860E27E0D95D00DF5D2D /* Dashboard */,
+				E9CD861327E23B2700DF5D2D /* ProjectCreation */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -785,14 +801,6 @@
 			path = DashBoard;
 			sourceTree = "<group>";
 		};
-		E99B8DEC268F06A5005A9032 /* ProjectCreation */ = {
-			isa = PBXGroup;
-			children = (
-				E99B8DF926949121005A9032 /* ProjectCreation */,
-			);
-			path = ProjectCreation;
-			sourceTree = "<group>";
-		};
 		E99B8DF926949121005A9032 /* ProjectCreation */ = {
 			isa = PBXGroup;
 			children = (
@@ -800,8 +808,10 @@
 				E9C9C587269FC57900080E45 /* ProjectCreationViewController+Delegate.swift */,
 				E9EE2181268373BC00D80414 /* ProjectCreationViewController+UITextFieldDelegate.swift */,
 				E9FE31ED269FAFDC00DF2532 /* ProjectCreationViewController+UITableView.swift */,
+				E9CD860727E0D1CB00DF5D2D /* ProjectCreationViewController+UITextView.swift */,
 			);
-			path = ProjectCreation;
+			name = ProjectCreation;
+			path = ProjectCreation/ProjectCreation;
 			sourceTree = "<group>";
 		};
 		E9BDF88027173320009E620F /* TaskCreation */ = {
@@ -842,6 +852,74 @@
 				E94BA63326317673003AC914 /* UserAuthenticationServiceTest.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		E9CD860927E0D4BB00DF5D2D /* DashBoard */ = {
+			isa = PBXGroup;
+			children = (
+				E9EE217D268240F500D80414 /* DashBoardPresenter.swift */,
+				E9564A9B27D0E6260083FA9F /* DashBoardPresenter + DashBoardPresenterLogic.swift */,
+			);
+			path = DashBoard;
+			sourceTree = "<group>";
+		};
+		E9CD860A27E0D4F200DF5D2D /* ProjectCreation */ = {
+			isa = PBXGroup;
+			children = (
+				E99B8DFA269491EA005A9032 /* ProjectCreationPresenter.swift */,
+				E9CD861827E2431500DF5D2D /* ProjectCreatonPresenter+ProjectCreationLogic.swift */,
+			);
+			path = ProjectCreation;
+			sourceTree = "<group>";
+		};
+		E9CD860B27E0D4FF00DF5D2D /* TaskCreation */ = {
+			isa = PBXGroup;
+			children = (
+				E9BDF887271738F1009E620F /* TaskCreationPresenter.swift */,
+			);
+			path = TaskCreation;
+			sourceTree = "<group>";
+		};
+		E9CD860C27E0D50800DF5D2D /* UpdateProject */ = {
+			isa = PBXGroup;
+			children = (
+				E9217B02277B315B00356718 /* UpdateProjectPresenter.swift */,
+			);
+			path = UpdateProject;
+			sourceTree = "<group>";
+		};
+		E9CD860D27E0D51C00DF5D2D /* ProjectReader */ = {
+			isa = PBXGroup;
+			children = (
+				E9BDF87C270DAE3D009E620F /* ProjectReaderPresenter.swift */,
+			);
+			path = ProjectReader;
+			sourceTree = "<group>";
+		};
+		E9CD860E27E0D95D00DF5D2D /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				E9CD861127E0E42800DF5D2D /* DashBoardServiceFake.swift */,
+				E9CD860F27E0DC5B00DF5D2D /* DashboardPresenterTest.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		E9CD861327E23B2700DF5D2D /* ProjectCreation */ = {
+			isa = PBXGroup;
+			children = (
+				E9CD861427E23B6200DF5D2D /* ProjectCreationServiceFake.swift */,
+				E9CD861627E23B7100DF5D2D /* ProjectCreationPresenterTest.swift */,
+			);
+			path = ProjectCreation;
+			sourceTree = "<group>";
+		};
+		E9CD861A27E2646600DF5D2D /* ProjectManagerDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				E9CD861B27E2647E00DF5D2D /* ProjectManagerDelegate.swift */,
+			);
+			path = ProjectManagerDelegate;
 			sourceTree = "<group>";
 		};
 		E9CDF01C265D25BD000D1FEA /* AuthenticationCoordinator */ = {
@@ -1100,12 +1178,14 @@
 				E921576625C05F0000D42137 /* CoordinatorManager.swift in Sources */,
 				E97A877326DFB94000097527 /* UITextView.swift in Sources */,
 				E9553E5525E534F4006101D2 /* CustomTextField.swift in Sources */,
+				E9CD861C27E2647E00DF5D2D /* ProjectManagerDelegate.swift in Sources */,
 				E9217B01277B28D600356718 /* UpdateProjectViewController.swift in Sources */,
 				E921575925C05BA100D42137 /* Coordinator.swift in Sources */,
 				E99A03382704E38100C1BCCE /* ProjectReaderViewController.swift in Sources */,
 				E9EE2180268241D000D80414 /* DashBoardViewController+Delegate.swift in Sources */,
 				E99B8DFD269494DF005A9032 /* ProjectService.swift in Sources */,
 				E9D6076D26848BCA005AC9EB /* StackViewShadow.swift in Sources */,
+				E9CD861927E2431500DF5D2D /* ProjectCreatonPresenter+ProjectCreationLogic.swift in Sources */,
 				E9C9C588269FC57900080E45 /* ProjectCreationViewController+Delegate.swift in Sources */,
 				E9217B09277B483900356718 /* UpdateProjectVC+UITextFieldDelegate.swift in Sources */,
 				E9217B03277B315B00356718 /* UpdateProjectPresenter.swift in Sources */,
@@ -1165,6 +1245,7 @@
 				E9BDF8822717333F009E620F /* TaskCreationViewController.swift in Sources */,
 				E90312F725E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift in Sources */,
 				E94BA62026285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift in Sources */,
+				E9CD860827E0D1CC00DF5D2D /* ProjectCreationViewController+UITextView.swift in Sources */,
 				E9EE21792682275400D80414 /* CustomAppleSignIn.swift in Sources */,
 				E9564A9C27D0E6260083FA9F /* DashBoardPresenter + DashBoardPresenterLogic.swift in Sources */,
 			);
@@ -1174,9 +1255,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9CD861727E23B7100DF5D2D /* ProjectCreationPresenterTest.swift in Sources */,
 				E976F3DA26397A60000F9BC6 /* AuthenticationSessionFake.swift in Sources */,
 				E9564A9227CF85710083FA9F /* RegisterServiceFake.swift in Sources */,
+				E9CD861027E0DC5B00DF5D2D /* DashboardPresenterTest.swift in Sources */,
 				E92EEEE9264AC485005C247F /* FakeStorage.swift in Sources */,
+				E9CD861227E0E42800DF5D2D /* DashBoardServiceFake.swift in Sources */,
 				E999B06427C7A82D0054533B /* LoginServiceFake.swift in Sources */,
 				E97B7FE5279F066E00BACA3B /* FakeCustomResponse.swift in Sources */,
 				E9564A9527CFB0A10083FA9F /* MainLoginPresenterTest.swift in Sources */,
@@ -1184,6 +1268,7 @@
 				E999B06127C79DFF0054533B /* LoginPresenterTest.swift in Sources */,
 				E9564A9027CF83CD0083FA9F /* RegisterPresenterTest.swift in Sources */,
 				E94BA63426317673003AC914 /* UserAuthenticationServiceTest.swift in Sources */,
+				E9CD861527E23B6200DF5D2D /* ProjectCreationServiceFake.swift in Sources */,
 				E9564A9827CFB2520083FA9F /* ProjectSessionFake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

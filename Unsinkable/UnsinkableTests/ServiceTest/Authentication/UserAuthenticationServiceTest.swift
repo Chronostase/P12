@@ -11,7 +11,7 @@ import XCTest
 class UserAuthenticationServiceTest: XCTestCase {
     
     //Move to setup / reset tears down
-    var fakeUser: FakeUserDetails!
+//    var fakeUser: FakeUserDetails!
     var authenticationSessionFake: AuthenticationSessionFake?
     var authenticationService: UserAuthenticationService?
     
@@ -26,34 +26,17 @@ class UserAuthenticationServiceTest: XCTestCase {
     }
     
     private func setupData() {
-        fakeUser = FakeUserDetails()
-        authenticationSessionFake = AuthenticationSessionFake(fakeUser: fakeUser)
+        authenticationSessionFake = AuthenticationSessionFake()
         authenticationService = UserAuthenticationService(session: authenticationSessionFake!)
+        authenticationSessionFake?.fakeUser = FakeUserDetails()
         authenticationSessionFake?.database.users = []
     }
     
     private func resetData() {
         authenticationSessionFake = nil
         authenticationService = nil
+        
     }
-//    static var fakeStorage: [FakeCustomResponse] = []
-//    var authenticationService: UserAuthenticationService {
-//        return UserAuthenticationService(session: AuthenticationSessionFake(fakeUser: fakeUser))
-//    }
-//    
-//    override func setUp() {
-//        super.setUp()
-//        resetStorage()
-//    }
-//    override func tearDown() {
-//        super.tearDown()
-//        resetStorage()
-//    }
-//    
-//    func resetStorage() {
-//        UserAuthenticationServiceTest.fakeStorage = []
-    
-    
     
     // MARK: - Test Login
     
@@ -117,18 +100,6 @@ class UserAuthenticationServiceTest: XCTestCase {
         }
     }
 
-    func testRegisterShouldSucceedIfCorrectAndNewUser() {
-        fakeUser = FakeUserDetails(email: "jean@email.fr", password: "1234", userId: "3x12fbdg")
-        authenticationService?.createUserWithInformations("Jean", "Dujardin", "jea@email.fr", "1234") { (result) in
-            switch result {
-            case .success(let response):
-                XCTAssertNotNil(response)
-            case .failure(let error):
-                XCTAssertNil(error)
-            }
-        }
-    }
-
     func testShouldWorkIfCreateUserSuccessAndStoredUserSuccess() {
         authenticationSessionFake?.fakeUser = FakeUserDetails(email: "vg@outlook.fr", password: "1234", userId: "3XDFR45GT")
         authenticationSessionFake?.database.users?.append(FakeCustomResponse(user: FakeUserDetails(email: "jpp@outlook.fr", password: "12345", userId: "ARGJB1857NFJ")))
@@ -153,7 +124,8 @@ class UserAuthenticationServiceTest: XCTestCase {
 
     func testShouldNotWorkIfCreateUserFailed() {
         authenticationSessionFake?.fakeUser = FakeUserDetails(email: "vg@outlook.fr", password: "1234", userId: "3XDFR45GT")
-        let fakeCustomResponse = FakeCustomResponse(user: fakeUser)
+        guard let customResponse = authenticationSessionFake?.fakeUser else {return}
+        let fakeCustomResponse = FakeCustomResponse(user: customResponse)
         authenticationSessionFake?.database.users?.append(fakeCustomResponse)
         authenticationService?.createUserWithInformations("Victor", "Giron", "vg@outlook.fr", "1234") { (result) in
             switch result {
@@ -178,7 +150,8 @@ class UserAuthenticationServiceTest: XCTestCase {
 
     func testStorageShouldWorkIfCorrectAndNewUser() {
         authenticationSessionFake?.fakeUser = FakeUserDetails(email: "vg@outlook.fr", password: "1234", userId: "3XDFR45GT")
-        let fakeCustomResponse = FakeCustomResponse(user: fakeUser)
+        guard let customResponse = authenticationSessionFake?.fakeUser else {return}
+        let fakeCustomResponse = FakeCustomResponse(user: customResponse)
         authenticationSessionFake?.database.users?.append(fakeCustomResponse)
         authenticationService?.createUserWithInformations("Victor", "Giron", "vg@outook.fr", "1234") { (result) in
             switch result {
@@ -262,8 +235,9 @@ class UserAuthenticationServiceTest: XCTestCase {
             let projectList = [project1, project2]
         let user = CustomResponse(user: UserDetails(email: "test@outlook.fr", firstName: "test", name: "unit", userId: "azerty", projects: projectList))
         authenticationSessionFake?.fakeUser = FakeUserDetails(email: "test@outlook.fr", password: nil, firstName: "test", name: "unit", userId: "azerty", projects: [fakeProject1, fakeProject2])
-
-        authenticationSessionFake?.database.users?.append(FakeCustomResponse(user: fakeUser))
+        guard let customResponse = authenticationSessionFake?.fakeUser else {return}
+        
+        authenticationSessionFake?.database.users?.append(FakeCustomResponse(user: customResponse))
 
         authenticationService?.fetchProjects(user) { result in
             switch result {
@@ -281,8 +255,11 @@ class UserAuthenticationServiceTest: XCTestCase {
         let projectList = [Project]()
         authenticationSessionFake?.fakeUser = FakeUserDetails(email: "test@outlook.fr", password: nil, firstName: "test", name: "unit", userId: "azerty", projects: [])
         let user = CustomResponse(user: UserDetails(email: "test@outlook.fr", firstName: "test", name: "unit", userId: "azerty", projects: projectList))
+        
+        
+        guard let customResponse = authenticationSessionFake?.fakeUser else {return}
 
-        authenticationSessionFake?.database.users?.append(FakeCustomResponse(user: fakeUser))
+        authenticationSessionFake?.database.users?.append(FakeCustomResponse(user: customResponse))
         authenticationService?.fetchProjects(user) { result in
             switch result {
             case .success(let projectList):
@@ -297,17 +274,17 @@ class UserAuthenticationServiceTest: XCTestCase {
     func testUpdateUserShouldWorkIfExistingAndCorrectUser() {
         authenticationSessionFake?.fakeUser = FakeUserDetails(email: "updatedEmail@outlook.fr", password: nil, firstName: "test", name: "unit", userId: "azerty", projects: [])
         let user = CustomResponse(user: UserDetails(email: "updatedEmail@outlook.fr", firstName: "test", name: "unit", userId: "azerty", projects: []))
-        guard let firstName = fakeUser.firstName,
-              let name = fakeUser.name,
-              let email = fakeUser.email else {return}
+        guard let firstName = authenticationSessionFake?.fakeUser?.firstName,
+              let name = authenticationSessionFake?.fakeUser?.name,
+              let email = authenticationSessionFake?.fakeUser?.email else {return}
         authenticationService?.updateUser(user.user, firstName, name, email) { error in
             if error != nil {
                 XCTAssertNotNil(error)
             } else {
                 guard let usersArray = self.authenticationSessionFake?.database.users else {return}
                 for user in usersArray {
-                    if user.user.userId == self.fakeUser.userId {
-                       return XCTAssertEqual(user.user.email, self.fakeUser.email)
+                    if user.user.userId == self.authenticationSessionFake?.fakeUser?.userId {
+                        return XCTAssertEqual(user.user.email, self.authenticationSessionFake?.fakeUser?.email)
                     }
                 }
                 XCTAssertNil(error)
@@ -318,9 +295,9 @@ class UserAuthenticationServiceTest: XCTestCase {
     func testUpdateUserShouldFailedIfInCorrectUserID() {
         authenticationSessionFake?.fakeUser = FakeUserDetails(email: "updatedEmail@outlook.fr", password: nil, firstName: "test", name: "unit", userId: "azerty", projects: [])
         let user = CustomResponse(user: UserDetails(email: "updatedEmail@outlook.fr", firstName: "test", name: "unit", userId: "aaaaa", projects: []))
-        guard let firstName = fakeUser.firstName,
-              let name = fakeUser.name,
-              let email = fakeUser.email else {return}
+        guard let firstName = authenticationSessionFake?.fakeUser?.firstName,
+              let name = authenticationSessionFake?.fakeUser?.name,
+              let email = authenticationSessionFake?.fakeUser?.email else {return}
         authenticationService?.updateUser(user.user, firstName, name, email) { error in
             if error != nil {
                 XCTAssertNotNil(error)

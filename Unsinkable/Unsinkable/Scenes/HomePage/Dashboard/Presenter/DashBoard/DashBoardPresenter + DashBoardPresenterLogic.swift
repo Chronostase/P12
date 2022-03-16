@@ -9,23 +9,24 @@ import Foundation
 
 extension DashBoardPresenter: DashBoardPresenterLogic {
     
-    func getUserData() {
-        userAuthenticationService.getUserData { [weak self] result in
+    func getUserData(completion: @escaping (Result<CustomResponse, UnsinkableError>) -> Void) {
+        service.getUserData { [weak self] result in
             switch result {
             case .success(let customResponse):
                 guard let userData = customResponse else {
                     return
                 }
+                
                 self?.data = userData
-                self?.delegate?.fetchUserDataComplete(.success(userData))
+                completion(.success(userData))
             case.failure(let error):
-                self?.delegate?.fetchUserDataComplete(.failure(error))
+                completion(.failure(error))
             }
         }
     }
     
     func getProjectList() {
-        userAuthenticationService.fetchProjects(data) { [weak self] result in
+        service.fetchProjects(data) { [weak self] result in
             switch result {
             case .success(let projectList):
                 self?.data?.user.projects = projectList

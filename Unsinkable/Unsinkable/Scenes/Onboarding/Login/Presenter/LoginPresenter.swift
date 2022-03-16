@@ -27,7 +27,7 @@ class LoginPresenter {
     init (session: AuthenticationLogic = UserAuthenticationService()) {
         self.service = session
     }
-    #warning("First use case of protocol, probably the wrong one, issue: don't know how to access to case to Assert them")
+    
     func login(_ email: String?,_ password: String?) {
         logUser(email, password) { result in
             switch result {
