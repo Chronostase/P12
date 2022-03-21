@@ -12,7 +12,7 @@ class ProfilViewController: UIViewController {
     
     weak var coordinator: HomeCoordinator?
     lazy var profilPresenter = {
-        return ProfiPresenter()
+        return ProfilPresenter()
     }()
     
     

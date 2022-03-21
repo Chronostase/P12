@@ -19,15 +19,20 @@ protocol ProfilPresenterDelegate: AnyObject {
     func showError(_ message: String)
 }
 
-class ProfiPresenter {
+class ProfilPresenter {
     
     weak var delegate: ProfilPresenterDelegate?
-    let userAuthenticationService: AuthenticationLogic = UserAuthenticationService()
-    let databaseManager: ProjectLogic = ProjectService()
+    let authService: AuthenticationLogic
+    let databaseService: ProjectLogic
     var data: CustomResponse?
     
+    init(authSession: AuthenticationLogic = UserAuthenticationService(), projectSession: ProjectLogic = ProjectService() ) {
+        self.authService = authSession
+        self.databaseService = projectSession
+    }
+    
     func logOut() {
-        if userAuthenticationService.logOut() == true {
+        if authService.logOut() == true {
             self.delegate?.logoutComplete(.success(()))
         } else {
             self.delegate?.logoutComplete(.failure(UnsinkableError.unknowError))
@@ -36,7 +41,7 @@ class ProfiPresenter {
     
     func deleteUser() {
         guard let user = data?.user else {return}
-        userAuthenticationService.deleteUser(user) { error in
+        authService.deleteUser(user) { error in
             if error != nil {
                 guard let error = error else {return}
                 self.delegate?.deleteUserComplete(.failure(error))
@@ -49,7 +54,7 @@ class ProfiPresenter {
     }
     
     func deleteAllUserRef() {
-        databaseManager.deleteAllUserRef(data) { error in
+        databaseService.deleteAllUserRef(data) { error in
             if error != nil {
                 guard let error = error else {return}
                 self.delegate?.deleteAllUSerRefComplete(.failure(error))
@@ -66,7 +71,7 @@ class ProfiPresenter {
         }
         if isEmailValid(email) {
             let user = data?.user
-            userAuthenticationService.updateUser(user, firstName, name, email) { error in
+            authService.updateUser(user, firstName, name, email) { error in
                 if error != nil {
                     guard let error = error else {return}
                     self.delegate?.updateUserComplete(.failure(error))
@@ -79,7 +84,7 @@ class ProfiPresenter {
         }
     }
     
-    private func isEmailValid(_ email: String?) -> Bool {
+    func isEmailValid(_ email: String?) -> Bool {
         guard let email = email else {
             return false
         }

@@ -10,14 +10,18 @@ import Foundation
 class UpdateProjectPresenter {
     
     weak var delegate: ProjectManagerDelegate?
-    let projectService: ProjectLogic = ProjectService()
     var userData: CustomResponse?
     var currentProject: Project?
-    var coverData: Data? 
+    var coverData: Data?
     
+    let service: ProjectLogic
+    
+    init (session: ProjectLogic = ProjectService()) {
+        self.service = session
+    }
     
     func updateProject() {
-        projectService.updateProject(currentProject, userData, coverData) { error in
+        service.updateProject(currentProject, userData, coverData) { error in
             if error != nil {
                 guard let error = error else {return}
                 self.delegate?.updateProjectComplete(.failure(error))

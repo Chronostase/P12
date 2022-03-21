@@ -50,7 +50,7 @@
 		E9564A9827CFB2520083FA9F /* ProjectSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9564A9727CFB2520083FA9F /* ProjectSessionFake.swift */; };
 		E9564A9A27CFB2CB0083FA9F /* ProjectSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9564A9927CFB2CB0083FA9F /* ProjectSessionTest.swift */; };
 		E9564A9C27D0E6260083FA9F /* DashBoardPresenter + DashBoardPresenterLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9564A9B27D0E6260083FA9F /* DashBoardPresenter + DashBoardPresenterLogic.swift */; };
-		E95AF91B2679F21400BD1AF8 /* ProfiPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95AF91A2679F21400BD1AF8 /* ProfiPresenter.swift */; };
+		E95AF91B2679F21400BD1AF8 /* ProfilPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95AF91A2679F21400BD1AF8 /* ProfilPresenter.swift */; };
 		E95AF91D2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95AF91C2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift */; };
 		E95D389427A92ED200A64F0F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95D389327A92ED200A64F0F /* UIView.swift */; };
 		E95D389627A93B0D00A64F0F /* DashBoardVC+SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95D389527A93B0D00A64F0F /* DashBoardVC+SearchBarDelegate.swift */; };
@@ -110,6 +110,17 @@
 		E9CD861727E23B7100DF5D2D /* ProjectCreationPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD861627E23B7100DF5D2D /* ProjectCreationPresenterTest.swift */; };
 		E9CD861927E2431500DF5D2D /* ProjectCreatonPresenter+ProjectCreationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD861827E2431500DF5D2D /* ProjectCreatonPresenter+ProjectCreationLogic.swift */; };
 		E9CD861C27E2647E00DF5D2D /* ProjectManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD861B27E2647E00DF5D2D /* ProjectManagerDelegate.swift */; };
+		E9CD861E27E3416C00DF5D2D /* TaskCreationPresenter+TaskCreationPresenterLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD861D27E3416C00DF5D2D /* TaskCreationPresenter+TaskCreationPresenterLogic.swift */; };
+		E9CD862127E35BCC00DF5D2D /* TaskCreationPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD862027E35BCC00DF5D2D /* TaskCreationPresenterTest.swift */; };
+		E9CD862327E35C1E00DF5D2D /* TaskCreationServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD862227E35C1E00DF5D2D /* TaskCreationServiceFake.swift */; };
+		E9CD862527E372E300DF5D2D /* ProjectReaderPresenter+ProjectReaderPresenterLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD862427E372E300DF5D2D /* ProjectReaderPresenter+ProjectReaderPresenterLogic.swift */; };
+		E9CD862827E3789100DF5D2D /* ProjectReaderPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD862727E3789100DF5D2D /* ProjectReaderPresenterTest.swift */; };
+		E9CD862A27E37AB600DF5D2D /* ProjectReaderServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD862927E37AB600DF5D2D /* ProjectReaderServiceFake.swift */; };
+		E9CD862D27E4C6BA00DF5D2D /* UpdateProjectServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD862C27E4C6BA00DF5D2D /* UpdateProjectServiceFake.swift */; };
+		E9CD862F27E4C73400DF5D2D /* UpdateProjectPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD862E27E4C73400DF5D2D /* UpdateProjectPresenterTest.swift */; };
+		E9CD863227E8BA1400DF5D2D /* AuthProfilServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD863127E8BA1400DF5D2D /* AuthProfilServiceFake.swift */; };
+		E9CD863427E8BA9000DF5D2D /* ProjectProfilServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD863327E8BA9000DF5D2D /* ProjectProfilServiceFake.swift */; };
+		E9CD863627E8BAD300DF5D2D /* ProfilPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD863527E8BAD300DF5D2D /* ProfilPresenterTest.swift */; };
 		E9CDF024265D26C2000D1FEA /* NotificationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CDF023265D26C2000D1FEA /* NotificationCoordinator.swift */; };
 		E9D6076926847083005AC9EB /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6076826847083005AC9EB /* CustomView.swift */; };
 		E9D6076D26848BCA005AC9EB /* StackViewShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6076C26848BCA005AC9EB /* StackViewShadow.swift */; };
@@ -191,7 +202,7 @@
 		E9564A9727CFB2520083FA9F /* ProjectSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSessionFake.swift; sourceTree = "<group>"; };
 		E9564A9927CFB2CB0083FA9F /* ProjectSessionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSessionTest.swift; sourceTree = "<group>"; };
 		E9564A9B27D0E6260083FA9F /* DashBoardPresenter + DashBoardPresenterLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashBoardPresenter + DashBoardPresenterLogic.swift"; sourceTree = "<group>"; };
-		E95AF91A2679F21400BD1AF8 /* ProfiPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfiPresenter.swift; sourceTree = "<group>"; };
+		E95AF91A2679F21400BD1AF8 /* ProfilPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilPresenter.swift; sourceTree = "<group>"; };
 		E95AF91C2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfilViewController+ProfilPresenterDelegate.swift"; sourceTree = "<group>"; };
 		E95D389327A92ED200A64F0F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		E95D389527A93B0D00A64F0F /* DashBoardVC+SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashBoardVC+SearchBarDelegate.swift"; sourceTree = "<group>"; };
@@ -250,6 +261,17 @@
 		E9CD861627E23B7100DF5D2D /* ProjectCreationPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreationPresenterTest.swift; sourceTree = "<group>"; };
 		E9CD861827E2431500DF5D2D /* ProjectCreatonPresenter+ProjectCreationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectCreatonPresenter+ProjectCreationLogic.swift"; sourceTree = "<group>"; };
 		E9CD861B27E2647E00DF5D2D /* ProjectManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerDelegate.swift; sourceTree = "<group>"; };
+		E9CD861D27E3416C00DF5D2D /* TaskCreationPresenter+TaskCreationPresenterLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCreationPresenter+TaskCreationPresenterLogic.swift"; sourceTree = "<group>"; };
+		E9CD862027E35BCC00DF5D2D /* TaskCreationPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationPresenterTest.swift; sourceTree = "<group>"; };
+		E9CD862227E35C1E00DF5D2D /* TaskCreationServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationServiceFake.swift; sourceTree = "<group>"; };
+		E9CD862427E372E300DF5D2D /* ProjectReaderPresenter+ProjectReaderPresenterLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectReaderPresenter+ProjectReaderPresenterLogic.swift"; sourceTree = "<group>"; };
+		E9CD862727E3789100DF5D2D /* ProjectReaderPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectReaderPresenterTest.swift; sourceTree = "<group>"; };
+		E9CD862927E37AB600DF5D2D /* ProjectReaderServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectReaderServiceFake.swift; sourceTree = "<group>"; };
+		E9CD862C27E4C6BA00DF5D2D /* UpdateProjectServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProjectServiceFake.swift; sourceTree = "<group>"; };
+		E9CD862E27E4C73400DF5D2D /* UpdateProjectPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProjectPresenterTest.swift; sourceTree = "<group>"; };
+		E9CD863127E8BA1400DF5D2D /* AuthProfilServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProfilServiceFake.swift; sourceTree = "<group>"; };
+		E9CD863327E8BA9000DF5D2D /* ProjectProfilServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectProfilServiceFake.swift; sourceTree = "<group>"; };
+		E9CD863527E8BAD300DF5D2D /* ProfilPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilPresenterTest.swift; sourceTree = "<group>"; };
 		E9CDF023265D26C2000D1FEA /* NotificationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCoordinator.swift; sourceTree = "<group>"; };
 		E9D6076826847083005AC9EB /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		E9D6076C26848BCA005AC9EB /* StackViewShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewShadow.swift; sourceTree = "<group>"; };
@@ -725,7 +747,7 @@
 		E95AF9182678E35A00BD1AF8 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				E95AF91A2679F21400BD1AF8 /* ProfiPresenter.swift */,
+				E95AF91A2679F21400BD1AF8 /* ProfilPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -766,6 +788,10 @@
 				E999B06227C7A0090054533B /* Login */,
 				E9CD860E27E0D95D00DF5D2D /* Dashboard */,
 				E9CD861327E23B2700DF5D2D /* ProjectCreation */,
+				E9CD861F27E35BB300DF5D2D /* TaskCreation */,
+				E9CD862627E3786F00DF5D2D /* ProjectReader */,
+				E9CD862B27E4C69600DF5D2D /* UpdateProject */,
+				E9CD863027E8B9DB00DF5D2D /* Profil */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -876,6 +902,7 @@
 			isa = PBXGroup;
 			children = (
 				E9BDF887271738F1009E620F /* TaskCreationPresenter.swift */,
+				E9CD861D27E3416C00DF5D2D /* TaskCreationPresenter+TaskCreationPresenterLogic.swift */,
 			);
 			path = TaskCreation;
 			sourceTree = "<group>";
@@ -892,6 +919,7 @@
 			isa = PBXGroup;
 			children = (
 				E9BDF87C270DAE3D009E620F /* ProjectReaderPresenter.swift */,
+				E9CD862427E372E300DF5D2D /* ProjectReaderPresenter+ProjectReaderPresenterLogic.swift */,
 			);
 			path = ProjectReader;
 			sourceTree = "<group>";
@@ -920,6 +948,43 @@
 				E9CD861B27E2647E00DF5D2D /* ProjectManagerDelegate.swift */,
 			);
 			path = ProjectManagerDelegate;
+			sourceTree = "<group>";
+		};
+		E9CD861F27E35BB300DF5D2D /* TaskCreation */ = {
+			isa = PBXGroup;
+			children = (
+				E9CD862227E35C1E00DF5D2D /* TaskCreationServiceFake.swift */,
+				E9CD862027E35BCC00DF5D2D /* TaskCreationPresenterTest.swift */,
+			);
+			path = TaskCreation;
+			sourceTree = "<group>";
+		};
+		E9CD862627E3786F00DF5D2D /* ProjectReader */ = {
+			isa = PBXGroup;
+			children = (
+				E9CD862927E37AB600DF5D2D /* ProjectReaderServiceFake.swift */,
+				E9CD862727E3789100DF5D2D /* ProjectReaderPresenterTest.swift */,
+			);
+			path = ProjectReader;
+			sourceTree = "<group>";
+		};
+		E9CD862B27E4C69600DF5D2D /* UpdateProject */ = {
+			isa = PBXGroup;
+			children = (
+				E9CD862C27E4C6BA00DF5D2D /* UpdateProjectServiceFake.swift */,
+				E9CD862E27E4C73400DF5D2D /* UpdateProjectPresenterTest.swift */,
+			);
+			path = UpdateProject;
+			sourceTree = "<group>";
+		};
+		E9CD863027E8B9DB00DF5D2D /* Profil */ = {
+			isa = PBXGroup;
+			children = (
+				E9CD863127E8BA1400DF5D2D /* AuthProfilServiceFake.swift */,
+				E9CD863327E8BA9000DF5D2D /* ProjectProfilServiceFake.swift */,
+				E9CD863527E8BAD300DF5D2D /* ProfilPresenterTest.swift */,
+			);
+			path = Profil;
 			sourceTree = "<group>";
 		};
 		E9CDF01C265D25BD000D1FEA /* AuthenticationCoordinator */ = {
@@ -1202,6 +1267,7 @@
 				E95D389827A93EF000A64F0F /* CustomSearchController.swift in Sources */,
 				E9CDF024265D26C2000D1FEA /* NotificationCoordinator.swift in Sources */,
 				E951028425B84DEE0070A91C /* LogInViewController.swift in Sources */,
+				E9CD862527E372E300DF5D2D /* ProjectReaderPresenter+ProjectReaderPresenterLogic.swift in Sources */,
 				E94BA61B2628464B003AC914 /* LoginViewController+LoginPresenterDelegat.swift in Sources */,
 				E9EC4F9126553E8200A1ED96 /* HomeCoordinator.swift in Sources */,
 				E9D6076926847083005AC9EB /* CustomView.swift in Sources */,
@@ -1224,7 +1290,7 @@
 				E95D389427A92ED200A64F0F /* UIView.swift in Sources */,
 				E95AF91D2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift in Sources */,
 				E95102CC25B97F7A0070A91C /* StringExtension.swift in Sources */,
-				E95AF91B2679F21400BD1AF8 /* ProfiPresenter.swift in Sources */,
+				E95AF91B2679F21400BD1AF8 /* ProfilPresenter.swift in Sources */,
 				E9BDF884271737DD009E620F /* TaskCreation+UITextField.swift in Sources */,
 				E95D389627A93B0D00A64F0F /* DashBoardVC+SearchBarDelegate.swift in Sources */,
 				E9BDF87D270DAE3D009E620F /* ProjectReaderPresenter.swift in Sources */,
@@ -1234,6 +1300,7 @@
 				E903130225E7C52300CBC228 /* FirebaseAuthenticationSession.swift in Sources */,
 				E99A033A270594B600C1BCCE /* ProjectReaderVC+TableViewDelegate.swift in Sources */,
 				E99B8DFB269491EA005A9032 /* ProjectCreationPresenter.swift in Sources */,
+				E9CD861E27E3416C00DF5D2D /* TaskCreationPresenter+TaskCreationPresenterLogic.swift in Sources */,
 				E9C9C58A26A9400E00080E45 /* CustomProjectCell.swift in Sources */,
 				E9957E1127A2ADAD0038670A /* AuthenticationSession+HandleError.swift in Sources */,
 				E992662727CD071000E15581 /* LoginPresenterLogicProtocol.swift in Sources */,
@@ -1255,21 +1322,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9CD863627E8BAD300DF5D2D /* ProfilPresenterTest.swift in Sources */,
+				E9CD863427E8BA9000DF5D2D /* ProjectProfilServiceFake.swift in Sources */,
 				E9CD861727E23B7100DF5D2D /* ProjectCreationPresenterTest.swift in Sources */,
 				E976F3DA26397A60000F9BC6 /* AuthenticationSessionFake.swift in Sources */,
+				E9CD862827E3789100DF5D2D /* ProjectReaderPresenterTest.swift in Sources */,
+				E9CD862327E35C1E00DF5D2D /* TaskCreationServiceFake.swift in Sources */,
 				E9564A9227CF85710083FA9F /* RegisterServiceFake.swift in Sources */,
 				E9CD861027E0DC5B00DF5D2D /* DashboardPresenterTest.swift in Sources */,
 				E92EEEE9264AC485005C247F /* FakeStorage.swift in Sources */,
 				E9CD861227E0E42800DF5D2D /* DashBoardServiceFake.swift in Sources */,
 				E999B06427C7A82D0054533B /* LoginServiceFake.swift in Sources */,
 				E97B7FE5279F066E00BACA3B /* FakeCustomResponse.swift in Sources */,
+				E9CD862F27E4C73400DF5D2D /* UpdateProjectPresenterTest.swift in Sources */,
 				E9564A9527CFB0A10083FA9F /* MainLoginPresenterTest.swift in Sources */,
 				E9564A9A27CFB2CB0083FA9F /* ProjectSessionTest.swift in Sources */,
+				E9CD862127E35BCC00DF5D2D /* TaskCreationPresenterTest.swift in Sources */,
+				E9CD863227E8BA1400DF5D2D /* AuthProfilServiceFake.swift in Sources */,
 				E999B06127C79DFF0054533B /* LoginPresenterTest.swift in Sources */,
+				E9CD862A27E37AB600DF5D2D /* ProjectReaderServiceFake.swift in Sources */,
 				E9564A9027CF83CD0083FA9F /* RegisterPresenterTest.swift in Sources */,
 				E94BA63426317673003AC914 /* UserAuthenticationServiceTest.swift in Sources */,
 				E9CD861527E23B6200DF5D2D /* ProjectCreationServiceFake.swift in Sources */,
 				E9564A9827CFB2520083FA9F /* ProjectSessionFake.swift in Sources */,
+				E9CD862D27E4C6BA00DF5D2D /* UpdateProjectServiceFake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
