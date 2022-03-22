@@ -94,11 +94,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Unsinkable-UnsinkableUITests.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Unsinkable.xcscheme</key>
 		<dict>
 			<key>isShown</key>

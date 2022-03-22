@@ -337,6 +337,18 @@ class UserAuthenticationServiceTest: XCTestCase {
         let isDisconnected = self.authenticationService?.logOut()
         XCTAssertEqual(isDisconnected, false)
     }
+    
+    func testIsCurrentUserLoginShouldReturnFalseIfNoFakeUser() {
+        authenticationSessionFake?.fakeUser = nil
+        guard let value = authenticationService?.isUserLogin() else {return}
+        XCTAssertFalse(value)
+    }
+    
+    func testIsCurrentUserLoginShouldReturnTrueIfFakeUser() {
+        authenticationSessionFake?.fakeUser = FakeUserDetails(email: "test0@outlook.fr", password: nil, firstName: "test", name: "unit", userId: "FJLDNED", projects: nil)
+        guard let value = authenticationService?.isUserLogin() else {return}
+        XCTAssertTrue(value)
+    }
 
 }
 

@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class TaskCreationViewController: UIViewController {
-    #warning("Virer les lorem ipsum description creation PJ lecture ")
     // MARK: Properties
     weak var coordinator: HomeCoordinator?
     lazy var taskCreationPresenter = {

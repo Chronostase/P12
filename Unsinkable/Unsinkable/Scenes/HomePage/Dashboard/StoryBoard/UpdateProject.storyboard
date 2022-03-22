@@ -22,7 +22,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIN-7y-lDj" userLabel="contentView" customClass="CustomView" customModule="Unsinkable" customModuleProvider="target">
-                                <rect key="frame" x="62" y="269" width="290" height="358"/>
+                                <rect key="frame" x="62" y="224" width="290" height="448"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title :" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoH-rY-bt5" userLabel="Title">
                                         <rect key="frame" x="29" y="20" width="232" height="21"/>
@@ -45,10 +45,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w5o-RE-n3m" customClass="CustomView" customModule="Unsinkable" customModuleProvider="target">
-                                        <rect key="frame" x="29" y="167" width="232" height="53.5"/>
+                                        <rect key="frame" x="29" y="167" width="232" height="67"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QFi-U2-aZk">
-                                                <rect key="frame" x="0.0" y="0.0" width="232" height="53.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="232" height="67"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -64,14 +64,14 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMH-OJ-aNx">
-                                        <rect key="frame" x="29" y="240.5" width="232" height="45"/>
+                                        <rect key="frame" x="29" y="254" width="232" height="45"/>
                                         <state key="normal" title="Select new cover picture"/>
                                         <connections>
                                             <action selector="selectCoverButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="5w1-YE-4sU"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRd-jh-KvS" customClass="CustomButton" customModule="Unsinkable" customModuleProvider="target">
-                                        <rect key="frame" x="29" y="305.5" width="232" height="30"/>
+                                        <rect key="frame" x="29" y="393" width="232" height="45"/>
                                         <state key="normal" title="Update project "/>
                                         <connections>
                                             <action selector="updateProjectButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="mfW-eE-oYi"/>
@@ -81,7 +81,9 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="FMH-OJ-aNx" firstAttribute="centerX" secondItem="yIN-7y-lDj" secondAttribute="centerX" id="47i-0T-Hm7"/>
+                                    <constraint firstItem="SRd-jh-KvS" firstAttribute="height" secondItem="yIN-7y-lDj" secondAttribute="height" multiplier="0.1" id="B4R-7u-qK9"/>
                                     <constraint firstItem="xoH-rY-bt5" firstAttribute="centerX" secondItem="yIN-7y-lDj" secondAttribute="centerX" id="CB4-wh-9qO"/>
+                                    <constraint firstAttribute="bottom" secondItem="SRd-jh-KvS" secondAttribute="bottom" constant="10" id="Jue-6W-YHh"/>
                                     <constraint firstItem="SRd-jh-KvS" firstAttribute="width" secondItem="yIN-7y-lDj" secondAttribute="width" multiplier="0.8" id="LYl-5h-xOP"/>
                                     <constraint firstItem="w5o-RE-n3m" firstAttribute="top" secondItem="S0m-eO-EGN" secondAttribute="bottom" constant="20" id="Nnc-Ka-R64"/>
                                     <constraint firstItem="S0m-eO-EGN" firstAttribute="width" secondItem="yIN-7y-lDj" secondAttribute="width" multiplier="0.8" id="OTk-sK-w3a"/>
@@ -95,7 +97,6 @@
                                     <constraint firstItem="FMH-OJ-aNx" firstAttribute="height" secondItem="QN6-la-fjP" secondAttribute="height" id="glY-VS-2eO"/>
                                     <constraint firstItem="w5o-RE-n3m" firstAttribute="width" secondItem="yIN-7y-lDj" secondAttribute="width" multiplier="0.8" id="hmN-kM-bz9"/>
                                     <constraint firstItem="xoH-rY-bt5" firstAttribute="width" secondItem="yIN-7y-lDj" secondAttribute="width" multiplier="0.8" id="i1i-1j-ze5"/>
-                                    <constraint firstItem="SRd-jh-KvS" firstAttribute="top" secondItem="FMH-OJ-aNx" secondAttribute="bottom" constant="20" id="idd-EG-T7M"/>
                                     <constraint firstItem="SRd-jh-KvS" firstAttribute="centerX" secondItem="yIN-7y-lDj" secondAttribute="centerX" id="rc4-yb-NdG"/>
                                     <constraint firstItem="QN6-la-fjP" firstAttribute="top" secondItem="xoH-rY-bt5" secondAttribute="bottom" constant="20" id="xHH-22-8Ib"/>
                                     <constraint firstItem="xoH-rY-bt5" firstAttribute="top" secondItem="yIN-7y-lDj" secondAttribute="top" constant="20" id="xWG-xV-cyS"/>
@@ -109,7 +110,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="w9g-WQ-eiB" secondAttribute="trailing" id="Ap8-lC-789"/>
                             <constraint firstItem="yIN-7y-lDj" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="KPb-KZ-TjC"/>
                             <constraint firstItem="w9g-WQ-eiB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="MvX-7Y-Q6I"/>
-                            <constraint firstItem="yIN-7y-lDj" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.4" id="Od7-5F-GMg"/>
+                            <constraint firstItem="yIN-7y-lDj" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.5" id="Od7-5F-GMg"/>
                             <constraint firstItem="yIN-7y-lDj" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.7" id="SIv-Ya-c0r"/>
                             <constraint firstItem="yIN-7y-lDj" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="agj-Zo-Nbb"/>
                             <constraint firstItem="w9g-WQ-eiB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="eNY-Lu-ggU"/>

@@ -137,4 +137,12 @@ class AuthenticationSessionFake: FirebaseAuthenticationSession {
             return false 
         }
     }
+    
+    override func isCurrentUserLogin() -> Bool {
+        if fakeUser != nil {
+            return true
+        } else {
+            return false
+        }
+    }
 }

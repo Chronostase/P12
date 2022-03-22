@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		243D0F3CA6AB440C7E61B0DE /* Pods_Unsinkable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEF6FC91AD1B24045F02C93 /* Pods_Unsinkable.framework */; };
-		26CCB8F16AC9BA961A065215 /* Pods_UnsinkableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA4556E6ED25D95A4473CA0 /* Pods_UnsinkableTests.framework */; };
+		023084749F9B2DE383FEF464 /* Pods_UnsinkableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE6C4E9D9D3E67DAB7F8049 /* Pods_UnsinkableTests.framework */; };
+		98DFC14B4AB3D26632F904CE /* Pods_Unsinkable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D4EB48BFAF6FB0A38EDC3B /* Pods_Unsinkable.framework */; };
 		E90236BD26E0E7820070853F /* ProjectReading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E90236BC26E0E7820070853F /* ProjectReading.storyboard */; };
 		E90312CE25E5409600CBC228 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90312CD25E5409600CBC228 /* TextFieldExtension.swift */; };
 		E90312EC25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90312EB25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift */; };
@@ -99,6 +99,7 @@
 		E9C2214F25AE0F50001216F5 /* ProjectCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */; };
 		E9C2218625AE1345001216F5 /* ProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C2218525AE1345001216F5 /* ProjectCell.xib */; };
 		E9C2218C25AE185D001216F5 /* UICollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */; };
+		E9C54BF327EA0F3300DFDEA4 /* extensionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C54BF227EA0F3300DFDEA4 /* extensionTest.swift */; };
 		E9C9C588269FC57900080E45 /* ProjectCreationViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9C587269FC57900080E45 /* ProjectCreationViewController+Delegate.swift */; };
 		E9C9C58A26A9400E00080E45 /* CustomProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9C58926A9400E00080E45 /* CustomProjectCell.swift */; };
 		E9CB3AA725DD7A5C009980EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9CB3AA625DD7A5C009980EC /* Assets.xcassets */; };
@@ -149,14 +150,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2DA4556E6ED25D95A4473CA0 /* Pods_UnsinkableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnsinkableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DEF6FC91AD1B24045F02C93 /* Pods_Unsinkable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsinkable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		523A48797D4B2B16A268A378 /* Pods-Unsinkable-UnsinkableUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable-UnsinkableUITests.release.xcconfig"; path = "Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests.release.xcconfig"; sourceTree = "<group>"; };
-		66FA4CBE5D2F66C9D245FA61 /* Pods-UnsinkableTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsinkableTests.debug.xcconfig"; path = "Target Support Files/Pods-UnsinkableTests/Pods-UnsinkableTests.debug.xcconfig"; sourceTree = "<group>"; };
-		6C6B3891B8BEC47F8EA9FD1B /* Pods-UnsinkableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsinkableTests.release.xcconfig"; path = "Target Support Files/Pods-UnsinkableTests/Pods-UnsinkableTests.release.xcconfig"; sourceTree = "<group>"; };
-		942B20643B3D015374268575 /* Pods-Unsinkable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable.release.xcconfig"; path = "Target Support Files/Pods-Unsinkable/Pods-Unsinkable.release.xcconfig"; sourceTree = "<group>"; };
-		94F04F721327FD9AA40E8C00 /* Pods-Unsinkable-UnsinkableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable-UnsinkableUITests.debug.xcconfig"; path = "Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		C99EFAC4466473468C536C95 /* Pods_Unsinkable_UnsinkableUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsinkable_UnsinkableUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3668094B46EDDCC1957FE0BC /* Pods-UnsinkableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsinkableTests.release.xcconfig"; path = "Target Support Files/Pods-UnsinkableTests/Pods-UnsinkableTests.release.xcconfig"; sourceTree = "<group>"; };
+		57B0D32CBA8190B066357816 /* Pods-Unsinkable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable.release.xcconfig"; path = "Target Support Files/Pods-Unsinkable/Pods-Unsinkable.release.xcconfig"; sourceTree = "<group>"; };
+		94F57C070ACCE13476C2BDDD /* Pods-UnsinkableTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsinkableTests.debug.xcconfig"; path = "Target Support Files/Pods-UnsinkableTests/Pods-UnsinkableTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9D5777D20F1D778F74D99F5E /* Pods-Unsinkable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable.debug.xcconfig"; path = "Target Support Files/Pods-Unsinkable/Pods-Unsinkable.debug.xcconfig"; sourceTree = "<group>"; };
+		C0D4EB48BFAF6FB0A38EDC3B /* Pods_Unsinkable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsinkable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E90236BC26E0E7820070853F /* ProjectReading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProjectReading.storyboard; sourceTree = "<group>"; };
 		E90312CD25E5409600CBC228 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 		E90312EB25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewControllerTextFieldDelegate.swift; sourceTree = "<group>"; };
@@ -250,6 +248,7 @@
 		E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProjectCreation.storyboard; sourceTree = "<group>"; };
 		E9C2218525AE1345001216F5 /* ProjectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectCell.xib; sourceTree = "<group>"; };
 		E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewController.swift; sourceTree = "<group>"; };
+		E9C54BF227EA0F3300DFDEA4 /* extensionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = extensionTest.swift; path = UnsinkableTests/Presenter/Profil/extensionTest.swift; sourceTree = SOURCE_ROOT; };
 		E9C9C587269FC57900080E45 /* ProjectCreationViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectCreationViewController+Delegate.swift"; sourceTree = "<group>"; };
 		E9C9C58926A9400E00080E45 /* CustomProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProjectCell.swift; sourceTree = "<group>"; };
 		E9CB3AA625DD7A5C009980EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -287,7 +286,7 @@
 		E9EE2181268373BC00D80414 /* ProjectCreationViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectCreationViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		E9FE31EB269FAA8F00DF2532 /* CustomTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTaskTableViewCell.swift; sourceTree = "<group>"; };
 		E9FE31ED269FAFDC00DF2532 /* ProjectCreationViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectCreationViewController+UITableView.swift"; sourceTree = "<group>"; };
-		ECF4E3EB86E9E66E2F41899B /* Pods-Unsinkable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable.debug.xcconfig"; path = "Target Support Files/Pods-Unsinkable/Pods-Unsinkable.debug.xcconfig"; sourceTree = "<group>"; };
+		FFE6C4E9D9D3E67DAB7F8049 /* Pods_UnsinkableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnsinkableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,7 +294,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				243D0F3CA6AB440C7E61B0DE /* Pods_Unsinkable.framework in Frameworks */,
+				98DFC14B4AB3D26632F904CE /* Pods_Unsinkable.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,19 +302,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26CCB8F16AC9BA961A065215 /* Pods_UnsinkableTests.framework in Frameworks */,
+				023084749F9B2DE383FEF464 /* Pods_UnsinkableTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6E3867DA30362642DF7F1868 /* Frameworks */ = {
+		51EF843AB936016DD391D2DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4DEF6FC91AD1B24045F02C93 /* Pods_Unsinkable.framework */,
-				C99EFAC4466473468C536C95 /* Pods_Unsinkable_UnsinkableUITests.framework */,
-				2DA4556E6ED25D95A4473CA0 /* Pods_UnsinkableTests.framework */,
+				C0D4EB48BFAF6FB0A38EDC3B /* Pods_Unsinkable.framework */,
+				FFE6C4E9D9D3E67DAB7F8049 /* Pods_UnsinkableTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -323,12 +321,10 @@
 		A0D333E413336074568E176B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				ECF4E3EB86E9E66E2F41899B /* Pods-Unsinkable.debug.xcconfig */,
-				942B20643B3D015374268575 /* Pods-Unsinkable.release.xcconfig */,
-				94F04F721327FD9AA40E8C00 /* Pods-Unsinkable-UnsinkableUITests.debug.xcconfig */,
-				523A48797D4B2B16A268A378 /* Pods-Unsinkable-UnsinkableUITests.release.xcconfig */,
-				66FA4CBE5D2F66C9D245FA61 /* Pods-UnsinkableTests.debug.xcconfig */,
-				6C6B3891B8BEC47F8EA9FD1B /* Pods-UnsinkableTests.release.xcconfig */,
+				9D5777D20F1D778F74D99F5E /* Pods-Unsinkable.debug.xcconfig */,
+				57B0D32CBA8190B066357816 /* Pods-Unsinkable.release.xcconfig */,
+				94F57C070ACCE13476C2BDDD /* Pods-UnsinkableTests.debug.xcconfig */,
+				3668094B46EDDCC1957FE0BC /* Pods-UnsinkableTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -370,8 +366,8 @@
 				E92C356D25A5EBA8001F2819 /* Unsinkable */,
 				E92C358425A5EBAC001F2819 /* UnsinkableTests */,
 				E92C356C25A5EBA8001F2819 /* Products */,
-				6E3867DA30362642DF7F1868 /* Frameworks */,
 				A0D333E413336074568E176B /* Pods */,
+				51EF843AB936016DD391D2DE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -403,6 +399,7 @@
 		E92C358425A5EBAC001F2819 /* UnsinkableTests */ = {
 			isa = PBXGroup;
 			children = (
+				E9C54BF127EA0F2100DFDEA4 /* extensionTest */,
 				E9C7B78427BDF08C00F57E47 /* FakeModel */,
 				E999B05D27C79CAE0054533B /* Presenter */,
 				E903130025E7C42C00CBC228 /* ServiceTest */,
@@ -862,6 +859,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		E9C54BF127EA0F2100DFDEA4 /* extensionTest */ = {
+			isa = PBXGroup;
+			children = (
+				E9C54BF227EA0F3300DFDEA4 /* extensionTest.swift */,
+			);
+			path = extensionTest;
+			sourceTree = "<group>";
+		};
 		E9C7B78427BDF08C00F57E47 /* FakeModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1031,20 +1036,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E92C359525A5EBAC001F2819 /* Build configuration list for PBXNativeTarget "Unsinkable" */;
 			buildPhases = (
-				1BA929FC29C8365D402393A2 /* [CP] Check Pods Manifest.lock */,
+				6EB5A5670740D7960017710E /* [CP] Check Pods Manifest.lock */,
 				E92C356725A5EBA8001F2819 /* Sources */,
 				E92C356825A5EBA8001F2819 /* Frameworks */,
 				E92C356925A5EBA8001F2819 /* Resources */,
-				6042EECC6833F39FFF155555 /* [CP] Embed Pods Frameworks */,
 				E9957E1427A824990038670A /* ShellScript */,
+				B098DD623F27B0F08DE26A49 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Unsinkable;
-			packageProductDependencies = (
-			);
 			productName = Unsinkable;
 			productReference = E92C356B25A5EBA8001F2819 /* Unsinkable.app */;
 			productType = "com.apple.product-type.application";
@@ -1053,7 +1056,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E92C359825A5EBAC001F2819 /* Build configuration list for PBXNativeTarget "UnsinkableTests" */;
 			buildPhases = (
-				341BD037BBDED520146B42E9 /* [CP] Check Pods Manifest.lock */,
+				E45FBBA9D636B5BA6D885414 /* [CP] Check Pods Manifest.lock */,
 				E92C357D25A5EBAC001F2819 /* Sources */,
 				E92C357E25A5EBAC001F2819 /* Frameworks */,
 				E92C357F25A5EBAC001F2819 /* Resources */,
@@ -1095,8 +1098,6 @@
 				Base,
 			);
 			mainGroup = E92C356225A5EBA8001F2819;
-			packageReferences = (
-			);
 			productRefGroup = E92C356C25A5EBA8001F2819 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1144,7 +1145,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1BA929FC29C8365D402393A2 /* [CP] Check Pods Manifest.lock */ = {
+		6EB5A5670740D7960017710E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1166,7 +1167,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		341BD037BBDED520146B42E9 /* [CP] Check Pods Manifest.lock */ = {
+		B098DD623F27B0F08DE26A49 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Unsinkable/Pods-Unsinkable-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Unsinkable/Pods-Unsinkable-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Unsinkable/Pods-Unsinkable-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E45FBBA9D636B5BA6D885414 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1186,23 +1204,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6042EECC6833F39FFF155555 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Unsinkable/Pods-Unsinkable-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Unsinkable/Pods-Unsinkable-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Unsinkable/Pods-Unsinkable-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E9957E1427A824990038670A /* ShellScript */ = {
@@ -1338,6 +1339,7 @@
 				E9564A9527CFB0A10083FA9F /* MainLoginPresenterTest.swift in Sources */,
 				E9564A9A27CFB2CB0083FA9F /* ProjectSessionTest.swift in Sources */,
 				E9CD862127E35BCC00DF5D2D /* TaskCreationPresenterTest.swift in Sources */,
+				E9C54BF327EA0F3300DFDEA4 /* extensionTest.swift in Sources */,
 				E9CD863227E8BA1400DF5D2D /* AuthProfilServiceFake.swift in Sources */,
 				E999B06127C79DFF0054533B /* LoginPresenterTest.swift in Sources */,
 				E9CD862A27E37AB600DF5D2D /* ProjectReaderServiceFake.swift in Sources */,
@@ -1489,7 +1491,7 @@
 		};
 		E92C359625A5EBAC001F2819 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECF4E3EB86E9E66E2F41899B /* Pods-Unsinkable.debug.xcconfig */;
+			baseConfigurationReference = 9D5777D20F1D778F74D99F5E /* Pods-Unsinkable.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1515,7 +1517,7 @@
 		};
 		E92C359725A5EBAC001F2819 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 942B20643B3D015374268575 /* Pods-Unsinkable.release.xcconfig */;
+			baseConfigurationReference = 57B0D32CBA8190B066357816 /* Pods-Unsinkable.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1540,7 +1542,7 @@
 		};
 		E92C359925A5EBAC001F2819 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 66FA4CBE5D2F66C9D245FA61 /* Pods-UnsinkableTests.debug.xcconfig */;
+			baseConfigurationReference = 94F57C070ACCE13476C2BDDD /* Pods-UnsinkableTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1563,7 +1565,7 @@
 		};
 		E92C359A25A5EBAC001F2819 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C6B3891B8BEC47F8EA9FD1B /* Pods-UnsinkableTests.release.xcconfig */;
+			baseConfigurationReference = 3668094B46EDDCC1957FE0BC /* Pods-UnsinkableTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

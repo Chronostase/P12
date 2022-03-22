@@ -113,6 +113,12 @@ class DashboardPresenterTest: XCTestCase {
         guard let value = dashBoardPresenter?.isSearchBarActive("something") else {return}
         XCTAssertTrue(value)
     }
+    
+    func testGetCurrentDateReturnTrueIfDate() {
+        dashBoardPresenter?.getCurrentDate()
+        guard let value = isCorrect else {return}
+        XCTAssertTrue(value)
+    }
 }
 
 

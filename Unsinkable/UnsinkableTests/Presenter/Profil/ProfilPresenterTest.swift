@@ -101,7 +101,26 @@ class ProfilPresenterTest: XCTestCase {
         guard let value = isCorrect else {return}
         XCTAssertFalse(value)
     }
-
+    
+    func testUpdateUserShouldFailIIncorrectEmail() {
+        profilPresenter?.updateUser("thomas", "giron", "thomasgiron")
+        guard let value = isCorrect else {return}
+        XCTAssertFalse(value)
+    }
+    
+    func testUpdateUserShouldFailIfIncorrectUserID() {
+        authService?.fakeUser?.userId = "XXXX"
+        profilPresenter?.updateUser("thomas", "Giron", "thomas@gmail.fr")
+        guard let value = isCorrect else {return}
+        XCTAssertFalse(value)
+    }
+    
+    func testUpdateUserShouldWorkIfCorrectDataAndUserID() {
+        profilPresenter?.updateUser("thomas", "Giron", "thomas@gmail.fr")
+        guard let value = isCorrect else {return}
+        XCTAssertTrue(value)
+        
+    }
 }
 
 extension ProfilPresenterTest: ProfilPresenterDelegate {
