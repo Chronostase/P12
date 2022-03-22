@@ -9,7 +9,6 @@ import UIKit
 
 class RegisterViewController: UIViewController {
     weak var coordinator: AuthenticationCoordinator?
-//    @IBOutlet var mainLabel: UILabel!
     
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var nameTextField: UITextField!
@@ -22,9 +21,9 @@ class RegisterViewController: UIViewController {
     private lazy var registerPresenter = {
         return RegisterPresenter()
     }()
-    let userAuthentificationService: AuthentificationLogic = UserAuthentificationService()
     
     @IBAction func createAccountButton(_ sender: UIButton) {
+        self.showLoader()
         registerPresenter.registerWith(firstNameTextField.text, nameTextField.text, emailTextField.text, passwordTextField.text)
     }
     
@@ -35,7 +34,8 @@ class RegisterViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.navigationController?.navigationBar.isHidden = false
     }
     
@@ -57,11 +57,11 @@ class RegisterViewController: UIViewController {
     }
     
     private func setupUI() {
-        emailTextField.setPlaceholder("Email...")
-        firstNameTextField.setPlaceholder("Firstname...")
-        nameTextField.setPlaceholder("Name...")
-        passwordTextField.setPlaceholder("Password...")
-        self.navigationItem.title = "Register"
+        emailTextField.setPlaceholder(Constants.LoginString.emailPlaceHolder)
+        firstNameTextField.setPlaceholder(Constants.LoginString.firstNamePlaceHolder)
+        nameTextField.setPlaceholder(Constants.LoginString.namePlaceHolder)
+        passwordTextField.setPlaceholder(Constants.LoginString.passwordPlaceHolder)
+        self.navigationItem.title = Constants.LoginString.register
         errorLabel.isHidden = true
     }
 

@@ -31,7 +31,7 @@ extension DashBoardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == personalCollectionView {
-            guard let cell = personalCollectionView.dequeueReusableCell(withReuseIdentifier: "ProjectCell", for: indexPath) as? CustomProjectCell else {
+            guard let cell = personalCollectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cell.projectCell, for: indexPath) as? CustomProjectCell else {
                 return UICollectionViewCell()
             }
             guard let projects = dashBoardPresenter.personalProject else {
@@ -49,7 +49,7 @@ extension DashBoardViewController: UICollectionViewDataSource {
             
             return cell
         } else {
-            guard let cell = professionalCollectionView.dequeueReusableCell(withReuseIdentifier: "ProjectCell", for: indexPath) as? CustomProjectCell else {
+            guard let cell = professionalCollectionView.dequeueReusableCell(withReuseIdentifier: Constants.Cell.projectCell, for: indexPath) as? CustomProjectCell else {
                 return UICollectionViewCell()
             }
             guard let projects = dashBoardPresenter.professionalProject else {
@@ -71,25 +71,22 @@ extension DashBoardViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == personalCollectionView {
-            guard let projects = dashBoardPresenter.personalProject else {
+            guard let projects = dashBoardPresenter.personalProject, let userData = dashBoardPresenter.data else {
                 return
             }
             let selectedProject = projects[indexPath.row]
-//            dashBoardPresenter.selectedProject = selectedProject
-            coordinator?.projectReader(project: selectedProject)
+            coordinator?.projectReader(project: selectedProject, userData)
         } else {
-            guard let projects = dashBoardPresenter.professionalProject else {
+            guard let projects = dashBoardPresenter.professionalProject, let userData = dashBoardPresenter.data else {
                 return
             }
             let selectedProject = projects[indexPath.row]
             
-//            dashBoardPresenter.selectedProject = selectedProject
-            coordinator?.projectReader(project: selectedProject)
+            coordinator?.projectReader(project: selectedProject, userData)
         }
     }
 }
 
-//Seem to don't work with xib
 extension DashBoardViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == personalCollectionView {

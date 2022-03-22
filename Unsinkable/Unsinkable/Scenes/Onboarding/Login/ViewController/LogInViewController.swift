@@ -8,7 +8,7 @@
 import UIKit
 
 class LogInViewController: UIViewController {
-    let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()
+    let userAuthenticationService: AuthenticationLogic = UserAuthenticationService()
     weak var coordinator: AuthenticationCoordinator?
     lazy var loginPresenter = {
         return LoginPresenter()
@@ -22,8 +22,8 @@ class LogInViewController: UIViewController {
     
     
     @IBAction func signInButton(_ sender: UIButton) {
-        showLoader()
-        loginPresenter.login(email: emailTextField.text, password: passwordTextField.text)
+        self.showLoader()
+        loginPresenter.login(emailTextField.text, passwordTextField.text)
     }
     
     func transitionToHomeScreen() {
@@ -43,6 +43,7 @@ class LogInViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false 
         self.navigationController?.navigationBar.isHidden = false
     }
     
@@ -58,24 +59,17 @@ class LogInViewController: UIViewController {
     
     private func setupUI() {
         errorLabel.isHidden = true
-        signInButton.setTitle(Constants.LoginString.signInButton, for: .normal)
+        signInButton.setTitle(Constants.LoginString.signIn, for: .normal)
         orLabel.text = Constants.LoginString.or
         appleLogin.setTitle(Constants.LoginString.appleLogin, for: .normal)
         
-        self.navigationItem.title = "Sign in"
-        emailTextField.setPlaceholder("Email...")
-        passwordTextField.setPlaceholder("Password...")
+        self.navigationItem.title = Constants.LoginString.signIn
+        emailTextField.setPlaceholder(Constants.LoginString.emailPlaceHolder)
+        passwordTextField.setPlaceholder(Constants.LoginString.passwordPlaceHolder)
     }
     
     func showError(_ message: String) {
         errorLabel.text = message
         errorLabel.isHidden = false
-    }
-    
-    private func showLoader() {
-        let loadingVC = LoaderViewController()
-        loadingVC.modalPresentationStyle = .overCurrentContext
-        loadingVC.modalTransitionStyle = .crossDissolve
-        navigationController?.present(loadingVC, animated: true, completion: nil)
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 class ProjectCreationViewController: UIViewController {
     
@@ -29,43 +30,47 @@ class ProjectCreationViewController: UIViewController {
     @IBOutlet var coverImage: UIImageView!
     @IBOutlet var coverImageButton: UIButton!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print("Enter IN ViewDIDDISAPPEAR ")
-    }
-    
-    private func setup() {
-        self.navigationController?.navigationBar.isHidden = false
-        setupCustomCell()
-        configureFakeProject()
-        setDelegateAndDataSource()
-        addTextViewDoneButton()
-        setRightButtonInTextField()
-//        addRightNavigationBarButton()
-        hideMoreDetail()
-    }
-    
-    @IBAction func finishButton(_ sender: Any) {
-        guard let imageData = coverImage.image?.jpegData(compressionQuality: 1.0) else {
-            return
-        }
-        projectCreationPresenter.registerProject(projectTextField.text, projectTextView.text, imageData)
-    }
-    
-    @IBAction func addCoverPicture(_ sender: UIButton) {
-        imagePicker()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.navigationController?.navigationBar.isHidden = false
         DispatchQueue.main.async {
             self.setUpUI()
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        IQKeyboardManager.shared.enable = false
+    }
+    
+    
+    private func setup() {
+        self.navigationController?.navigationBar.isHidden = false
+        IQKeyboardManager.shared.enable = true
+        setupCustomCell()
+        setDelegateAndDataSource()
+        addTextViewDoneButton()
+        setRightButtonInTextField()
+        hideMoreDetail()
+    }
+    
+    @IBAction func finishButton(_ sender: Any) {
+        guard let imageData = coverImage.image?.jpegData(compressionQuality: 0.4) else {
+            return
+        }
+        self.showLoader()
+        projectCreationPresenter.saveProject(projectTextField.text, projectTextView.text, imageData)
+    }
+    
+    @IBAction func addCoverPicture(_ sender: UIButton) {
+        imagePicker()
     }
     
     private func hideMoreDetail() {
@@ -74,14 +79,8 @@ class ProjectCreationViewController: UIViewController {
         usersView.isHidden = true
     }
     
-    private func configureFakeProject() {
-        coverImageButton.imageEdgeInsets = UIEdgeInsets(top: 15, left: 85, bottom: 15, right: 85 )
-        customProjectView.layer.masksToBounds = true
-        customProjectView.layer.cornerRadius = 8
-    }
-    
     private func addTextViewDoneButton() {
-        projectTextView.addDoneButton(title: "Done", target: self, selector: #selector (tapDone(sender:)))
+        projectTextView.addDoneButton(title: Constants.Button.done, target: self, selector: #selector (tapDone(sender:)))
     }
     
     @objc private func tapDone(sender: Any) {
@@ -93,12 +92,13 @@ class ProjectCreationViewController: UIViewController {
         projectTextField.delegate = self
         taskTableView.dataSource = self
         taskTableView.delegate = self
+        projectTextView.delegate = self
         projectCreationPresenter.delegate = self
     }
     
     private func setRightButtonInTextField() {
         let button = UIButton(type: .custom)
-        let image = UIImage(systemName: "plus.circle.fill")
+        let image = UIImage(systemName: Constants.Image.plusCircle)
         button.contentHorizontalAlignment = .fill
         button.contentVerticalAlignment = .fill
         button.contentMode = .scaleToFill
@@ -112,26 +112,19 @@ class ProjectCreationViewController: UIViewController {
     }
     
     @objc func addTask() {
-        //Update project, register a task With title in projectPresenter.task
         if projectCreationPresenter.checkTaskTitle(taskTextField.text) {
             self.projectCreationPresenter.updateProject(taskTextField.text)
             DispatchQueue.main.async {
+                self.taskTextField.text = nil
+                self.taskTextField.placeholder = Constants.Label.addTaskHolder
                 self.taskTableView.reloadData()
             }
-            //Do something
         } else {
-            //Error
-            
+            self.taskTextField.text = nil
+            self.taskTextField.placeholder = Constants.Error.ProjectCreation.setTaskTitle
         }
     }
     
-//    private func addRightNavigationBarButton() {
-//        guard let image = UIImage(systemName: "ellipsis") else {
-//            return
-//        }
-//        let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(moreOptionTapped))
-//        self.navigationItem.rightBarButtonItem = button
-//    }
     
     private func imagePicker() {
         let imagePicker = UIImagePickerController()
@@ -145,13 +138,16 @@ class ProjectCreationViewController: UIViewController {
     }
     
     private func setUpUI() {
-        finishButton.setTitle("Finish", for: .normal)
+        projectTextView.text = Constants.Label.descriptionPlaceHolder
+        projectTextView.textColor = .placeholderText
+        finishButton.setTitle(Constants.Button.finish, for: .normal)
     }
     
     private func setupCustomCell() {
-        let nib = UINib(nibName: "TaskCell", bundle: nil)
-        taskTableView.register(nib, forCellReuseIdentifier: "TaskCell")
+        let nib = UINib(nibName: Constants.Cell.taskCell, bundle: nil)
+        taskTableView.register(nib, forCellReuseIdentifier: Constants.Cell.taskCell)
     }
+    
 }
 
 extension ProjectCreationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

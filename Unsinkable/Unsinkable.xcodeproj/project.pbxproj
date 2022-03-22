@@ -7,27 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		243D0F3CA6AB440C7E61B0DE /* Pods_Unsinkable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DEF6FC91AD1B24045F02C93 /* Pods_Unsinkable.framework */; };
-		26CCB8F16AC9BA961A065215 /* Pods_UnsinkableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA4556E6ED25D95A4473CA0 /* Pods_UnsinkableTests.framework */; };
-		6FADD05467A016C0D281AFEC /* Pods_Unsinkable_UnsinkableUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C99EFAC4466473468C536C95 /* Pods_Unsinkable_UnsinkableUITests.framework */; };
+		023084749F9B2DE383FEF464 /* Pods_UnsinkableTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE6C4E9D9D3E67DAB7F8049 /* Pods_UnsinkableTests.framework */; };
+		98DFC14B4AB3D26632F904CE /* Pods_Unsinkable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D4EB48BFAF6FB0A38EDC3B /* Pods_Unsinkable.framework */; };
 		E90236BD26E0E7820070853F /* ProjectReading.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E90236BC26E0E7820070853F /* ProjectReading.storyboard */; };
 		E90312CE25E5409600CBC228 /* TextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90312CD25E5409600CBC228 /* TextFieldExtension.swift */; };
 		E90312EC25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90312EB25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift */; };
 		E90312F725E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90312F625E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift */; };
-		E903130225E7C52300CBC228 /* AuthenticationSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E903130125E7C52300CBC228 /* AuthenticationSession.swift */; };
+		E903130225E7C52300CBC228 /* FirebaseAuthenticationSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E903130125E7C52300CBC228 /* FirebaseAuthenticationSession.swift */; };
 		E91DB50F2643FBBD0035889A /* CustomResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91DB50E2643FBBD0035889A /* CustomResponse.swift */; };
 		E921575925C05BA100D42137 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921575825C05BA100D42137 /* Coordinator.swift */; };
 		E921576625C05F0000D42137 /* CoordinatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E921576525C05F0000D42137 /* CoordinatorManager.swift */; };
 		E92157A825C18B7600D42137 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92157A725C18B7600D42137 /* RegisterPresenter.swift */; };
+		E9217AFC277B284A00356718 /* UpdateProject.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9217AFB277B284A00356718 /* UpdateProject.storyboard */; };
+		E9217B01277B28D600356718 /* UpdateProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9217B00277B28D600356718 /* UpdateProjectViewController.swift */; };
+		E9217B03277B315B00356718 /* UpdateProjectPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9217B02277B315B00356718 /* UpdateProjectPresenter.swift */; };
+		E9217B05277B3D9400356718 /* UpdateProjectVC+ProjectManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9217B04277B3D9400356718 /* UpdateProjectVC+ProjectManagerDelegate.swift */; };
+		E9217B09277B483900356718 /* UpdateProjectVC+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9217B08277B483900356718 /* UpdateProjectVC+UITextFieldDelegate.swift */; };
+		E9217B0B277B490B00356718 /* UpdateProjectVC+UITextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9217B0A277B490B00356718 /* UpdateProjectVC+UITextViewDelegate.swift */; };
+		E9217B132790784800356718 /* ProjectReaderViewController+TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9217B122790784700356718 /* ProjectReaderViewController+TextFieldDelegate.swift */; };
 		E92C356F25A5EBA8001F2819 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C356E25A5EBA8001F2819 /* AppDelegate.swift */; };
 		E92C357B25A5EBAB001F2819 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E92C357925A5EBAB001F2819 /* LaunchScreen.storyboard */; };
-		E92C359125A5EBAC001F2819 /* UnsinkableUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C359025A5EBAC001F2819 /* UnsinkableUITests.swift */; };
 		E92EEEE9264AC485005C247F /* FakeStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92EEEE8264AC485005C247F /* FakeStorage.swift */; };
 		E94BA61B2628464B003AC914 /* LoginViewController+LoginPresenterDelegat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BA61A2628464B003AC914 /* LoginViewController+LoginPresenterDelegat.swift */; };
 		E94BA62026285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BA61F26285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift */; };
 		E94BA63426317673003AC914 /* UserAuthenticationServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94BA63326317673003AC914 /* UserAuthenticationServiceTest.swift */; };
 		E951022C25AF69A50070A91C /* ProjectCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951022B25AF69A50070A91C /* ProjectCreationViewController.swift */; };
-		E951023225AF6A6C0070A91C /* UIViewController+Push.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951023125AF6A6C0070A91C /* UIViewController+Push.swift */; };
+		E951023225AF6A6C0070A91C /* UIViewController+Push+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951023125AF6A6C0070A91C /* UIViewController+Push+Alert.swift */; };
 		E951026525B843E50070A91C /* MainLoginPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E951026425B843E50070A91C /* MainLoginPage.storyboard */; };
 		E951026D25B84CC40070A91C /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E951026C25B84CC40070A91C /* SignIn.storyboard */; };
 		E951027225B84CE10070A91C /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E951027125B84CE10070A91C /* Register.storyboard */; };
@@ -35,22 +40,40 @@
 		E951028425B84DEE0070A91C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951028325B84DEE0070A91C /* LogInViewController.swift */; };
 		E951028925B84DF90070A91C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951028825B84DF90070A91C /* RegisterViewController.swift */; };
 		E951029225B8BA9F0070A91C /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951029125B8BA9F0070A91C /* Regex.swift */; };
-		E951029C25B970D20070A91C /* UserAuthentificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951029B25B970D20070A91C /* UserAuthentificationService.swift */; };
+		E951029C25B970D20070A91C /* UserAuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E951029B25B970D20070A91C /* UserAuthenticationService.swift */; };
 		E95102CC25B97F7A0070A91C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95102CB25B97F7A0070A91C /* StringExtension.swift */; };
 		E9553E5525E534F4006101D2 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9553E5425E534F4006101D2 /* CustomTextField.swift */; };
-		E95AF91B2679F21400BD1AF8 /* ProfiPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95AF91A2679F21400BD1AF8 /* ProfiPresenter.swift */; };
+		E9564A8E27CF81080083FA9F /* RegisterPresenter+RegisterPresenterLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9564A8D27CF81080083FA9F /* RegisterPresenter+RegisterPresenterLogic.swift */; };
+		E9564A9027CF83CD0083FA9F /* RegisterPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9564A8F27CF83CC0083FA9F /* RegisterPresenterTest.swift */; };
+		E9564A9227CF85710083FA9F /* RegisterServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9564A9127CF85710083FA9F /* RegisterServiceFake.swift */; };
+		E9564A9527CFB0A10083FA9F /* MainLoginPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9564A9427CFB0A10083FA9F /* MainLoginPresenterTest.swift */; };
+		E9564A9827CFB2520083FA9F /* ProjectSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9564A9727CFB2520083FA9F /* ProjectSessionFake.swift */; };
+		E9564A9A27CFB2CB0083FA9F /* ProjectSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9564A9927CFB2CB0083FA9F /* ProjectSessionTest.swift */; };
+		E9564A9C27D0E6260083FA9F /* DashBoardPresenter + DashBoardPresenterLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9564A9B27D0E6260083FA9F /* DashBoardPresenter + DashBoardPresenterLogic.swift */; };
+		E95AF91B2679F21400BD1AF8 /* ProfilPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95AF91A2679F21400BD1AF8 /* ProfilPresenter.swift */; };
 		E95AF91D2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95AF91C2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift */; };
+		E95D389427A92ED200A64F0F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95D389327A92ED200A64F0F /* UIView.swift */; };
+		E95D389627A93B0D00A64F0F /* DashBoardVC+SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95D389527A93B0D00A64F0F /* DashBoardVC+SearchBarDelegate.swift */; };
+		E95D389827A93EF000A64F0F /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95D389727A93EF000A64F0F /* CustomSearchController.swift */; };
+		E95D389A27B14E5400A64F0F /* ProjectSession+HandleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95D389927B14E5400A64F0F /* ProjectSession+HandleError.swift */; };
+		E95D38A027B2CFF400A64F0F /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E95D389F27B2CFF400A64F0F /* EmptyView.xib */; };
+		E95D38A227B40C4D00A64F0F /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95D38A127B40C4D00A64F0F /* EmptyView.swift */; };
 		E976F3DA26397A60000F9BC6 /* AuthenticationSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E976F3D926397A60000F9BC6 /* AuthenticationSessionFake.swift */; };
 		E97A877326DFB94000097527 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97A877226DFB94000097527 /* UITextView.swift */; };
+		E97B7FE5279F066E00BACA3B /* FakeCustomResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B7FE4279F066D00BACA3B /* FakeCustomResponse.swift */; };
+		E992662727CD071000E15581 /* LoginPresenterLogicProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E992662627CD071000E15581 /* LoginPresenterLogicProtocol.swift */; };
+		E9957E1127A2ADAD0038670A /* AuthenticationSession+HandleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9957E1027A2ADAD0038670A /* AuthenticationSession+HandleError.swift */; };
+		E9957E1327A2EED70038670A /* UnsinkableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9957E1227A2EED70038670A /* UnsinkableError.swift */; };
 		E99635B72653D99E00185327 /* Profil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99635B62653D99E00185327 /* Profil.storyboard */; };
 		E99635BD2653E3AD00185327 /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99635BC2653E3AD00185327 /* ProfilViewController.swift */; };
 		E996B51A25A620E900638480 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E996B51925A620E900638480 /* GoogleService-Info.plist */; };
 		E996B51B25A620E900638480 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E996B51925A620E900638480 /* GoogleService-Info.plist */; };
-		E996B51C25A620E900638480 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E996B51925A620E900638480 /* GoogleService-Info.plist */; };
 		E996B55725A6344A00638480 /* DashBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996B55625A6344A00638480 /* DashBoardViewController.swift */; };
 		E996B55C25A6351700638480 /* DashBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E996B55B25A6351700638480 /* DashBoard.storyboard */; };
 		E996B56125A6353000638480 /* NotificationCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E996B56025A6353000638480 /* NotificationCenter.storyboard */; };
 		E996B56625A6353F00638480 /* NotificationCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E996B56525A6353F00638480 /* NotificationCenterViewController.swift */; };
+		E999B06127C79DFF0054533B /* LoginPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E999B06027C79DFF0054533B /* LoginPresenterTest.swift */; };
+		E999B06427C7A82D0054533B /* LoginServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E999B06327C7A82D0054533B /* LoginServiceFake.swift */; };
 		E99A03382704E38100C1BCCE /* ProjectReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A03372704E38100C1BCCE /* ProjectReaderViewController.swift */; };
 		E99A033A270594B600C1BCCE /* ProjectReaderVC+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99A0339270594B600C1BCCE /* ProjectReaderVC+TableViewDelegate.swift */; };
 		E99B8DEA268F021C005A9032 /* TaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E99B8DE9268F021C005A9032 /* TaskCell.xib */; };
@@ -59,6 +82,7 @@
 		E99B8DFF26949514005A9032 /* ProjectSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B8DFE26949514005A9032 /* ProjectSession.swift */; };
 		E99B8E0126959877005A9032 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99B8E0026959877005A9032 /* Loader.swift */; };
 		E99B8E032695AA6B005A9032 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E99B8E022695AA6B005A9032 /* SplashScreen.storyboard */; };
+		E9B4C3A5277A138D0038B243 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B4C3A4277A138D0038B243 /* Debouncer.swift */; };
 		E9BDE18F25D3F9B7001E3000 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDE18E25D3F9B7001E3000 /* LoginPresenter.swift */; };
 		E9BDF87D270DAE3D009E620F /* ProjectReaderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF87C270DAE3D009E620F /* ProjectReaderPresenter.swift */; };
 		E9BDF87F27159B88009E620F /* TaskEditor.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9BDF87E27159B88009E620F /* TaskEditor.storyboard */; };
@@ -67,18 +91,42 @@
 		E9BDF8862717382F009E620F /* TaskCreation+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF8852717382F009E620F /* TaskCreation+UITextView.swift */; };
 		E9BDF888271738F1009E620F /* TaskCreationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF887271738F1009E620F /* TaskCreationPresenter.swift */; };
 		E9BDF88C27442362009E620F /* ProjectReaderVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF88B27442360009E620F /* ProjectReaderVC+Delegate.swift */; };
+		E9BDF88E274D34A1009E620F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF88D274D34A0009E620F /* Keys.swift */; };
+		E9BDF890274D34F3009E620F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9BDF88F274D34F3009E620F /* Keys.plist */; };
+		E9BDF892274FD07E009E620F /* TaskCreationVC+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF891274FD07D009E620F /* TaskCreationVC+Delegate.swift */; };
+		E9BDF8962756517E009E620F /* MainLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF8952756517E009E620F /* MainLoginPresenter.swift */; };
+		E9BDF89827622039009E620F /* ProfilViewController+TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BDF89727622038009E620F /* ProfilViewController+TextFieldDelegate.swift */; };
 		E9C2214F25AE0F50001216F5 /* ProjectCreation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */; };
 		E9C2218625AE1345001216F5 /* ProjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9C2218525AE1345001216F5 /* ProjectCell.xib */; };
 		E9C2218C25AE185D001216F5 /* UICollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */; };
+		E9C54BF327EA0F3300DFDEA4 /* extensionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C54BF227EA0F3300DFDEA4 /* extensionTest.swift */; };
 		E9C9C588269FC57900080E45 /* ProjectCreationViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9C587269FC57900080E45 /* ProjectCreationViewController+Delegate.swift */; };
 		E9C9C58A26A9400E00080E45 /* CustomProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C9C58926A9400E00080E45 /* CustomProjectCell.swift */; };
 		E9CB3AA725DD7A5C009980EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9CB3AA625DD7A5C009980EC /* Assets.xcassets */; };
 		E9CB3AAC25DE77BA009980EC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB3AAB25DE77BA009980EC /* Constants.swift */; };
-		E9CDF01F265D25F7000D1FEA /* DashBoardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CDF01E265D25F7000D1FEA /* DashBoardCoordinator.swift */; };
+		E9CD860827E0D1CC00DF5D2D /* ProjectCreationViewController+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD860727E0D1CB00DF5D2D /* ProjectCreationViewController+UITextView.swift */; };
+		E9CD861027E0DC5B00DF5D2D /* DashboardPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD860F27E0DC5B00DF5D2D /* DashboardPresenterTest.swift */; };
+		E9CD861227E0E42800DF5D2D /* DashBoardServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD861127E0E42800DF5D2D /* DashBoardServiceFake.swift */; };
+		E9CD861527E23B6200DF5D2D /* ProjectCreationServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD861427E23B6200DF5D2D /* ProjectCreationServiceFake.swift */; };
+		E9CD861727E23B7100DF5D2D /* ProjectCreationPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD861627E23B7100DF5D2D /* ProjectCreationPresenterTest.swift */; };
+		E9CD861927E2431500DF5D2D /* ProjectCreatonPresenter+ProjectCreationLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD861827E2431500DF5D2D /* ProjectCreatonPresenter+ProjectCreationLogic.swift */; };
+		E9CD861C27E2647E00DF5D2D /* ProjectManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD861B27E2647E00DF5D2D /* ProjectManagerDelegate.swift */; };
+		E9CD861E27E3416C00DF5D2D /* TaskCreationPresenter+TaskCreationPresenterLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD861D27E3416C00DF5D2D /* TaskCreationPresenter+TaskCreationPresenterLogic.swift */; };
+		E9CD862127E35BCC00DF5D2D /* TaskCreationPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD862027E35BCC00DF5D2D /* TaskCreationPresenterTest.swift */; };
+		E9CD862327E35C1E00DF5D2D /* TaskCreationServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD862227E35C1E00DF5D2D /* TaskCreationServiceFake.swift */; };
+		E9CD862527E372E300DF5D2D /* ProjectReaderPresenter+ProjectReaderPresenterLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD862427E372E300DF5D2D /* ProjectReaderPresenter+ProjectReaderPresenterLogic.swift */; };
+		E9CD862827E3789100DF5D2D /* ProjectReaderPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD862727E3789100DF5D2D /* ProjectReaderPresenterTest.swift */; };
+		E9CD862A27E37AB600DF5D2D /* ProjectReaderServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD862927E37AB600DF5D2D /* ProjectReaderServiceFake.swift */; };
+		E9CD862D27E4C6BA00DF5D2D /* UpdateProjectServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD862C27E4C6BA00DF5D2D /* UpdateProjectServiceFake.swift */; };
+		E9CD862F27E4C73400DF5D2D /* UpdateProjectPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD862E27E4C73400DF5D2D /* UpdateProjectPresenterTest.swift */; };
+		E9CD863227E8BA1400DF5D2D /* AuthProfilServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD863127E8BA1400DF5D2D /* AuthProfilServiceFake.swift */; };
+		E9CD863427E8BA9000DF5D2D /* ProjectProfilServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD863327E8BA9000DF5D2D /* ProjectProfilServiceFake.swift */; };
+		E9CD863627E8BAD300DF5D2D /* ProfilPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CD863527E8BAD300DF5D2D /* ProfilPresenterTest.swift */; };
 		E9CDF024265D26C2000D1FEA /* NotificationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CDF023265D26C2000D1FEA /* NotificationCoordinator.swift */; };
 		E9D6076926847083005AC9EB /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6076826847083005AC9EB /* CustomView.swift */; };
 		E9D6076D26848BCA005AC9EB /* StackViewShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9D6076C26848BCA005AC9EB /* StackViewShadow.swift */; };
 		E9DC09FF25DE82B800667E8E /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DC09FE25DE82B800667E8E /* CustomButton.swift */; };
+		E9DD1504276887A600ED2B82 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1503276887A600ED2B82 /* KeyChainManager.swift */; };
 		E9EC4F9126553E8200A1ED96 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC4F9026553E8200A1ED96 /* HomeCoordinator.swift */; };
 		E9EC4F9E265675C500A1ED96 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC4F9D265675C500A1ED96 /* TabBarViewController.swift */; };
 		E9EC4FA326583CE800A1ED96 /* window.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EC4FA226583CE800A1ED96 /* window.swift */; };
@@ -99,48 +147,42 @@
 			remoteGlobalIDString = E92C356A25A5EBA8001F2819;
 			remoteInfo = Unsinkable;
 		};
-		E92C358D25A5EBAC001F2819 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E92C356325A5EBA8001F2819 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E92C356A25A5EBA8001F2819;
-			remoteInfo = Unsinkable;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2DA4556E6ED25D95A4473CA0 /* Pods_UnsinkableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnsinkableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DEF6FC91AD1B24045F02C93 /* Pods_Unsinkable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsinkable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		523A48797D4B2B16A268A378 /* Pods-Unsinkable-UnsinkableUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable-UnsinkableUITests.release.xcconfig"; path = "Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests.release.xcconfig"; sourceTree = "<group>"; };
-		66FA4CBE5D2F66C9D245FA61 /* Pods-UnsinkableTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsinkableTests.debug.xcconfig"; path = "Target Support Files/Pods-UnsinkableTests/Pods-UnsinkableTests.debug.xcconfig"; sourceTree = "<group>"; };
-		6C6B3891B8BEC47F8EA9FD1B /* Pods-UnsinkableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsinkableTests.release.xcconfig"; path = "Target Support Files/Pods-UnsinkableTests/Pods-UnsinkableTests.release.xcconfig"; sourceTree = "<group>"; };
-		942B20643B3D015374268575 /* Pods-Unsinkable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable.release.xcconfig"; path = "Target Support Files/Pods-Unsinkable/Pods-Unsinkable.release.xcconfig"; sourceTree = "<group>"; };
-		94F04F721327FD9AA40E8C00 /* Pods-Unsinkable-UnsinkableUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable-UnsinkableUITests.debug.xcconfig"; path = "Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		C99EFAC4466473468C536C95 /* Pods_Unsinkable_UnsinkableUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsinkable_UnsinkableUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3668094B46EDDCC1957FE0BC /* Pods-UnsinkableTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsinkableTests.release.xcconfig"; path = "Target Support Files/Pods-UnsinkableTests/Pods-UnsinkableTests.release.xcconfig"; sourceTree = "<group>"; };
+		57B0D32CBA8190B066357816 /* Pods-Unsinkable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable.release.xcconfig"; path = "Target Support Files/Pods-Unsinkable/Pods-Unsinkable.release.xcconfig"; sourceTree = "<group>"; };
+		94F57C070ACCE13476C2BDDD /* Pods-UnsinkableTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UnsinkableTests.debug.xcconfig"; path = "Target Support Files/Pods-UnsinkableTests/Pods-UnsinkableTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9D5777D20F1D778F74D99F5E /* Pods-Unsinkable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable.debug.xcconfig"; path = "Target Support Files/Pods-Unsinkable/Pods-Unsinkable.debug.xcconfig"; sourceTree = "<group>"; };
+		C0D4EB48BFAF6FB0A38EDC3B /* Pods_Unsinkable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsinkable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E90236BC26E0E7820070853F /* ProjectReading.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProjectReading.storyboard; sourceTree = "<group>"; };
 		E90312CD25E5409600CBC228 /* TextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtension.swift; sourceTree = "<group>"; };
 		E90312EB25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewControllerTextFieldDelegate.swift; sourceTree = "<group>"; };
 		E90312F625E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTextFieldDelegat.swift; sourceTree = "<group>"; };
-		E903130125E7C52300CBC228 /* AuthenticationSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSession.swift; sourceTree = "<group>"; };
+		E903130125E7C52300CBC228 /* FirebaseAuthenticationSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthenticationSession.swift; sourceTree = "<group>"; };
 		E91DB50E2643FBBD0035889A /* CustomResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomResponse.swift; sourceTree = "<group>"; };
 		E921575825C05BA100D42137 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E921576525C05F0000D42137 /* CoordinatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorManager.swift; sourceTree = "<group>"; };
 		E92157A725C18B7600D42137 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
+		E9217AFB277B284A00356718 /* UpdateProject.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdateProject.storyboard; sourceTree = "<group>"; };
+		E9217B00277B28D600356718 /* UpdateProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProjectViewController.swift; sourceTree = "<group>"; };
+		E9217B02277B315B00356718 /* UpdateProjectPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProjectPresenter.swift; sourceTree = "<group>"; };
+		E9217B04277B3D9400356718 /* UpdateProjectVC+ProjectManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateProjectVC+ProjectManagerDelegate.swift"; sourceTree = "<group>"; };
+		E9217B08277B483900356718 /* UpdateProjectVC+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateProjectVC+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
+		E9217B0A277B490B00356718 /* UpdateProjectVC+UITextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateProjectVC+UITextViewDelegate.swift"; sourceTree = "<group>"; };
+		E9217B122790784700356718 /* ProjectReaderViewController+TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectReaderViewController+TextFieldDelegate.swift"; sourceTree = "<group>"; };
 		E92C356B25A5EBA8001F2819 /* Unsinkable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unsinkable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92C356E25A5EBA8001F2819 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E92C357A25A5EBAB001F2819 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E92C357C25A5EBAB001F2819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E92C358125A5EBAC001F2819 /* UnsinkableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnsinkableTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92C358725A5EBAC001F2819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E92C358C25A5EBAC001F2819 /* UnsinkableUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnsinkableUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E92C359025A5EBAC001F2819 /* UnsinkableUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsinkableUITests.swift; sourceTree = "<group>"; };
-		E92C359225A5EBAC001F2819 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E92EEEE8264AC485005C247F /* FakeStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeStorage.swift; sourceTree = "<group>"; };
 		E94BA61A2628464B003AC914 /* LoginViewController+LoginPresenterDelegat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewController+LoginPresenterDelegat.swift"; sourceTree = "<group>"; };
 		E94BA61F26285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterViewController+RegisterPresenterDelegate.swift"; sourceTree = "<group>"; };
 		E94BA63326317673003AC914 /* UserAuthenticationServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationServiceTest.swift; sourceTree = "<group>"; };
 		E951022B25AF69A50070A91C /* ProjectCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreationViewController.swift; sourceTree = "<group>"; };
-		E951023125AF6A6C0070A91C /* UIViewController+Push.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Push.swift"; sourceTree = "<group>"; };
+		E951023125AF6A6C0070A91C /* UIViewController+Push+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Push+Alert.swift"; sourceTree = "<group>"; };
 		E951026425B843E50070A91C /* MainLoginPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainLoginPage.storyboard; sourceTree = "<group>"; };
 		E951026C25B84CC40070A91C /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		E951027125B84CE10070A91C /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
@@ -148,13 +190,30 @@
 		E951028325B84DEE0070A91C /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E951028825B84DF90070A91C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E951029125B8BA9F0070A91C /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
-		E951029B25B970D20070A91C /* UserAuthentificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthentificationService.swift; sourceTree = "<group>"; };
+		E951029B25B970D20070A91C /* UserAuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAuthenticationService.swift; sourceTree = "<group>"; };
 		E95102CB25B97F7A0070A91C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		E9553E5425E534F4006101D2 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		E95AF91A2679F21400BD1AF8 /* ProfiPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfiPresenter.swift; sourceTree = "<group>"; };
+		E9564A8D27CF81080083FA9F /* RegisterPresenter+RegisterPresenterLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterPresenter+RegisterPresenterLogic.swift"; sourceTree = "<group>"; };
+		E9564A8F27CF83CC0083FA9F /* RegisterPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenterTest.swift; sourceTree = "<group>"; };
+		E9564A9127CF85710083FA9F /* RegisterServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterServiceFake.swift; sourceTree = "<group>"; };
+		E9564A9427CFB0A10083FA9F /* MainLoginPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLoginPresenterTest.swift; sourceTree = "<group>"; };
+		E9564A9727CFB2520083FA9F /* ProjectSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSessionFake.swift; sourceTree = "<group>"; };
+		E9564A9927CFB2CB0083FA9F /* ProjectSessionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSessionTest.swift; sourceTree = "<group>"; };
+		E9564A9B27D0E6260083FA9F /* DashBoardPresenter + DashBoardPresenterLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashBoardPresenter + DashBoardPresenterLogic.swift"; sourceTree = "<group>"; };
+		E95AF91A2679F21400BD1AF8 /* ProfilPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilPresenter.swift; sourceTree = "<group>"; };
 		E95AF91C2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfilViewController+ProfilPresenterDelegate.swift"; sourceTree = "<group>"; };
+		E95D389327A92ED200A64F0F /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		E95D389527A93B0D00A64F0F /* DashBoardVC+SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashBoardVC+SearchBarDelegate.swift"; sourceTree = "<group>"; };
+		E95D389727A93EF000A64F0F /* CustomSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
+		E95D389927B14E5400A64F0F /* ProjectSession+HandleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectSession+HandleError.swift"; sourceTree = "<group>"; };
+		E95D389F27B2CFF400A64F0F /* EmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
+		E95D38A127B40C4D00A64F0F /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		E976F3D926397A60000F9BC6 /* AuthenticationSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSessionFake.swift; sourceTree = "<group>"; };
 		E97A877226DFB94000097527 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
+		E97B7FE4279F066D00BACA3B /* FakeCustomResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCustomResponse.swift; sourceTree = "<group>"; };
+		E992662627CD071000E15581 /* LoginPresenterLogicProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterLogicProtocol.swift; sourceTree = "<group>"; };
+		E9957E1027A2ADAD0038670A /* AuthenticationSession+HandleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthenticationSession+HandleError.swift"; sourceTree = "<group>"; };
+		E9957E1227A2EED70038670A /* UnsinkableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsinkableError.swift; sourceTree = "<group>"; };
 		E99635B62653D99E00185327 /* Profil.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profil.storyboard; sourceTree = "<group>"; };
 		E99635BC2653E3AD00185327 /* ProfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
 		E996B51925A620E900638480 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -162,6 +221,8 @@
 		E996B55B25A6351700638480 /* DashBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DashBoard.storyboard; sourceTree = "<group>"; };
 		E996B56025A6353000638480 /* NotificationCenter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NotificationCenter.storyboard; sourceTree = "<group>"; };
 		E996B56525A6353F00638480 /* NotificationCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterViewController.swift; sourceTree = "<group>"; };
+		E999B06027C79DFF0054533B /* LoginPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTest.swift; sourceTree = "<group>"; };
+		E999B06327C7A82D0054533B /* LoginServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceFake.swift; sourceTree = "<group>"; };
 		E99A03372704E38100C1BCCE /* ProjectReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectReaderViewController.swift; sourceTree = "<group>"; };
 		E99A0339270594B600C1BCCE /* ProjectReaderVC+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectReaderVC+TableViewDelegate.swift"; sourceTree = "<group>"; };
 		E99B8DE9268F021C005A9032 /* TaskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskCell.xib; sourceTree = "<group>"; };
@@ -170,6 +231,7 @@
 		E99B8DFE26949514005A9032 /* ProjectSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectSession.swift; sourceTree = "<group>"; };
 		E99B8E0026959877005A9032 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		E99B8E022695AA6B005A9032 /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
+		E9B4C3A4277A138D0038B243 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		E9BDE18E25D3F9B7001E3000 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		E9BDF87C270DAE3D009E620F /* ProjectReaderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectReaderPresenter.swift; sourceTree = "<group>"; };
 		E9BDF87E27159B88009E620F /* TaskEditor.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskEditor.storyboard; sourceTree = "<group>"; };
@@ -178,18 +240,42 @@
 		E9BDF8852717382F009E620F /* TaskCreation+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCreation+UITextView.swift"; sourceTree = "<group>"; };
 		E9BDF887271738F1009E620F /* TaskCreationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationPresenter.swift; sourceTree = "<group>"; };
 		E9BDF88B27442360009E620F /* ProjectReaderVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectReaderVC+Delegate.swift"; sourceTree = "<group>"; };
+		E9BDF88D274D34A0009E620F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		E9BDF88F274D34F3009E620F /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		E9BDF891274FD07D009E620F /* TaskCreationVC+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCreationVC+Delegate.swift"; sourceTree = "<group>"; };
+		E9BDF8952756517E009E620F /* MainLoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLoginPresenter.swift; sourceTree = "<group>"; };
+		E9BDF89727622038009E620F /* ProfilViewController+TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfilViewController+TextFieldDelegate.swift"; sourceTree = "<group>"; };
 		E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProjectCreation.storyboard; sourceTree = "<group>"; };
 		E9C2218525AE1345001216F5 /* ProjectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectCell.xib; sourceTree = "<group>"; };
 		E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewController.swift; sourceTree = "<group>"; };
+		E9C54BF227EA0F3300DFDEA4 /* extensionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = extensionTest.swift; path = UnsinkableTests/Presenter/Profil/extensionTest.swift; sourceTree = SOURCE_ROOT; };
 		E9C9C587269FC57900080E45 /* ProjectCreationViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectCreationViewController+Delegate.swift"; sourceTree = "<group>"; };
 		E9C9C58926A9400E00080E45 /* CustomProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProjectCell.swift; sourceTree = "<group>"; };
 		E9CB3AA625DD7A5C009980EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9CB3AAB25DE77BA009980EC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		E9CDF01E265D25F7000D1FEA /* DashBoardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardCoordinator.swift; sourceTree = "<group>"; };
+		E9CD860727E0D1CB00DF5D2D /* ProjectCreationViewController+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectCreationViewController+UITextView.swift"; sourceTree = "<group>"; };
+		E9CD860F27E0DC5B00DF5D2D /* DashboardPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenterTest.swift; sourceTree = "<group>"; };
+		E9CD861127E0E42800DF5D2D /* DashBoardServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardServiceFake.swift; sourceTree = "<group>"; };
+		E9CD861427E23B6200DF5D2D /* ProjectCreationServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreationServiceFake.swift; sourceTree = "<group>"; };
+		E9CD861627E23B7100DF5D2D /* ProjectCreationPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCreationPresenterTest.swift; sourceTree = "<group>"; };
+		E9CD861827E2431500DF5D2D /* ProjectCreatonPresenter+ProjectCreationLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectCreatonPresenter+ProjectCreationLogic.swift"; sourceTree = "<group>"; };
+		E9CD861B27E2647E00DF5D2D /* ProjectManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectManagerDelegate.swift; sourceTree = "<group>"; };
+		E9CD861D27E3416C00DF5D2D /* TaskCreationPresenter+TaskCreationPresenterLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskCreationPresenter+TaskCreationPresenterLogic.swift"; sourceTree = "<group>"; };
+		E9CD862027E35BCC00DF5D2D /* TaskCreationPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationPresenterTest.swift; sourceTree = "<group>"; };
+		E9CD862227E35C1E00DF5D2D /* TaskCreationServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreationServiceFake.swift; sourceTree = "<group>"; };
+		E9CD862427E372E300DF5D2D /* ProjectReaderPresenter+ProjectReaderPresenterLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectReaderPresenter+ProjectReaderPresenterLogic.swift"; sourceTree = "<group>"; };
+		E9CD862727E3789100DF5D2D /* ProjectReaderPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectReaderPresenterTest.swift; sourceTree = "<group>"; };
+		E9CD862927E37AB600DF5D2D /* ProjectReaderServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectReaderServiceFake.swift; sourceTree = "<group>"; };
+		E9CD862C27E4C6BA00DF5D2D /* UpdateProjectServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProjectServiceFake.swift; sourceTree = "<group>"; };
+		E9CD862E27E4C73400DF5D2D /* UpdateProjectPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProjectPresenterTest.swift; sourceTree = "<group>"; };
+		E9CD863127E8BA1400DF5D2D /* AuthProfilServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProfilServiceFake.swift; sourceTree = "<group>"; };
+		E9CD863327E8BA9000DF5D2D /* ProjectProfilServiceFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectProfilServiceFake.swift; sourceTree = "<group>"; };
+		E9CD863527E8BAD300DF5D2D /* ProfilPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilPresenterTest.swift; sourceTree = "<group>"; };
 		E9CDF023265D26C2000D1FEA /* NotificationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCoordinator.swift; sourceTree = "<group>"; };
 		E9D6076826847083005AC9EB /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		E9D6076C26848BCA005AC9EB /* StackViewShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewShadow.swift; sourceTree = "<group>"; };
 		E9DC09FE25DE82B800667E8E /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		E9DD1503276887A600ED2B82 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		E9EC4F9026553E8200A1ED96 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		E9EC4F9D265675C500A1ED96 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		E9EC4FA226583CE800A1ED96 /* window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = window.swift; sourceTree = "<group>"; };
@@ -200,7 +286,7 @@
 		E9EE2181268373BC00D80414 /* ProjectCreationViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectCreationViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		E9FE31EB269FAA8F00DF2532 /* CustomTaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTaskTableViewCell.swift; sourceTree = "<group>"; };
 		E9FE31ED269FAFDC00DF2532 /* ProjectCreationViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectCreationViewController+UITableView.swift"; sourceTree = "<group>"; };
-		ECF4E3EB86E9E66E2F41899B /* Pods-Unsinkable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsinkable.debug.xcconfig"; path = "Target Support Files/Pods-Unsinkable/Pods-Unsinkable.debug.xcconfig"; sourceTree = "<group>"; };
+		FFE6C4E9D9D3E67DAB7F8049 /* Pods_UnsinkableTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnsinkableTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,7 +294,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				243D0F3CA6AB440C7E61B0DE /* Pods_Unsinkable.framework in Frameworks */,
+				98DFC14B4AB3D26632F904CE /* Pods_Unsinkable.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,27 +302,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26CCB8F16AC9BA961A065215 /* Pods_UnsinkableTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E92C358925A5EBAC001F2819 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6FADD05467A016C0D281AFEC /* Pods_Unsinkable_UnsinkableUITests.framework in Frameworks */,
+				023084749F9B2DE383FEF464 /* Pods_UnsinkableTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6E3867DA30362642DF7F1868 /* Frameworks */ = {
+		51EF843AB936016DD391D2DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4DEF6FC91AD1B24045F02C93 /* Pods_Unsinkable.framework */,
-				C99EFAC4466473468C536C95 /* Pods_Unsinkable_UnsinkableUITests.framework */,
-				2DA4556E6ED25D95A4473CA0 /* Pods_UnsinkableTests.framework */,
+				C0D4EB48BFAF6FB0A38EDC3B /* Pods_Unsinkable.framework */,
+				FFE6C4E9D9D3E67DAB7F8049 /* Pods_UnsinkableTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -244,12 +321,10 @@
 		A0D333E413336074568E176B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				ECF4E3EB86E9E66E2F41899B /* Pods-Unsinkable.debug.xcconfig */,
-				942B20643B3D015374268575 /* Pods-Unsinkable.release.xcconfig */,
-				94F04F721327FD9AA40E8C00 /* Pods-Unsinkable-UnsinkableUITests.debug.xcconfig */,
-				523A48797D4B2B16A268A378 /* Pods-Unsinkable-UnsinkableUITests.release.xcconfig */,
-				66FA4CBE5D2F66C9D245FA61 /* Pods-UnsinkableTests.debug.xcconfig */,
-				6C6B3891B8BEC47F8EA9FD1B /* Pods-UnsinkableTests.release.xcconfig */,
+				9D5777D20F1D778F74D99F5E /* Pods-Unsinkable.debug.xcconfig */,
+				57B0D32CBA8190B066357816 /* Pods-Unsinkable.release.xcconfig */,
+				94F57C070ACCE13476C2BDDD /* Pods-UnsinkableTests.debug.xcconfig */,
+				3668094B46EDDCC1957FE0BC /* Pods-UnsinkableTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -257,7 +332,8 @@
 		E903130025E7C42C00CBC228 /* ServiceTest */ = {
 			isa = PBXGroup;
 			children = (
-				E94BA63326317673003AC914 /* UserAuthenticationServiceTest.swift */,
+				E9C7B78527BDF11500F57E47 /* Authentication */,
+				E9564A9627CFB22A0083FA9F /* Project */,
 			);
 			path = ServiceTest;
 			sourceTree = "<group>";
@@ -273,15 +349,25 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		E9217AFD277B288300356718 /* ProjectUpdate */ = {
+			isa = PBXGroup;
+			children = (
+				E9217B00277B28D600356718 /* UpdateProjectViewController.swift */,
+				E9217B04277B3D9400356718 /* UpdateProjectVC+ProjectManagerDelegate.swift */,
+				E9217B08277B483900356718 /* UpdateProjectVC+UITextFieldDelegate.swift */,
+				E9217B0A277B490B00356718 /* UpdateProjectVC+UITextViewDelegate.swift */,
+			);
+			path = ProjectUpdate;
+			sourceTree = "<group>";
+		};
 		E92C356225A5EBA8001F2819 = {
 			isa = PBXGroup;
 			children = (
 				E92C356D25A5EBA8001F2819 /* Unsinkable */,
 				E92C358425A5EBAC001F2819 /* UnsinkableTests */,
-				E92C358F25A5EBAC001F2819 /* UnsinkableUITests */,
 				E92C356C25A5EBA8001F2819 /* Products */,
-				6E3867DA30362642DF7F1868 /* Frameworks */,
 				A0D333E413336074568E176B /* Pods */,
+				51EF843AB936016DD391D2DE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -290,7 +376,6 @@
 			children = (
 				E92C356B25A5EBA8001F2819 /* Unsinkable.app */,
 				E92C358125A5EBAC001F2819 /* UnsinkableTests.xctest */,
-				E92C358C25A5EBAC001F2819 /* UnsinkableUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -302,6 +387,7 @@
 				E95AF91E267CD90E00BD1AF8 /* Scenes */,
 				E92C35A725A5ECEF001F2819 /* Model */,
 				E95AF9032678DFBC00BD1AF8 /* CustomComponent */,
+				E97B7FE627A2928300BACA3B /* CustomError */,
 				E921575725C0562000D42137 /* Coordinator */,
 				E951023025AF6A2F0070A91C /* Extensions */,
 				E951029025B8BA820070A91C /* Helpers */,
@@ -313,21 +399,13 @@
 		E92C358425A5EBAC001F2819 /* UnsinkableTests */ = {
 			isa = PBXGroup;
 			children = (
-				E92EEEE8264AC485005C247F /* FakeStorage.swift */,
-				E976F3D926397A60000F9BC6 /* AuthenticationSessionFake.swift */,
+				E9C54BF127EA0F2100DFDEA4 /* extensionTest */,
+				E9C7B78427BDF08C00F57E47 /* FakeModel */,
+				E999B05D27C79CAE0054533B /* Presenter */,
 				E903130025E7C42C00CBC228 /* ServiceTest */,
 				E92C358725A5EBAC001F2819 /* Info.plist */,
 			);
 			path = UnsinkableTests;
-			sourceTree = "<group>";
-		};
-		E92C358F25A5EBAC001F2819 /* UnsinkableUITests */ = {
-			isa = PBXGroup;
-			children = (
-				E92C359025A5EBAC001F2819 /* UnsinkableUITests.swift */,
-				E92C359225A5EBAC001F2819 /* Info.plist */,
-			);
-			path = UnsinkableUITests;
 			sourceTree = "<group>";
 		};
 		E92C35A725A5ECEF001F2819 /* Model */ = {
@@ -346,6 +424,7 @@
 				E92C357925A5EBAB001F2819 /* LaunchScreen.storyboard */,
 				E9CB3AA625DD7A5C009980EC /* Assets.xcassets */,
 				E99B8E022695AA6B005A9032 /* SplashScreen.storyboard */,
+				E9BDF88F274D34F3009E620F /* Keys.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -353,11 +432,12 @@
 		E951023025AF6A2F0070A91C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				E951023125AF6A6C0070A91C /* UIViewController+Push.swift */,
+				E951023125AF6A6C0070A91C /* UIViewController+Push+Alert.swift */,
 				E95102CB25B97F7A0070A91C /* StringExtension.swift */,
 				E90312CD25E5409600CBC228 /* TextFieldExtension.swift */,
 				E97A877226DFB94000097527 /* UITextView.swift */,
 				E9EC4FA226583CE800A1ED96 /* window.swift */,
+				E95D389327A92ED200A64F0F /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -368,8 +448,36 @@
 				E951029125B8BA9F0070A91C /* Regex.swift */,
 				E9CB3AAB25DE77BA009980EC /* Constants.swift */,
 				E99B8E0026959877005A9032 /* Loader.swift */,
+				E9BDF88D274D34A0009E620F /* Keys.swift */,
+				E9B4C3A4277A138D0038B243 /* Debouncer.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E9564A8C27CF80760083FA9F /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				E9564A9127CF85710083FA9F /* RegisterServiceFake.swift */,
+				E9564A8F27CF83CC0083FA9F /* RegisterPresenterTest.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		E9564A9327CFB0940083FA9F /* MainLogin */ = {
+			isa = PBXGroup;
+			children = (
+				E9564A9427CFB0A10083FA9F /* MainLoginPresenterTest.swift */,
+			);
+			path = MainLogin;
+			sourceTree = "<group>";
+		};
+		E9564A9627CFB22A0083FA9F /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				E9564A9727CFB2520083FA9F /* ProjectSessionFake.swift */,
+				E9564A9927CFB2CB0083FA9F /* ProjectSessionTest.swift */,
+			);
+			path = Project;
 			sourceTree = "<group>";
 		};
 		E95AF8FC2678DE0300BD1AF8 /* Onboarding */ = {
@@ -429,6 +537,7 @@
 				E95AF9112678E26B00BD1AF8 /* StoryBoard */,
 				E95AF9102678E26500BD1AF8 /* ViewController */,
 				E95AF90F2678E26000BD1AF8 /* Presenter */,
+				E9CD861A27E2646600DF5D2D /* ProjectManagerDelegate */,
 				E9C2218425AE1320001216F5 /* Cell */,
 				E9EE217A26823F8E00D80414 /* Service */,
 				E95AF90E2678E24300BD1AF8 /* TabBar */,
@@ -453,6 +562,8 @@
 				E9DC09FE25DE82B800667E8E /* CustomButton.swift */,
 				E9553E5425E534F4006101D2 /* CustomTextField.swift */,
 				E9EE21782682275400D80414 /* CustomAppleSignIn.swift */,
+				E95D389727A93EF000A64F0F /* CustomSearchController.swift */,
+				E95D389F27B2CFF400A64F0F /* EmptyView.xib */,
 			);
 			path = CustomComponent;
 			sourceTree = "<group>";
@@ -476,6 +587,7 @@
 		E95AF9062678E15700BD1AF8 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				E9BDF8952756517E009E620F /* MainLoginPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -512,6 +624,7 @@
 			isa = PBXGroup;
 			children = (
 				E9BDE18E25D3F9B7001E3000 /* LoginPresenter.swift */,
+				E992662627CD071000E15581 /* LoginPresenterLogicProtocol.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -528,8 +641,8 @@
 			isa = PBXGroup;
 			children = (
 				E951028825B84DF90070A91C /* RegisterViewController.swift */,
-				E90312EB25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift */,
 				E94BA61F26285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift */,
+				E90312EB25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -538,6 +651,7 @@
 			isa = PBXGroup;
 			children = (
 				E92157A725C18B7600D42137 /* RegisterPresenter.swift */,
+				E9564A8D27CF81080083FA9F /* RegisterPresenter+RegisterPresenterLogic.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -553,10 +667,11 @@
 		E95AF90F2678E26000BD1AF8 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				E9EE217D268240F500D80414 /* DashBoardPresenter.swift */,
-				E99B8DFA269491EA005A9032 /* ProjectCreationPresenter.swift */,
-				E9BDF87C270DAE3D009E620F /* ProjectReaderPresenter.swift */,
-				E9BDF887271738F1009E620F /* TaskCreationPresenter.swift */,
+				E9CD860927E0D4BB00DF5D2D /* DashBoard */,
+				E9CD860A27E0D4F200DF5D2D /* ProjectCreation */,
+				E9CD860B27E0D4FF00DF5D2D /* TaskCreation */,
+				E9CD860D27E0D51C00DF5D2D /* ProjectReader */,
+				E9CD860C27E0D50800DF5D2D /* UpdateProject */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -565,8 +680,10 @@
 			isa = PBXGroup;
 			children = (
 				E99B8DEB268F0690005A9032 /* DashBoard */,
-				E99B8DEC268F06A5005A9032 /* ProjectCreation */,
+				E99B8DF926949121005A9032 /* ProjectCreation */,
+				E99A03362704E36700C1BCCE /* ProjectReader */,
 				E9BDF88027173320009E620F /* TaskCreation */,
+				E9217AFD277B288300356718 /* ProjectUpdate */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -578,6 +695,7 @@
 				E9C2214E25AE0F50001216F5 /* ProjectCreation.storyboard */,
 				E90236BC26E0E7820070853F /* ProjectReading.storyboard */,
 				E9BDF87E27159B88009E620F /* TaskEditor.storyboard */,
+				E9217AFB277B284A00356718 /* UpdateProject.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -610,6 +728,7 @@
 			children = (
 				E99635BC2653E3AD00185327 /* ProfilViewController.swift */,
 				E95AF91C2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift */,
+				E9BDF89727622038009E620F /* ProfilViewController+TextFieldDelegate.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -625,7 +744,7 @@
 		E95AF9182678E35A00BD1AF8 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				E95AF91A2679F21400BD1AF8 /* ProfiPresenter.swift */,
+				E95AF91A2679F21400BD1AF8 /* ProfilPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -633,8 +752,10 @@
 		E95AF9192678E37E00BD1AF8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				E951029B25B970D20070A91C /* UserAuthentificationService.swift */,
-				E903130125E7C52300CBC228 /* AuthenticationSession.swift */,
+				E951029B25B970D20070A91C /* UserAuthenticationService.swift */,
+				E903130125E7C52300CBC228 /* FirebaseAuthenticationSession.swift */,
+				E9957E1027A2ADAD0038670A /* AuthenticationSession+HandleError.swift */,
+				E9DD1503276887A600ED2B82 /* KeyChainManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -648,12 +769,46 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
+		E97B7FE627A2928300BACA3B /* CustomError */ = {
+			isa = PBXGroup;
+			children = (
+				E9957E1227A2EED70038670A /* UnsinkableError.swift */,
+			);
+			path = CustomError;
+			sourceTree = "<group>";
+		};
+		E999B05D27C79CAE0054533B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E9564A9327CFB0940083FA9F /* MainLogin */,
+				E9564A8C27CF80760083FA9F /* Register */,
+				E999B06227C7A0090054533B /* Login */,
+				E9CD860E27E0D95D00DF5D2D /* Dashboard */,
+				E9CD861327E23B2700DF5D2D /* ProjectCreation */,
+				E9CD861F27E35BB300DF5D2D /* TaskCreation */,
+				E9CD862627E3786F00DF5D2D /* ProjectReader */,
+				E9CD862B27E4C69600DF5D2D /* UpdateProject */,
+				E9CD863027E8B9DB00DF5D2D /* Profil */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		E999B06227C7A0090054533B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E999B06327C7A82D0054533B /* LoginServiceFake.swift */,
+				E999B06027C79DFF0054533B /* LoginPresenterTest.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		E99A03362704E36700C1BCCE /* ProjectReader */ = {
 			isa = PBXGroup;
 			children = (
 				E99A03372704E38100C1BCCE /* ProjectReaderViewController.swift */,
 				E9BDF88B27442360009E620F /* ProjectReaderVC+Delegate.swift */,
 				E99A0339270594B600C1BCCE /* ProjectReaderVC+TableViewDelegate.swift */,
+				E9217B122790784700356718 /* ProjectReaderViewController+TextFieldDelegate.swift */,
 			);
 			path = ProjectReader;
 			sourceTree = "<group>";
@@ -663,18 +818,10 @@
 			children = (
 				E996B55625A6344A00638480 /* DashBoardViewController.swift */,
 				E9EE217F268241D000D80414 /* DashBoardViewController+Delegate.swift */,
+				E95D389527A93B0D00A64F0F /* DashBoardVC+SearchBarDelegate.swift */,
 				E9C2218B25AE185D001216F5 /* UICollectionViewController.swift */,
 			);
 			path = DashBoard;
-			sourceTree = "<group>";
-		};
-		E99B8DEC268F06A5005A9032 /* ProjectCreation */ = {
-			isa = PBXGroup;
-			children = (
-				E99B8DF926949121005A9032 /* ProjectCreation */,
-				E99A03362704E36700C1BCCE /* ProjectReader */,
-			);
-			path = ProjectCreation;
 			sourceTree = "<group>";
 		};
 		E99B8DF926949121005A9032 /* ProjectCreation */ = {
@@ -684,14 +831,17 @@
 				E9C9C587269FC57900080E45 /* ProjectCreationViewController+Delegate.swift */,
 				E9EE2181268373BC00D80414 /* ProjectCreationViewController+UITextFieldDelegate.swift */,
 				E9FE31ED269FAFDC00DF2532 /* ProjectCreationViewController+UITableView.swift */,
+				E9CD860727E0D1CB00DF5D2D /* ProjectCreationViewController+UITextView.swift */,
 			);
-			path = ProjectCreation;
+			name = ProjectCreation;
+			path = ProjectCreation/ProjectCreation;
 			sourceTree = "<group>";
 		};
 		E9BDF88027173320009E620F /* TaskCreation */ = {
 			isa = PBXGroup;
 			children = (
 				E9BDF8812717333F009E620F /* TaskCreationViewController.swift */,
+				E9BDF891274FD07D009E620F /* TaskCreationVC+Delegate.swift */,
 				E9BDF883271737DD009E620F /* TaskCreation+UITextField.swift */,
 				E9BDF8852717382F009E620F /* TaskCreation+UITextView.swift */,
 			);
@@ -709,6 +859,139 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		E9C54BF127EA0F2100DFDEA4 /* extensionTest */ = {
+			isa = PBXGroup;
+			children = (
+				E9C54BF227EA0F3300DFDEA4 /* extensionTest.swift */,
+			);
+			path = extensionTest;
+			sourceTree = "<group>";
+		};
+		E9C7B78427BDF08C00F57E47 /* FakeModel */ = {
+			isa = PBXGroup;
+			children = (
+				E92EEEE8264AC485005C247F /* FakeStorage.swift */,
+				E97B7FE4279F066D00BACA3B /* FakeCustomResponse.swift */,
+			);
+			path = FakeModel;
+			sourceTree = "<group>";
+		};
+		E9C7B78527BDF11500F57E47 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				E976F3D926397A60000F9BC6 /* AuthenticationSessionFake.swift */,
+				E94BA63326317673003AC914 /* UserAuthenticationServiceTest.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		E9CD860927E0D4BB00DF5D2D /* DashBoard */ = {
+			isa = PBXGroup;
+			children = (
+				E9EE217D268240F500D80414 /* DashBoardPresenter.swift */,
+				E9564A9B27D0E6260083FA9F /* DashBoardPresenter + DashBoardPresenterLogic.swift */,
+			);
+			path = DashBoard;
+			sourceTree = "<group>";
+		};
+		E9CD860A27E0D4F200DF5D2D /* ProjectCreation */ = {
+			isa = PBXGroup;
+			children = (
+				E99B8DFA269491EA005A9032 /* ProjectCreationPresenter.swift */,
+				E9CD861827E2431500DF5D2D /* ProjectCreatonPresenter+ProjectCreationLogic.swift */,
+			);
+			path = ProjectCreation;
+			sourceTree = "<group>";
+		};
+		E9CD860B27E0D4FF00DF5D2D /* TaskCreation */ = {
+			isa = PBXGroup;
+			children = (
+				E9BDF887271738F1009E620F /* TaskCreationPresenter.swift */,
+				E9CD861D27E3416C00DF5D2D /* TaskCreationPresenter+TaskCreationPresenterLogic.swift */,
+			);
+			path = TaskCreation;
+			sourceTree = "<group>";
+		};
+		E9CD860C27E0D50800DF5D2D /* UpdateProject */ = {
+			isa = PBXGroup;
+			children = (
+				E9217B02277B315B00356718 /* UpdateProjectPresenter.swift */,
+			);
+			path = UpdateProject;
+			sourceTree = "<group>";
+		};
+		E9CD860D27E0D51C00DF5D2D /* ProjectReader */ = {
+			isa = PBXGroup;
+			children = (
+				E9BDF87C270DAE3D009E620F /* ProjectReaderPresenter.swift */,
+				E9CD862427E372E300DF5D2D /* ProjectReaderPresenter+ProjectReaderPresenterLogic.swift */,
+			);
+			path = ProjectReader;
+			sourceTree = "<group>";
+		};
+		E9CD860E27E0D95D00DF5D2D /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				E9CD861127E0E42800DF5D2D /* DashBoardServiceFake.swift */,
+				E9CD860F27E0DC5B00DF5D2D /* DashboardPresenterTest.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		E9CD861327E23B2700DF5D2D /* ProjectCreation */ = {
+			isa = PBXGroup;
+			children = (
+				E9CD861427E23B6200DF5D2D /* ProjectCreationServiceFake.swift */,
+				E9CD861627E23B7100DF5D2D /* ProjectCreationPresenterTest.swift */,
+			);
+			path = ProjectCreation;
+			sourceTree = "<group>";
+		};
+		E9CD861A27E2646600DF5D2D /* ProjectManagerDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				E9CD861B27E2647E00DF5D2D /* ProjectManagerDelegate.swift */,
+			);
+			path = ProjectManagerDelegate;
+			sourceTree = "<group>";
+		};
+		E9CD861F27E35BB300DF5D2D /* TaskCreation */ = {
+			isa = PBXGroup;
+			children = (
+				E9CD862227E35C1E00DF5D2D /* TaskCreationServiceFake.swift */,
+				E9CD862027E35BCC00DF5D2D /* TaskCreationPresenterTest.swift */,
+			);
+			path = TaskCreation;
+			sourceTree = "<group>";
+		};
+		E9CD862627E3786F00DF5D2D /* ProjectReader */ = {
+			isa = PBXGroup;
+			children = (
+				E9CD862927E37AB600DF5D2D /* ProjectReaderServiceFake.swift */,
+				E9CD862727E3789100DF5D2D /* ProjectReaderPresenterTest.swift */,
+			);
+			path = ProjectReader;
+			sourceTree = "<group>";
+		};
+		E9CD862B27E4C69600DF5D2D /* UpdateProject */ = {
+			isa = PBXGroup;
+			children = (
+				E9CD862C27E4C6BA00DF5D2D /* UpdateProjectServiceFake.swift */,
+				E9CD862E27E4C73400DF5D2D /* UpdateProjectPresenterTest.swift */,
+			);
+			path = UpdateProject;
+			sourceTree = "<group>";
+		};
+		E9CD863027E8B9DB00DF5D2D /* Profil */ = {
+			isa = PBXGroup;
+			children = (
+				E9CD863127E8BA1400DF5D2D /* AuthProfilServiceFake.swift */,
+				E9CD863327E8BA9000DF5D2D /* ProjectProfilServiceFake.swift */,
+				E9CD863527E8BAD300DF5D2D /* ProfilPresenterTest.swift */,
+			);
+			path = Profil;
+			sourceTree = "<group>";
+		};
 		E9CDF01C265D25BD000D1FEA /* AuthenticationCoordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -721,7 +1004,6 @@
 			isa = PBXGroup;
 			children = (
 				E9EC4F9026553E8200A1ED96 /* HomeCoordinator.swift */,
-				E9CDF01E265D25F7000D1FEA /* DashBoardCoordinator.swift */,
 				E9CDF023265D26C2000D1FEA /* NotificationCoordinator.swift */,
 			);
 			path = TabBarCoordinator;
@@ -732,6 +1014,7 @@
 			children = (
 				E9D6076826847083005AC9EB /* CustomView.swift */,
 				E9D6076C26848BCA005AC9EB /* StackViewShadow.swift */,
+				E95D38A127B40C4D00A64F0F /* EmptyView.swift */,
 			);
 			path = ProjectCreation;
 			sourceTree = "<group>";
@@ -741,6 +1024,7 @@
 			children = (
 				E99B8DFC269494DF005A9032 /* ProjectService.swift */,
 				E99B8DFE26949514005A9032 /* ProjectSession.swift */,
+				E95D389927B14E5400A64F0F /* ProjectSession+HandleError.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -752,19 +1036,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E92C359525A5EBAC001F2819 /* Build configuration list for PBXNativeTarget "Unsinkable" */;
 			buildPhases = (
-				1BA929FC29C8365D402393A2 /* [CP] Check Pods Manifest.lock */,
+				6EB5A5670740D7960017710E /* [CP] Check Pods Manifest.lock */,
 				E92C356725A5EBA8001F2819 /* Sources */,
 				E92C356825A5EBA8001F2819 /* Frameworks */,
 				E92C356925A5EBA8001F2819 /* Resources */,
-				6042EECC6833F39FFF155555 /* [CP] Embed Pods Frameworks */,
+				E9957E1427A824990038670A /* ShellScript */,
+				B098DD623F27B0F08DE26A49 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Unsinkable;
-			packageProductDependencies = (
-			);
 			productName = Unsinkable;
 			productReference = E92C356B25A5EBA8001F2819 /* Unsinkable.app */;
 			productType = "com.apple.product-type.application";
@@ -773,7 +1056,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E92C359825A5EBAC001F2819 /* Build configuration list for PBXNativeTarget "UnsinkableTests" */;
 			buildPhases = (
-				341BD037BBDED520146B42E9 /* [CP] Check Pods Manifest.lock */,
+				E45FBBA9D636B5BA6D885414 /* [CP] Check Pods Manifest.lock */,
 				E92C357D25A5EBAC001F2819 /* Sources */,
 				E92C357E25A5EBAC001F2819 /* Frameworks */,
 				E92C357F25A5EBAC001F2819 /* Resources */,
@@ -787,26 +1070,6 @@
 			productName = UnsinkableTests;
 			productReference = E92C358125A5EBAC001F2819 /* UnsinkableTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		E92C358B25A5EBAC001F2819 /* UnsinkableUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E92C359B25A5EBAC001F2819 /* Build configuration list for PBXNativeTarget "UnsinkableUITests" */;
-			buildPhases = (
-				AB2A35F5AAE1F821604828F5 /* [CP] Check Pods Manifest.lock */,
-				E92C358825A5EBAC001F2819 /* Sources */,
-				E92C358925A5EBAC001F2819 /* Frameworks */,
-				E92C358A25A5EBAC001F2819 /* Resources */,
-				CB60C5918FD0224CB6B23AB7 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E92C358E25A5EBAC001F2819 /* PBXTargetDependency */,
-			);
-			name = UnsinkableUITests;
-			productName = UnsinkableUITests;
-			productReference = E92C358C25A5EBAC001F2819 /* UnsinkableUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -824,10 +1087,6 @@
 						CreatedOnToolsVersion = 12.2;
 						TestTargetID = E92C356A25A5EBA8001F2819;
 					};
-					E92C358B25A5EBAC001F2819 = {
-						CreatedOnToolsVersion = 12.2;
-						TestTargetID = E92C356A25A5EBA8001F2819;
-					};
 				};
 			};
 			buildConfigurationList = E92C356625A5EBA8001F2819 /* Build configuration list for PBXProject "Unsinkable" */;
@@ -839,15 +1098,12 @@
 				Base,
 			);
 			mainGroup = E92C356225A5EBA8001F2819;
-			packageReferences = (
-			);
 			productRefGroup = E92C356C25A5EBA8001F2819 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				E92C356A25A5EBA8001F2819 /* Unsinkable */,
 				E92C358025A5EBAC001F2819 /* UnsinkableTests */,
-				E92C358B25A5EBAC001F2819 /* UnsinkableUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -857,6 +1113,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9BDF890274D34F3009E620F /* Keys.plist in Resources */,
+				E9217AFC277B284A00356718 /* UpdateProject.storyboard in Resources */,
 				E996B56125A6353000638480 /* NotificationCenter.storyboard in Resources */,
 				E90236BD26E0E7820070853F /* ProjectReading.storyboard in Resources */,
 				E99B8DEA268F021C005A9032 /* TaskCell.xib in Resources */,
@@ -865,6 +1123,7 @@
 				E9C2218625AE1345001216F5 /* ProjectCell.xib in Resources */,
 				E92C357B25A5EBAB001F2819 /* LaunchScreen.storyboard in Resources */,
 				E996B51A25A620E900638480 /* GoogleService-Info.plist in Resources */,
+				E95D38A027B2CFF400A64F0F /* EmptyView.xib in Resources */,
 				E951026D25B84CC40070A91C /* SignIn.storyboard in Resources */,
 				E9BDF87F27159B88009E620F /* TaskEditor.storyboard in Resources */,
 				E951026525B843E50070A91C /* MainLoginPage.storyboard in Resources */,
@@ -883,18 +1142,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E92C358A25A5EBAC001F2819 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E996B51C25A620E900638480 /* GoogleService-Info.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1BA929FC29C8365D402393A2 /* [CP] Check Pods Manifest.lock */ = {
+		6EB5A5670740D7960017710E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -916,7 +1167,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		341BD037BBDED520146B42E9 /* [CP] Check Pods Manifest.lock */ = {
+		B098DD623F27B0F08DE26A49 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Unsinkable/Pods-Unsinkable-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Unsinkable/Pods-Unsinkable-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Unsinkable/Pods-Unsinkable-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E45FBBA9D636B5BA6D885414 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -938,24 +1206,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6042EECC6833F39FFF155555 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Unsinkable/Pods-Unsinkable-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Unsinkable/Pods-Unsinkable-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Unsinkable/Pods-Unsinkable-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AB2A35F5AAE1F821604828F5 /* [CP] Check Pods Manifest.lock */ = {
+		E9957E1427A824990038670A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -963,36 +1214,16 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
-			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Unsinkable-UnsinkableUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CB60C5918FD0224CB6B23AB7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Unsinkable-UnsinkableUITests/Pods-Unsinkable-UnsinkableUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1002,55 +1233,79 @@
 			buildActionMask = 2147483647;
 			files = (
 				E99B8DFF26949514005A9032 /* ProjectSession.swift in Sources */,
+				E9B4C3A5277A138D0038B243 /* Debouncer.swift in Sources */,
 				E9BDE18F25D3F9B7001E3000 /* LoginPresenter.swift in Sources */,
-				E9CDF01F265D25F7000D1FEA /* DashBoardCoordinator.swift in Sources */,
 				E9CB3AAC25DE77BA009980EC /* Constants.swift in Sources */,
+				E9564A8E27CF81080083FA9F /* RegisterPresenter+RegisterPresenterLogic.swift in Sources */,
 				E951028925B84DF90070A91C /* RegisterViewController.swift in Sources */,
 				E951022C25AF69A50070A91C /* ProjectCreationViewController.swift in Sources */,
+				E9957E1327A2EED70038670A /* UnsinkableError.swift in Sources */,
 				E9BDF888271738F1009E620F /* TaskCreationPresenter.swift in Sources */,
 				E921576625C05F0000D42137 /* CoordinatorManager.swift in Sources */,
 				E97A877326DFB94000097527 /* UITextView.swift in Sources */,
 				E9553E5525E534F4006101D2 /* CustomTextField.swift in Sources */,
+				E9CD861C27E2647E00DF5D2D /* ProjectManagerDelegate.swift in Sources */,
+				E9217B01277B28D600356718 /* UpdateProjectViewController.swift in Sources */,
 				E921575925C05BA100D42137 /* Coordinator.swift in Sources */,
 				E99A03382704E38100C1BCCE /* ProjectReaderViewController.swift in Sources */,
 				E9EE2180268241D000D80414 /* DashBoardViewController+Delegate.swift in Sources */,
 				E99B8DFD269494DF005A9032 /* ProjectService.swift in Sources */,
 				E9D6076D26848BCA005AC9EB /* StackViewShadow.swift in Sources */,
+				E9CD861927E2431500DF5D2D /* ProjectCreatonPresenter+ProjectCreationLogic.swift in Sources */,
 				E9C9C588269FC57900080E45 /* ProjectCreationViewController+Delegate.swift in Sources */,
+				E9217B09277B483900356718 /* UpdateProjectVC+UITextFieldDelegate.swift in Sources */,
+				E9217B03277B315B00356718 /* UpdateProjectPresenter.swift in Sources */,
 				E9BDF88C27442362009E620F /* ProjectReaderVC+Delegate.swift in Sources */,
 				E9EC4FAB265CFC0900A1ED96 /* AuthenticationCoordinator.swift in Sources */,
-				E951029C25B970D20070A91C /* UserAuthentificationService.swift in Sources */,
+				E951029C25B970D20070A91C /* UserAuthenticationService.swift in Sources */,
 				E9C2218C25AE185D001216F5 /* UICollectionViewController.swift in Sources */,
-				E951023225AF6A6C0070A91C /* UIViewController+Push.swift in Sources */,
+				E951023225AF6A6C0070A91C /* UIViewController+Push+Alert.swift in Sources */,
 				E99B8E0126959877005A9032 /* Loader.swift in Sources */,
 				E996B56625A6353F00638480 /* NotificationCenterViewController.swift in Sources */,
+				E9BDF88E274D34A1009E620F /* Keys.swift in Sources */,
+				E9217B05277B3D9400356718 /* UpdateProjectVC+ProjectManagerDelegate.swift in Sources */,
 				E9FE31EE269FAFDC00DF2532 /* ProjectCreationViewController+UITableView.swift in Sources */,
+				E95D389827A93EF000A64F0F /* CustomSearchController.swift in Sources */,
 				E9CDF024265D26C2000D1FEA /* NotificationCoordinator.swift in Sources */,
 				E951028425B84DEE0070A91C /* LogInViewController.swift in Sources */,
+				E9CD862527E372E300DF5D2D /* ProjectReaderPresenter+ProjectReaderPresenterLogic.swift in Sources */,
 				E94BA61B2628464B003AC914 /* LoginViewController+LoginPresenterDelegat.swift in Sources */,
 				E9EC4F9126553E8200A1ED96 /* HomeCoordinator.swift in Sources */,
 				E9D6076926847083005AC9EB /* CustomView.swift in Sources */,
 				E9EE217E268240F500D80414 /* DashBoardPresenter.swift in Sources */,
 				E951027F25B84DDD0070A91C /* MainLoginViewController.swift in Sources */,
 				E90312CE25E5409600CBC228 /* TextFieldExtension.swift in Sources */,
+				E9BDF89827622039009E620F /* ProfilViewController+TextFieldDelegate.swift in Sources */,
+				E9BDF8962756517E009E620F /* MainLoginPresenter.swift in Sources */,
 				E92157A825C18B7600D42137 /* RegisterPresenter.swift in Sources */,
 				E99635BD2653E3AD00185327 /* ProfilViewController.swift in Sources */,
+				E9BDF892274FD07E009E620F /* TaskCreationVC+Delegate.swift in Sources */,
+				E9217B0B277B490B00356718 /* UpdateProjectVC+UITextViewDelegate.swift in Sources */,
 				E9EC4F9E265675C500A1ED96 /* TabBarViewController.swift in Sources */,
+				E95D389A27B14E5400A64F0F /* ProjectSession+HandleError.swift in Sources */,
 				E9BDF8862717382F009E620F /* TaskCreation+UITextView.swift in Sources */,
+				E9DD1504276887A600ED2B82 /* KeyChainManager.swift in Sources */,
+				E9217B132790784800356718 /* ProjectReaderViewController+TextFieldDelegate.swift in Sources */,
 				E9DC09FF25DE82B800667E8E /* CustomButton.swift in Sources */,
 				E90312EC25E5646200CBC228 /* RegisterViewControllerTextFieldDelegate.swift in Sources */,
+				E95D389427A92ED200A64F0F /* UIView.swift in Sources */,
 				E95AF91D2679F30D00BD1AF8 /* ProfilViewController+ProfilPresenterDelegate.swift in Sources */,
 				E95102CC25B97F7A0070A91C /* StringExtension.swift in Sources */,
-				E95AF91B2679F21400BD1AF8 /* ProfiPresenter.swift in Sources */,
+				E95AF91B2679F21400BD1AF8 /* ProfilPresenter.swift in Sources */,
 				E9BDF884271737DD009E620F /* TaskCreation+UITextField.swift in Sources */,
+				E95D389627A93B0D00A64F0F /* DashBoardVC+SearchBarDelegate.swift in Sources */,
 				E9BDF87D270DAE3D009E620F /* ProjectReaderPresenter.swift in Sources */,
 				E91DB50F2643FBBD0035889A /* CustomResponse.swift in Sources */,
 				E92C356F25A5EBA8001F2819 /* AppDelegate.swift in Sources */,
 				E951029225B8BA9F0070A91C /* Regex.swift in Sources */,
-				E903130225E7C52300CBC228 /* AuthenticationSession.swift in Sources */,
+				E903130225E7C52300CBC228 /* FirebaseAuthenticationSession.swift in Sources */,
 				E99A033A270594B600C1BCCE /* ProjectReaderVC+TableViewDelegate.swift in Sources */,
 				E99B8DFB269491EA005A9032 /* ProjectCreationPresenter.swift in Sources */,
+				E9CD861E27E3416C00DF5D2D /* TaskCreationPresenter+TaskCreationPresenterLogic.swift in Sources */,
 				E9C9C58A26A9400E00080E45 /* CustomProjectCell.swift in Sources */,
+				E9957E1127A2ADAD0038670A /* AuthenticationSession+HandleError.swift in Sources */,
+				E992662727CD071000E15581 /* LoginPresenterLogicProtocol.swift in Sources */,
+				E95D38A227B40C4D00A64F0F /* EmptyView.swift in Sources */,
 				E9FE31EC269FAA8F00DF2532 /* CustomTaskTableViewCell.swift in Sources */,
 				E9EE2182268373BD00D80414 /* ProjectCreationViewController+UITextFieldDelegate.swift in Sources */,
 				E996B55725A6344A00638480 /* DashBoardViewController.swift in Sources */,
@@ -1058,7 +1313,9 @@
 				E9BDF8822717333F009E620F /* TaskCreationViewController.swift in Sources */,
 				E90312F725E56DCC00CBC228 /* LoginViewControllerTextFieldDelegat.swift in Sources */,
 				E94BA62026285845003AC914 /* RegisterViewController+RegisterPresenterDelegate.swift in Sources */,
+				E9CD860827E0D1CC00DF5D2D /* ProjectCreationViewController+UITextView.swift in Sources */,
 				E9EE21792682275400D80414 /* CustomAppleSignIn.swift in Sources */,
+				E9564A9C27D0E6260083FA9F /* DashBoardPresenter + DashBoardPresenterLogic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1066,17 +1323,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9CD863627E8BAD300DF5D2D /* ProfilPresenterTest.swift in Sources */,
+				E9CD863427E8BA9000DF5D2D /* ProjectProfilServiceFake.swift in Sources */,
+				E9CD861727E23B7100DF5D2D /* ProjectCreationPresenterTest.swift in Sources */,
 				E976F3DA26397A60000F9BC6 /* AuthenticationSessionFake.swift in Sources */,
+				E9CD862827E3789100DF5D2D /* ProjectReaderPresenterTest.swift in Sources */,
+				E9CD862327E35C1E00DF5D2D /* TaskCreationServiceFake.swift in Sources */,
+				E9564A9227CF85710083FA9F /* RegisterServiceFake.swift in Sources */,
+				E9CD861027E0DC5B00DF5D2D /* DashboardPresenterTest.swift in Sources */,
 				E92EEEE9264AC485005C247F /* FakeStorage.swift in Sources */,
+				E9CD861227E0E42800DF5D2D /* DashBoardServiceFake.swift in Sources */,
+				E999B06427C7A82D0054533B /* LoginServiceFake.swift in Sources */,
+				E97B7FE5279F066E00BACA3B /* FakeCustomResponse.swift in Sources */,
+				E9CD862F27E4C73400DF5D2D /* UpdateProjectPresenterTest.swift in Sources */,
+				E9564A9527CFB0A10083FA9F /* MainLoginPresenterTest.swift in Sources */,
+				E9564A9A27CFB2CB0083FA9F /* ProjectSessionTest.swift in Sources */,
+				E9CD862127E35BCC00DF5D2D /* TaskCreationPresenterTest.swift in Sources */,
+				E9C54BF327EA0F3300DFDEA4 /* extensionTest.swift in Sources */,
+				E9CD863227E8BA1400DF5D2D /* AuthProfilServiceFake.swift in Sources */,
+				E999B06127C79DFF0054533B /* LoginPresenterTest.swift in Sources */,
+				E9CD862A27E37AB600DF5D2D /* ProjectReaderServiceFake.swift in Sources */,
+				E9564A9027CF83CD0083FA9F /* RegisterPresenterTest.swift in Sources */,
 				E94BA63426317673003AC914 /* UserAuthenticationServiceTest.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E92C358825A5EBAC001F2819 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E92C359125A5EBAC001F2819 /* UnsinkableUITests.swift in Sources */,
+				E9CD861527E23B6200DF5D2D /* ProjectCreationServiceFake.swift in Sources */,
+				E9564A9827CFB2520083FA9F /* ProjectSessionFake.swift in Sources */,
+				E9CD862D27E4C6BA00DF5D2D /* UpdateProjectServiceFake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1087,11 +1358,6 @@
 			isa = PBXTargetDependency;
 			target = E92C356A25A5EBA8001F2819 /* Unsinkable */;
 			targetProxy = E92C358225A5EBAC001F2819 /* PBXContainerItemProxy */;
-		};
-		E92C358E25A5EBAC001F2819 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E92C356A25A5EBA8001F2819 /* Unsinkable */;
-			targetProxy = E92C358D25A5EBAC001F2819 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1225,13 +1491,15 @@
 		};
 		E92C359625A5EBAC001F2819 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECF4E3EB86E9E66E2F41899B /* Pods-Unsinkable.debug.xcconfig */;
+			baseConfigurationReference = 9D5777D20F1D778F74D99F5E /* Pods-Unsinkable.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				CODE_SIGN_ENTITLEMENTS = Unsinkable/Unsinkable.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 87G25HJ2R8;
 				INFOPLIST_FILE = "$(SRCROOT)/Unsinkable/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
@@ -1249,11 +1517,12 @@
 		};
 		E92C359725A5EBAC001F2819 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 942B20643B3D015374268575 /* Pods-Unsinkable.release.xcconfig */;
+			baseConfigurationReference = 57B0D32CBA8190B066357816 /* Pods-Unsinkable.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
+				CODE_SIGN_ENTITLEMENTS = Unsinkable/Unsinkable.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 87G25HJ2R8;
@@ -1273,7 +1542,7 @@
 		};
 		E92C359925A5EBAC001F2819 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 66FA4CBE5D2F66C9D245FA61 /* Pods-UnsinkableTests.debug.xcconfig */;
+			baseConfigurationReference = 94F57C070ACCE13476C2BDDD /* Pods-UnsinkableTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1296,7 +1565,7 @@
 		};
 		E92C359A25A5EBAC001F2819 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C6B3891B8BEC47F8EA9FD1B /* Pods-UnsinkableTests.release.xcconfig */;
+			baseConfigurationReference = 3668094B46EDDCC1957FE0BC /* Pods-UnsinkableTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1314,48 +1583,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Unsinkable.app/Unsinkable";
-			};
-			name = Release;
-		};
-		E92C359C25A5EBAC001F2819 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 94F04F721327FD9AA40E8C00 /* Pods-Unsinkable-UnsinkableUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 87G25HJ2R8;
-				INFOPLIST_FILE = UnsinkableUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomasgiron.UnsinkableUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Unsinkable;
-			};
-			name = Debug;
-		};
-		E92C359D25A5EBAC001F2819 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 523A48797D4B2B16A268A378 /* Pods-Unsinkable-UnsinkableUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 87G25HJ2R8;
-				INFOPLIST_FILE = UnsinkableUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomasgiron.UnsinkableUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Unsinkable;
 			};
 			name = Release;
 		};
@@ -1385,15 +1612,6 @@
 			buildConfigurations = (
 				E92C359925A5EBAC001F2819 /* Debug */,
 				E92C359A25A5EBAC001F2819 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E92C359B25A5EBAC001F2819 /* Build configuration list for PBXNativeTarget "UnsinkableUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E92C359C25A5EBAC001F2819 /* Debug */,
-				E92C359D25A5EBAC001F2819 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

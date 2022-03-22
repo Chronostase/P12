@@ -14,7 +14,13 @@ class DashBoardViewController: UIViewController {
         return DashBoardPresenter()
     }()
     
+    
+    
+    @IBOutlet var personalEmptyView: EmptyView!
+    @IBOutlet var professionalEmptyView: EmptyView!
+    @IBOutlet var headerView: UIView!
     @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var personalCollectionView: UICollectionView!
     @IBOutlet var professionalCollectionView: UICollectionView!
     
@@ -32,26 +38,43 @@ class DashBoardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionView()
+        setupViewController()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        isTabBarEnable(false)
+        reloadSettings()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        loadData()
-    }
-    
-    private func loadData() {
-        dashBoardPresenter.getUserData()
+        DispatchQueue.main.async {
+            self.showLoader()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    private func reloadSettings() {
         dashBoardPresenter.getCurrentDate()
+        loadData()
+        searchBar.text = ""
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.navigationController?.navigationBar.isHidden = true
+        
+    }
+    
+    private func loadData() {
+        dashBoardPresenter.fetchUser()
+        reloadCollection()
+    }
+    
+    private func setupViewController() {
+        setupCollectionView()
     }
     
     private func setupCollectionView() {
@@ -60,13 +83,14 @@ class DashBoardViewController: UIViewController {
     }
     
     private func setupCustomCell() {
-        let nib = UINib(nibName: "ProjectCell", bundle: nil)
-        personalCollectionView.register(nib, forCellWithReuseIdentifier: "ProjectCell")
-        let xib = UINib(nibName: "ProjectCell", bundle: nil)
-        professionalCollectionView.register(xib, forCellWithReuseIdentifier: "ProjectCell")
+        let nib = UINib(nibName: Constants.Cell.projectCell, bundle: nil)
+        personalCollectionView.register(nib, forCellWithReuseIdentifier: Constants.Cell.projectCell)
+        let xib = UINib(nibName: Constants.Cell.projectCell, bundle: nil)
+        professionalCollectionView.register(xib, forCellWithReuseIdentifier: Constants.Cell.projectCell)
     }
     
     private func setDelegateAndDataSource() {
+        self.searchBar.delegate = self
         self.dashBoardPresenter.delegate = self
         self.personalCollectionView.delegate = self
         self.personalCollectionView.dataSource = self
@@ -78,11 +102,43 @@ class DashBoardViewController: UIViewController {
         self.dateLabel.text = date
     }
     
-    func showLoader() {
-        let loadingVC = LoaderViewController()
-        loadingVC.modalPresentationStyle = .overCurrentContext
-        loadingVC.modalTransitionStyle = .crossDissolve
-        navigationController?.present(loadingVC, animated: true, completion: nil)
+    func reloadCollection() {
+        self.personalCollectionView.reloadData()
+        self.professionalCollectionView.reloadData()
     }
     
+    
+    func setupEmptyView(_ projects: [Project]?, _ collectionView: UICollectionView) {
+        
+        if let projectList = projects {
+            if projectList.isEmpty {
+                self.isEmptyViewNeededFor(collectionView, true)
+            } else {
+                self.isEmptyViewNeededFor(collectionView, false)
+            }
+        } else {
+            self.isEmptyViewNeededFor(collectionView, true)
+        }
+    }
+    
+    private func isEmptyViewNeededFor(_ collectionView: UICollectionView,_ needed: Bool ) {
+        DispatchQueue.main.async {
+            if collectionView == self.personalCollectionView {
+                self.personalEmptyView.isHidden = !needed
+            }
+            else if collectionView == self.professionalCollectionView {
+                self.professionalEmptyView.isHidden = !needed
+            }
+        }
+    }
+    
+    func presentRetyAlert(message: String? = "", title: String) {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let retryAction = UIAlertAction(title: "Retry", style: .default) { alertAction in
+                self.isTabBarEnable(false)
+                self.reloadSettings()
+            }
+            alertController.addAction(retryAction)
+            self.navigationController?.present(alertController, animated: true, completion: nil)
+    }
 }

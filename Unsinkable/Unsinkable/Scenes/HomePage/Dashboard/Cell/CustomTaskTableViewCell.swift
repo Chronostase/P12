@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+protocol CustomTaskTableViewCellDelegate: AnyObject {
+    func tapCheckMarkButton(_ task: Task?)
+}
+
 class CustomTaskTableViewCell: UITableViewCell {
     
     @IBOutlet var checkMarkButton: UIButton!
@@ -18,6 +22,9 @@ class CustomTaskTableViewCell: UITableViewCell {
     @IBOutlet var secondMemberImage: UIImageView!
     @IBOutlet var thirdMemberImage: UIImageView!
     
+    weak var delegate: CustomTaskTableViewCellDelegate?
+    var task: Task?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -27,19 +34,19 @@ class CustomTaskTableViewCell: UITableViewCell {
     }
     
     @IBAction func checkMarkButton(_ sender: UIButton) {
-    }
-    @IBAction func priorityButton(_ sender: UIButton) {
+        delegate?.tapCheckMarkButton(task)
     }
     
-    func configure(_ task: Task?) {
+    func configure() {
+        self.priorityButton.isUserInteractionEnabled = false
         self.taskTitle.text = task?.title
+        
+        if let priority = task?.priority {
+            if priority == true {
+                self.priorityButton.tintColor = UIColor.red
+            } else {
+                self.priorityButton.tintColor = .blue
+            }
+        }
     }
-    
-//    func configure(_ title: String, _ memberCount: String, _ firstImage: UIImage, _ secondImage: UIImage, _ thirdImage: UIImage) {
-//        self.taskTitle.text = title
-//        self.memberCountLabel.text = memberCount
-//        self.firstMemberImage.image = firstImage
-//        self.secondMemberImage.image = secondImage
-//        self.thirdMemberImage.image = thirdImage
-//    }
 }

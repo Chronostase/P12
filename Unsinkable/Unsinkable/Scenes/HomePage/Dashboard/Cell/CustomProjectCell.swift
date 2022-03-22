@@ -12,6 +12,7 @@ import Kingfisher
 class CustomProjectCell: UICollectionViewCell {
     @IBOutlet var projectTitle: UILabel!
     @IBOutlet var coverImage: UIImageView!
+    @IBOutlet var contentLabelView: UIView!
     
     
     override func awakeFromNib() {
@@ -36,8 +37,7 @@ class CustomProjectCell: UICollectionViewCell {
                 return
             }
             let url = URL(string: downloadURL)
-//            self.coverImage.kf.setImage(with: url)
-            self.coverImage.kf.setImage(with: url, placeholder: UIImage(named: "cover"), options: nil, completionHandler: nil)
+            self.coverImage.kf.setImage(with: url, placeholder: UIImage(named: Constants.Image.cover), options: nil, completionHandler: nil)
         }
     }
     
@@ -46,7 +46,9 @@ class CustomProjectCell: UICollectionViewCell {
         self.layer.borderWidth = 5.0
         self.layer.borderColor = UIColor.clear.cgColor
         self.layer.masksToBounds = true
-        
+        self.contentLabelView.layer.cornerRadius = 8.0
+        self.contentLabelView.layer.borderWidth = 0.3
+        self.contentLabelView.layer.borderColor = UIColor.white.cgColor
         // cell shadow section
         self.contentView.layer.cornerRadius = 8.0
         self.contentView.layer.borderWidth = 5.0

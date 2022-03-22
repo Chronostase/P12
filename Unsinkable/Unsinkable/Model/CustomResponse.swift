@@ -13,12 +13,12 @@ struct CustomResponse {
 
 struct UserDetails{
     var email: String?
-    var password: String?
     var firstName: String?
     var name: String? 
     var userId: String?
     var projects: [Project?]?
 }
+
 struct Project {
     var title: String?
     var projectID: String?
@@ -37,4 +37,5 @@ struct Task {
     var deadLine: Date?
     var commentary: String?
     var location: String?
+    var isValidate: Bool? 
 }

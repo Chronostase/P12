@@ -32,25 +32,28 @@ class HomeCoordinator: Coordinator {
     }
     
     private func setupVC() -> [UIViewController]? {
-        let storyboard = UIStoryboard(name: "DashBoard", bundle: Bundle.main)
+        let storyboard = UIStoryboard(name: Constants.StoryBoard.dashBoard, bundle: Bundle.main)
         guard let dashBoardViewController = storyboard.instantiateInitialViewController() as? DashBoardViewController else {
             return nil
         }
         dashBoardViewController.coordinator = self
-        let secondStoryboard = UIStoryboard(name: "NotificationCenter", bundle: Bundle.main)
+        let secondStoryboard = UIStoryboard(name: Constants.StoryBoard.notificationCenter, bundle: Bundle.main)
         guard let notificationViewController = secondStoryboard.instantiateInitialViewController() as? NotificationCenterViewController else {
             return nil
         }
         let dashBoardNavigationViewController = UINavigationController(rootViewController: dashBoardViewController)
-        dashBoardViewController.tabBarItem.image = UIImage(named: "clipboard")
+        let clipBoardImage = UIImage(named: Constants.Image.clipBoard)
+        dashBoardViewController.tabBarItem.image = clipBoardImage
+        
+        let bellImage = UIImage(systemName: Constants.Image.bell)
         let notificationNavigationController = UINavigationController(rootViewController: notificationViewController)
-        notificationViewController.tabBarItem.image = UIImage(systemName: "bell")
+        notificationViewController.tabBarItem.image = bellImage
         
         return [dashBoardNavigationViewController, notificationNavigationController]
     }
     
     func profil(_ data: CustomResponse?) {
-        let storyBoard = UIStoryboard(name: "Profil", bundle: Bundle.main)
+        let storyBoard = UIStoryboard(name: Constants.StoryBoard.profil, bundle: Bundle.main)
         guard let profilViewController = storyBoard.instantiateInitialViewController() as? ProfilViewController else {
             return
         }
@@ -61,7 +64,7 @@ class HomeCoordinator: Coordinator {
     }
     
     func projectCreation(isPersonal: Bool, _ data: CustomResponse?, localTasksList: [Task?]? = []) {
-        let storyboard = UIStoryboard(name: "ProjectCreation", bundle: Bundle.main)
+        let storyboard = UIStoryboard(name: Constants.StoryBoard.projectCreation, bundle: Bundle.main)
         guard let projectVC = storyboard.instantiateInitialViewController() as? ProjectCreationViewController else {
             return
         }
@@ -72,26 +75,41 @@ class HomeCoordinator: Coordinator {
         navigationController.pushViewController(projectVC, animated: true)
     }
     
-    func projectReader(project: Project) {
-        let storyboard = UIStoryboard(name: "ProjectReading", bundle: Bundle.main)
+    func projectReader(project: Project,_ userData: CustomResponse) {
+        let storyboard = UIStoryboard(name: Constants.StoryBoard.projectReading, bundle: Bundle.main)
         guard let projectReaderVC = storyboard.instantiateInitialViewController() as? ProjectReaderViewController else {
             return
         }
         projectReaderVC.projectReaderPresenter.selectedProject = project
+        projectReaderVC.projectReaderPresenter.userData = userData
         projectReaderVC.coordinator = self
         navigationController.pushViewController(projectReaderVC, animated: true)
     }
     
-    func taskEditor(task: Task, parentVC: ProjectCreationPresenterDelegate? = nil, _ isReader: Bool = false) {
-        let storyboard = UIStoryboard(name: "TaskEditor", bundle: Bundle.main)
+    func taskEditor(task: Task, _ project: Project? = nil, parentCreationVC: ProjectManagerDelegate? = nil, _ isReader: Bool = false,_ userData: CustomResponse? = nil) {
+        let storyboard = UIStoryboard(name: Constants.StoryBoard.taskEditor, bundle: Bundle.main)
         guard let taskEditorVC = storyboard.instantiateInitialViewController() as? TaskCreationViewController else {
             return
         }
         taskEditorVC.coordinator = self
-        taskEditorVC.taskCreationPresenter.delegate = parentVC
-        taskEditorVC.taskCreationPresenter.task = task
         taskEditorVC.taskCreationPresenter.isReader = isReader
+        taskEditorVC.taskCreationPresenter.delegate = parentCreationVC
+        taskEditorVC.taskCreationPresenter.task = task
+        taskEditorVC.taskCreationPresenter.project = project
+        taskEditorVC.taskCreationPresenter.userData = userData
         navigationController.pushViewController(taskEditorVC, animated: true)
+    }
+    
+    func updateProject(_ project: Project?, _ userData: CustomResponse?) {
+        let storyboard = UIStoryboard(name: Constants.StoryBoard.updateProject, bundle: Bundle.main)
+        guard let updateProjectVC = storyboard.instantiateInitialViewController() as? UpdateProjectViewController else {return}
+        
+        updateProjectVC.coordinator = self
+        updateProjectVC.updateProjectPresenter.currentProject = project
+        updateProjectVC.updateProjectPresenter.userData = userData
+        updateProjectVC.modalTransitionStyle = .crossDissolve
+        updateProjectVC.modalPresentationStyle = .overFullScreen
+        navigationController.present(updateProjectVC, animated: true, completion: nil)
     }
     
     func didFinish() {

@@ -4,22 +4,24 @@
 //
 //  Created by Thomas on 15/04/2021.
 //
-//import UIKit
 import Foundation
 
 extension LogInViewController: LoginPresenterDelegate {
     func loginSucceed() {
         self.navigationController?.dismiss(animated: true, completion: nil)
+        
         self.transitionToHomeScreen()
     }
     
-    func loginFailed() {
-        self.navigationController?.dismiss(animated: true, completion: nil)
-        self.showError("Incorrect log please retry.")
+    func loginFailed(_ message: String?) {
+        if let message = message {
+            self.navigationController?.dismiss(animated: true, completion: nil)
+            self.showError(message)
+        }
     }
     
     func emptyFields() {
-        self.showError("Please fill in all fields")
+        self.showError(Constants.Error.Body.fillField)
     }
     
     

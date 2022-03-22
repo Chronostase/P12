@@ -11,7 +11,7 @@ import Firebase
 
 class CoordinatorManager: Coordinator {
     
-    let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()
+    let userAuthenticationService: AuthenticationLogic = UserAuthenticationService()
     var childCoordinator = [Coordinator]()
     var navigationController: UINavigationController
     

@@ -9,23 +9,31 @@ import Foundation
 
 extension RegisterViewController: RegisterPresenterDelegate {
     
-    func registerUserSucceed() {
-        self.transitionToHomeScreen()
-    }
-    
-    func registerFailed() {
-        self.showError("some fields are invalid please check them.")
+    func registerComplete(_ result: Result<Void,UnsinkableError>) {
+        switch result {
+        case .success(()):
+            self.navigationController?.dismiss(animated: true)
+            self.transitionToHomeScreen()
+        case .failure(let error):
+            self.navigationController?.dismiss(animated: true)
+            guard let errorBody = error.errorDescription else {return}
+            self.showError(errorBody)
+            
+        }
     }
     
     func invalidEmail() {
-        self.showError("Email is not correct.")
+        self.navigationController?.dismiss(animated: true)
+        self.showError(Constants.Error.Body.emailError)
     }
     
     func empltyFields() {
-        self.showError("Please fill all fields.")
+        self.navigationController?.dismiss(animated: true)
+        self.showError(Constants.Error.Body.fillField)
     }
     
     func invalidPassword() {
-        self.showError("Password needs at least 8 characters, one special, one uppercase.")
+        self.navigationController?.dismiss(animated: true)
+        self.showError(Constants.Error.Body.passwordError)
     }
 }

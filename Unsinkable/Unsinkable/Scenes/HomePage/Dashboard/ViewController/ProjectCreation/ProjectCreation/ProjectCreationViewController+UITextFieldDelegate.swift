@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 extension ProjectCreationViewController: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
     }

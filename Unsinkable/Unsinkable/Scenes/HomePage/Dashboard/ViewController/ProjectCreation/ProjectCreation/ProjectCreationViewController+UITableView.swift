@@ -18,15 +18,15 @@ extension ProjectCreationViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as? CustomTaskTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cell.taskCell, for: indexPath) as? CustomTaskTableViewCell else {
             return UITableViewCell()
         }
         
         guard let task = projectCreationPresenter.localTasksList?[indexPath.row] else {
             return UITableViewCell()
         }
-        
-        cell.configure(task)
+        cell.task = task
+        cell.configure()
         return cell
     }
     
@@ -35,12 +35,11 @@ extension ProjectCreationViewController: UITableViewDataSource {
 
 extension ProjectCreationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("before push taskEditor")
         guard let task = projectCreationPresenter.localTasksList?[indexPath.row] else {
             return
         }
 
-        coordinator?.taskEditor(task: task, parentVC: self)
+        coordinator?.taskEditor(task: task, parentCreationVC: self)
     }
 }
 

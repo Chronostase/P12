@@ -19,16 +19,17 @@ extension TaskCreationViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Commentary"
+            textView.text = Constants.Label.commentaryPlaceHolder
             textView.textColor = .placeholderText
         }
     }
+
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-            if(text == "\n") {
-                textView.resignFirstResponder()
-                return false
-            }
-            return true
-        }
+//    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//            if(text == "\n") {
+//                textView.resignFirstResponder()
+//                return false
+//            }
+//            return true
+//        }
 }

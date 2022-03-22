@@ -9,42 +9,34 @@ import Foundation
 
 protocol LoginPresenterDelegate: AnyObject {
     func loginSucceed()
-    func loginFailed()
+    func loginFailed(_ message: String?)
     func emptyFields()
 }
 
-class LoginPresenter {
+protocol LoginPresenterLogic {
+    func isTextFieldAvailable(_ email: String?,_ password: String?) -> Bool
+    func isEmailValid(_ email: String?) -> Bool
+    func logUser(_ email: String?,_ password: String?, callback: @escaping (Result<CustomResponse?, UnsinkableError>) -> Void)
+}
 
-    weak var delegate: LoginPresenterDelegate?
-    let userAuthenticationService: AuthentificationLogic = UserAuthentificationService()
+class LoginPresenter {
     
-    func checkTextFieldsAvailable(_ email: String?, _ password: String?) -> Bool {
-        if email != "" && password != "" {
-            return true
-        } else {
-            return false
-        }
+    weak var delegate: LoginPresenterDelegate?
+//    let userAuthenticationService: AuthenticationLogic = UserAuthenticationService()
+    let service: AuthenticationLogic
+    init (session: AuthenticationLogic = UserAuthenticationService()) {
+        self.service = session
     }
     
-    func login(email: String?, password: String?) {
-        if checkTextFieldsAvailable(email, password) {
-            guard let email = email?.formatCharacter(), let password = password?.formatCharacter() else {
-                self.delegate?.loginFailed()
-                return
+    func login(_ email: String?,_ password: String?) {
+        logUser(email, password) { result in
+            switch result {
+            case .success(_):
+                self.delegate?.loginSucceed()
+            case .failure(let error):
+                guard let messageError = error.errorDescription else {return}
+                self.delegate?.loginFailed(messageError)
             }
-            userAuthenticationService.loginUser(email, password) { [weak self] result in
-                switch result {
-                case .success(_):
-                    self?.delegate?.loginSucceed()
-                    return
-                    
-                case .failure(_):
-                    self?.delegate?.loginFailed()
-                    return
-                }
-            }
-        } else {
-            delegate?.emptyFields()
         }
     }
 }

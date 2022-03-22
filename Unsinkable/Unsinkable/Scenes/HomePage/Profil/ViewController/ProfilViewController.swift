@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-class ProfilViewController: UIViewController, UITextFieldDelegate {
+class ProfilViewController: UIViewController {
     
     weak var coordinator: HomeCoordinator?
     lazy var profilPresenter = {
-        return ProfiPresenter()
+        return ProfilPresenter()
     }()
     
     
@@ -20,6 +20,14 @@ class ProfilViewController: UIViewController, UITextFieldDelegate {
     @IBAction func profilPictureButton(_ sender: UIButton) {
     }
     @IBAction func performChangeButton(_ sender: UIButton) {
+        if sender.titleLabel?.text == Constants.Button.editProfil {
+            self.canUserEdit(autorization: true)
+            sender.setTitle(Constants.Button.saveChange, for: .normal)
+        } else if sender.titleLabel?.text == Constants.Button.saveChange {
+            updateUser()
+            self.canUserEdit(autorization: false)
+            sender.setTitle(Constants.Button.editProfil, for: .normal)
+        }
     }
     @IBAction func logOutButton(_ sender: UIBarButtonItem) {
         print("LogOut")
@@ -30,28 +38,39 @@ class ProfilViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var errorLabel: UILabel!
     
+    private func canUserEdit(autorization: Bool) {
+        firstNameTextField.isUserInteractionEnabled = autorization
+        nameTextField.isUserInteractionEnabled = autorization
+        emailTextField.isUserInteractionEnabled = autorization
+    }
+    private func updateUser() {
+        guard let firstName = firstNameTextField.text, let name = nameTextField.text, let email = emailTextField.text else {
+            return
+        }
+        profilPresenter.updateUser(firstName, name, email)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        createLogOutButton()
-        setDelegate()
-        navigationController?.navigationBar.isHidden = false
-    }
-    private func createLogOutButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "power"), style: .plain, target: self, action: #selector(logout))
+        setupVC()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         setUserInfo()
-//        profilButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 140, bottom: 0, right: 140)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
     
-    @objc private func logout() {
-        profilPresenter.logOut()
+    private func setupVC() {
+        errorLabel.isHidden = true
+        addNavigationBarButton()
+        setDelegate()
+        navigationController?.navigationBar.isHidden = false
     }
     
     private func setDelegate() {
@@ -65,9 +84,9 @@ class ProfilViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setUserInfo() {
-        self.firstNameTextField.placeholder = profilPresenter.data?.user.firstName
-        self.nameTextField.placeholder = profilPresenter.data?.user.name
-        self.emailTextField.placeholder = profilPresenter.data?.user.email
+        self.firstNameTextField.text = profilPresenter.data?.user.firstName
+        self.nameTextField.text = profilPresenter.data?.user.name
+        self.emailTextField.text = profilPresenter.data?.user.email
     }
     
     func transitionToMainLoginPage() {
@@ -75,7 +94,41 @@ class ProfilViewController: UIViewController, UITextFieldDelegate {
         coordinator?.didFinish()
     }
     
-    func showError(_ message: String) {
-        print(message)
+    private func addNavigationBarButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "power"), style: .plain, target: self, action: #selector(showOptions))
+    }
+    
+    @objc private func showOptions() {
+        let actionSheet = UIAlertController(title: Constants.Button.moreOptions, message: nil, preferredStyle: .actionSheet)
+        let logout = UIAlertAction(title: Constants.Button.logout, style: .default) { action in
+            self.profilPresenter.logOut()
+        }
+        let deleteUser = UIAlertAction(title: Constants.Button.deleteUserAccount, style: .destructive) { (action) in
+            self.setConfirmationDialog()
+        }
+        let cancel = UIAlertAction(title: Constants.Button.cancel, style: .cancel, handler: nil)
+        
+        let actionArry = [logout, deleteUser, cancel]
+        for action in actionArry {
+            actionSheet.addAction(action)
+        }
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    private func setConfirmationDialog() {
+        let confirmationDialog = UIAlertController(title: Constants.Button.deleteAccount, message: nil, preferredStyle: .alert)
+        let delete = UIAlertAction(title: Constants.Button.yes, style: .destructive) { action in
+            self.showLoader()
+            self.profilPresenter.deleteAllUserRef()
+        }
+        
+        let cancel = UIAlertAction(title: Constants.Button.cancel, style: .cancel, handler: nil)
+        
+        let actionArray = [delete, cancel]
+        
+        for action in actionArray {
+            confirmationDialog.addAction(action)
+        }
+        present(confirmationDialog, animated: true, completion: nil)
     }
 }
