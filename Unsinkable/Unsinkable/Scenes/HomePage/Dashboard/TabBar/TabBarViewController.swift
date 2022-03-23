@@ -18,6 +18,9 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        let navStack = navigationController?.viewControllers
+        
     }
     
     override func viewDidLoad() {

@@ -25,7 +25,10 @@ extension ProfilViewController: ProfilPresenterDelegate {
             //Get back to authentication
             self.errorLabel.isHidden = true
             self.navigationController?.dismiss(animated: true)
-            self.navigationController?.popViewController(animated: true)
+//            self.navigationController?.popViewController(animated: true)
+            
+            #warning("not sure")
+            self.navigationController?.viewControllers.removeAll()
             self.transitionToMainLoginPage()
             
         case .failure(let error):

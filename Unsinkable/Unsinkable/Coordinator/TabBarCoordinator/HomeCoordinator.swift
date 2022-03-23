@@ -29,6 +29,7 @@ class HomeCoordinator: Coordinator {
         tabBarViewController.homeCoordinator = self
         tabBarViewController.setViewControllers(self.setupVC(), animated: true)
         navigationController.pushViewController(tabBarViewController, animated: true)
+        
     }
     
     private func setupVC() -> [UIViewController]? {

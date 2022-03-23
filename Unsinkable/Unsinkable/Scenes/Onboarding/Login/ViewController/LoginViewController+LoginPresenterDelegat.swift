@@ -9,7 +9,8 @@ import Foundation
 extension LogInViewController: LoginPresenterDelegate {
     func loginSucceed() {
         self.navigationController?.dismiss(animated: true, completion: nil)
-        
+        #warning("not sure")
+        self.navigationController?.viewControllers.removeAll()
         self.transitionToHomeScreen()
     }
     

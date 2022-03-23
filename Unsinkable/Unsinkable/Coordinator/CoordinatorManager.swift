@@ -28,7 +28,6 @@ class CoordinatorManager: Coordinator {
             childCoordinator.append(child)
             child.start()
         }
-        //See to fetch user data 
     }
     
     func transitionToHomeScreen() {

@@ -13,6 +13,8 @@ extension RegisterViewController: RegisterPresenterDelegate {
         switch result {
         case .success(()):
             self.navigationController?.dismiss(animated: true)
+            #warning("not sure")
+            self.navigationController?.viewControllers.removeAll()
             self.transitionToHomeScreen()
         case .failure(let error):
             self.navigationController?.dismiss(animated: true)
