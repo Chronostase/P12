@@ -10,9 +10,10 @@ import Foundation
 extension ProjectCreationViewController: ProjectManagerDelegate {
 
     //MARK: - Update methods
+    //Update local task and replace it in localtasklist 
     func updateLocalTask(_ task: Task) {
         var index = 0
-        guard var localtasksList = projectCreationPresenter.localTasksList else {return print("Their is no localtasksList")}
+        guard var localtasksList = projectCreationPresenter.localTasksList else {return}
 
         for olderTask in localtasksList {
             if task.taskID == olderTask?.taskID {
@@ -26,6 +27,8 @@ extension ProjectCreationViewController: ProjectManagerDelegate {
     }
 
     //MARK: - RegisterMethods
+    
+    //Switch result to handle data in success case and show error in failure case
     func registerProjectComplete(_ result: Result<Project?, UnsinkableError>) {
         switch result {
         case .success(let project):
@@ -52,7 +55,8 @@ extension ProjectCreationViewController: ProjectManagerDelegate {
             })
         }
     }
-
+    
+    //Switch result to show error in failure case and manage navigation in success
     func registerTaskComplete(_ result: Result<Void, UnsinkableError>) {
         switch result {
         case .success(()):

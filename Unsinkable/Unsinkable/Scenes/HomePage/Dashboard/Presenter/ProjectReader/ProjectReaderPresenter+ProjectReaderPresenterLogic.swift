@@ -9,6 +9,7 @@ import Foundation
 
 extension ProjectReaderPresenter: ProjectReaderPresenterLogic {
     
+    //Call service to registerNewTask if failure remove task from localTaskList
     func addUserNewTask(_ title: String?, completion: @escaping (UnsinkableError?) -> Void) {
         let task = createTaskObject(title, nil, nil, nil, nil, nil)
         self.selectedProject?.taskList?.append(task)
@@ -22,6 +23,7 @@ extension ProjectReaderPresenter: ProjectReaderPresenterLogic {
         }
     }
     
+    //Call service to delete user project
     func deleteUserProject(completion: @escaping (UnsinkableError?) -> Void) {
         //Done
         service.deleteProject(selectedProject) { error in
@@ -34,6 +36,7 @@ extension ProjectReaderPresenter: ProjectReaderPresenterLogic {
         }
     }
     
+    //Call service to update taskStatement if failure unvalidateTask
     func updateUserTask( _ task: Task?, completion: @escaping (UnsinkableError?) -> Void) {
         service.updateValidateStatement(selectedProject, selectedTask: task, userData) { result in
             switch result {
@@ -46,6 +49,7 @@ extension ProjectReaderPresenter: ProjectReaderPresenterLogic {
         }
     }
     
+    //Call service to refreshCurrentProject
     func refreshCurrentUserProject(completion: @escaping (UnsinkableError?) -> Void) {
         service.refreshCurrentProject(selectedProject, userData) { project, error in
             if error != nil {
@@ -58,12 +62,15 @@ extension ProjectReaderPresenter: ProjectReaderPresenterLogic {
         }
     }
     
+    //Check if projectTitle isn't nil
     func checkIfTitleIsNil() -> Bool {
         guard let _ = selectedProject?.title else {
             return true
         }
         return false
     }
+    
+    //Check if current project have coverPicture to download
     func checkIfCoverPicture() -> Bool {
         guard let _ = selectedProject?.downloadUrl else {
             return false
@@ -71,6 +78,7 @@ extension ProjectReaderPresenter: ProjectReaderPresenterLogic {
         return true
     }
     
+    //Check if selectedProject description isn't nil
     func checkIfDescriptionIsEmpty() -> Bool {
         guard let _ = selectedProject?.description else {
             return true
@@ -78,6 +86,7 @@ extension ProjectReaderPresenter: ProjectReaderPresenterLogic {
         return false
     }
     
+    //Check if selected taskList isn't empty
     func checkIfTaskListIsEmpty() -> Bool {
         guard let taskList = selectedProject?.taskList else {
             return true
@@ -89,6 +98,7 @@ extension ProjectReaderPresenter: ProjectReaderPresenterLogic {
         }
     }
     
+    //Allow to switch task statement
     func validateTask(_ task: Task?) {
         var index = 0
         guard let validateTask = task, let localTaskList = selectedProject?.taskList else {return}
@@ -96,16 +106,15 @@ extension ProjectReaderPresenter: ProjectReaderPresenterLogic {
             print("Index = \(index)")
             if validateTask.taskID == task?.taskID && validateTask.isValidate == false {
                 self.selectedProject?.taskList?[index]?.isValidate = true
-                //                index += 1
             } else if validateTask.taskID == task?.taskID && validateTask.isValidate == true {
                 self.selectedProject?.taskList?[index]?.isValidate = false
-                //                index += 1
             }
             index += 1
             
         }
     }
     
+    //In case of failure while saving task statement it reverse task statement
     func unvalidateTask(_ task: Task?) {
         var index = 0
         guard let task = task, let taskList = selectedProject?.taskList else {return}
@@ -122,13 +131,14 @@ extension ProjectReaderPresenter: ProjectReaderPresenterLogic {
         }
     }
     
+    //Create task object
     func createTaskObject(_ title: String?, _ projectID: String?, _ taskID: String?, _ priority: Bool?, _ deadLine: Date?, _ location: String?) -> Task {
         let task = Task(title: title, projectID: projectID, taskID: UUID().uuidString, priority: priority, deadLine: deadLine, commentary: Constants.Label.commentaryPlaceHolder, location: location, isValidate: false)
         
         return task
     }
     
-    
+    //Check if task have not empty title
     func checkTaskTitle(_ taskTitle: String?) -> Bool {
         if taskTitle != "" {
             return true
@@ -137,6 +147,7 @@ extension ProjectReaderPresenter: ProjectReaderPresenterLogic {
         }
     }
     
+    //Remove task from local taskList 
     func removeTaskFromLocalData(_ task: Task?) {
         var index = 0
         guard let task = task else {return}

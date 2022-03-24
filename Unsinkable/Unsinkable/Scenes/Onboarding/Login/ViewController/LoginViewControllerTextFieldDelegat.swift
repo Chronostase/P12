@@ -9,11 +9,14 @@ import Foundation
 import UIKit
 
 extension LogInViewController: UITextFieldDelegate {
+    
+    //Resign first Responder
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
+    //Remove last entry from textField
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = nil 
     }

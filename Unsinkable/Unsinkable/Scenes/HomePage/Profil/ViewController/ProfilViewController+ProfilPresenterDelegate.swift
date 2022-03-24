@@ -9,6 +9,7 @@ import Foundation
 
 extension ProfilViewController: ProfilPresenterDelegate {
     
+    //Switch deleteAllUser ref result to handle error, or delete user in FireAuth
     func deleteAllUSerRefComplete(_ result: Result<Void, UnsinkableError>) {
         switch result {
         case .success(()):
@@ -19,15 +20,15 @@ extension ProfilViewController: ProfilPresenterDelegate {
         }
     }
     
+    //Switch deleteUser result to manage navigation or handle error
     func deleteUserComplete(_ result: Result<Void,UnsinkableError>) {
         switch result {
         case .success(()):
             //Get back to authentication
             self.errorLabel.isHidden = true
             self.navigationController?.dismiss(animated: true)
-//            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
             
-            #warning("not sure")
             self.navigationController?.viewControllers.removeAll()
             self.transitionToMainLoginPage()
             
@@ -39,6 +40,7 @@ extension ProfilViewController: ProfilPresenterDelegate {
         }
     }
     
+    //Switch logout result to manage navigation / handle error
     func logoutComplete(_ result: Result<Void,UnsinkableError>) {
         switch result {
         case .success(()):
@@ -49,7 +51,7 @@ extension ProfilViewController: ProfilPresenterDelegate {
             self.showError(messageBody)
         }
     }
-    
+    //Switch udpateUser result to manage error
     func updateUserComplete(_ result: Result<Void, UnsinkableError>) {
         switch result {
         case .success(()):
@@ -60,6 +62,7 @@ extension ProfilViewController: ProfilPresenterDelegate {
         }
     }
     
+    //Show error to user 
     func showError(_ message: String) {
         self.errorLabel.isHidden = false
         self.errorLabel.text = message

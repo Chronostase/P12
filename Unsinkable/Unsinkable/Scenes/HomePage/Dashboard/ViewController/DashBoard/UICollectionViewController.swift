@@ -10,6 +10,7 @@ import UIKit
 
 extension DashBoardViewController: UICollectionViewDataSource {
     
+    //Set the number of items in section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView == personalCollectionView {
@@ -28,6 +29,7 @@ extension DashBoardViewController: UICollectionViewDataSource {
         }
     }
     
+    //Configure cell with project data
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == personalCollectionView {
@@ -68,6 +70,8 @@ extension DashBoardViewController: UICollectionViewDataSource {
 }
 
 extension DashBoardViewController: UICollectionViewDelegate {
+    
+    //Call coordinator to push project reader when user select item
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == personalCollectionView {
@@ -88,6 +92,7 @@ extension DashBoardViewController: UICollectionViewDelegate {
 }
 
 extension DashBoardViewController: UICollectionViewDelegateFlowLayout {
+    //Set collection size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == personalCollectionView {
             

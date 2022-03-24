@@ -10,6 +10,8 @@ import UIKit
 
 
 extension ProjectCreationViewController: UITableViewDataSource {
+    
+    //Set the number of rows in section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let tasksList = projectCreationPresenter.localTasksList?.count else {
             return 0
@@ -17,6 +19,7 @@ extension ProjectCreationViewController: UITableViewDataSource {
         return tasksList
     }
     
+    //Configure cell with task Data 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cell.taskCell, for: indexPath) as? CustomTaskTableViewCell else {
             return UITableViewCell()
@@ -34,6 +37,8 @@ extension ProjectCreationViewController: UITableViewDataSource {
 
 
 extension ProjectCreationViewController: UITableViewDelegate {
+    
+    //Call coordinator to push taskCreation ViewController
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let task = projectCreationPresenter.localTasksList?[indexPath.row] else {
             return

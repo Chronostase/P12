@@ -681,8 +681,8 @@
 			children = (
 				E99B8DEB268F0690005A9032 /* DashBoard */,
 				E99B8DF926949121005A9032 /* ProjectCreation */,
-				E99A03362704E36700C1BCCE /* ProjectReader */,
 				E9BDF88027173320009E620F /* TaskCreation */,
+				E99A03362704E36700C1BCCE /* ProjectReader */,
 				E9217AFD277B288300356718 /* ProjectUpdate */,
 			);
 			path = ViewController;
@@ -1507,7 +1507,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomasgiron.Unsinkable;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomasgiron1.Unsinkable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1532,7 +1532,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.thomasgiron.Unsinkable;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thomasgiron1.Unsinkable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

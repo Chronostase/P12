@@ -15,40 +15,14 @@ class ProfilViewController: UIViewController {
         return ProfilPresenter()
     }()
     
-    
     @IBOutlet var profilButton: UIButton!
-    @IBAction func profilPictureButton(_ sender: UIButton) {
-    }
-    @IBAction func performChangeButton(_ sender: UIButton) {
-        if sender.titleLabel?.text == Constants.Button.editProfil {
-            self.canUserEdit(autorization: true)
-            sender.setTitle(Constants.Button.saveChange, for: .normal)
-        } else if sender.titleLabel?.text == Constants.Button.saveChange {
-            updateUser()
-            self.canUserEdit(autorization: false)
-            sender.setTitle(Constants.Button.editProfil, for: .normal)
-        }
-    }
-    @IBAction func logOutButton(_ sender: UIBarButtonItem) {
-        print("LogOut")
-    }
     
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var errorLabel: UILabel!
-    
-    private func canUserEdit(autorization: Bool) {
-        firstNameTextField.isUserInteractionEnabled = autorization
-        nameTextField.isUserInteractionEnabled = autorization
-        emailTextField.isUserInteractionEnabled = autorization
-    }
-    private func updateUser() {
-        guard let firstName = firstNameTextField.text, let name = nameTextField.text, let email = emailTextField.text else {
-            return
-        }
-        profilPresenter.updateUser(firstName, name, email)
-        
+    //Feature in coming
+    @IBAction func profilPictureButton(_ sender: UIButton) {
     }
     
     override func viewDidLoad() {
@@ -61,11 +35,7 @@ class ProfilViewController: UIViewController {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         setUserInfo()
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
-    
+    //Setup Delegate and rightNavigationBar button
     private func setupVC() {
         errorLabel.isHidden = true
         addNavigationBarButton()
@@ -73,6 +43,7 @@ class ProfilViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
     }
     
+    //Set item delegate to self
     private func setDelegate() {
         profilPresenter.delegate = self
         firstNameTextField.delegate = self
@@ -82,22 +53,53 @@ class ProfilViewController: UIViewController {
         emailTextField.delegate = self
         emailTextField.isUserInteractionEnabled = false
     }
+    //Allow to edit / perform profil change
+    @IBAction func performChangeButton(_ sender: UIButton) {
+        if sender.titleLabel?.text == Constants.Button.editProfil {
+            self.canUserEdit(autorization: true)
+            sender.setTitle(Constants.Button.saveChange, for: .normal)
+        } else if sender.titleLabel?.text == Constants.Button.saveChange {
+            updateUser()
+            self.canUserEdit(autorization: false)
+            sender.setTitle(Constants.Button.editProfil, for: .normal)
+        }
+    }
     
+    //Allow user to edit or not his profil
+    private func canUserEdit(autorization: Bool) {
+        firstNameTextField.isUserInteractionEnabled = autorization
+        nameTextField.isUserInteractionEnabled = autorization
+        emailTextField.isUserInteractionEnabled = autorization
+    }
+    
+    //UpdateUser with new data
+    private func updateUser() {
+        guard let firstName = firstNameTextField.text, let name = nameTextField.text, let email = emailTextField.text else {
+            return
+        }
+        profilPresenter.updateUser(firstName, name, email)
+        
+    }
+    
+    //Display user Data
     private func setUserInfo() {
         self.firstNameTextField.text = profilPresenter.data?.user.firstName
         self.nameTextField.text = profilPresenter.data?.user.name
         self.emailTextField.text = profilPresenter.data?.user.email
     }
     
+    //Transition to mainLogin if user logout / Delete his account
     func transitionToMainLoginPage() {
         coordinator?.parentCoordinator?.start()
         coordinator?.didFinish()
     }
     
+    //add right bar button to show action sheet
     private func addNavigationBarButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "power"), style: .plain, target: self, action: #selector(showOptions))
     }
     
+    //Offer option to user to logout or delete his account with confirmation dialog
     @objc private func showOptions() {
         let actionSheet = UIAlertController(title: Constants.Button.moreOptions, message: nil, preferredStyle: .actionSheet)
         let logout = UIAlertAction(title: Constants.Button.logout, style: .default) { action in
@@ -115,6 +117,7 @@ class ProfilViewController: UIViewController {
         present(actionSheet, animated: true, completion: nil)
     }
     
+    //Set Confirmation dialog before erase user profil 
     private func setConfirmationDialog() {
         let confirmationDialog = UIAlertController(title: Constants.Button.deleteAccount, message: nil, preferredStyle: .alert)
         let delete = UIAlertAction(title: Constants.Button.yes, style: .destructive) { action in

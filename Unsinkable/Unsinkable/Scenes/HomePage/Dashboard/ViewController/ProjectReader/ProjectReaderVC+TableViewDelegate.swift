@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 extension ProjectReaderViewController: UITableViewDataSource {
+    //Set the number of section in table view
     func numberOfSections(in tableView: UITableView) -> Int {
         guard let taskList = projectReaderPresenter.selectedProject?.taskList else {
             return 0
@@ -27,6 +28,8 @@ extension ProjectReaderViewController: UITableViewDataSource {
             return 2
         }
     }
+    
+    //Configure the header height
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         guard let taskList = projectReaderPresenter.selectedProject?.taskList else {return 0.0}
         let unValidateTaskCount = taskList.filter{$0?.isValidate != true}.count
@@ -46,12 +49,14 @@ extension ProjectReaderViewController: UITableViewDataSource {
         }
     }
     
+    //Setup HeaderViewUI
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let view = view as? UITableViewHeaderFooterView else {return}
         view.textLabel?.text = Constants.Label.finishedTask
         view.tintColor = .white
     }
     
+    //Set number of rows in section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let taskList = projectReaderPresenter.selectedProject?.taskList else {
             return 0
@@ -73,6 +78,7 @@ extension ProjectReaderViewController: UITableViewDataSource {
         return 0
     }
     
+    //Configure task cell, in terms of validate/unvalidate task
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Cell.taskCell, for: indexPath) as? CustomTaskTableViewCell else {
             return UITableViewCell()
@@ -122,6 +128,7 @@ extension ProjectReaderViewController: UITableViewDataSource {
 
 extension ProjectReaderViewController: UITableViewDelegate {
     
+    //Call coordinator to push TaskEditor when user tap a cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let project = self.projectReaderPresenter.selectedProject, let userData = self.projectReaderPresenter.userData else {return}
         guard let taskList = self.projectReaderPresenter.selectedProject?.taskList else {
@@ -136,6 +143,7 @@ extension ProjectReaderViewController: UITableViewDelegate {
 }
 
 extension ProjectReaderViewController: CustomTaskTableViewCellDelegate {
+    //When user tap check mark, change task statement
     func tapCheckMarkButton(_ task: Task?) {
         self.projectReaderPresenter.validateTask(task)
         

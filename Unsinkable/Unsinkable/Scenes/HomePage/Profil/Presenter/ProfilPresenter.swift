@@ -31,6 +31,7 @@ class ProfilPresenter {
         self.databaseService = projectSession
     }
     
+    //Call authService to logOut user, call delegate to handle result
     func logOut() {
         if authService.logOut() == true {
             self.delegate?.logoutComplete(.success(()))
@@ -39,6 +40,7 @@ class ProfilPresenter {
         }
     }
     
+    //Call authService to deleteUser, call delegate to handle result
     func deleteUser() {
         guard let user = data?.user else {return}
         authService.deleteUser(user) { error in
@@ -53,6 +55,7 @@ class ProfilPresenter {
         }
     }
     
+    //Call databaseService to deleteAllUserRef, call delegate to handle result
     func deleteAllUserRef() {
         databaseService.deleteAllUserRef(data) { error in
             if error != nil {
@@ -64,6 +67,7 @@ class ProfilPresenter {
         }
     }
     
+    //Call authService to updateUser, call delegate to handle result
     func updateUser(_ firstName: String,_ name: String,_ email: String) {
         
         if firstName == "" || name == "" || email == "" {
@@ -84,6 +88,7 @@ class ProfilPresenter {
         }
     }
     
+    //Check with regex if email is valid 
     func isEmailValid(_ email: String?) -> Bool {
         guard let email = email else {
             return false

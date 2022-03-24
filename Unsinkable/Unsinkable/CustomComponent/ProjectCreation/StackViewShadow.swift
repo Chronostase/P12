@@ -18,6 +18,7 @@ class CustomStackViewShadow: UIStackView {
         super.init(frame: frame)
     }
     
+    //Set shadow to stack view 
     override func layoutSubviews() {
         super.layoutSubviews()
         let subView = UIView(frame: bounds)

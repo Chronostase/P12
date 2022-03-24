@@ -25,6 +25,7 @@ class TaskCreationViewController: UIViewController {
     @IBOutlet var deleteTaskButton: UIButton!
     
     //MARK: Methods
+    //Check if deadLineSwitch is one if it is show deadLineView else hidde
     @IBAction func deadLineSwitch(_ sender: UISwitch) {
         if deadLineSwitch.isOn {
             isDeadLineViewIsNeeded(true)
@@ -33,8 +34,9 @@ class TaskCreationViewController: UIViewController {
         }
         
     }
-    @IBAction func datePicker(_ sender: UIDatePicker) {
-    }
+    @IBAction func datePicker(_ sender: UIDatePicker) {}
+    
+    //Show confirmation dialog befor deleting task
     @IBAction func deleteTaskButton(_ sender: UIButton) {
         setConfirmationDialog()
     }
@@ -43,6 +45,7 @@ class TaskCreationViewController: UIViewController {
         setupViewController()
     }
     
+    //Do additional setup
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false 
@@ -50,6 +53,7 @@ class TaskCreationViewController: UIViewController {
     
     //MARK: Setup Methods
     
+    //Check if ViewController is in creation mode or reader and setup it
     private func setupViewController() {
         setupTaskEditor()
         if taskCreationPresenter.isTaskReader() {
@@ -65,6 +69,7 @@ class TaskCreationViewController: UIViewController {
         }
     }
     
+    //Default setting for viewController
     private func setupTaskEditor() {
         setDelegate()
         displayDefaultTaskData()
@@ -72,12 +77,14 @@ class TaskCreationViewController: UIViewController {
         setupDeadLineView()
     }
     
+    //Set item delegate to self
     private func setDelegate() {
         self.commentaryTextView.delegate = self
         self.titleTextField.delegate = self
         self.locationTextField.delegate = self
     }
     
+    //Display default task settings
     private func displayDefaultTaskData() {
         self.titleTextField.text = taskCreationPresenter.task?.title
         if taskCreationPresenter.task?.commentary == Constants.Label.commentaryPlaceHolder {
@@ -90,6 +97,7 @@ class TaskCreationViewController: UIViewController {
         }
     }
     
+    //Set right bar button to save or edit if taskCreation is in reader or editor mode
     private func setNavigationBar() {
         self.navigationController?.navigationBar.isHidden = false
         if taskCreationPresenter.isTaskReader() {
@@ -99,6 +107,7 @@ class TaskCreationViewController: UIViewController {
         }
     }
     
+    //If DeadLineViewIsNeeded show deadline view else hidde
     private func setupDeadLineView() {
         if taskCreationPresenter.isDeadLineViewNeeded() {
             self.deadLineView.isHidden = false
@@ -109,14 +118,17 @@ class TaskCreationViewController: UIViewController {
     
     //MARK: Set Button Methods
     
+    //Create rightNavigationBar save button
     private func setRightBarSaveButton() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Constants.Button.saveTask, style: .plain, target: self, action: #selector(saveTask))
     }
     
+    //Create rightNavigationBar edit button
     private func setRightBarEditButton() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Constants.Button.edit, style: .plain, target: self, action: #selector(editTask))
     }
     
+    //Allow only projectOwner to delete task 
     private func setDeleteTaskButon() {
         if taskCreationPresenter.isDeleteTaskNeeded() {
             self.deleteTaskButton.isHidden = false
@@ -125,6 +137,7 @@ class TaskCreationViewController: UIViewController {
         }
     }
     
+    //Allow to edit / save task
     @objc func editTask(_ sender: UIBarButtonItem) {
         if sender.title == Constants.Button.edit {
             canUserEdit(autorization: true)
@@ -142,6 +155,7 @@ class TaskCreationViewController: UIViewController {
         }
     }
     
+    //Update local task with task data
     @objc func saveTask() {
         guard let task = taskCreationPresenter.task else {return}
         if deadLineSwitch.isOn {
@@ -151,6 +165,7 @@ class TaskCreationViewController: UIViewController {
         }
     }
     
+    //Enable or disable edit mode
     private func canUserEdit(autorization: Bool) {
         titleTextField.isUserInteractionEnabled = autorization
         locationTextField.isUserInteractionEnabled = autorization
@@ -160,11 +175,13 @@ class TaskCreationViewController: UIViewController {
         commentaryTextView.isUserInteractionEnabled = autorization
     }
     
+    //Add textView placeHolder
     private func setTextViewPlaceHolder() {
         commentaryTextView.text = Constants.Label.commentaryPlaceHolder
         commentaryTextView.textColor = .placeholderText
     }
     
+    //Display task data to fields
     private func displayTaskData() {
         guard let task = taskCreationPresenter.task, let priority = task.priority else {
             return
@@ -192,11 +209,13 @@ class TaskCreationViewController: UIViewController {
         }
     }
     
+    //Check if deadLine view is needed
     private func isDeadLineViewIsNeeded(_ statement: Bool) {
         self.deadLineView.isHidden = !statement
         self.datePicker.isHidden = !statement
     }
     
+    //Show confirmationDialog to user before sensitive operation 
     private func setConfirmationDialog() {
         let confirmationDialog = UIAlertController(title: Constants.Button.deleteMessage, message: nil, preferredStyle: .alert)
         let delete = UIAlertAction(title: Constants.Button.yes, style: .destructive) { action in

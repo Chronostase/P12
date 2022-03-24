@@ -9,7 +9,7 @@ import Foundation
 import FirebaseAuth
 
 extension FirebaseAuthenticationSession {
-    
+    //All error that can be trigger by fireAuth 
     func handleErrorWith(_ errorCode: AuthErrorCode) -> UnsinkableError {
         switch errorCode {
         case .invalidEmail:

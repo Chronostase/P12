@@ -33,6 +33,7 @@ class ProjectCreationPresenter {
         self.service = session
     }
     
+    //Initiate save project process, call delegate methode to handle result 
     func saveProject(_ title: String?,_ descitpion: String?,_ coverPicture: Data?) {
         registerProject(title, descitpion, coverPicture) { result in
             switch result {

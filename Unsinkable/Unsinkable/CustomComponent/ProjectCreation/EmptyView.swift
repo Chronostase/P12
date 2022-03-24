@@ -28,6 +28,7 @@ class EmptyView: UIView {
         setupLayout()
     }
     
+    //Load emptyView Xib
     private func loadXib() {
         Bundle.main.loadNibNamed("EmptyView", owner: self, options: nil)
         addSubview(contentView)
@@ -35,6 +36,7 @@ class EmptyView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
+    //Setup UI of emptyView with shadow 
     private func setupLayout() {
         self.layer.cornerRadius = 8.0
         self.layer.borderWidth = 5.0

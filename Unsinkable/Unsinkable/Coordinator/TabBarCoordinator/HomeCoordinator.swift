@@ -24,6 +24,7 @@ class HomeCoordinator: Coordinator {
         tabBar()
     }
     
+    //PushTabBar VC
     func tabBar() {
         let tabBarViewController = TabBarViewController()
         tabBarViewController.homeCoordinator = self
@@ -32,6 +33,7 @@ class HomeCoordinator: Coordinator {
         
     }
     
+    //Instantiate and Setup tab bar image to DashBoard and Notification VC
     private func setupVC() -> [UIViewController]? {
         let storyboard = UIStoryboard(name: Constants.StoryBoard.dashBoard, bundle: Bundle.main)
         guard let dashBoardViewController = storyboard.instantiateInitialViewController() as? DashBoardViewController else {
@@ -53,6 +55,7 @@ class HomeCoordinator: Coordinator {
         return [dashBoardNavigationViewController, notificationNavigationController]
     }
     
+    //Push Profil VC
     func profil(_ data: CustomResponse?) {
         let storyBoard = UIStoryboard(name: Constants.StoryBoard.profil, bundle: Bundle.main)
         guard let profilViewController = storyBoard.instantiateInitialViewController() as? ProfilViewController else {
@@ -64,6 +67,7 @@ class HomeCoordinator: Coordinator {
         
     }
     
+    //Push ProjectCreation VC
     func projectCreation(isPersonal: Bool, _ data: CustomResponse?, localTasksList: [Task?]? = []) {
         let storyboard = UIStoryboard(name: Constants.StoryBoard.projectCreation, bundle: Bundle.main)
         guard let projectVC = storyboard.instantiateInitialViewController() as? ProjectCreationViewController else {
@@ -76,6 +80,7 @@ class HomeCoordinator: Coordinator {
         navigationController.pushViewController(projectVC, animated: true)
     }
     
+    //Push ProjectReader VC
     func projectReader(project: Project,_ userData: CustomResponse) {
         let storyboard = UIStoryboard(name: Constants.StoryBoard.projectReading, bundle: Bundle.main)
         guard let projectReaderVC = storyboard.instantiateInitialViewController() as? ProjectReaderViewController else {
@@ -87,6 +92,7 @@ class HomeCoordinator: Coordinator {
         navigationController.pushViewController(projectReaderVC, animated: true)
     }
     
+    //Push TaskEditor VC and set data
     func taskEditor(task: Task, _ project: Project? = nil, parentCreationVC: ProjectManagerDelegate? = nil, _ isReader: Bool = false,_ userData: CustomResponse? = nil) {
         let storyboard = UIStoryboard(name: Constants.StoryBoard.taskEditor, bundle: Bundle.main)
         guard let taskEditorVC = storyboard.instantiateInitialViewController() as? TaskCreationViewController else {
@@ -101,6 +107,7 @@ class HomeCoordinator: Coordinator {
         navigationController.pushViewController(taskEditorVC, animated: true)
     }
     
+    //Present updateProjectVC and set data 
     func updateProject(_ project: Project?, _ userData: CustomResponse?) {
         let storyboard = UIStoryboard(name: Constants.StoryBoard.updateProject, bundle: Bundle.main)
         guard let updateProjectVC = storyboard.instantiateInitialViewController() as? UpdateProjectViewController else {return}

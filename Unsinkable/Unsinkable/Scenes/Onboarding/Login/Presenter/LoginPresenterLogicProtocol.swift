@@ -9,6 +9,7 @@ import Foundation
 
 extension LoginPresenter: LoginPresenterLogic {
     
+    //Check if textField are not nil and not empty
     func isTextFieldAvailable(_ email: String?,_ password: String?) -> Bool {
         guard let email = email, let password = password else {return false}
         if email != "" && password != "" {
@@ -18,6 +19,7 @@ extension LoginPresenter: LoginPresenterLogic {
         }
     }
     
+    //Use regex to check if email have correct syntax
     func isEmailValid(_ email: String?) -> Bool {
         guard let email = email else {
             return false
@@ -25,9 +27,8 @@ extension LoginPresenter: LoginPresenterLogic {
         return Regex.validateEmail(candidate: email)
     }
     
+    //Proceed to check and call service to login user
     func logUser(_ email: String?,_ password: String?,  callback: @escaping (Result<CustomResponse?, UnsinkableError>) -> Void) {
-        //param callBack handle in presenter allow to fall in .success/fail
-        //Ou passer par le delegate OVD return Bool 
         if isTextFieldAvailable(email,password) {
             guard let email = email?.formatCharacter(), let password = password?.formatCharacter() else {
                 self.delegate?.loginFailed(Constants.Error.Body.incorrectLog)

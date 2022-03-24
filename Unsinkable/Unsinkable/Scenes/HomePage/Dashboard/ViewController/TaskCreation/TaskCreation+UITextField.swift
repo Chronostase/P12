@@ -10,6 +10,7 @@ import UIKit
 
 extension TaskCreationViewController: UITextFieldDelegate {
     
+    //Resigne first responder
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
     }

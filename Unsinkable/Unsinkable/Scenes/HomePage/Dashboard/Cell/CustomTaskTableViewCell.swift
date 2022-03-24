@@ -33,10 +33,12 @@ class CustomTaskTableViewCell: UITableViewCell {
         super.prepareForReuse()
     }
     
+    //user delegate methode to validate / unvalidate task
     @IBAction func checkMarkButton(_ sender: UIButton) {
         delegate?.tapCheckMarkButton(task)
     }
     
+    //Use to configure taskCell 
     func configure() {
         self.priorityButton.isUserInteractionEnabled = false
         self.taskTitle.text = task?.title

@@ -28,6 +28,7 @@ class CustomProjectCell: UICollectionViewCell {
         setupLayout()
     }
     
+    //Configure projectCell, use KingFisher to show placeholder while cover is loading
     func configureWith(_ project: Project) {
         self.projectTitle.text = project.title
         if project.downloadUrl == nil {
@@ -41,6 +42,7 @@ class CustomProjectCell: UICollectionViewCell {
         }
     }
     
+    //Set Cell layout 
     private func setupLayout() {
         self.layer.cornerRadius = 8.0
         self.layer.borderWidth = 5.0

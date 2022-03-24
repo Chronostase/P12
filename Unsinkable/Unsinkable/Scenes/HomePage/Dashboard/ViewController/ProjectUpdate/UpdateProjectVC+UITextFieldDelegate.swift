@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 extension UpdateProjectViewController: UITextFieldDelegate {
+    
+    //Resign first responder 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
     }

@@ -20,6 +20,7 @@ class UpdateProjectPresenter {
         self.service = session
     }
     
+    //Call service to updateProject and call delegate to handle result
     func updateProject() {
         service.updateProject(currentProject, userData, coverData) { error in
             if error != nil {
@@ -31,6 +32,7 @@ class UpdateProjectPresenter {
         }
     }
     
+    //update local project data 
     func updateLocalData(_ title: String?, _ description: String?) {
         if title != nil {
             self.currentProject?.title = title

@@ -22,12 +22,12 @@ protocol LoginPresenterLogic {
 class LoginPresenter {
     
     weak var delegate: LoginPresenterDelegate?
-//    let userAuthenticationService: AuthenticationLogic = UserAuthenticationService()
     let service: AuthenticationLogic
     init (session: AuthenticationLogic = UserAuthenticationService()) {
         self.service = session
     }
     
+    //Initiate login process and call delegate method 
     func login(_ email: String?,_ password: String?) {
         logUser(email, password) { result in
             switch result {

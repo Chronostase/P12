@@ -41,7 +41,7 @@ class UserAuthenticationService: AuthenticationLogic {
         self.session = session
     }
     
-    
+    //Call session to login user
     func loginUser(_ email: String, _ password: String, callback: @escaping (Result<CustomResponse?, UnsinkableError>) -> Void ) {
         
         session.signInRequest(email, password) { (result, error) in
@@ -54,6 +54,7 @@ class UserAuthenticationService: AuthenticationLogic {
         }
     }
     
+    //Call session to create user and then store it
     func createUserWithInformations(_ firstName: String, _ name: String, _ email: String, _ password: String, callback: @escaping (Result<Void, UnsinkableError>) -> Void) {
         
         session.createUserRequest(email, password) { (result, error) in
@@ -67,6 +68,7 @@ class UserAuthenticationService: AuthenticationLogic {
         }
     }
     
+    //Call session to store user
     func storeUser(_ customResponse: CustomResponse, firstName: String,_ name: String, callback: @escaping (Result<Void, UnsinkableError>) -> Void) {
         self.session.addUserToDataBase(customResponse: customResponse, firstName, name) { (error) in
             
@@ -79,6 +81,7 @@ class UserAuthenticationService: AuthenticationLogic {
         }
     }
     
+    //Call session to fetch user projects
     func fetchProjects(_ userData: CustomResponse?, completion: @escaping (Result<[Project?]?, UnsinkableError>) -> Void) {
         self.session.fetchProjects(userData) { (projectList, error) in
             if error != nil {
@@ -90,6 +93,7 @@ class UserAuthenticationService: AuthenticationLogic {
         }
     }
     
+    //Call session to fetchUser data
     func getUserData(completion: @escaping (Result<CustomResponse?, UnsinkableError>) -> Void) {
         self.session.fetchUserFirestoreData { (customResponse, error) in
             if error != nil {
@@ -101,6 +105,7 @@ class UserAuthenticationService: AuthenticationLogic {
         }
     }
 
+    //Call session to update User
     func updateUser(_ user: UserDetails?, _ firstName: String,_ name: String,_ email: String, completion: @escaping (UnsinkableError?) -> Void) {
         self.session.updateUser(user, firstName, name, email) { error in
             if error != nil {
@@ -111,6 +116,7 @@ class UserAuthenticationService: AuthenticationLogic {
         }
     }
     
+    //Call session to delete user
     func deleteUser(_ user: UserDetails, completion: @escaping (UnsinkableError?) -> Void) {
         session.deleteUser(user) { error in
             if error != nil {

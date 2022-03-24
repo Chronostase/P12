@@ -24,10 +24,8 @@ protocol DashBoardPresenterLogic {
 }
 
 class DashBoardPresenter {
-//    let userAuthenticationService: AuthenticationLogic = UserAuthenticationService()
     weak var delegate: DashBoardPresenterDelegate?
     var data: CustomResponse?
-//    let projectService: ProjectLogic = ProjectService()
     var filtredData: [Project]?
     var personalProject: [Project]?
     var professionalProject: [Project]?
@@ -38,7 +36,7 @@ class DashBoardPresenter {
         self.service = session
     }
     
-    
+    //initiate fetchUser process
     func fetchUser() {
         getUserData { result in
             switch result {

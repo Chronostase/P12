@@ -29,6 +29,7 @@ class TaskCreationPresenter {
         self.service = session
     }
     
+    //Initiate delete task process and call delegate to handle result
     func deleteTask() {
         //Done
         deleteUserTask { result in
@@ -41,6 +42,7 @@ class TaskCreationPresenter {
         }
     }
     
+    //Initiate update task process and call delegate to handle result
     func updateTask(with title: String?, location: String?, priority: Bool?, commentary: String?, deadLine: Date?) {
         updateUserTask(with: title, location: location, priority: priority, commentary: commentary, deadLine: deadLine) { result in
             switch result {

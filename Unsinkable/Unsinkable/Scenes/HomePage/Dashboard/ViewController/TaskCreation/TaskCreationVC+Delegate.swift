@@ -10,6 +10,8 @@ import Foundation
 extension TaskCreationViewController: ProjectManagerDelegate {
     
     //MARK: - Update methods
+    
+    //Switch updateTask result to manage navigation in success case or handle error in failure case
     func updateTaskComplete(_ result: Result<Task?, UnsinkableError>) {
         switch result {
         case .success( _):
@@ -23,7 +25,7 @@ extension TaskCreationViewController: ProjectManagerDelegate {
     }
     
     //MARK: - Delete methods
-    
+    //Switch deleteTask result to manage navigation in success case or handle error in failure case
     func deleteTaskComplete(_ result: Result<Void, UnsinkableError>) {
         switch result {
         case .success(_):

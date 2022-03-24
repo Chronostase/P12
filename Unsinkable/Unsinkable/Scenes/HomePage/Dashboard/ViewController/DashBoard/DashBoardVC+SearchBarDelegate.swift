@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 extension DashBoardViewController: UISearchBarDelegate {
     
+    //Add project in filtred data whil user is typing 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         dashBoardPresenter.filtredData = []
         if let projectList = dashBoardPresenter.data?.user.projects {
@@ -21,6 +22,7 @@ extension DashBoardViewController: UISearchBarDelegate {
         }
     }
     
+    //Sort collection view with user entry key word
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if dashBoardPresenter.isSearchBarActive(searchBar.text) {
             dashBoardPresenter.searchBarEntry = searchBar.text
