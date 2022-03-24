@@ -13,7 +13,7 @@ extension UIView {
     enum ViewSide {
             case left, right, top, bottom
         }
-
+    //Add border to view 
         func addBorder(toSide side: ViewSide, withColor color: CGColor, andThickness thickness: CGFloat) {
 
             let border = CALayer()

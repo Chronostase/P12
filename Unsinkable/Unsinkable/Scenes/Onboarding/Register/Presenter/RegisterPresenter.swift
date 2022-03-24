@@ -32,6 +32,7 @@ class RegisterPresenter {
         self.service = session
     }
     
+    //Initiate register process
     func registerWith(_ firstname: String?,_ name: String?,_ email: String?,_ password: String?) {
         registerUser(firstname, name, email, password) { result in
             switch result {

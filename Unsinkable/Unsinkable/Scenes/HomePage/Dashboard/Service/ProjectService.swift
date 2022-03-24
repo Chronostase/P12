@@ -39,6 +39,7 @@ class ProjectService: ProjectLogic {
         self.session = session
     }
     
+    //Call session to registerProject Project
     func registerProject(_ project: Project?,_ userData: CustomResponse?,_ coverPicture: Data?, completion: @escaping (UnsinkableError?) -> Void) {
         self.session.registerUserProject(project, userData, coverPicture) { (error) in
             if error != nil {
@@ -48,7 +49,7 @@ class ProjectService: ProjectLogic {
             }
         }
     }
-    
+    //Call session to registerTask Project
     func registerTask(_ tasks: [Task?]?,_ project: Project?, completion: @escaping (UnsinkableError?) -> Void) {
         self.session.registerUserTask(tasks, project) { (error) in
             if error != nil {
@@ -59,6 +60,7 @@ class ProjectService: ProjectLogic {
         }
     }
     
+    //Call session to Delete Project
     func deleteProject(_ project: Project?, completion: @escaping (UnsinkableError?) -> Void) {
         self.session.deleteUserProject(project) { (error) in
             if error != nil {
@@ -71,6 +73,7 @@ class ProjectService: ProjectLogic {
         }
     }
     
+    //Call session to delete task
     func deleteTask(_ project: Project?,_ task: Task?, completion: @escaping (UnsinkableError?) -> Void) {
         self.session.deleteUserTask(project, task) { (error) in
             if error != nil {
@@ -82,6 +85,7 @@ class ProjectService: ProjectLogic {
         }
     }
     
+    //Call session to delete all user reference
     func deleteAllUserRef(_ user: CustomResponse?, completion: @escaping (UnsinkableError?) -> Void) {
         self.session.deleteAllUserRef(user) { error in
             if error != nil {
@@ -92,6 +96,7 @@ class ProjectService: ProjectLogic {
         }
     }
     
+    //Call session to update project
     func updateProject(_ project: Project?, _ userData: CustomResponse?, _ coverPicture: Data?, completion: @escaping (UnsinkableError?) -> Void) {
         self.session.updateProject(project, userData, coverPicture) { error in
             if error != nil {
@@ -102,6 +107,7 @@ class ProjectService: ProjectLogic {
         }
     }
     
+    //Call session to update task
     func updateTask(_ project: Project?, currentTask: Task?, newTask: Task?, _ userData: CustomResponse?, completion: @escaping (UnsinkableError?) -> Void) {
         self.session.updateTask(project, currentTask: currentTask, newTask: newTask, userData) { error in
             if error != nil {
@@ -113,6 +119,7 @@ class ProjectService: ProjectLogic {
         }
     }
     
+    //Call session to update validate statement
     func updateValidateStatement(_ project: Project?, selectedTask: Task?, _ userData: CustomResponse?, completion: @escaping (Result<Void?, UnsinkableError>) -> Void) {
         self.session.updateValidateStatement(project, selectedTask: selectedTask, userData) { result in
             switch result {
@@ -124,6 +131,7 @@ class ProjectService: ProjectLogic {
         }
     }
     
+    //Call session to refresh current project 
     func refreshCurrentProject(_ project: Project?,_ userData: CustomResponse?, completion: @escaping (Project?, UnsinkableError?) -> Void) {
         self.session.refreshCurrentProject(project, userData) { project, error in
             if error != nil {

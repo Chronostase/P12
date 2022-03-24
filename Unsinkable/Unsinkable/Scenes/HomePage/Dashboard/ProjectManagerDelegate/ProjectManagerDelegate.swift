@@ -7,6 +7,7 @@
 
 import Foundation
 
+//project manager delegate with all methods relative to project
 protocol ProjectManagerDelegate: AnyObject {
     func registerProjectComplete(_ result: Result<Project?,UnsinkableError>)
     func registerTaskComplete(_ result: Result<Void,UnsinkableError>)
@@ -26,6 +27,7 @@ protocol ProjectManagerDelegate: AnyObject {
     func showErrorMessage(with message: String)
 }
 
+//Allow to attach only concerned method to each dependencies
 extension ProjectManagerDelegate {
     func registerProjectComplete(_ result: Result<Project?,UnsinkableError>) {}
     func registerTaskComplete(_ result: Result<Void,UnsinkableError>) {}

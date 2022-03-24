@@ -15,6 +15,7 @@ class ProjectSession {
     lazy var functions = Functions.functions()
     lazy var keyChainManager = KeyChainManager()
     
+    //User firestore to refreshCurrentProject, projectRef and taskRef match with database path to reach the right files
     func refreshCurrentProject(_ project: Project?,_ userData: CustomResponse?, completion: @escaping (Project?, UnsinkableError?) -> Void) {
         guard let project = project else {return}
         guard let projectId = project.projectID else {return}
@@ -71,7 +72,7 @@ class ProjectSession {
             }
         }
     }
-    
+    //Unse firestore to update task statement, need to reauthenticate user for this operation that's why keyChainManager is used, taskPath is used to feat with database struc to access right files
     func updateValidateStatement(_ project: Project?, selectedTask: Task?, _ userData: CustomResponse?, completion: @escaping (Result<Void?, UnsinkableError>) -> Void) {
         guard let project = project,
               let task = selectedTask,
@@ -111,6 +112,7 @@ class ProjectSession {
         
     }
     
+    //Firestore is use to update user task, keychain is here to reauthenticaten taskPath is use to feat with database struct to update right file
     func updateTask(_ project: Project?, currentTask: Task?, newTask: Task?, _ userData: CustomResponse?, completion: @escaping (UnsinkableError?) -> Void) {
         guard let project = project else {return}
         guard let projectID = project.projectID else {return}
@@ -163,7 +165,7 @@ class ProjectSession {
         }
         
     }
-    
+    //Storage is used to replace cover picture and get new downloadUrl, firestore is use to update project with right path matching database struct
     func updateProject(_ project: Project?,_ userData: CustomResponse?,_ coverPicture: Data?, completion: @escaping (UnsinkableError?) -> Void) {
         
         guard let project = project else { return }
@@ -254,6 +256,7 @@ class ProjectSession {
         }
     }
     
+    //Firestore is use to register user project, with document ref we save it at specify place in DB, Storage is use to store coverPicture and get downloadUrl
     func registerUserProject(_ project: Project?,_ userData: CustomResponse?,_ coverPicture: Data?, completion: @escaping (UnsinkableError?) -> Void) {
         guard let userId = userData?.user.userId else {
             return
@@ -316,7 +319,7 @@ class ProjectSession {
         }
     }
     
-    
+    //Firestore is use to store task at taskRef that is the path matching database
     func registerUserTask(_ tasks: [Task?]?,_ project: Project?, completion: @escaping (UnsinkableError?) -> Void) {
         
         let database = Firestore.firestore()
@@ -357,6 +360,7 @@ class ProjectSession {
         }
     }
     
+    //User cloud function to delete files recursivly, databaseRef is the place of the user in database, Storage is used to delete coverPicture in database
     func deleteAllUserRef(_ user: CustomResponse?, completion: @escaping (UnsinkableError?) -> Void) {
         guard let user = user, let userId = user.user.userId else {return}
         guard let token = Keys.value(for: Constants.Token.cloudToken) else {
@@ -420,6 +424,7 @@ class ProjectSession {
         }
     }
     
+    //Cloud function is used to recursivly delete files, project ref match with database struc to delete the right file
     func deleteUserProject(_ project: Project?, completion: @escaping (UnsinkableError?) -> Void) {
         guard let project = project else {return}
         guard let projectID = project.projectID else {return}
@@ -464,6 +469,7 @@ class ProjectSession {
         }
     }
     
+    //Cloud function is used to recursivly delete files, task ref match with database struc to delete the right file
     func deleteUserTask(_ project: Project?,_ task: Task?, completion: @escaping (UnsinkableError?) -> Void) {
         guard let project = project, let task = task else {return}
         guard let projectID = project.projectID else {return}
@@ -495,6 +501,7 @@ class ProjectSession {
         }
     }
     
+    //Convert error from api Call to CustomError 
     private func convertStorageErrorToUnsinkableError(_ error: Error) -> UnsinkableError {
         guard let error = error as NSError? else {
             return UnsinkableError.unknowError

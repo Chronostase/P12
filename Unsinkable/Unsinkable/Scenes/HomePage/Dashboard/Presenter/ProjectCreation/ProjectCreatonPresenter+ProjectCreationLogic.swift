@@ -9,6 +9,7 @@ import Foundation
 
 extension ProjectCreationPresenter: ProjectCreationLogic {
     
+    //Proceed to check before calling service to register project
     func registerProject(_ title: String?,_ descitpion: String?,_ coverPicture: Data?, completion: @escaping (Result<Project?, UnsinkableError>) -> Void) {
         let formatTitle = title?.formatCharacter()
         if isFieldFill(formatTitle) {
@@ -30,6 +31,7 @@ extension ProjectCreationPresenter: ProjectCreationLogic {
         }
     }
     
+    //Call service to register task, call delegate methode to handle result
     func registerTask(_ project: Project?) {
         service.registerTask(localTasksList, project) { (error) in
             if error != nil {
@@ -41,11 +43,13 @@ extension ProjectCreationPresenter: ProjectCreationLogic {
         }
     }
     
+    //Create Project with field content
     func createProjectObject( withTitle: String?,_ description: String?,_ projectOwner: String?, tasks: [Task?]?) {
         let project = Project(title: withTitle, projectID: UUID().uuidString, description: description, ownerUserId: projectOwner, isPersonal: isPersonal, taskList: localTasksList)
         self.project = project
     }
     
+    //Check if textField arn't empty
     func checkTextFieldsAvailable(_ title: String?, _ description: String?) -> Bool {
         if title != "" && description != "" {
             return true
@@ -54,6 +58,7 @@ extension ProjectCreationPresenter: ProjectCreationLogic {
         }
     }
     
+    //Check if taskTitle isn't empty
     func checkTaskTitle(_ taskTitle: String?) -> Bool {
         if taskTitle?.formatCharacter() != "" {
             return true
@@ -62,13 +67,14 @@ extension ProjectCreationPresenter: ProjectCreationLogic {
         }
     }
     
+    //Create task object with field content
     func createTaskObject(_ title: String?, _ projectID: String?, _ taskID: String?, _ priority: Bool?, _ deadLine: Date?, _ commentary: String?, _ location: String?) -> Task {
         let task = Task(title: title, projectID: projectID, taskID: UUID().uuidString, priority: priority, deadLine: deadLine, commentary: commentary, location: location)
         
         return task
     }
     
-    
+    //Check if field are not nil and not empty
     func isFieldFill(_ field: String?) -> Bool {
         guard let field = field else {
             return false
@@ -80,11 +86,13 @@ extension ProjectCreationPresenter: ProjectCreationLogic {
         }
     }
     
+    //Add task with only title in localTaskList
     func updateProject(_ title: String?) {
         guard let title = title else {return}
         localTasksList?.append(createTaskObject(title, nil, nil, nil, nil, nil, nil))
     }
     
+    //Add project to local User projects
     func updateLocalData(withProject: Project?) {
         guard let project = withProject else {
             return
@@ -92,8 +100,8 @@ extension ProjectCreationPresenter: ProjectCreationLogic {
         self.data?.user.projects?.append(project)
     }
     
+    //Add task to localTaskList
     func updateLocalTaskData(withTask: Task?) {
-        
         guard let task = withTask else {
             return
         }

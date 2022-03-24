@@ -9,6 +9,7 @@ import Foundation
 
 extension String {
     
+    //Trimming field with whiteSpaceAndNewLine
     func formatCharacter() -> String {
         let newString = self.trimmingCharacters(in: .whitespacesAndNewlines)
         

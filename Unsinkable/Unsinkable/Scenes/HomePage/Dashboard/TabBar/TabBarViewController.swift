@@ -25,6 +25,7 @@ class TabBarViewController: UITabBarController {
         setupTabBar()
     }
     
+    //Setup tabbar UI 
     private func setupTabBar() {
         view.backgroundColor = .systemBackground
         UITabBar.appearance().barTintColor = .systemBackground

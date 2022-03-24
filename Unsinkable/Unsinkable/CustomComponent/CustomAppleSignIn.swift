@@ -19,6 +19,7 @@ class CustomAppleSignIn: UIButton {
         super.init(frame: frame)
     }
     
+    //Create clone of AppleSignIn button 
     override func layoutSubviews() {
         super.layoutSubviews()
         setTitle("Sign in with Apple", for: .normal)

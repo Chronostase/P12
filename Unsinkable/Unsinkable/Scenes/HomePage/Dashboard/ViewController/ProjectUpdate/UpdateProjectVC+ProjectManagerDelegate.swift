@@ -10,14 +10,13 @@ import UIKit
 
 extension UpdateProjectViewController: ProjectManagerDelegate {
     
-    
+    //Switch updateProject result to manage navigation / handle error in case of failure 
     func updateProjectComplete(_ result: Result<Project?, UnsinkableError>) {
         switch result {
         case .success(_):
             self.dismiss(animated: true, completion: nil)
             
             self.presentingViewController?.dismiss(animated: true, completion: nil)
-            print("Update Succeed")
         case .failure(let error):
             self.dismiss(animated: true) {
                 guard let messageBody = error.errorDescription else {return}

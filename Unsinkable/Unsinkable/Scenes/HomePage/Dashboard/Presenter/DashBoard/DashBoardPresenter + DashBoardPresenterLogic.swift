@@ -9,6 +9,7 @@ import Foundation
 
 extension DashBoardPresenter: DashBoardPresenterLogic {
     
+    //Call service to get user data
     func getUserData(completion: @escaping (Result<CustomResponse, UnsinkableError>) -> Void) {
         service.getUserData { [weak self] result in
             switch result {
@@ -25,6 +26,7 @@ extension DashBoardPresenter: DashBoardPresenterLogic {
         }
     }
     
+    //Call service to fetch user project
     func getProjectList() {
         service.fetchProjects(data) { [weak self] result in
             switch result {
@@ -34,11 +36,11 @@ extension DashBoardPresenter: DashBoardPresenterLogic {
 
             case .failure(let error):
                 self?.delegate?.fetchProjectComplete(.failure(error))
-                print("Can't fetch project \(error)")
             }
         }
     }
     
+    //Get current date and display it
     func getCurrentDate() {
         guard let date = createCurrentDate() else {
             return
@@ -46,6 +48,7 @@ extension DashBoardPresenter: DashBoardPresenterLogic {
         delegate?.fetchDateSucceed(date)
     }
     
+    //Create currentDate
     func createCurrentDate() -> String? {
         let currentDateTime = Date()
         let formatter = DateFormatter()
@@ -55,6 +58,7 @@ extension DashBoardPresenter: DashBoardPresenterLogic {
         return formatter.string(from: currentDateTime)
     }
     
+    //Sort projectList in twoo section professional/personal
     func sortPersonalAndProfessionalProject(_ projectList: [Project?]?) {
         guard let projectList = projectList else {return}
         professionalProject = [Project]()
@@ -69,6 +73,7 @@ extension DashBoardPresenter: DashBoardPresenterLogic {
         }
     }
     
+    //Check if search bar is active
     func isSearchBarActive(_ text: String?) -> Bool {
         if let text = text {
             return !text.isEmpty
@@ -76,7 +81,4 @@ extension DashBoardPresenter: DashBoardPresenterLogic {
             return false
         }
     }
-    
-    
-    
 }

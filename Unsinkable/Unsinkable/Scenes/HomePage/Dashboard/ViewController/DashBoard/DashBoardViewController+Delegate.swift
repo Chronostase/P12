@@ -8,10 +8,8 @@
 import Foundation
 
 extension DashBoardViewController: DashBoardPresenterDelegate {
-    func launchLoader() {
-        self.showLoader()
-    }
     
+    //Switch result to handle user project in success case or error in failure case
     func fetchProjectComplete(_ result: Result<CustomResponse?,UnsinkableError>) {
         switch result {
         case .success(let customResponse):
@@ -41,7 +39,7 @@ extension DashBoardViewController: DashBoardPresenterDelegate {
         }
     }
     
-    
+    //Switch result to handle user data or error 
     func fetchUserDataComplete(_ result: Result<CustomResponse?,UnsinkableError>) {
         switch result {
         case .success(let customResponse):
@@ -61,11 +59,12 @@ extension DashBoardViewController: DashBoardPresenterDelegate {
         }
     }
     
-    
+    //Update date 
     func fetchDateSucceed(_ date: String) {
         self.updateDateLabel(date)
     }
     
+    //allow to enable / Disable userInteraction on tabBar
     func isTabBarEnable(_ authorization: Bool) {
         self.tabBarController?.tabBar.isUserInteractionEnabled = authorization
     }

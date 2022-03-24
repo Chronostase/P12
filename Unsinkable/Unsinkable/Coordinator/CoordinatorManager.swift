@@ -18,7 +18,7 @@ class CoordinatorManager: Coordinator {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
+    //If user is already logIn transition to home screen else mainLogin
     func start() {
         if userAuthenticationService.isUserLogin() {
             self.transitionToHomeScreen()
@@ -28,9 +28,9 @@ class CoordinatorManager: Coordinator {
             childCoordinator.append(child)
             child.start()
         }
-        //See to fetch user data 
     }
     
+    //Add childCoordinator to push to homeScreen
     func transitionToHomeScreen() {
         //Asyn need to wait response to login call
         let child = HomeCoordinator(navigationController: navigationController)
@@ -39,6 +39,7 @@ class CoordinatorManager: Coordinator {
         child.start()
     }
     
+    //Remove child
     func childDidFinish(_ child: Coordinator?){
         for (index, coordinator) in childCoordinator.enumerated() {
             if coordinator === child {

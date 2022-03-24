@@ -36,6 +36,7 @@ class ProjectCreationViewController: UIViewController {
         setup()
     }
     
+    //Additional setup 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
@@ -45,12 +46,13 @@ class ProjectCreationViewController: UIViewController {
         }
     }
     
+    //Disable IQKeyboardManager
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         IQKeyboardManager.shared.enable = false
     }
     
-    
+    //enable IQKeyboardManager and setup ViewController
     private func setup() {
         self.navigationController?.navigationBar.isHidden = false
         IQKeyboardManager.shared.enable = true
@@ -61,6 +63,7 @@ class ProjectCreationViewController: UIViewController {
         hideMoreDetail()
     }
     
+    //Initiate save project process
     @IBAction func finishButton(_ sender: Any) {
         guard let imageData = coverImage.image?.jpegData(compressionQuality: 0.4) else {
             return
@@ -69,24 +72,29 @@ class ProjectCreationViewController: UIViewController {
         projectCreationPresenter.saveProject(projectTextField.text, projectTextView.text, imageData)
     }
     
+    //Show image picker to select a cover picture
     @IBAction func addCoverPicture(_ sender: UIButton) {
         imagePicker()
     }
     
+    //Hidde some view
     private func hideMoreDetail() {
         locationView.isHidden = true
         deadLineView.isHidden = true
         usersView.isHidden = true
     }
     
+    //Add done button to textView
     private func addTextViewDoneButton() {
         projectTextView.addDoneButton(title: Constants.Button.done, target: self, selector: #selector (tapDone(sender:)))
     }
     
+    //end text view editing
     @objc private func tapDone(sender: Any) {
         self.view.endEditing(true)
     }
     
+    //Set item delegate and datasource to self
     private func setDelegateAndDataSource() {
         taskTextField.delegate = self
         projectTextField.delegate = self
@@ -96,6 +104,7 @@ class ProjectCreationViewController: UIViewController {
         projectCreationPresenter.delegate = self
     }
     
+    //Add right button in task textField
     private func setRightButtonInTextField() {
         let button = UIButton(type: .custom)
         let image = UIImage(systemName: Constants.Image.plusCircle)
@@ -111,6 +120,7 @@ class ProjectCreationViewController: UIViewController {
         taskTextField.rightViewMode = .always
     }
     
+    //Check if their is a taskTitle and add task to project
     @objc func addTask() {
         if projectCreationPresenter.checkTaskTitle(taskTextField.text) {
             self.projectCreationPresenter.updateProject(taskTextField.text)
@@ -125,7 +135,7 @@ class ProjectCreationViewController: UIViewController {
         }
     }
     
-    
+    //Create image picker
     private func imagePicker() {
         let imagePicker = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
@@ -137,12 +147,14 @@ class ProjectCreationViewController: UIViewController {
         present(imagePicker, animated: true, completion: nil)
     }
     
+    //Set UI
     private func setUpUI() {
         projectTextView.text = Constants.Label.descriptionPlaceHolder
         projectTextView.textColor = .placeholderText
         finishButton.setTitle(Constants.Button.finish, for: .normal)
     }
     
+    //Register cell in taskTableView
     private func setupCustomCell() {
         let nib = UINib(nibName: Constants.Cell.taskCell, bundle: nil)
         taskTableView.register(nib, forCellReuseIdentifier: Constants.Cell.taskCell)
@@ -151,7 +163,8 @@ class ProjectCreationViewController: UIViewController {
 }
 
 extension ProjectCreationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
+    //Set selectedImage as coverPicture
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         guard let image = info[.originalImage] as? UIImage else {

@@ -11,24 +11,11 @@ import UIKit
 extension ProjectReaderViewController: ProjectManagerDelegate {
     //MARK: - Update methods
     
-    //Probably don't need anymore
-    func updateProjectComplete(_ result: Result<Project?, UnsinkableError>) {
-        switch result {
-        case .success(_):
-            self.navigationController?.dismiss(animated: true, completion: nil)
-            print("Update Succeed")
-        case .failure(let error):
-
-            self.navigationController?.dismiss(animated: true, completion: nil)
-            print("Error: \(error.localizedDescription)")
-        }
-    }
-    
+    //Switch updateStatement result to handle tableView and error
     func updateValidateStatementComplete(_ result: Result<Task?, UnsinkableError>) {
         switch result {
         case .success:
             self.taskTableView.reloadData()
-            print("Update taskSucceed")
         case .failure(let error):
             DispatchQueue.main.async {
                 self.taskTableView.reloadData()
@@ -38,10 +25,10 @@ extension ProjectReaderViewController: ProjectManagerDelegate {
         }
     }
     //MARK: - Delete methods
+    //Switch deleteProject result to manage navigation in success case and handle error in failure
     func deleteProjectComplete(_ result: Result<Void, UnsinkableError>) {
         switch result {
         case .success:
-            print("Success to delete project")
             self.navigationController?.dismiss(animated: true, completion: nil)
             self.navigationController?.popViewController(animated: true)
         case .failure(let error):
@@ -52,6 +39,7 @@ extension ProjectReaderViewController: ProjectManagerDelegate {
         }
     }
     
+    //Switch fetchProject result to handle data in success and show error in failure
     func fetchCurrentProjectComplete(_ result: Result<Void, UnsinkableError>) {
         switch result {
         case .success:
@@ -62,14 +50,13 @@ extension ProjectReaderViewController: ProjectManagerDelegate {
         case .failure(let error):
             guard let messageBody = error.errorDescription else {return}
             self.alertThatNeedPop(message: messageBody, title: error.localizedDescription)
-            print("Error: \(error.localizedDescription)")
         }
     }
     
+    //Switch addTask result to show error or hide loader
     func addTaskFromReaderComplete(_ result: Result<Void, UnsinkableError>) {
         switch result {
         case .success(()):
-            //Hide loader
             navigationController?.dismiss(animated: true, completion: nil)
             print("Register task succeed ")
         case .failure(let error):

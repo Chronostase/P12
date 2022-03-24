@@ -35,7 +35,7 @@ class ProjectReaderPresenter {
     }
     
     
-    //Rework
+    //Initiate addNewTask process and call delegate to handle call result
     func addNewTask(_ title: String?) {
         addUserNewTask(title) { error in
             if error != nil {
@@ -47,6 +47,7 @@ class ProjectReaderPresenter {
         }
     }
     
+    //Initiate deleteProject process and call delegate to handle call result
     func deleteProject() {
         deleteUserProject { error in
             if error != nil {
@@ -58,7 +59,7 @@ class ProjectReaderPresenter {
         }
     }
     
-    //Use in PC tableView
+    //Initiate updateTask process and call delegate to handle call result
     func updateTask(_ task: Task?) {
         updateUserTask(task) { error in
             if error != nil {
@@ -70,7 +71,7 @@ class ProjectReaderPresenter {
         }
     }
     
-    //Rework
+    //Initiate refreshCurrentProject process and call delegate to handle call result
     func refreshCurrentProject() {
         refreshCurrentUserProject { error in
             if error != nil {

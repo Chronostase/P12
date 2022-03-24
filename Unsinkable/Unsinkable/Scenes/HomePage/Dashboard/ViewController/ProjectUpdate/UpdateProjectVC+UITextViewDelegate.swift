@@ -10,6 +10,7 @@ import UIKit
 
 extension UpdateProjectViewController: UITextViewDelegate {
     
+    //Remove placeholder set textColor to label
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == .placeholderText {
             textView.text = nil
@@ -17,6 +18,7 @@ extension UpdateProjectViewController: UITextViewDelegate {
         }
     }
     
+    //Add commentary placeHolder and set textColor to placeholder 
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = Constants.Label.commentaryPlaceHolder

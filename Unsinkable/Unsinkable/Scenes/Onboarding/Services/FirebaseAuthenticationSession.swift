@@ -31,7 +31,7 @@ class FirebaseAuthenticationSession {
         }
     }
     
-    //Use FireAuth to register a new user
+    //Use FireAuth to register a new user, store user credential in KeyChainManager to reauthenticate user without asking him to login manualy
     func createUserRequest(_ email: String, _ password: String, completion: @escaping (CustomResponse?, UnsinkableError?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (dataResponse, error) in
             if error != nil {
@@ -49,7 +49,7 @@ class FirebaseAuthenticationSession {
         }
     }
     
-    
+    //Use firAuth to update current user, use firestore to update new user data in database, database ref match database struct to update the right file
     func updateUser(_ user: UserDetails?, _ firstName: String,_ name: String,_ email: String, completion: @escaping (UnsinkableError?) -> Void) {
         let auth = Auth.auth()
         guard let currentUser = auth.currentUser else {return}
@@ -92,7 +92,7 @@ class FirebaseAuthenticationSession {
         }
     }
     
-    
+    //Use user credential store in KeyChain manager to reauthenticate user, use FireUser to delete user
     func deleteUser(_ user: UserDetails, completion : @escaping (UnsinkableError?) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {return}
         guard let email = currentUser.email, let password = keyChainManager.getUserCredential(user) else {return}
@@ -112,10 +112,8 @@ class FirebaseAuthenticationSession {
                         return completion(self.convertAuthErrorToUnsinkableError(error))
                     } else {
                         if self.keyChainManager.deleteKey(user) == true {
-                            print("Successfuly delete keychain ref")
                             return completion(nil)
                         } else {
-                            print("Key chain failed to delete reference")
                             return completion(nil)
                         }
                     }
@@ -124,7 +122,7 @@ class FirebaseAuthenticationSession {
         }
     }
     
-    // Add user data to Firebase Storage
+    // Use firestore + document ref matching dataBase  struct to add unser to database
     func addUserToDataBase(customResponse: CustomResponse?,_ firstName: String, _ name: String, completion: @escaping (UnsinkableError?) -> Void) {
         guard let userId = customResponse?.user.userId else { return }
         let dataBase = Firestore.firestore()
@@ -169,7 +167,7 @@ class FirebaseAuthenticationSession {
             }
         }
     }
-    
+    //Use firestore to fetch all user project at specify path
     func fetchProjects(_ userData: CustomResponse?, completion: @escaping ([Project?]?, UnsinkableError?) -> Void) {
         guard let userId = userData?.user.userId else {
             return
@@ -232,6 +230,7 @@ class FirebaseAuthenticationSession {
         }
     }
     
+    //use to convert error from api to Custom error
     private func convertAuthErrorToUnsinkableError(_ error: Error) -> UnsinkableError {
         guard let error = error as NSError? else {
             return UnsinkableError.unknowError

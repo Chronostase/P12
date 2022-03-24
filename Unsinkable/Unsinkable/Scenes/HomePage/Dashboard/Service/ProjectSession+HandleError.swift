@@ -11,6 +11,7 @@ import FirebaseAuth
 
 extension ProjectSession {
     
+    //List of error that can be trigger by storage call
     func handleStorageError(_ errorCode: StorageErrorCode) -> UnsinkableError {
         switch errorCode {
         case .unknown:
@@ -37,7 +38,7 @@ extension ProjectSession {
             return UnsinkableError.unknowError
         }
     }
-    
+    //List of error that can be trigger by authentication call 
     func handleAuthErrorWith(_ errorCode: AuthErrorCode) -> UnsinkableError {
         switch errorCode {
         case .invalidEmail:
