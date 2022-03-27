@@ -71,7 +71,6 @@ class UserAuthenticationService: AuthenticationLogic {
     //Call session to store user
     func storeUser(_ customResponse: CustomResponse, firstName: String,_ name: String, callback: @escaping (Result<Void, UnsinkableError>) -> Void) {
         self.session.addUserToDataBase(customResponse: customResponse, firstName, name) { (error) in
-            
             if error != nil {
                 guard let error = error else { return }
                 callback(.failure(error))

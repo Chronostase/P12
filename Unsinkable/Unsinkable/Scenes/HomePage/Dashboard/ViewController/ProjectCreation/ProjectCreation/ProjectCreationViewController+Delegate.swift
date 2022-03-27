@@ -60,7 +60,6 @@ extension ProjectCreationViewController: ProjectManagerDelegate {
     func registerTaskComplete(_ result: Result<Void, UnsinkableError>) {
         switch result {
         case .success(()):
-            print("It succeed")
             DispatchQueue.main.async {
                 self.navigationController?.dismiss(animated: true, completion: {
                     self.navigationController?.popViewController(animated: true)

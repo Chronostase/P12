@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 import FirebaseStorage
 import FirebaseFunctions
 
@@ -21,7 +22,6 @@ class ProjectSession {
         guard let projectId = project.projectID else {return}
         guard let user = userData?.user, let userID = user.userId else {return}
         var taskList = [Task?]()
-        
         let database = Firestore.firestore()
         let projectRef = database.collection(Constants.Database.User.userPath).document(userID).collection(Constants.Database.Project.projectPath).document(projectId)
         

@@ -42,7 +42,7 @@ class ProjectCreationViewController: UIViewController {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.navigationController?.navigationBar.isHidden = false
         DispatchQueue.main.async {
-            self.setUpUI()
+            self.setupFinishButtonTitle()
         }
     }
     
@@ -61,6 +61,7 @@ class ProjectCreationViewController: UIViewController {
         addTextViewDoneButton()
         setRightButtonInTextField()
         hideMoreDetail()
+        setPlaceHolder()
     }
     
     //Initiate save project process
@@ -77,6 +78,11 @@ class ProjectCreationViewController: UIViewController {
         imagePicker()
     }
     
+    //Set placeHolder
+    private func setPlaceHolder() {
+        projectTextView.text = Constants.Label.descriptionPlaceHolder
+        projectTextView.textColor = .placeholderText
+    }
     //Hidde some view
     private func hideMoreDetail() {
         locationView.isHidden = true
@@ -147,10 +153,8 @@ class ProjectCreationViewController: UIViewController {
         present(imagePicker, animated: true, completion: nil)
     }
     
-    //Set UI
-    private func setUpUI() {
-        projectTextView.text = Constants.Label.descriptionPlaceHolder
-        projectTextView.textColor = .placeholderText
+    //Set finish button title
+    private func setupFinishButtonTitle() {
         finishButton.setTitle(Constants.Button.finish, for: .normal)
     }
     

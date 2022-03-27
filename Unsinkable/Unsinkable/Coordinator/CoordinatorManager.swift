@@ -32,7 +32,6 @@ class CoordinatorManager: Coordinator {
     
     //Add childCoordinator to push to homeScreen
     func transitionToHomeScreen() {
-        //Asyn need to wait response to login call
         let child = HomeCoordinator(navigationController: navigationController)
         child.parentCoordinator = self
         childCoordinator.append(child)
